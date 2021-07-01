@@ -1,0 +1,83 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Support</li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+
+            <div class="card card_border py-2 mb-4">
+                <div class="cards__heading" style="padding: 15px;">
+                    <div class="row">
+                        <div class="col">
+                            <h3><span>Support</span></h3>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-3">
+                            <a href="/" class="btn btn-lg btn-outline-primary btn-style border-btn">Create</a>
+                            <button type="submit" class="btn btn-primary btn-style ">Import</button>
+                        </div>
+                        <div class="col-9">
+                            <div style="float: right;">
+                                <span>1-4/4</span>
+                                <a class="btn" style="border: 1px solid lightgray;" href="/">❮ </a>
+                                <a class="btn" style="border: 1px solid lightgray;" href="/"> ❯</a>
+                                <a class="btn" style="border: 1px solid lightgray;" href="/"> list </a>
+                                <a class="btn" style="border: 1px solid lightgray;" href="/"> grid</a>
+                                <a class="btn" style="border: 1px solid lightgray;" href="/"> time</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form action="#" method="post">
+                            <div class="container-fluid">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+
+                                        <th>User</th>
+                                        <th>Code</th>
+                                        <th>Date</th>
+                                        <th>Amount</th>
+                                        <th>Particular</th>
+                                        <th>Paid Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>Admin</td>
+                                        <td>Leave Request</td>
+                                        <td>leave requests</td>
+                                        <td>-3.00</td>
+                                        <td>12/31/2019 11:49:50</td>
+                                        <td>01/03/2020 11:49:50</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

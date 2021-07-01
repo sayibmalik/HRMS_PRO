@@ -1,0 +1,392 @@
+{% extends 'base.html'%}
+{% block content%}
+<style>
+     .backwhite
+    {
+        padding: 23px;
+        background: #fff;
+    }
+
+     .cc-tbl
+    {
+        padding-top: 24px !important;
+        font-weight: bold;
+    }
+
+
+
+
+</style>
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b>Home</b></h6>
+                    {% else %}
+                    <h6><b>الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Project
+                    {% else %}
+                    المشروع
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <div class="row m-0">
+                <div class="col-lg-12 backwhite">
+                    <h4 class="ml-2 text-primary pt-4">
+                        {% if request.session.lang == "EN" %}
+                        <i class="fa fa-line-chart mr-2"></i><b>Project</b>
+                        {% else %}
+                        <i class="fa fa-line-chart ml-2"></i><b>المشروع</b>
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="col-lg-12 p-2 backwhite">
+                    <a href="/app/dashboard" class="btn btn-danger btn-style ml-3"
+                       style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                        Discard
+                        {% else %}
+                        تجاهل
+                        {% endif %}
+                    </a>
+                    <a href="{% url 'CreateProject' %}" class="btn btn-success btn-style ml-3"
+                       style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                        Create
+                        {% else %}
+                        خلق
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-12 backwhite pt-5">
+                    <div class="row m-0 d-flex justify-content-center">
+
+                        {% if request.session.lang == "EN" %}
+                        <div class="col-lg-10 col-md-12 col-12 bg-primary p-2"
+                             style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"
+                                                                       style="padding-top: 10px;"><b>Kindly check the
+                            Project details</b></h3></div>
+                        {% else %}
+                        <div class="col-lg-10 col-md-12 col-12 bg-primary p-3"
+                             style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b> يرجى ملءبرجاء
+                            التحقق من تفاصيل المشروع</b></h3></div>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-lg-12 backwhite pt-5">
+                    <form action="#" method="post">
+                        <div class="table-responsive">
+                            <table class="table  table-bordered">
+                                <thead class="text-center thead-light">
+
+                                <tr class="text-primary">
+                                    <!--                                    <th><input style="margin-left: 5px;" type="checkbox"></th>-->
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                                        Project title
+                                        {% else %}
+                                        عنوان المشروع
+                                        {% endif %}
+                                    </th>
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                                        Project Start Date
+                                        {% else %}
+                                        تاريخ بدء المشروع
+                                        {% endif %}
+                                    </th>
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                                        Project End Date
+                                        {% else %}
+                                        تاريخ انتهاء المشروع
+                                        {% endif %}
+                                    </th>
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                                        Project Description
+                                        {% else %}
+                                        وصف المشروع
+                                        {% endif %}
+                                    </th>
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                                        Project Manager
+                                        {% else %}
+                                        مدير المشروع
+                                        {% endif %}
+                                    </th>
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                                        Project priority
+                                        {% else %}
+                                        أولوية المشروع
+                                        {% endif %}
+                                    </th>
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                                        Project Reference
+                                        {% else %}
+                                        مرجع المشروع
+                                        {% endif %}
+                                    </th>
+                                    {% if request.session.ismanager %}
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                                        Edit
+                                        {% else %}
+                                        تعديل
+                                        {% endif %}
+                                    </th>
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                                        Delete
+                                        {% else %}
+                                        حذف
+                                        {% endif %}
+                                    </th>
+                                    {% elif request.session.ishr %}
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                                        Edit
+                                        {% else %}
+                                        تعديل
+                                        {% endif %}
+                                    </th>
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                                        Delete
+                                        {% else %}
+                                        حذف
+                                        {% endif %}
+                                    </th>
+                                    {% endif %}
+                                </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                {% for d in data %}
+                                <tr>
+                                    <!--<th style="padding: 17px;"><input type="checkbox"></th>-->
+                                    <td class="cc-tbl">{{d.Name}}</td>
+                                    <td class="cc-tbl">{{d.StartDate}}</td>
+                                    <td class="cc-tbl">{{d.EndDate}}</td>
+                                    <td class="cc-tbl">{{d.Description}}</td>
+                                    <td class="cc-tbl">{{d.Manager.user.first_name}} {{d.Manager.user.last_name}}</td>
+                                    <td class="cc-tbl">{{d.Priority}}</td>
+                                    <td class="cc-tbl">{{d.Reference}}</td>
+                                    {% if request.session.ismanager %}
+                                    <td><a href="/Project/editproject/{{d.id}}"><i
+                                            style="color: #4755AB;font-size: 25px;padding: 11px;"
+                                            class="fa fa-pencil-square-o text-success"
+                                            aria-hidden="true"></i></a></td>
+
+                                    <td>
+                                        <form action="{% url 'delproject' %}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit"
+                                                    style="color: #4755AB;font-size: 25px; border:none;background:none;"
+                                                    value="{{d.id}}" name="id"><i
+                                                    class="fa fa-trash-o text-danger"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    {% elif request.session.ishr %}
+                                    <td><a href="/Project/editproject/{{d.id}}"><i
+                                            style="color: #4755AB;font-size: 25px;padding: 11px;"
+                                            class="fa fa-pencil-square-o text-success"
+                                            aria-hidden="true"></i></a></td>
+
+                                    <td>
+                                        <form action="{% url 'delproject' %}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit"
+                                                    style="color: #4755AB;font-size: 25px; border:none;background:none;"
+                                                    value="{{d.id}}" name="id"><i
+                                                    class="fa fa-trash-o text-danger"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    {% endif %}
+
+
+                                </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+            <!--*****OLD CODE*****-->
+            <!--            <div class="card card_border py-2 mb-4">-->
+            <!--                <div class="cards__heading">-->
+            <!--                    <div class="row">-->
+            <!--                        <div class="col-9">-->
+            <!--                            <h3><span>-->
+            <!--                                 {% if request.session.lang == "EN" %}-->
+            <!--                                                        Project-->
+            <!--                                                           {% else %}-->
+            <!--                                                  المشروع-->
+            <!--                                                           {% endif %}-->
+            <!--                            </span></h3>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-3">-->
+            <!--                            &lt;!&ndash;                            <button type="submit" class="btn btn-primary btn-style ">Import</button>&ndash;&gt;-->
+            <!--                            <a href="{% url 'CreateProject' %}"-->
+            <!--                               class="btn btn-primary btn-style "-->
+            <!--                               style="margin-left: 175px;">-->
+            <!--                             {% if request.session.lang == "EN" %}-->
+            <!--                                                       Create-->
+            <!--                                                           {% else %}-->
+            <!--                                                        خلق-->
+            <!--                                                           {% endif %}-->
+            <!--                            </a>-->
+
+
+            <!--                        </div>-->
+
+            <!--                    </div>-->
+            <!--                    <div class="col-9"></div>-->
+
+            <!--                </div>-->
+            <!--                <div class="card-body">-->
+
+            <!--                        <div class="container-fluid">-->
+            <!--                            <table class="table table-striped">-->
+            <!--                                <thead>-->
+
+            <!--                                <tr class="text-primary">-->
+            <!--                                    &lt;!&ndash;                                    <th><input style="margin-left: 5px;" type="checkbox"></th>&ndash;&gt;-->
+            <!--                                    <th>-->
+            <!--                                    {% if request.session.lang == "EN" %}-->
+            <!--                                                       Project title-->
+            <!--                                                           {% else %}-->
+            <!--                                                        عنوان المشروع-->
+            <!--                                                           {% endif %}-->
+            <!--                                    </th>-->
+            <!--                                    <th>-->
+            <!--                                    {% if request.session.lang == "EN" %}-->
+            <!--                                                       Project Start Date-->
+            <!--                                                           {% else %}-->
+            <!--                                                        تاريخ بدء المشروع-->
+            <!--                                                           {% endif %}-->
+            <!--                                    </th>-->
+            <!--                                    <th>-->
+            <!--                                    {% if request.session.lang == "EN" %}-->
+            <!--                                                       Project End Date-->
+            <!--                                                           {% else %}-->
+            <!--                                                        تاريخ انتهاء المشروع-->
+            <!--                                                           {% endif %}-->
+            <!--                                    </th>-->
+            <!--                                    <th>-->
+            <!--                                    {% if request.session.lang == "EN" %}-->
+            <!--                                                       Project Description-->
+            <!--                                                           {% else %}-->
+            <!--                                                        وصف المشروع-->
+            <!--                                                           {% endif %}-->
+            <!--                                    </th>-->
+            <!--                                    <th>-->
+            <!--                                    {% if request.session.lang == "EN" %}-->
+            <!--                                                       Project Manager-->
+            <!--                                                           {% else %}-->
+            <!--                                                        مدير المشروع-->
+            <!--                                                           {% endif %}-->
+            <!--                                    </th>-->
+            <!--                                    <th>-->
+            <!--                                    {% if request.session.lang == "EN" %}-->
+            <!--                                                       Project priority-->
+            <!--                                                           {% else %}-->
+            <!--                                                       أولوية المشروع-->
+            <!--                                                           {% endif %}-->
+            <!--                                    </th>-->
+            <!--                                    <th>-->
+            <!--                                    {% if request.session.lang == "EN" %}-->
+            <!--                                                       Project Reference-->
+            <!--                                                           {% else %}-->
+            <!--                                                        مرجع المشروع-->
+            <!--                                                           {% endif %}-->
+            <!--                                    </th>-->
+            <!--                                    <th>-->
+            <!--                                    {% if request.session.lang == "EN" %}-->
+            <!--                                                       Edit-->
+            <!--                                                           {% else %}-->
+            <!--                                                        تعديل-->
+            <!--                                                           {% endif %}-->
+            <!--                                    </th>-->
+            <!--                                    <th>-->
+            <!--                                    {% if request.session.lang == "EN" %}-->
+            <!--                                                       Delete-->
+            <!--                                                           {% else %}-->
+            <!--                                                       حذف-->
+            <!--                                                           {% endif %}-->
+            <!--                                    </th>-->
+            <!--                                </tr>-->
+            <!--                                </thead>-->
+            <!--                                <tbody>-->
+            <!--                                {% for d in data %}-->
+            <!--                                <tr>-->
+            <!--                                    &lt;!&ndash;<th style="padding: 17px;"><input type="checkbox"></th>&ndash;&gt;-->
+            <!--                                    <td style="padding: 23px;">{{d.Name}}</td>-->
+            <!--                                    <td style="padding: 23px;">{{d.StartDate}}</td>-->
+            <!--                                    <td style="padding: 23px;">{{d.EndDate}}</td>-->
+            <!--                                    <td style="padding: 23px;">{{d.Description}}</td>-->
+            <!--                                    <td style="padding: 23px;">{{d.Manager}}</td>-->
+            <!--                                    <td style="padding: 23px;">{{d.priority}}</td>-->
+            <!--                                    <td style="padding: 23px;">{{d.Reference}}</td>-->
+            <!--                                    <td><a href="/Project/editproject/{{d.id}}"><i-->
+            <!--                                            style="color: #4755AB;font-size: 25px;padding: 11px;"-->
+            <!--                                            class="fa fa-pencil-square-o"-->
+            <!--                                            aria-hidden="true"></i></a></td>-->
+
+            <!--                                    <td>-->
+            <!--                                        <form action="/Project/delproject/" method="post">-->
+            <!--                                            {% csrf_token %}-->
+            <!--                                            <button type="submit"-->
+            <!--                                                    style="color: #4755AB;font-size: 25px;padding: 3px;margin-left: 8px; border:none;"-->
+            <!--                                                    value="{{d.id}}" name="project_id"><i class="fa fa-trash-o"></i>-->
+            <!--                                            </button>-->
+            <!--                                        </form>-->
+            <!--                                    </td>-->
+
+
+            <!--                                </tr>-->
+            <!--                                {% endfor %}-->
+
+            <!--                                </tbody>-->
+            <!--                            </table>-->
+            <!--                        </div>-->
+
+            <!--                </div>-->
+            <!--            </div>-->
+
+
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

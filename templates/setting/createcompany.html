@@ -1,0 +1,709 @@
+{% extends 'base.html'%}
+{% block content%}
+<style>
+    .backwhite
+    {
+        padding: 9px;
+    padding-left: 15px;
+    background: #fff;
+    }
+
+    .curve-around input , .curve-around select
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+
+    .cmp-det
+    {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid #b2b2b2;
+        box-shadow: 3px 3px 10px rgb(0 0 0 / 30%);
+    }
+</style>
+<div class="main-content">
+    <form action="" method="post">
+        {% csrf_token %}
+        <!-- content -->
+        <div class="container-fluid content-top-gap">
+
+            <!-- breadcrumbs -->
+            <nav aria-label="breadcrumb" class="mb-2 backwhite">
+                <ol class="breadcrumb my-breadcrumb pt-3">
+                    <li class="breadcrumb-item"><a href="/">{% if request.session.lang == "EN" %}
+                        <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                     <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{% if request.session.lang == "EN" %}
+                    Company
+                    {% else %}
+                    شركة
+                    {% endif %}</li>
+                </ol>
+            </nav>
+            <!-- //breadcrumbs -->
+            <!-- forms -->
+            <section class="forms">
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite">
+                        <h4 class="ml-2 text-primary pt-4">
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-link  fa-1x mr-3"></i><b>New</b>
+                            {% else %}
+                            <i class="fa fa-link  fa-1x ml-3"></i><b>جديد</b>
+                            {% endif %}
+                        </h4>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-12 p-2 backwhite ">
+                          <a href="/app/dashboard" class="btn btn-danger btn-style ml-3"
+                       style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                        Discard
+                        {% else %}
+                        تجاهل
+                        {% endif %}
+                    </a>
+                        <button type="submit" class="btn btn-success btn-style ml-3"
+                                style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Save
+                            {% else %}
+                            حفظ
+                            {% endif %}
+                        </button>
+                    </div>
+                </div>
+                    <div class="row m-0">
+                  <div class="col-12 backwhite pt-5">
+                        <div class="row m-0 d-flex justify-content-center">
+
+                              {% if request.session.lang == "EN" %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-3" style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b>Kindly fill in the following  details</b></h3></div>
+                            {% else %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-3" style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b> يرجى ملء تفاصيل  التالية</b></h3></div>
+                            {% endif %}
+                        </div>
+
+                  </div>
+              </div>
+
+               <div class="row m-0">
+                  <div class="col-lg-6 col-md-6 col-12 pb-5  backwhite">
+                        <div class="row m-0 d-flex justify-content-center" style="border-right:2px solid #eee;">
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 d-flex justify-content-center pt-4">
+                                    <div class="m-auto cmp-det" style="">
+                                        <img src="/static/assets/images/comp.jpeg" alt="" style="height: 100%; width: 100%;">
+                                    </div>
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around pt-4">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Company Name</b></h6>
+                                {% else %}
+                                <h6 class="mr-4"><b>اسم الشركة</b></h6>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">
+                                <input class="form-control" name="companyname"
+                                                       placeholder="Company Name" value="{{data.Company_Name}}"/>
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-5 curve-around pt-4" >
+                                {% if request.session.lang == "EN" %}
+                                <h4 class="text-center text-white bg-primary text-uppercase p-2" style="border-radius: 30px 0;"><b>General Information</b></h4>
+                                {% else %}
+                                <h4 class="text-center text-white bg-primary text-uppercase p-2 " style="border-radius: 30px 0;"><b>معلومات عامة</b></h4>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Address</b></h6>
+                                {% else %}
+                                 <h6 class="mr-4"><b>عنوان</b></h6>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">
+                                <input type="text" name="street1" class="form-control mt-1"
+                                                   placeholder="street1" value="{{data.Address1}}"/>
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-3 curve-around">
+                                <input type="text" name="street2" class="form-control mt-1"
+                                                   placeholder="street2" value="{{data.Address2}}"/>
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-3 curve-around">
+                                <input type="number" name="pincode" class="form-control mt-1"
+                                                   placeholder="pincode" value="{{data.Pin_code}}"/>
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-3 curve-around">
+                                <input type="text" name="state" class="form-control mt-1"
+                                                   placeholder="state" value="{{data.State}}" />
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-3 curve-around">
+                                 <input type="text" name="city" class="form-control mt-1"
+                                                   placeholder="city" value="{{data.City}}"/>
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Website</b></h6>
+                                {% else %}
+                                <h6 class="mr-4"><b>موقع الكتروني</b></h6>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">
+                                <input type="url" name="website" class="form-control "
+                                                   placeholder="Website" value="{{data.Website}}"/>
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Phone</b></h6>
+                                {% else %}
+                                <h6 class="mr-4"><b>هاتف</b></h6>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">
+                                <input type="text" name="phone" class="form-control "
+                                                   placeholder="Phone" value="{{data.Phone}}"/>
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Email</b></h6>
+                                {% else %}
+                                <h6 class="mr-4"><b>بريد الالكتروني</b></h6>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">
+                               <input type="email" name="email" class="form-control "
+                                                   placeholder="abc@example.com" value="{{data.Email}}"/>
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>TIN NUMBER</b></h6>
+                                {% else %}
+                                <h6 class="mr-4"><b>رقم تعريف الخاضع للضريبة</b></h6>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">
+                               <input type="text" name="tin" class="form-control " placeholder="TIN" value="{{data.Tin}}"/>
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Company Tagline</b></h6>
+                                {% else %}
+                                 <h6 class="mr-4"><b>شركة سطر الوصف</b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2" style="">
+                                <textarea   id="companytagline" name="companytagline" class="form-control " style="min-height: 125px;max-height: 125px;border: 2px solid #4755AB;"
+                                                    placeholder="">{{data.Company_Tagline}}</textarea>
+                            </div>
+
+                        </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12 pb-5  backwhite">
+                        <div class="row m-0 d-flex justify-content-center" style="border-right:2px solid #eee;">
+
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Company Registry</b></h6>
+                                {% else %}
+                                <h6 class="mr-4"><b>سجل الشركة</b></h6>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">
+                               <input type="text" name="companyreg" class="form-control "
+                                                   placeholder="Company Registry" value="{{data.Company_registry}}"/>
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Currency</b></h6>
+                                {% else %}
+                                <h6 class="mr-4"><b>عملة</b></h6>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">
+                               <input type="text" name="currency" class="form-control " placeholder="" value="{{data.Currency}}" />
+
+                                <small><a href="#">
+                                            {% if request.session.lang == "EN" %}
+                                                      Active more currencies
+                                                      {% else %}
+                                                      نشط المزيد من العملات
+                                                      {% endif %}
+                                            </a></small>
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Partner</b></h6>
+                                {% else %}
+                                 <h6 class="mr-4"><b>شريك</b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around" style="">
+                                <input type="text" name="partner" class="form-control "
+                                                   placeholder="" value="{{data.Partner}}"/>
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Report Footer</b></h6>
+                                {% else %}
+                                <h6 class="mr-4"><b>تقرير التذييل</b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">
+                               <textarea   id="reportfooter" name="rfooter" class="form-control " style="min-height: 125px;max-height: 125px;border: 2px solid #4755AB;"
+                                                    placeholder="">{{data.Reportfooter}}</textarea>
+                            </div>
+
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-5 curve-around pt-4" >
+                                {% if request.session.lang == "EN" %}
+                                <h4 class="text-center text-white bg-primary text-uppercase p-2" style="border-radius: 30px 0;"><b>Social Media</b></h4>
+                                {% else %}
+                                <h4 class="text-center text-white bg-primary text-uppercase p-2" style="border-radius: 30px 0;"><b>وسائل التواصل الاجتماعي</b></h4>
+                                {% endif %}
+                            </div>
+
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Twitter Account</b></h6>
+                                {% else %}
+                                 <h6 class="mr-4"><b>حساب تويتر</b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around" style="">
+                                <input type="text" name="twitter" class="form-control " placeholder="" value="{{data.Twitter}}"/>
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b> Facebook Account</b></h6>
+                                {% else %}
+                                 <h6 class="mr-4"><b>حساب الفيسبوك</b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around" style="">
+                                <input type="text" name="partner" class="form-control "
+                                                   placeholder="" value="{{data.Partner}}"/>
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>GitHub Account</b></h6>
+                                {% else %}
+                                 <h6 class="mr-4"><b>حساب جيثب</b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around" style="">
+                                <input type="text" name="github" class="form-control " placeholder="" value="{{data.Git}}"/>
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>LinkedIn</b></h6>
+                                {% else %}
+                                 <h6 class="mr-4"><b>حساب ينكدين</b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around" style="">
+                                <input type="text" name="linkedin" class="form-control " placeholder="" value="{{data.Linkedin}}"/>
+                            </div>
+
+
+
+
+                            <div class="col-lg-10 col-12 m-auto text-right  p-2">
+                                    <button type="submit"
+                                            class="btn btn-sm btn-success  btn-style  col-lg-4 ml-1 text-white "
+                                            style="height: 40px;font-size: 16px;padding-top: 8px; margin-top: 30px; border-radius: 20px;">
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-paper-plane mr-2"></i>Save
+                                        {% else %}
+                                        <i class="fa fa-paper-plane ml-2"></i>يحفظ
+                                        {% endif %}
+                                    </button>
+                                </div>
+
+                        </div>
+                  </div>
+              </div>
+
+
+
+
+<!--*****OLD CODE****-->
+<!--                <div class="card card_border py-2 mb-4">-->
+<!--                    <div class="cards__heading">-->
+<!--                        <div class="row">-->
+
+<!--                            <h3 class="ml-2"><span>-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    New-->
+<!--                                    {% else %}-->
+<!--                                    جديد-->
+<!--                                    {% endif %}-->
+<!--                            </span></h3>-->
+<!--                        </div>-->
+<!--                        <div class="row mt-3">-->
+<!--                           <a href="/Setting/companies"> <button type="button" class="btn btn-primary btn-style ml-1 buttons" data-dismiss="modal">-->
+<!--                               {% if request.session.lang == "EN" %}-->
+<!--                                    Discard-->
+<!--                                    {% else %}-->
+<!--                                    تجاهل-->
+<!--                                    {% endif %}-->
+<!--                            </button></a>-->
+<!--                            <button type="submit"-->
+<!--                                    class="btn btn-sm btn-outline-primary btn-style border-btn ml-1 buttons db"-->
+<!--                                    data-dismiss="modal">-->
+<!--                                 {% if request.session.lang == "EN" %}-->
+<!--                                    Save-->
+<!--                                    {% else %}-->
+<!--                                    حفظ-->
+<!--                                    {% endif %}-->
+<!--                            </button>-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+
+
+<!--                    <div class="card-body">-->
+
+<!--                        <div class="row">-->
+<!--                            <div class="col-6">-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-2">-->
+<!--                                        <img src="/static/assets/images/profileimg.jpg" style="width: 80px; "/>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-10">-->
+<!--                                        <div class="row">-->
+<!--                                            <div class="col-10">-->
+<!--                                                <input class="form-control" name="companyname"-->
+<!--                                                       placeholder="Company Name" value="{{data.Company_Name}}"/>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-6 ">-->
+
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="container-fluid">-->
+<!--                    <ul class="nav nav-tabs">-->
+<!--                        <li class="active"><a data-toggle="tab" href="#generalinformation">-->
+<!--                        {% if request.session.lang == "EN" %}-->
+<!--                                    General Information-->
+<!--                                    {% else %}-->
+<!--                                    معلومات عامة-->
+<!--                                    {% endif %}-->
+<!--                        </a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+
+
+<!--                    <div class="tab-content">-->
+<!--                        <div id="generalinformation" class="tab-pane fade in active show mt-3 mb-5">-->
+<!--                            <h2 class="ml-4 mt-3 mb-3 text-primary"><b>-->
+<!--                            {% if request.session.lang == "EN" %}-->
+<!--                                    General Information-->
+<!--                                    {% else %}-->
+<!--                                    معلومات عامة-->
+<!--                                    {% endif %}-->
+<!--                            </b></h2>-->
+<!--                            <div class="row ml-2 mr-2">-->
+<!--                                <div class="col-6">-->
+<!--                                    <div class="row ">-->
+<!--                                        <div class="col-3">-->
+<!--                                            <h6>-->
+
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Address-->
+<!--                                    {% else %}-->
+<!--                                    معلومات عامة-->
+<!--                                    {% endif %}-->
+<!--                                            </h6>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-9" style="border-left: 1px solid gray;">-->
+<!--                                            <input type="text" name="street1" class="form-control mt-1"-->
+<!--                                                   placeholder="street1" value="{{data.Address1}}"/>-->
+<!--                                            <input type="text" name="street2" class="form-control mt-1"-->
+<!--                                                   placeholder="street2" value="{{data.Address2}}"/>-->
+<!--                                            <input type="number" name="pincode" class="form-control mt-1"-->
+<!--                                                   placeholder="pincode" value="{{data.Pin_code}}"/>-->
+<!--                                            <input type="text" name="state" class="form-control mt-1"-->
+<!--                                                   placeholder="state" value="{{data.State}}" />-->
+<!--                                            <input type="text" name="city" class="form-control mt-1"-->
+<!--                                                   placeholder="city" value="{{data.City}}"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt-1">-->
+<!--                                        <div class="col-3">-->
+<!--                                            <h6>-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Company Tagline-->
+<!--                                    {% else %}-->
+<!--                                    شركة سطر الوصف-->
+<!--                                    {% endif %}-->
+<!--                                            </h6>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-9 mt-1" style="border-left: 1px solid gray;">-->
+<!--                                            <textarea id="companytagline" name="companytagline" class="form-control input-style" >{{data.Company_Tagline}}</textarea>-->
+
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-6">-->
+<!--                                    <div class="row ">-->
+<!--                                        <div class="col-3">-->
+<!--                                            <h6>-->
+
+<!--                                                {% if request.session.lang == "EN" %}-->
+<!--                                    Website-->
+<!--                                    {% else %}-->
+<!--                                    موقع الكتروني-->
+<!--                                    {% endif %}-->
+<!--                                            </h6>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-9" style="border-left: 1px solid gray;">-->
+<!--                                            <input type="url" name="website" class="form-control "-->
+<!--                                                   placeholder="Website" value="{{data.Website}}"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt-1">-->
+<!--                                        <div class="col-3">-->
+<!--                                            <h6>-->
+
+<!--                                                {% if request.session.lang == "EN" %}-->
+<!--                                    Phone-->
+<!--                                    {% else %}-->
+<!--                                    هاتف-->
+<!--                                    {% endif %}-->
+
+<!--                                            </h6>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-9" style="border-left: 1px solid gray;">-->
+<!--                                            <input type="text" name="phone" class="form-control "-->
+<!--                                                   placeholder="Phone" value="{{data.Phone}}"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt-1">-->
+<!--                                        <div class="col-3">-->
+<!--                                            <h6>-->
+
+<!--                                                {% if request.session.lang == "EN" %}-->
+<!--                                                      Email-->
+<!--                                                      {% else %}-->
+<!--                                                      بريد الالكتروني-->
+<!--                                                      {% endif %}-->
+<!--                                            </h6>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-9" style="border-left: 1px solid gray;">-->
+<!--                                            <input type="email" name="email" class="form-control "-->
+<!--                                                   placeholder="abc@example.com" value="{{data.Email}}"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt-1">-->
+<!--                                        <div class="col-3">-->
+<!--                                            <h6>-->
+<!--                                                TIN-->
+<!--                                            </h6>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-9" style="border-left: 1px solid gray;">-->
+<!--                                            <input type="text" name="tin" class="form-control " placeholder="TIN" value="{{data.Tin}}"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt-1">-->
+<!--                                        <div class="col-3">-->
+<!--                                            <h6>-->
+
+<!--                                                 {% if request.session.lang == "EN" %}-->
+<!--                                                      Company Registry-->
+<!--                                                      {% else %}-->
+<!--                                                      سجل الشركة-->
+<!--                                                      {% endif %}-->
+<!--                                            </h6>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-9" style="border-left: 1px solid gray;">-->
+<!--                                            <input type="text" name="companyreg" class="form-control "-->
+<!--                                                   placeholder="Company Registry" value="{{data.Company_registry}}"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt-4">-->
+<!--                                        <div class="col-3 ">-->
+<!--                                            <h6>-->
+
+<!--                                                {% if request.session.lang == "EN" %}-->
+<!--                                                      Currency-->
+<!--                                                      {% else %}-->
+<!--                                                      عملة-->
+<!--                                                      {% endif %}-->
+<!--                                            </h6>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-9" style="border-left: 1px solid gray;">-->
+<!--                                            <input type="text" name="currency" class="form-control " placeholder="" value="{{data.Currency}}" />-->
+<!--                                            <a href="#">-->
+<!--                                            {% if request.session.lang == "EN" %}-->
+<!--                                                      Active more currencies-->
+<!--                                                      {% else %}-->
+<!--                                                      نشط المزيد من العملات-->
+<!--                                                      {% endif %}-->
+<!--                                            </a>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt-4">-->
+<!--&lt;!&ndash;                                        <div class="col-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <h6>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                Parent Company&ndash;&gt;-->
+<!--&lt;!&ndash;                                            </h6>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <div class="col-9" style="border-left: 1px solid gray;">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <input type="text" name="parentcompany" class="form-control "&ndash;&gt;-->
+<!--&lt;!&ndash;                                                   placeholder=""/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt-1">-->
+<!--                                        <div class="col-3">-->
+<!--                                            <h6>-->
+
+
+<!--                                                {% if request.session.lang == "EN" %}-->
+<!--                                                       Report Footer-->
+<!--                                                      {% else %}-->
+<!--                                                      تقرير التذييل-->
+<!--                                                      {% endif %}-->
+<!--                                            </h6>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-9" style="border-left: 1px solid gray;">-->
+<!--                                        <textarea id="reportfooter" name="rfooter" class="form-control input-style">{{data.Reportfooter}}</textarea>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt-1">-->
+<!--                                        <div class="col-3">-->
+<!--                                            <h6>-->
+
+
+<!--                                                {% if request.session.lang == "EN" %}-->
+<!--                                                       Partner-->
+<!--                                                      {% else %}-->
+<!--                                                      شريك-->
+<!--                                                      {% endif %}-->
+<!--                                            </h6>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-9" style="border-left: 1px solid gray;">-->
+<!--                                            <input type="text" name="partner" class="form-control "-->
+<!--                                                   placeholder="" value="{{data.Partner}}"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="row ml-2 mr-2">-->
+
+<!--                                <div class="col-6">-->
+<!--                                    <h2 class=" mt-3 mb-3 text-primary"><b>-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                                       Social Media-->
+<!--                                                      {% else %}-->
+<!--                                                      وسائل التواصل الاجتماعي-->
+<!--                                                      {% endif %}-->
+<!--                                    </b></h2>-->
+<!--                                    <div class="row mt-1">-->
+<!--                                        <div class="col-3">-->
+<!--                                            <h6>-->
+
+
+<!--                                                {% if request.session.lang == "EN" %}-->
+<!--                                                       Twitter Account-->
+<!--                                                      {% else %}-->
+<!--                                                      حساب تويتر-->
+<!--                                                      {% endif %}-->
+<!--                                            </h6>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-9" style="border-left: 1px solid gray;">-->
+<!--                                            <input type="text" name="twitter" class="form-control " placeholder="" value="{{data.Twitter}}"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt-1">-->
+<!--                                        <div class="col-3">-->
+<!--                                            <h6>-->
+
+
+<!--                                                 {% if request.session.lang == "EN" %}-->
+<!--                                                       Facebook Account-->
+<!--                                                      {% else %}-->
+<!--                                                      حساب الفيسبوك-->
+<!--                                                      {% endif %}-->
+<!--                                            </h6>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-9" style="border-left: 1px solid gray;">-->
+<!--                                            <input type="text" name="fb" class="form-control " placeholder="" value="{{data.Facebook}}"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt-3">-->
+<!--                                        <div class="col-3">-->
+<!--                                            <h6>-->
+
+
+<!--                                                {% if request.session.lang == "EN" %}-->
+<!--                                                       GitHub Account-->
+<!--                                                      {% else %}-->
+<!--                                                      حساب جيثب-->
+<!--                                                      {% endif %}-->
+<!--                                            </h6>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-9" style="border-left: 1px solid gray;">-->
+<!--                                            <input type="text" name="github" class="form-control " placeholder="" value="{{data.Git}}"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt-1">-->
+<!--                                        <div class="col-3">-->
+<!--                                            <h6>-->
+
+
+<!--                                                {% if request.session.lang == "EN" %}-->
+<!--                                                       حساب LinkedIn-->
+<!--                                                      {% else %}-->
+<!--                                                      حساب ينكدين-->
+<!--                                                      {% endif %}-->
+<!--                                            </h6>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-9" style="border-left: 1px solid gray;">-->
+<!--                                            <input type="text" name="linkedin" class="form-control " placeholder="" value="{{data.Linkedin}}"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </section>
+        </div>
+    </form>
+</div>
+
+{% endblock%}

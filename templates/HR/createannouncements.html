@@ -1,0 +1,438 @@
+{% extends 'base.html'%}
+{% block content%}
+<style>
+    .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+    .note-cov
+    {
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        border-radius: 20px;
+    }
+    .curve-around input , .curve-around select
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+</style>
+
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}</a></li>
+                <li class="breadcrumb-item" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    <h6 class="text-primary"><b>Announcements</b></h6>
+                    {% else %}
+                     <h6><b>الإعلانات</b></h6>
+                    {% endif %}
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Create announcement
+                    {% else %}
+                    إنشاء إعلانات
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite">
+                        <h4 class="ml-2 text-primary pt-4">
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-bullhorn mr-2"></i><b>Create Announcement</b>
+                            {% else %}
+                             <i class="fa fa-bullhorn mr-2"></i><b> إنشاء إعلانات</b>
+                            {% endif %}
+                        </h4>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-12 p-2 backwhite">
+                        <a href="{% url 'announcements' %}" class="btn btn-danger btn-style ml-3"
+                           style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Discard
+                            {% else %}
+                            تجاهل
+                            {% endif %}
+                        </a>
+                        <button type="submit" class="btn btn-sm btn-success btn-style  ml-1 text-white "
+                                style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Save
+                            {% else %}
+                            حفظ
+                            {% endif %}
+                        </button>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 col-12 p-2 backwhite">
+                        <div class="row m-0 d-none">
+                            <div class="col-lg-6 col-md-12 col-12 pt-2">
+                                <a href="" class="btn btn-info btn-style "
+                                   style="height: 35px;font-size: 14px;padding-top: 4px;">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-paper-plane mr-2" aria-hidden="true"></i>Send for Approval
+                                    {% else %}
+                                    أرسل للموافقة
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12 pt-3 ">
+                                <a href=""  class="pr-3 text-warning" style="border-right: 1px solid grey"><b>Waiting</b></a>
+                                <a href=""  class="pr-3 text-success" style="border-right: 1px solid grey"><b>Approved</b></a>
+                                <a href="" class="text-primary"><b>Done</b></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-12 backwhite pt-5">
+                        <div class="row m-0 d-flex justify-content-center">
+
+                            {% if request.session.lang == "EN" %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-2"
+                                 style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center" style="padding-top: 10px;"><b>Kindly fill
+                                in the following details</b></h3></div>
+                            {% else %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-3"
+                                 style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b> يرجى ملء
+                                تفاصيل التالية</b></h3></div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite ">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-6 col-md-10 col-12 p-4 note-cov mt-5 mb-5" style="position:relative;">
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                    <div class="row m-0 pt-5">
+                                        <div class="col-8 p-0 ">
+                                            {% if request.session.lang == "EN" %}
+                                            <h6 ><b>Is General Announcement?</b></h6>
+                                            {% else %}
+                                           <h6 class="mr-4 mt-3"><b>هو إعلان عامة؟</b></h6>
+                                            {% endif %}
+
+                                        </div>
+
+                                        <div class="col-4">
+                                            <input type="checkbox" name="inGeneral" style="zoom:1.7"
+                                                   value="{{data.is_general_announcements}}">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h6 class="mt-3"><b>Title</b></h6>
+                                    {% else %}
+                                    <h6 class="mr-4 mt-3"><b>لقب</b></h6>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    <input type="text" name="title" class="form-control "
+                                           placeholder="" value="{{data.title}}"/>
+                                </div>
+
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h6 class="mt-3"><b>Code No</b></h6>
+                                    {% else %}
+                                     <h6 class="mr-4 mt-3"><b>رقم الكود</b></h6>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    <input type="text" name="code" class="form-control "
+                                           placeholder="" value="{{data.code_no}}"/>
+                                </div>
+
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h6 class="mt-3"><b>Date</b></h6>
+                                    {% else %}
+                                      <h6 class="mr-4 mt-3"><b>تاريخ</b></h6>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    <input type="date" name="datereq" class="form-control"
+                                           value="{{data.requestedDate|date:'Y-m-d'}}">
+                                </div>
+
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h6 class="mt-3"><b>Letter</b></h6>
+                                    {% else %}
+                                    <h6 class="mr-4 mt-3"><b>حرف</b></h6>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                     <textarea name="letter" class="form-control "
+                                               style="min-height: 120px;max-height: 120px; border: 2px solid #4755AB;"
+                                     >{{data.letter}}</textarea>
+                                </div>
+
+                                <div class="col-lg-10 col-12 m-auto text-right  p-2">
+                                    <button type="submit"
+                                            class="btn btn-sm btn-success  btn-style  col-lg-4 ml-1 text-white "
+                                            style="height: 40px;font-size: 16px;padding-top: 8px; margin-top: 30px; border-radius: 20px;">
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-paper-plane mr-2"></i>Save
+                                        {% else %}
+                                        <i class="fa fa-paper-plane ml-2"></i>يحفظ
+                                        {% endif %}
+                                    </button>
+                                </div>
+
+                                <i class="fa fa-bullhorn fa-3x text-success" aria-hidden="true"
+                                   style="position: absolute; top: -17px;left:-12px;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <!--***************OLDCODE*************-->
+<!--                <div class="card card_border py-2 mb-4">-->
+<!--                    <div class="cards__heading">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-9">-->
+<!--                                <h3><span>-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                         Announcements-->
+<!--                                         {% else %}-->
+<!--                                         الإعلانات-->
+<!--                                         {% endif %}-->
+<!--                                </span></h3>-->
+<!--                            </div>-->
+<!--                            <div class="col-3 ">-->
+<!--                                <button type="submit" class="btn btn-sm btn-outline-primary btn-style border-btn">-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Save-->
+<!--                                    {% else %}-->
+<!--                                    حفظ-->
+<!--                                    {% endif %}-->
+<!--                                </button>-->
+<!--                                <button type="button" class="btn btn-primary btn-style ">-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Discard-->
+<!--                                    {% else %}-->
+<!--                                    تجاهل-->
+<!--                                    {% endif %}-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-5 mt-3">-->
+<!--                                <button type="submit" class="btn btn-primary btn-sm btn-style ">-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Send for Approval-->
+<!--                                    {% else %}-->
+<!--                                    أرسل للموافقة-->
+<!--                                    {% endif %}-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                            <div class="col-7 mt-3">-->
+<!--                                <ol style="float:right;">-->
+<!--                                    <li class="btn btn-white" style="border-right: 1px solid lightgray;"><a-->
+<!--                                            href="/">Draft</a></li>-->
+<!--                                    <li class="btn btn-white" style="border-right: 1px solid lightgray;"><a href="/">-->
+<!--                                        {% if request.session.lang == "EN" %}-->
+<!--                                        Waiting for Approval-->
+<!--                                        {% else %}-->
+<!--                                        بانتظار الموافقة-->
+<!--                                        {% endif %}-->
+<!--                                    </a></li>-->
+<!--                                    <li class="btn btn-white" style="border-right: 1px solid lightgray;"><a href="/">-->
+<!--                                        {% if request.session.lang == "EN" %}-->
+<!--                                        Approved-->
+<!--                                        {% else %}-->
+<!--                                        وافق-->
+<!--                                        {% endif %}-->
+<!--                                    </a>-->
+<!--                                    </li>-->
+<!--                                    <li class="btn btn-white" style="border-right: 1px solid lightgray;"><a-->
+<!--                                            href="/">-->
+<!--                                        {% if request.session.lang == "EN" %}-->
+<!--                                        Done-->
+<!--                                        {% else %}-->
+<!--                                        فعله-->
+<!--                                        {% endif %}-->
+<!--                                    </a></li>-->
+<!--                                </ol>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--                <div class="card-body">-->
+<!--                    <div class="container-fluid border bg-white mt-2px">-->
+<!--                        <div class="mt-3">-->
+<!--                            <span>-->
+<!--                            {% if request.session.lang == "EN" %}-->
+<!--                                        Is General Announcement?-->
+<!--                                        {% else %}-->
+<!--                                        هو إعلان عامة؟-->
+<!--                                        {% endif %}-->
+<!--                            </span>-->
+<!--                            <br>-->
+<!--                            <input type="checkbox" name="inGeneral" value="{{data.is_general_announcements}}">-->
+<!--                        </div>-->
+<!--                        <div class="row mt-3">-->
+<!--                            <div class="col-2">-->
+<!--                                <span>{% if request.session.lang == "EN" %}-->
+<!--                                        Code No-->
+<!--                                        {% else %}-->
+<!--                                        رقم الكود-->
+<!--                                        {% endif %}.</span>-->
+<!--                            </div>-->
+<!--                            <div class="col-4" style="border-left: 1px solid lightgray;">-->
+<!--                                <input type="text" name="code" class="form-control "-->
+<!--                                       placeholder="" value="{{data.code_no}}"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="row mt-3">-->
+<!--                            <div class="col-2">-->
+<!--                            <span>-->
+<!--                               {% if request.session.lang == "EN" %}-->
+<!--                                        Title-->
+<!--                                        {% else %}-->
+<!--                                        لقب-->
+<!--                                        {% endif %}-->
+<!--                            </span>-->
+<!--                            </div>-->
+<!--                            <div class="col-10 " style="border-left: 1px solid lightgray;">-->
+<!--                                <textarea style="width:70%" name="title" class="form-control"-->
+<!--                                          value="">{{data.title}}</textarea>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+<!--                        <div class="row mt-3">-->
+<!--&lt;!&ndash;                            <div class="col-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="col-4">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        {% if request.session.lang == "EN" %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                       Attachment&ndash;&gt;-->
+<!--&lt;!&ndash;                                        {% else %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                       التعلق&ndash;&gt;-->
+<!--&lt;!&ndash;                                        {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="col-8 custom-file mb-3 " style="border-left: 1px solid lightgray;">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <input type="file" class="custom-file-input " id="customFile"&ndash;&gt;-->
+<!--&lt;!&ndash;                                               name="attach" value="{{data.Attachment}}">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <label class="custom-file-label ml-3" for="customFile">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            {% if request.session.lang == "EN" %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                            Choose file&ndash;&gt;-->
+<!--&lt;!&ndash;                                            {% else %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                            اختر ملف&ndash;&gt;-->
+<!--&lt;!&ndash;                                            {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                            <div class="col-6">-->
+<!--                                <div class="row ">-->
+<!--                                    <div class="col-4">-->
+<!--                                        <span>-->
+<!--                                        {% if request.session.lang == "EN" %}-->
+<!--                                       Date-->
+<!--                                        {% else %}-->
+<!--                                       تاريخ-->
+<!--                                        {% endif %}-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-8" style="border-left: 1px solid lightgray;">-->
+<!--                                        <input type="date" name="datereq" class="form-control mr-3"-->
+<!--                                               value="{{data.requestedDate|date:'Y-m-d'}}">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash;                        <div class="row">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            <div class="col-6"></div>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            <div class="col-6">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                <div class="row ml-3">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                    <div class="col-4">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                        <span>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                        {% if request.session.lang == "EN" %}&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                       Company&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                        {% else %}&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                       شركة&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                        {% endif %}&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                        </span>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                    <div class="col-8" style="border-left: 1px solid lightgray;">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                        <select id="inputCompanyname" name="Company"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                                class="form-control input-style" value="{{data1.Company}}">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                            {% for h in Company %}&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                            <option value="{{h.id}}">{{h.Company_Name}}</option>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                            {% endfor %}&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                        </select>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                        <div class="row">-->
+<!--                            <ul class="nav nav-tabs">-->
+<!--                                <li class="active"><a data-toggle="tab" href="#letter">-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Letter-->
+<!--                                    {% else %}-->
+<!--                                    حرف-->
+<!--                                    {% endif %}-->
+<!--                                </a></li>-->
+<!--                            </ul>-->
+<!--                            <hr>-->
+<!--                        </div>-->
+<!--                        <div class=" row tab-content">-->
+<!--                            <div id="letter" class=" col-12 tab-pane fade in active show">-->
+<!--                                <div class="row mt-3 ml-2 ">-->
+<!--                                    <div id="wmd-button-row-0" class="btn-toolbar">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="row px-5">-->
+<!--                            <div class=" col-12 mb-5  announce" style="width:100%">-->
+<!--                            </div>-->
+<!--                            <textarea id="wmd-input-0" class="" rows="10" style="width:100%; height:200px;" name="letter">{{data.letter}}</textarea>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </form>
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

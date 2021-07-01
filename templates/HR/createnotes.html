@@ -1,0 +1,292 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+    .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+
+    .note-cov
+    {
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        border-radius: 20px;
+    }
+
+    .curve-around input , .curve-around select
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+
+</style>
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Notes
+                    {% else %}
+                    إنشاء أقسام
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite">
+                        <h4 class="ml-2 text-primary pt-4">
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-file-text mr-2"></i> <b>Create Note</b>
+                            {% else %}
+                           <i class="fa fa-file-text ml-2"></i> <b>إنشاء أقسام</b>
+                            {% endif %}
+                        </h4>
+                    </div>
+                    <div class="col-lg-12 p-2 backwhite">
+                        <a href="{% url 'Notes'%}" class="btn btn-danger btn-style ml-3"
+                           style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Discard
+                            {% else %}
+                            تجاهل
+                            {% endif %}
+                        </a>
+                        <button type="submit" class="btn btn-sm btn-success btn-style  ml-1 text-white "
+                                style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Save
+                            {% else %}
+                            يحفظ
+                            {% endif %}
+                        </button>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-12 backwhite pt-5">
+                        <div class="row m-0 d-flex justify-content-center">
+
+                            {% if request.session.lang == "EN" %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-2"
+                                 style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b>Kindly fill
+                                in the following details</b></h3></div>
+                            {% else %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-3"
+                                 style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b> يرجى ملء
+                                تفاصيل التالية</b></h3></div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite ">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-6 col-md-10 col-12 p-4 note-cov mt-5 mb-5" style="position:relative;">
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h6><b>Employee</b></h6>
+                                    {% else %}
+                                    <h6 class="mr-4 mt-5"><b>الموظف</b></h6>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    <select class="form-control input-style" name="emp">
+                                        {% for d in data %}
+                                        <option value="{{d.id}}">{{ d.user.first_name }} {{ d.user.last_name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h6><b>Date</b></h6>
+                                    {% else %}
+                                    <h6 class="mr-4 mt-3"><b>تاريخ</b></h6>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    <input type="date" value="{{data2.date|date:'Y-m-d'}}" name="date" class="form-control "
+                                           placeholder=""/>
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h6><b>Note</b></h6>
+                                    {% else %}
+                                    <h6 class="mr-4 mt-3"><b>ملاحظة</b></h6>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                         <textarea name="note" class="form-control "
+                                                   style="min-height: 120px;max-height: 120px; border: 2px solid #4755AB;"
+                                         >{{data2.note}}</textarea>
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto text-right  p-2">
+                                    <button type="submit"
+                                            class="btn btn-sm btn-success  btn-style  col-lg-4 ml-1 text-white "
+                                            style="height: 40px;font-size: 16px;padding-top: 8px; margin-top: 30px; border-radius: 20px;">
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-paper-plane mr-2"></i>Save
+                                        {% else %}
+                                        <i class="fa fa-paper-plane ml-2"></i>يحفظ
+                                        {% endif %}
+                                    </button>
+                                </div>
+
+                                <i class="fa fa-file-text-o fa-3x text-success" aria-hidden="true" style="position: absolute; top: -17px;left:-12px;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--OLD CODE STart-->
+<!--                <div class="card card_border py-2 mb-4">-->
+<!--                    <div class="cards__heading">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-9">-->
+<!--                                <h3><span>-->
+<!--                                {% if request.session.lang == "EN" %}-->
+<!--                    Create Note-->
+<!--                    {% else %}-->
+<!--                    إنشاء أقسام-->
+<!--                    {% endif %}-->
+<!--                            </span></h3>-->
+<!--                            </div>-->
+<!--                            <div class="col-3 ">-->
+<!--                                <button type="submit" class="btn btn-sm btn-outline-primary btn-style border-btn">-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Save-->
+<!--                                    {% else %}-->
+<!--                                    يحفظ-->
+<!--                                    {% endif %}-->
+<!--                                </button>-->
+<!--                                <a href="/app/dashboard">-->
+<!--                                    <button type="button" class="btn btn-primary btn-style ">-->
+<!--                                        {% if request.session.lang == "EN" %}-->
+<!--                                        Discard-->
+<!--                                        {% else %}-->
+<!--                                        تجاهل-->
+<!--                                        {% endif %}-->
+<!--                                    </button>-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash;                    <div class="col-9"></div>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                    <div class="col-3">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                         <ul class="pagination">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                <li class="page-item"><a class="page-link" href="#">1</a></li>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                <li class="page-item"><a class="page-link" href="#">2</a></li>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                <li class="page-item"><a class="page-link" href="#">3</a></li>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                <li class="page-item"><a class="page-link" href="#">Next</a></li>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            </ul>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--                    </div>-->
+<!--                    <div class="card-body">-->
+<!--                        <div class="container-fluid border bg-white mt-2px ">-->
+<!--                            <div class="row mt-3">-->
+<!--                                <div class="col-6">-->
+<!--                                    <div class="row mt-3 mb-3">-->
+<!--                                        <div class="col-2">-->
+<!--                                        <span>-->
+<!--                                         {% if request.session.lang == "EN" %}-->
+<!--                                                        Employee-->
+<!--                                                        {% else %}-->
+<!--                                                        لقب-->
+<!--                                                        {% endif %}-->
+<!--                                        </span>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-4" style="border-left: 1px solid lightgray;">-->
+
+<!--                                            <select class="form-control input-style" name="emp" id="">-->
+<!--                                                {% for d in data %}-->
+<!--                                                <option value="{{d.id}}">{{ d.user }}</option>-->
+<!--                                                {% endfor %}-->
+<!--                                            </select>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-6">-->
+<!--                                    <div class="row mt-3">-->
+<!--                                        <div class="col-2">-->
+<!--                                        <span>-->
+<!--                                        {% if request.session.lang == "EN" %}-->
+<!--                                                         Date-->
+<!--                                                        {% else %}-->
+<!--                                                        الأرض-->
+<!--                                                        {% endif %}-->
+<!--                                        </span>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-4" style="border-left: 1px solid lightgray;">-->
+<!--                                            <input type="date" value="{{data2.date}}" name="date" class="form-control "-->
+<!--                                                   placeholder=""/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="row mt-3">-->
+<!--                                <div class="col-6">-->
+<!--                                    <div class="row mt-3 mb-3">-->
+<!--                                        <div class="col-6">-->
+<!--                                        <span>-->
+<!--                                         {% if request.session.lang == "EN" %}-->
+<!--                                                       Note-->
+<!--                                                        {% else %}-->
+<!--                                                        لقب-->
+<!--                                                        {% endif %}-->
+<!--                                        </span>-->
+<!--                                        </div>-->
+
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-12">-->
+<!--                                    <div class="row mt-3 mb-3">-->
+
+<!--                                        <div class="col-12">-->
+<!--                                         <textarea name="note" class="form-control "-->
+<!--                                         >{{data2.note}}</textarea>-->
+
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+
+<!--                    </div>-->
+<!--                </div>-->
+
+
+            </form>
+        </section>
+
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

@@ -1,0 +1,421 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+    .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+</style>
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Approved Leaves
+                    {% else %}
+                    الإجازات المعتمدة
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+
+            <div class="row m-0">
+                <div class="col-lg-12 backwhite">
+                    <h4 class="ml-2 text-primary pt-4">
+                        {% if request.session.lang == "EN" %}
+                        <i class="fa fa-list-alt mr-2"></i><b>Approved Leaves</b>
+                        {% else %}
+                        <i class="fa fa-list-alt ml-2"></i><b>الإجازات المعتمدة</b>
+                        {% endif %}
+                    </h4>
+                </div>
+                <!--                <div class="col-lg-12 p-2 backwhite">-->
+                <!--                    <a href="" class="btn btn-success btn-style ml-3"-->
+                <!--                       style="height: 35px;font-size: 14px;padding-top: 4px;">-->
+                <!--                        {% if request.session.lang == "EN" %}-->
+                <!--                        Create-->
+                <!--                        {% else %}-->
+                <!--                        خلق-->
+                <!--                        {% endif %}-->
+                <!--                    </a>-->
+                <!--                    <button type="submit" class="btn btn-sm btn-primary btn-style  ml-1 text-white "-->
+                <!--                            style="height: 35px;font-size: 14px;padding-top: 4px;">-->
+                <!--                        {% if request.session.lang == "EN" %}-->
+                <!--                        Import-->
+                <!--                        {% else %}-->
+                <!--                        خلق-->
+                <!--                        {% endif %}-->
+                <!--                    </button>-->
+                <!--                </div>-->
+            </div>
+            <div class="row m-0">
+                <div class="col-lg-12 backwhite">
+                    <form action="#" method="post">
+                        <div class="table-responsive pt-5">
+                            <table class="table table-hover table-bordered">
+                                <thead class="text-center thead-dark">
+                                <tr>
+                                    <th></th>
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                                        Employee
+                                        {% else %}
+                                        الموظف
+                                        {% endif %}
+                                    </th>
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                                        Description
+                                        {% else %}
+                                        الوصف
+                                        {% endif %}
+                                    </th>
+                                    <th>{% if request.session.lang == "EN" %}
+                                        Number of days
+                                        {% else %}
+                                        عدد الأيام
+                                        {% endif %}
+                                    </th>
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                                        Start Date
+                                        {% else %}
+                                        تاريخ البدء
+                                        {% endif %}
+                                    </th>
+                                    <th>{% if request.session.lang == "EN" %}
+                                        End Date
+                                        {% else %}
+                                        تاريخ الانتهاء
+                                        {% endif %}
+                                    </th>
+                                    <th>{% if request.session.lang == "EN" %}
+                                        Leave Type
+                                        {% else %}
+                                        إجازة نوع
+                                        {% endif %}
+                                    </th>
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                                        Status
+                                        {% else %}
+                                        حالة
+                                        {% endif %}
+                                    </th>
+                                    <!--                                        <th>-->
+                                    <!--                                            {% if request.session.lang == "EN" %}-->
+                                    <!--                                        Reported in last payslips-->
+                                    <!--                                         {% else %}-->
+                                    <!--                                          ذكرت في آخر كشوف دفع-->
+                                    <!--                                         {% endif %}-->
+                                    <!--                                        </th>-->
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                                        HR Comments
+                                        {% else %}
+                                        تعليقات الموارد البشرية
+                                        {% endif %}
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for d in data %}
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>{{d.user.user.first_name}} {{d.user.user.last_name}}</td>
+                                    <td class="text-truncate" style="width:100px;">{{d.Description}}</td>
+                                    <td>{{d.Duration_Days}}</td>
+                                    <td>{{d.Duration_From}}</td>
+                                    <td>{{d.Duration_To}}</td>
+                                    {% if request.session.lang == "EN" %}
+                                    <td>{{d.Leave_Type}}</td>
+                                    {% else %}
+                                    <td>{{d.Leave_Type.ArTitle}}</td>
+                                    {% endif %}
+                                    <td>{% if d.status == "Pending" %}
+                                        {% if request.session.lang == "EN" %}
+                                        <button type="button" class="btn exp-btn"
+                                                style="background:#F9A824; color:white;">Pending
+                                        </button>
+
+
+                                        {% else %}
+                                        <button type="button" class="btn exp-btn"
+                                                style="background:#F9A824; color:white;">قيد الانتظار
+                                        </button>
+
+
+                                        {% endif %}
+                                        {% endif %}
+                                        {% if d.status == "Approved" %}
+                                        {% if request.session.lang == "EN" %}
+                                        <button type="button" class="btn exp-btn"
+                                                style="background:#47A047; color:white;">Approved
+                                        </button>
+
+                                        {% else %}
+                                        <button type="button" class="btn exp-btn"
+                                                style="background:#47A047; color:white;">وافق
+                                        </button>
+
+                                        {% endif %}
+                                        {% endif %}
+                                        {% if d.status == "Rejected" %}
+                                        {% if request.session.lang == "EN" %}
+                                        <button type="button" class="btn exp-btn"
+                                                style="background:#CA290E; color:white;">Rejected
+                                        </button>
+
+                                        {% else %}
+                                        <button type="button" class="btn exp-btn"
+                                                style="background:#CA290E; color:white;">مرفوض
+                                        </button>
+
+                                        {% endif %}
+                                        {% endif %}
+                                    </td>
+                                    <!--                                        <td><input type="radio" class="active"></td>-->
+                                    <td>{{d.CommentbyManager}}</td>
+                                </tr>
+                                {% endfor %}
+
+                                <tr class="text-center bg-light">
+                                    {% if request.session.lang == "EN" %}
+                                    <td colspan="11"><b>Total Leaves &nbsp;&nbsp; {{tl}}</b></td>
+                                    {% else %}
+                                    <td colspan="11"><b>إجمالي الإجازة &nbsp;&nbsp; {{tl}}</b></td>
+                                    {% endif %}
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!--OLD CODE-->
+            <!--            <div class="card card_border py-2 mb-4">-->
+            <!--                <div class="cards__heading" style="padding: 15px;">-->
+            <!--                    <div class="row">-->
+            <!--                        <div class="col">-->
+            <!--                            <h3><span>-->
+            <!--                                 {% if request.session.lang == "EN" %}-->
+            <!--                                        Leaves To Approve-->
+            <!--                                         {% else %}-->
+            <!--                                          يترك للموافقة-->
+            <!--                                         {% endif %}-->
+            <!--                            </span></h3>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div class="row mt-3">-->
+            <!--                        <div class="col-3">-->
+            <!--                            <a href="/" class="btn btn-lg btn-outline-primary btn-style border-btn">-->
+            <!--                                {% if request.session.lang == "EN" %}-->
+            <!--                                Create-->
+            <!--                                {% else %}-->
+            <!--                                خلق-->
+            <!--                                {% endif %}-->
+            <!--                            </a>-->
+            <!--                            <button type="submit" class="btn btn-primary btn-style ">-->
+            <!--                                {% if request.session.lang == "EN" %}-->
+            <!--                                Import-->
+            <!--                                {% else %}-->
+            <!--                                خلق-->
+            <!--                                {% endif %}-->
+            <!--                            </button>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-9">-->
+            <!--                            <div style="float: right;">-->
+            <!--                                <span>1-4/4</span>-->
+            <!--                                <a class="btn" style="border: 1px solid lightgray;" href="/">❮ </a>-->
+            <!--                                <a class="btn" style="border: 1px solid lightgray;" href="/"> ❯</a>-->
+            <!--                                <a class="btn" style="border: 1px solid lightgray;" href="/"> list </a>-->
+            <!--                                <a class="btn" style="border: 1px solid lightgray;" href="/"> grid</a>-->
+            <!--                                <a class="btn" style="border: 1px solid lightgray;" href="/"> time</a>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div class="card-body">-->
+            <!--                        <form action="#" method="post">-->
+            <!--                            <div class="container-fluid">-->
+            <!--                                <table class="table table-striped">-->
+            <!--                                    <thead>-->
+            <!--                                    <tr>-->
+            <!--                                        <th><input type="checkbox"></th>-->
+            <!--                                        <th>-->
+            <!--                                            {% if request.session.lang == "EN" %}-->
+            <!--                                            Employee-->
+            <!--                                            {% else %}-->
+            <!--                                            الموظف-->
+            <!--                                            {% endif %}-->
+            <!--                                        </th>-->
+            <!--                                        <th>-->
+            <!--                                            {% if request.session.lang == "EN" %}-->
+            <!--                                            Request Type-->
+            <!--                                            {% else %}-->
+            <!--                                            نوع الطلب-->
+            <!--                                            {% endif %}-->
+            <!--                                        </th>-->
+            <!--                                        <th>-->
+            <!--                                            {% if request.session.lang == "EN" %}-->
+            <!--                                            Description-->
+            <!--                                            {% else %}-->
+            <!--                                            الوصف-->
+            <!--                                            {% endif %}-->
+            <!--                                        </th>-->
+            <!--                                        <th>-->
+            <!--                                            {% if request.session.lang == "EN" %}-->
+            <!--                                            Number of days-->
+            <!--                                            {% else %}-->
+            <!--                                            عدد الأيام-->
+            <!--                                            {% endif %}-->
+            <!--                                        </th>-->
+            <!--                                        <th>-->
+            <!--                                            {% if request.session.lang == "EN" %}-->
+            <!--                                            Start Date-->
+            <!--                                            {% else %}-->
+            <!--                                            تاريخ البدء-->
+            <!--                                            {% endif %}-->
+            <!--                                        </th>-->
+            <!--                                        <th>-->
+            <!--                                            {% if request.session.lang == "EN" %}-->
+            <!--                                            End Date-->
+            <!--                                            {% else %}-->
+            <!--                                            تاريخ الانتهاء-->
+            <!--                                            {% endif %}-->
+            <!--                                        </th>-->
+            <!--                                        <th>-->
+            <!--                                            {% if request.session.lang == "EN" %}-->
+            <!--                                            Leave Type-->
+            <!--                                            {% else %}-->
+            <!--                                            إجازة نوع-->
+            <!--                                            {% endif %}-->
+            <!--                                        </th>-->
+            <!--                                        <th>-->
+            <!--                                            {% if request.session.lang == "EN" %}-->
+            <!--                                            Status-->
+            <!--                                            {% else %}-->
+            <!--                                            حالة-->
+            <!--                                            {% endif %}-->
+            <!--                                        </th>-->
+            <!--                                        <th>-->
+            <!--                                            {% if request.session.lang == "EN" %}-->
+            <!--                                            Reported in last payslips-->
+            <!--                                            {% else %}-->
+            <!--                                            ذكرت في آخر كشوف دفع-->
+            <!--                                            {% endif %}-->
+            <!--                                        </th>-->
+            <!--                                        <th>-->
+            <!--                                            {% if request.session.lang == "EN" %}-->
+            <!--                                            HR Comments-->
+            <!--                                            {% else %}-->
+            <!--                                            تعليقات الموارد البشرية-->
+            <!--                                            {% endif %}-->
+            <!--                                        </th>-->
+            <!--                                    </tr>-->
+            <!--                                    </thead>-->
+            <!--                                    <tbody>-->
+            <!--                                    <tr>-->
+            <!--                                        <td><input type="checkbox"></td>-->
+            <!--                                        <td>Admin</td>-->
+            <!--                                        <td>Leave Request</td>-->
+            <!--                                        <td>leave requests</td>-->
+            <!--                                        <td>-3.00</td>-->
+            <!--                                        <td>12/31/2019 11:49:50</td>-->
+            <!--                                        <td>01/03/2020 11:49:50</td>-->
+            <!--                                        <td>Sick Leaves</td>-->
+            <!--                                        <td>Approved</td>-->
+            <!--                                        <td><input type="radio" class="active"></td>-->
+            <!--                                        <td>report next month</td>-->
+
+            <!--                                    </tr>-->
+            <!--                                    <tr>-->
+            <!--                                        <td><input type="checkbox"></td>-->
+            <!--                                        <td>Admin</td>-->
+            <!--                                        <td>Leave Request</td>-->
+            <!--                                        <td>leave requests</td>-->
+            <!--                                        <td>-3.00</td>-->
+            <!--                                        <td>12/31/2019 11:49:50</td>-->
+            <!--                                        <td>01/03/2020 11:49:50</td>-->
+            <!--                                        <td>Sick Leaves</td>-->
+            <!--                                        <td>Approved</td>-->
+            <!--                                        <td><input type="radio" class="active"></td>-->
+            <!--                                        <td>report next month</td>-->
+
+            <!--                                    </tr>-->
+            <!--                                    <tr>-->
+            <!--                                        <td><input type="checkbox"></td>-->
+            <!--                                        <td>Admin</td>-->
+            <!--                                        <td>Leave Request</td>-->
+            <!--                                        <td>leave requests</td>-->
+            <!--                                        <td>-3.00</td>-->
+            <!--                                        <td>12/31/2019 11:49:50</td>-->
+            <!--                                        <td>01/03/2020 11:49:50</td>-->
+            <!--                                        <td>Sick Leaves</td>-->
+            <!--                                        <td>Approved</td>-->
+            <!--                                        <td><input type="radio" class="active"></td>-->
+            <!--                                        <td>report next month</td>-->
+
+            <!--                                    </tr>-->
+            <!--                                    <tr>-->
+            <!--                                        <td><input type="checkbox"></td>-->
+            <!--                                        <td>Pieter Parker</td>-->
+            <!--                                        <td>Leave Request</td>-->
+            <!--                                        <td>trip with family</td>-->
+            <!--                                        <td>-6.00</td>-->
+            <!--                                        <td>12/31/2019 11:49:50</td>-->
+            <!--                                        <td>01/06/2020 11:49:50</td>-->
+            <!--                                        <td>Compensatory Days</td>-->
+            <!--                                        <td> To Approve</td>-->
+            <!--                                        <td><input type="radio"></td>-->
+            <!--                                        <td>report next month</td>-->
+            <!--                                    </tr>-->
+            <!--                                    <tr>-->
+            <!--                                        <td></td>-->
+            <!--                                        <td></td>-->
+            <!--                                        <td></td>-->
+            <!--                                        <td></td>-->
+            <!--                                        <td><b>-15.00</b></td>-->
+            <!--                                        <td></td>-->
+            <!--                                        <td></td>-->
+            <!--                                        <td></td>-->
+            <!--                                        <td></td>-->
+            <!--                                        <td></td>-->
+            <!--                                        <td></td>-->
+            <!--                                    </tr>-->
+            <!--                                    </tbody>-->
+            <!--                                </table>-->
+            <!--                            </div>-->
+
+            <!--                        </form>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+
+
+            <!--            </div>-->
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

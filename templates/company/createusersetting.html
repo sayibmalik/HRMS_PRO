@@ -1,0 +1,1161 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+    .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+
+
+    .note-cov
+    {
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        border-radius: 20px;
+    }
+
+    .curve-around input , .curve-around select
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+
+    .set-opt ul li{
+    display: inline-block !important;
+    width: 100%;
+
+  }
+
+
+<!--switch toggle-->
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 5px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #425abc;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #425abc;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+@media (max-width: 500px){
+    .round{
+    margin-top: 10px !important;
+    width: 47px !important;
+    height: 29px !important;
+}
+
+}
+
+
+
+
+</style>
+<div class="main-content">
+    <form action="" method="post">
+        {% csrf_token %}
+        <section class="forms">
+
+            <!-- content -->
+            <div class="container-fluid content-top-gap">
+
+                <!-- breadcrumbs -->
+                <nav aria-label="breadcrumb" class="mb-4 backwhite">
+                    <ol class="breadcrumb my-breadcrumb pt-3">
+                        <li class="breadcrumb-item"><a href="/">
+                            {% if request.session.lang == "EN" %}
+                            <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                            {% else %}
+                            <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                            {% endif %}
+                        </a></li>
+                        <li class="breadcrumb-item " aria-current="page">{% if request.session.lang == "EN" %}
+                            <h6 class="text-primary"><b>Company</b></h6>
+                            {% else %}
+                            شركة
+                            {% endif %}
+                        </li>
+
+                        <li class="breadcrumb-item " aria-current="page">
+                            {% if request.session.lang == "EN" %}
+                            <h6 class="text-primary"><b>Create User Setting</b></h6>
+                            {% else %}
+                            إنشاء إعدادات المستخدم
+                            {% endif %}
+                        </li>
+                    </ol>
+                </nav>
+                <!-- //breadcrumbs -->
+                <!-- forms -->
+
+
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite">
+                        <h4 class="ml-2 text-primary pt-4">
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-user-circle-o mr-2"></i><b>Create User Setting</b>
+                            {% else %}
+                            <i class="fa fa-user-circle-o ml-2"></i><b>إنشاء إعدادات المستخدم</b>
+                            {% endif %}
+                        </h4>
+                    </div>
+                    <div class="col-lg-12 p-2 backwhite">
+                        <a href="{% url 'usersetting' %}" class="btn btn-danger btn-style ml-3"
+                           style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Discard
+                            {% else %}
+                            تجاهل
+                            {% endif %}
+                        </a>
+                        <button type="submit" class="btn btn-sm btn-primary btn-style border-btn ml-1 text-white "
+                                style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Save
+                            {% else %}
+                            حفظ
+                            {% endif %}
+                        </button>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-12 backwhite pt-5">
+                        <div class="row m-0 d-flex justify-content-center">
+
+                            {% if request.session.lang == "EN" %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-2"
+                                 style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"
+                                                                           style="padding-top: 10px;"><b>Kindly fill
+                                in the following details</b></h3></div>
+                            {% else %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-3"
+                                 style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b> يرجى ملء
+                                تفاصيل التالية</b></h3></div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite ">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-6 col-md-10 col-12 p-4 note-cov mt-5 mb-5" style="position:relative;">
+
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h4 class="p-3 text-white" style="background: #425ABC;"><b>User Information</b></h4>
+                                    {% else %}
+                                    <h4 class="mr-4 p-3 text-white" style="background: #425ABC;"><b>معلومات المستخدم</b>
+                                    </h4>
+                                    {% endif %}
+                                </div>
+
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h6><b>Employee Name / ID</b></h6>
+                                    {% else %}
+                                    <h6 class="mr-4 pt-5"><b>اسم الموظف / الرقم الوظيفي</b></h6>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    <input class="form-control input-style" type="text" placeholder="" name="us-nid"
+                                           value=" {{data.user.first_name}} {{data.user.last_name}}">
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h6><b>Email *</b></h6>
+                                    {% else %}
+                                    <h6 class="mr-4 "><b>البريد الالكتروني *</b></h6>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    <input class="form-control input-style" type="email" placeholder="" name="usr-mail"
+                                           value="{{data.user.username}}">
+                                </div>
+
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h6><b>Password *</b></h6>
+                                    {% else %}
+                                    <h6 class="mr-4 "><b>كلمة المرور *</b></h6>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    <input class="form-control input-style" type="password" placeholder=""
+                                           name="usr-pwd"
+                                           value="{{data.user.password}}">
+                                </div>
+
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h6><b>Confirm Password *</b></h6>
+                                    {% else %}
+                                    <h6 class="mr-4 "><b>تأكيد كلمة المرور *</b></h6>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2 mb-4">
+                                    <input class="form-control input-style" type="password" placeholder="" name="npwd"
+                                           value="{{data.user.password}}">
+                                </div>
+
+
+                                <div class="col-lg-10 col-12 m-auto  p-2" style="margin-top: 47px !important;">
+                                    {% if request.session.lang == "EN" %}
+                                    <h4 class="p-3 text-white" style="background: #425ABC;"><b>Company Permissions</b>
+                                    </h4>
+                                    {% else %}
+                                    <h4 class="mr-4 p-3 text-white" style="background: #425ABC;"><b>أذونات الشركة</b>
+                                    </h4>
+                                    {% endif %}
+                                </div>
+
+                                <div class="col-lg-10 col-12 m-auto  p-3">
+
+                                    {% if request.session.lang == "EN" %}
+                                    <div class="row mb-2">
+                                        <div class="col-2 p-2"><label class="switch">
+                                            {% if data.isManager == True %}
+                                            <input type="checkbox" name="ismanager" checked>
+                                            <span class="slider round" style="width: 58px;height:33px;"></span>
+                                            {% else %}
+                                            <input type="checkbox" name="ismanager">
+                                            <span class="slider round" style="width: 58px;height:33px;"></span>
+                                            {% endif %}
+
+                                        </label>
+                                        </div>
+
+                                        <div class="col-10 p-2">
+                                            <h6 class="text-dark"><b>Full permssion for the Manager system</b></h6>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="row mb-2">
+                                        <div class="col-2 p-2"><label class="switch">
+                                            {% if data.isManager == True %}
+                                            <input type="checkbox" name="ismanager" checked>
+                                            <span class="slider round" style="width: 58px;height:33px;"></span>
+                                            {% else %}
+                                            <input type="checkbox" name="ismanager">
+                                            <span class="slider round" style="width: 58px;height:33px;"></span>
+                                            {% endif %}
+                                        </label>
+                                        </div>
+
+                                        <div class="col-10 p-2">
+                                            <h6 class="text-dark"><b>التجديد الكامل لنظام المدير</b></h6>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+
+                                    {% if request.session.lang == "EN" %}
+                                    <div class="row">
+                                        <div class="col-2 p-2"><label class="switch">
+                                            {% if data.isHr == True %}
+                                            <input type="checkbox" name="ishr" checked>
+                                            {% else %}
+                                            <input type="checkbox" name="ishr">
+                                            {% endif %}
+                                            <span class="slider round" style="width: 58px;height:33px;"></span>
+                                        </label>
+                                        </div>
+
+                                        <div class="col-10 p-2">
+                                            <h6 class="text-danger"><b>Full permssion for the HR system</b></h6>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="row">
+                                        <div class="col-2 p-2"><label class="switch">
+                                            {% if data.isHr == True %}
+                                            <input type="checkbox" name="ishr" checked>
+                                            <span class="slider round" style="width: 58px;height:33px;"></span>
+                                            {% else %}
+                                            <input type="checkbox" name="ishr">
+                                            <span class="slider round" style="width: 58px;height:33px;"></span>
+                                            {% endif %}
+                                        </label>
+                                        </div>
+
+                                        <div class="col-10 p-2">
+                                            <h6 class="text-danger"><b>التجديد الكامل لنظام الموارد البشرية</b></h6>
+                                        </div>
+                                    </div>
+
+                                    {% endif %}
+
+
+                                </div>
+
+                                <!--                                <div class="col-lg-10 col-12 m-auto  p-2" style="margin-top: 47px !important;">-->
+                                <!--                                    {% if request.session.lang == "EN" %}-->
+                                <!--                                    <h4 class="p-3 text-white" style="background: #425ABC;"><b>Permissions</b></h4>-->
+                                <!--                                    {% else %}-->
+                                <!--                                    <h4 class="mr-4 p-3 text-white" style="background: #425ABC;"><b>أذونات</b></h4>-->
+                                <!--                                    {% endif %}-->
+                                <!--                                </div>-->
+
+                                <!--                                <div class="col-lg-10 col-12 m-auto p-4  " style="height: 200px;overflow:scroll;overflow-x:hidden;">-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                         {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round" style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Attendance (Attendance Sheet, Daily Attendance) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round" style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>اعدادت (الراتب) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round" style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Attendance (Employees Daily Shift) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round" style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>اعدادت (العهد) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                         {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round" style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Attendance (Upload Records) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round" style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>اعدادت (المنشأة) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Chief Executive Officer</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>اعدادت (الوظيفة) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Custodies (Add & Assign)</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>اعدادت (عامة) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Decisions (Add, Approve, Reject) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>الاجازات (قبول, رفض تعديل) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Decisions (Employee End of Service) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>الأداء و التقييم (عناصر التقييم) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Decisions (Suspend Employee Salary) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>الأداء و التقييم (نماذج التقييم) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Employee Requests (ESS)</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>الأداء و التقييم (نماذج تقييم الموظفين) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Employees (Add, Edit, Delete) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>التدريب (الدورات التدريبية) </b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Employees (Read Only) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>التعاميم</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>HR Approvals (Requests, Decisions)</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>التوظيف حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Leaves (Approve, Reject, Edit) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>الحضور والإنصراف (الحضور اليومي، ورقة الحضور) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Memos</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>الحضور والإنصراف (رفع سجلات البصمة) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Muqeem Services for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>الحضور والإنصراف (فترات عمل الموظفين اليومية) حسب صلاحية المنشأة</b>-->
+                                <!--                                            </h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Payrolls (Add Salary operation additions) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>الرئيس التنفيذي</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Payrolls (Add Salary operation deductions) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>السياسات</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b> Payrolls (Approve) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>العهد (إضافة وإسناد العهد)</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b> Payrolls (Issue and Reissue) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>القرارات (إضافة، قبول، رفض) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b> Payrolls (Read only) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>القرارات (إنهاء خدمات موظف) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b> Performance & Appraisal (Appraisal Forms) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>القرارات (إيقاف راتب موظف) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Performance & Appraisal (Competences) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>الموظفين (إضافة، حذف، تعديل) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b> Performance & Appraisal (Employee Evaluation Forms) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>الموظفين (الإطلاع فقط) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Policies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>خدمات مقيم حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Recruitment for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>طلبات الموظفين (الخدمات الذاتية)</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Settings (Custodies) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>مسيرات الرواتب (اصدار واعادة اصدار) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Settings (General) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>مسيرات الرواتب (اعتماد) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Settings (Job) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>مسيرات الرواتب (الاطلاع فقط) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Settings (Organization) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>مسيرات الرواتب (تسجيل اضافي على الراتب) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Settings (Salary) for granted companies</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>مسيرات الرواتب (تسجيل حسم على الراتب) حسب صلاحية المنشأة</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="row mb-3 pb-2" style="border-bottom: 1px solid #eee;">-->
+                                <!--                                        {% if request.session.lang == "EN" %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>Training (Courses)</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% else %}-->
+                                <!--                                        <div class="col-2 p-2"><label class="switch">-->
+                                <!--                                            <input type="checkbox">-->
+                                <!--                                            <span class="slider round"-->
+                                <!--                                                  style="width: 59px;height:30px;margin-top:2px;"></span>-->
+                                <!--                                        </label>-->
+                                <!--                                        </div>-->
+
+                                <!--                                        <div class="col-10 p-2">-->
+                                <!--                                            <h6 class="text-dark"><b>موافقات الموارد البشرية (الطلبات ، القرارات)</b></h6>-->
+                                <!--                                        </div>-->
+                                <!--                                        {% endif %}-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+
+
+                                <div class="col-lg-10 col-12 m-auto text-right  p-2">
+                                    <button type="submit"
+                                            class="btn btn-sm btn-success  btn-style  col-lg-4 ml-1 text-white "
+                                            style="height: 40px;font-size: 16px;padding-top: 8px; margin-top: 30px; border-radius: 20px;">
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-paper-plane  mr-3"></i>Save
+                                        {% else %}
+                                        يحفظ<i class="fa fa-paper-plane  mr-3"></i>
+                                        {% endif %}
+                                    </button>
+                                </div>
+
+                                <i class="fa fa-user-circle-o fa-3x text-success" aria-hidden="true"
+                                   style="position: absolute; top: -17px;left:-12px;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+    </form>
+
+</div>
+<!-- //forms  -->
+
+
+<!-- //content -->
+
+
+{% endblock%}

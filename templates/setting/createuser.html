@@ -1,0 +1,389 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-2">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">User</li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <div class="card card_border py-2 mb-4">
+                <div class="cards__heading">
+                    <div class="row">
+                        <h3 class="ml-2"><span>New </span></h3>
+                    </div>
+                    <div class="row mt-3">
+                        <a href="/" class="btn btn-sm btn-outline-primary btn-style border-btn ml-1">Save</a>
+                        <button type="submit" class="btn btn-primary btn-style ml-1 ">Discard</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form action="#" method="post">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <img src="/static/assets/images/profileimg.jpg" style="width: 80px; "/>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <input class="form-control" placeholder="Name"/>
+                                            </div>
+                                            <div class="col-10 mt-2 ">
+                                                <input class="form-control" placeholder="E-Mail"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 ">
+                                <div class="row mr-2 bor">
+                                    <div class="col">
+                                    </div>
+                                    <div class="col-4 border">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <img src="/static/assets/icons/active.svg" class="icon"/>
+                                            </div>
+                                            <div class="col-9">
+                                                <span>0</span><br>
+                                                <span>Active</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="container-fluid">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#accessrights">Access Rights</a>
+                        </li>
+                        <li class="active"><a data-toggle="tab" href="#oauth">Oauth</a>
+                        </li>
+                        <li class="active"><a data-toggle="tab" href="#preferences">Preferences</a>
+                        </li>
+                    </ul>
+
+
+                    <div class="tab-content">
+                        <div id="accessrights" class="tab-pane fade in active show mt-3 mb-5">
+                            <h2 class="ml-4 mt-3 mb-3 text-primary"><b>Application Access</b></h2>
+                            <div class="row ml-3">
+                                <div class="col">
+                                    <div class="row ">
+                                        <div class="col-3">
+                                            <h6>
+                                                Projects
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="projects" class="form-control input-style">
+                                                <option selected></option>
+                                                <option>Manager</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-3">
+                                            <h6>
+                                                Appraisal
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="appraisal" class="form-control input-style">
+                                                <option selected></option>
+                                                <option>Manager</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-3">
+                                            <h6>
+                                                Accounting & Finance
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="accounting" class="form-control input-style">
+                                                <option selected></option>
+                                                <option>Building Manager</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-3">
+                                            <h6>
+                                                Employees
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="employees" class="form-control input-style">
+                                                <option selected></option>
+                                                <option>Manager</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-3">
+                                            <h6>
+                                                Leaves
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="leaves" class="form-control input-style">
+                                                <option selected></option>
+                                                <option>Manager</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-3">
+                                            <h6>
+                                                Recruitment
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="recruitment" class="form-control input-style">
+                                                <option selected></option>
+                                                <option>Manager</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-3">
+                                            <h6>
+                                                Expenses
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="expenses" class="form-control input-style">
+                                                <option selected></option>
+                                                <option>Manager</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-3">
+                                            <h6>
+                                                Timesheet
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="timesheet" class="form-control input-style">
+                                                <option selected></option>
+                                                <option>User</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-3">
+                                            <h6>
+                                                Attendence
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="attendence" class="form-control input-style">
+                                                <option selected></option>
+                                                <option>Manager</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-3">
+                                            <h6>
+                                                Payroll
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="payroll" class="form-control input-style">
+                                                <option selected></option>
+                                                <option>Manager</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-3">
+                                            <h6>
+                                                Limit records number
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="limitrecordsno" class="form-control input-style">
+                                                <option selected></option>
+                                                <option>Control limits on records number</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-3">
+                                            <h6>
+                                                Apps access
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="appsaccess" class="form-control input-style">
+                                                <option selected></option>
+                                                <option>Allow install apps only from settings</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="oauth" class="tab-pane fade in  mt-3 mb-5">
+                            <div class="row ml-3 mt-5">
+                                <div class="col">
+                                    <div class="row ">
+                                        <div class="col-3">
+                                            <h6>
+                                                oAuth Provider
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="oauthprovider" class="form-control input-style">
+                                                <option selected></option>
+                                                <option>SaaS</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-3">
+                                            <h6>
+                                                oAuth User ID
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <input class="form-control mt-1" placeholder="oAuth User ID"/>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-3">
+                                            <h6>
+                                                oAuth Access Token
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <input class="form-control mt-1" placeholder="oAuth User ID"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="preferences" class="tab-pane fade in  mt-3 mb-5">
+                            <h2 class="ml-4 mt-3 mb-3 text-primary"><b>Localization</b></h2>
+                            <div class="row ml-3">
+                                <div class="col">
+                                    <div class="row ">
+                                        <div class="col-3">
+                                            <h6>
+                                                Language
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="language" class="form-control input-style mt-1">
+                                                <option selected>English</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-3">
+                                            <h6>
+                                                Timezone
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="timezone" class="form-control input-style mt-1">
+                                                <option selected></option>
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <h2 class=" mt-5 mb-3 text-primary"><b>Messaging and Social</b></h2>
+                                    <div class="row ">
+                                        <div class="col-3">
+                                            <h6>
+                                                Notification
+                                            </h6>
+                                        </div>
+                                        <div class="col-4" style="border-left: 1px solid gray;">
+                                            <input type="checkbox" class=" mt-1" /><span style="color:gray">  Handle by Email</span>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-3">
+                                            <h6>
+                                                Management
+                                            </h6>
+                                        </div>
+                                        <div class="col-4" style="border-left: 1px solid gray;">
+                                            <input type="checkbox" class=" mt-1" /><span style="color:gray">  Handle in Gareeb</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-3">
+                                            <h6>
+                                                Alias
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="alias" class="form-control input-style mt-1">
+                                                <option selected>Inactive Alias</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                     <div class="row ">
+                                        <div class="col-3">
+                                            <h6>
+                                                Alias Contact
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="aliascontact" class="form-control input-style mt-1">
+                                                <option selected>Everyone</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-3">
+                                            <h6>
+                                                Security Signature
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <input class="form-control mt-1" placeholder=""/>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- //forms  -->
+
+</div>
+<!-- //content -->
+
+</div>
+{% endblock%}

@@ -1,0 +1,183 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-2">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Create Project</li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+
+            <div class="card card_border py-2 mb-4">
+                <div class="cards__heading">
+                    <div class="row">
+
+                        <h3 class="ml-2"><span>New Project</span></h3>
+                    </div>
+                    <div class="row mt-3">
+                        <a href="/" class="btn btn-sm btn-outline-primary btn-style border-btn ml-1">Save</a>
+                        <button type="submit" class="btn btn-primary btn-style ml-1 ">Discard</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form action="#" method="post">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <img src="/static/assets/images/profileimg.jpg" style="width: 80px; "/>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <span>Name of the tasks: </span> <input class="form-control"
+                                                                                        placeholder="Tasks"/>
+                                            </div>
+                                            <div class="col-10 mt-2">
+                                                <input type="checkbox"> <span>Allow timesheets</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 ">
+                                <div class="row mr-2 bor">
+                                    <div class="col">
+                                    </div>
+                                    <div class="col-4 border">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <img src="/static/assets/icons/active.svg" class="icon"/>
+                                            </div>
+                                            <div class="col-9">
+                                                <span>0</span><br>
+                                                <span>Active</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mr-2 bor">
+                                    <div class="col">
+                                    </div>
+                                    <div class="col-4 border">
+                                        <div class="row">
+                                            <div class="col-3"><img src="/static/assets/icons/copy.svg" class="icon"/>
+                                            </div>
+                                            <div class="col-9"><span>0</span><br> <span>Documents</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mr-2 bor">
+                                    <div class="col">
+                                    </div>
+                                    <div class="col-4 border">
+                                        <div class="row">
+                                            <div class="col-3 "><img src="/static/assets/icons/list.svg" class="icon"/>
+                                            </div>
+                                            <div class="col-9"><span>0</span><br> <span>Tasks</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mr-2 bor ">
+                                    <div class="col">
+                                    </div>
+                                    <div class="col-4 border">
+                                        <div class="row ">
+                                            <div class="col-3"><img src="/static/assets/icons/calendar.svg" class="icon"/>
+                                            </div>
+                                            <div class="col-9"><span>0</span><br> <span>Timesheets</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="container-fluid">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#settings">Settings</a>
+                        </li>
+                    </ul>
+
+
+                    <div class="tab-content">
+                        <div id="settings" class="tab-pane fade in active show mt-3 mb-5">
+                            <div class="row ml-3">
+                                <div class="col">
+                                    <div class="row ">
+                                        <div class="col-3">
+                                            <h6>
+                                                Project Manager
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="projectmanager" class="form-control input-style">
+                                                <option selected>Demo User</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-3">
+                                            <h6>
+                                                Sub-task Project
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="subtask" class="form-control input-style">
+                                                <option selected>New Project</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-3">
+                                            <h6>
+                                                Privacy
+                                            </h6>
+                                        </div>
+                                        <div class="col-9 " style="border-left: 1px solid gray;">
+                                            <input type="checkbox"><span>  On invitation only</span><br>
+                                            <input type="checkbox"><span>  Visible by all employees</span><br>
+                                            <input type="checkbox"><span>  Visible by following customers</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-3">
+                                            <h6>
+                                                Customer
+                                            </h6>
+                                        </div>
+                                        <div class="col-9" style="border-left: 1px solid gray;">
+                                            <select id="employees" class="form-control input-style">
+                                                <option selected></option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- //forms  -->
+
+</div>
+<!-- //content -->
+
+</div>
+{% endblock%}

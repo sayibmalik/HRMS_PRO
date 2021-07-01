@@ -1,0 +1,101 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Salary Structures</li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+
+            <div class="card card_border py-2 mb-4">
+                <div class="cards__heading">
+                    <div class="row">
+                        <div class="col-9">
+                            <h3><span>Salary Structures</span></h3>
+                        </div>
+                        <div class="col-3">
+
+                            <a href="/"
+                               class="btn btn-lg btn-outline-primary btn-style border-btn">Cancel</a>
+                            <a href="{% url 'CreateSalaryStructure' %}" class="btn btn-primary btn-style ">Create</a>
+
+
+                        </div>
+
+                    </div>
+<!--                    <div class="col-9"></div>-->
+<!--                    <div class="col-3">-->
+<!--                        <ul class="pagination">-->
+<!--                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
+<!--                            <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+<!--                            <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--                            <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--                            <li class="page-item"><a class="page-link" href="#">Next</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+
+                </div>
+                <div class="card-body">
+                    <form action="#" method="post">
+
+                        <div class="container-fluid">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr class="text-primary">
+                                    <th><input type="checkbox"></th>
+                                    <th>Name</th>
+                                    <th>Reference</th>
+                                    <th>Salary Rules</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th><input type="checkbox"></th>
+                                    <td>Base for new structures</td>
+                                    <td>BASE</td>
+                                    <td>3 records</td>
+
+                                </tr>
+                                <tr>
+                                    <th><input type="checkbox"></th>
+                                    <td>Marketing Executive</td>
+                                    <td>ME</td>
+                                    <td>4 records</td>
+                                    <td>YourCompany</td>
+                                </tr>
+                                <tr>
+                                    <th><input type="checkbox"></th>
+                                    <td>Marketing Executive for Gareeb</td>
+                                    <td>MEGG</td>
+                                    <td>2 records</td>
+                                    <td>YourCompany</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

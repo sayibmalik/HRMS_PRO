@@ -1,0 +1,193 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+    .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+
+
+</style>
+
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b>Leave</b></h6>
+                    {% else %}
+                    يترك
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Leave types
+                    {% else %}
+                    أنواع الإجازات
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+
+            <div class="row m-0">
+                <div class="col-lg-12 backwhite">
+                    <h4 class="ml-2 text-primary pt-4">
+                        {% if request.session.lang == "EN" %}
+                        <i class="fa fa-list-alt mr-2"></i><b>Leave Types</b>
+                        {% else %}
+                        <i class="fa fa-list-alt ml-2"></i><b>أنواع الإجازات</b>
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="col-lg-6 p-2 backwhite">
+                </div>
+                <div class="col-lg-6 p-2 backwhite text-center">
+
+                    <a href="{% url 'newCreateLeaveType' %}" class="btn btn-success btn-style ml-3"
+                       style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                        Create
+                        {% else %}
+                        خلق
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+
+            <div class="row m-0">
+                <div class="col-12 backwhite pt-5">
+                    <div class="row m-0 d-flex justify-content-center">
+
+                        {% if request.session.lang == "EN" %}
+                        <div class="col-lg-10 col-md-12 col-12 bg-primary p-2"
+                             style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"
+                                                                       style="padding-top: 10px;"><b>Kindly fill
+                            in the following details</b></h3></div>
+                        {% else %}
+                        <div class="col-lg-10 col-md-12 col-12 bg-primary p-3"
+                             style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b> يرجى ملء
+                            تفاصيل التالية</b></h3></div>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-lg-12 backwhite">
+                        <div class="table-responsive pt-5">
+                            <table class="table table-hover table-bordered">
+                                <thead class="thead-dark text-center">
+                                <tr>
+                                    <!--                                    <th scope="col">#</th>-->
+                                    <th scope="col" style="width:250px;">
+                                        {% if request.session.lang == "EN" %}
+                                        Leave types
+                                        {% else %}
+                                        أنواع الإجازات
+                                        {% endif %}
+                                    </th>
+                                    <th scope="col" style="width:250px;">
+                                        {% if request.session.lang == "EN" %}
+                                        Allow to Override Limit
+                                        {% else %}
+                                        السماح لتجاوز الحد
+                                        {% endif %}
+                                    </th>
+                                    <th scope="col" style="width:250px;">
+                                        {% if request.session.lang == "EN" %}
+                                        Limit
+                                        {% else %}
+                                        حد
+                                        {% endif %}
+                                    </th>
+                                    <th scope="col" style="width:250px;">
+                                        {% if request.session.lang == "EN" %}
+                                        Action
+                                        {% else %}
+                                        عمل
+                                        {% endif %}
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody class="text-center font-weight-bold">
+                                {% for d in lev %}
+                                <tr>
+                                    <!--                                    <th scope="row">1</th>-->
+                                    <td>
+                                        {% if request.session.lang == "EN" %}
+                                        {{d.Title}}
+                                        {% else %}
+                                        {{d.ArTitle}}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if d.Override == True %}
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-check-circle text-success mr-4 fa-2x"></i>
+                                        {% else %}
+                                        <i class="fa  fa-check-circle text-success ml-4 fa-2x"></i>
+                                        {% endif %}
+                                        {% else %}
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-times-circle text-danger mr-4 fa-2x"></i>
+                                        {% else %}
+                                        <i class="fa  fa-times-circle text-danger ml-4 fa-2x"></i>
+                                        {% endif %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {{d.Limit}}
+                                    </td>
+                                    <td>
+                                        <div class="row m-0">
+                                            <div class="col">
+                                                <a href="{% url 'editLeaveType' d.id %}"
+                                                   class="btn btn-danger btn-style ml-3"
+                                                   style="height: 35px;font-size: 14px;padding-top: 4px;"><i
+                                                        class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                                            </div>
+                                            <div class="col">
+                                                <form action="{% url 'delleavetype' %}" method="post">
+                                                    {% csrf_token %}
+                                                    <button type="submit"
+                                                            class="btn btn-success btn-style ml-3"
+                                                            style="height: 35px;font-size: 14px;padding-top: 4px;"
+                                                            value="{{d.id}}" name="id">
+                                                        <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                                                    </button>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+            </div>
+
+
+        </section>
+    </div>
+</div>
+{% endblock%}

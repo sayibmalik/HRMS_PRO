@@ -1,0 +1,1628 @@
+{% extends 'base.html'%}
+{% block content%}
+
+<style>
+#clock{
+	position:relative;
+}
+#clock:after{
+	content:'';
+	position:absolute;
+	width:400px;
+	height:20px;
+	border-radius:100%;
+	left:50%;
+	margin-left:-200px;
+	bottom:2px;
+	z-index:-1;
+}
+
+
+#clock .display{
+	text-align:center;
+	padding: 40px 20px 20px;
+	border-radius:6px;
+	position:relative;
+	height: 109px;
+}
+
+
+
+/*-------------------------
+	Dark color theme
+--------------------------*/
+
+
+#clock.dark{
+
+	color:#cacaca;
+}
+
+#clock.dark:after{
+	box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+#clock.dark .digits div span{
+	background-color:#cacaca;
+	border-color:#cacaca;
+}
+
+#clock.dark .alarm{
+	background:url('../img/alarm_dark.jpg');
+}
+
+
+
+#clock.dark .digits div.dots:before,
+#clock.dark .digits div.dots:after{
+	background-color:#cacaca;
+}
+
+
+/*-------------------------
+	The Digits
+--------------------------*/
+
+
+#clock .digits div{
+	text-align:left;
+	position:relative;
+	width: 28px;
+	height:50px;
+	display:inline-block;
+	margin:0 4px;
+}
+
+#clock .digits div span{
+	opacity:0;
+	position:absolute;
+
+	-webkit-transition:0.25s;
+	-moz-transition:0.25s;
+	transition:0.25s;
+}
+
+#clock .digits div span:before,
+#clock .digits div span:after{
+	content:'';
+	position:absolute;
+	width:0;
+	height:0;
+	border:5px solid transparent;
+}
+
+#clock .digits .d1{			height:5px;width:16px;top:0;left:6px;}
+#clock .digits .d1:before{	border-width:0 5px 5px 0;border-right-color:inherit;left:-5px;}
+#clock .digits .d1:after{	border-width:0 0 5px 5px;border-left-color:inherit;right:-5px;}
+
+#clock .digits .d2{			height:5px;width:16px;top:24px;left:6px;}
+#clock .digits .d2:before{	border-width:3px 4px 2px;border-right-color:inherit;left:-8px;}
+#clock .digits .d2:after{	border-width:3px 4px 2px;border-left-color:inherit;right:-8px;}
+
+#clock .digits .d3{			height:5px;width:16px;top:48px;left:6px;}
+#clock .digits .d3:before{	border-width:5px 5px 0 0;border-right-color:inherit;left:-5px;}
+#clock .digits .d3:after{	border-width:5px 0 0 5px;border-left-color:inherit;right:-5px;}
+
+#clock .digits .d4{			width:5px;height:14px;top:7px;left:0;}
+#clock .digits .d4:before{	border-width:0 5px 5px 0;border-bottom-color:inherit;top:-5px;}
+#clock .digits .d4:after{	border-width:0 0 5px 5px;border-left-color:inherit;bottom:-5px;}
+
+#clock .digits .d5{			width:5px;height:14px;top:7px;right:0;}
+#clock .digits .d5:before{	border-width:0 0 5px 5px;border-bottom-color:inherit;top:-5px;}
+#clock .digits .d5:after{	border-width:5px 0 0 5px;border-top-color:inherit;bottom:-5px;}
+
+#clock .digits .d6{			width:5px;height:14px;top:32px;left:0;}
+#clock .digits .d6:before{	border-width:0 5px 5px 0;border-bottom-color:inherit;top:-5px;}
+#clock .digits .d6:after{	border-width:0 0 5px 5px;border-left-color:inherit;bottom:-5px;}
+
+#clock .digits .d7{			width:5px;height:14px;top:32px;right:0;}
+#clock .digits .d7:before{	border-width:0 0 5px 5px;border-bottom-color:inherit;top:-5px;}
+#clock .digits .d7:after{	border-width:5px 0 0 5px;border-top-color:inherit;bottom:-5px;}
+
+
+/* 1 */
+
+#clock .digits div.one .d5,
+#clock .digits div.one .d7{
+	opacity:1;
+}
+
+/* 2 */
+
+#clock .digits div.two .d1,
+#clock .digits div.two .d5,
+#clock .digits div.two .d2,
+#clock .digits div.two .d6,
+#clock .digits div.two .d3{
+	opacity:1;
+}
+
+/* 3 */
+
+#clock .digits div.three .d1,
+#clock .digits div.three .d5,
+#clock .digits div.three .d2,
+#clock .digits div.three .d7,
+#clock .digits div.three .d3{
+	opacity:1;
+}
+
+/* 4 */
+
+#clock .digits div.four .d5,
+#clock .digits div.four .d2,
+#clock .digits div.four .d4,
+#clock .digits div.four .d7{
+	opacity:1;
+}
+
+/* 5 */
+
+#clock .digits div.five .d1,
+#clock .digits div.five .d2,
+#clock .digits div.five .d4,
+#clock .digits div.five .d3,
+#clock .digits div.five .d7{
+	opacity:1;
+}
+
+/* 6 */
+
+#clock .digits div.six .d1,
+#clock .digits div.six .d2,
+#clock .digits div.six .d4,
+#clock .digits div.six .d3,
+#clock .digits div.six .d6,
+#clock .digits div.six .d7{
+	opacity:1;
+}
+
+
+/* 7 */
+
+#clock .digits div.seven .d1,
+#clock .digits div.seven .d5,
+#clock .digits div.seven .d7{
+	opacity:1;
+}
+
+/* 8 */
+
+#clock .digits div.eight .d1,
+#clock .digits div.eight .d2,
+#clock .digits div.eight .d3,
+#clock .digits div.eight .d4,
+#clock .digits div.eight .d5,
+#clock .digits div.eight .d6,
+#clock .digits div.eight .d7{
+	opacity:1;
+}
+
+/* 9 */
+
+#clock .digits div.nine .d1,
+#clock .digits div.nine .d2,
+#clock .digits div.nine .d3,
+#clock .digits div.nine .d4,
+#clock .digits div.nine .d5,
+#clock .digits div.nine .d7{
+	opacity:1;
+}
+
+/* 0 */
+
+#clock .digits div.zero .d1,
+#clock .digits div.zero .d3,
+#clock .digits div.zero .d4,
+#clock .digits div.zero .d5,
+#clock .digits div.zero .d6,
+#clock .digits div.zero .d7{
+	opacity:1;
+}
+
+
+/* The dots */
+
+#clock .digits div.dots{
+	width:5px;
+}
+
+#clock .digits div.dots:before,
+#clock .digits div.dots:after{
+	width:5px;
+	height:5px;
+	content:'';
+	position:absolute;
+	left:0;
+	top:14px;
+}
+
+#clock .digits div.dots:after{
+	top:34px;
+}
+
+
+/*-------------------------
+	The Alarm
+--------------------------*/
+
+
+#clock .alarm{
+	width:16px;
+	height:16px;
+	bottom:20px;
+	background:url('../img/alarm_light.jpg');
+	position:absolute;
+	opacity:0.2;
+}
+
+#clock .alarm.active{
+	opacity:1;
+}
+
+
+/*-------------------------
+	Weekdays
+--------------------------*/
+
+
+#clock .weekdays{
+	font-size:12px;
+	position:absolute;
+	width:100%;
+	top:10px;
+	left:0;
+	text-align:center;
+}
+
+
+#clock .weekdays span{
+	opacity:0.2;
+	padding:0 10px;
+}
+
+#clock .weekdays span.active{
+	opacity:1;
+}
+
+
+/*-------------------------
+		AM/PM
+--------------------------*/
+
+
+#clock .ampm{
+	position:absolute;
+	bottom:20px;
+	right:20px;
+	font-size:12px;
+	left: 300px;
+}
+
+
+
+    @import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+
+    .your-logged
+    {
+background: linear-gradient(to right, #4755ab 0%, #a3aad5 100%);
+
+        border-radius: 15px;
+    }
+
+    .your-logged h1,.your-logged span ,.tot-salary h2
+    {
+      font-family: 'Roboto', sans-serif;
+      color: white;
+      font-weight: 900 !important;
+    }
+
+    .your-logged p ,.tot-salary span{
+      /*font-family: 'Krona One', sans-serif;*/
+      font-family: 'Roboto', sans-serif;
+      color: white;
+      }
+
+      .new-tiles{
+        background: #D00155 !important;
+      }
+
+      .new-tiles i {
+        color: #fff !important;
+        opacity: 1 !important;
+      }
+
+      .new-tiles2
+      {
+         background: #ED0161 !important;
+      }
+
+      .new-tiles2 h3 , .new-tiles2 p
+      {
+        color: #fff !important;
+        text-align: center !important;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500 !important;
+      }
+
+      .tiles-br
+      {
+        border-top: 4px solid #000 !important;
+        border-radius: 1px !important;
+        -moz-transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        -o-transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        cursor: pointer;
+      }
+
+      .tiles-br:hover
+      {
+        -webkit-transform: translate(0, -8px);
+        -moz-transform: translate(0, -8px);
+        -ms-transform: translate(0, -8px);
+        -o-transform: translate(0, -8px);
+        transform: translate(0, -8px);
+        box-shadow: 0 40px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .ann-card
+      {
+        border-radius: 5px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        background: #fff;
+      }
+
+      .super-tile
+      {
+        font-size: 32px !important;
+        font-family: 'Krona One', sans-serif !important;
+      }
+
+      /* animate*/
+@keyframes horizontal {
+  0% {
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0);
+  }
+
+  6% {
+    -webkit-transform: translate(5px,0);
+    -ms-transform: translate(5px,0);
+    transform: translate(5px,0);
+  }
+
+  12% {
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0);
+  }
+
+  18% {
+    -webkit-transform: translate(5px,0);
+    -ms-transform: translate(5px,0);
+    transform: translate(5px,0);
+  }
+
+  24% {
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0);
+  }
+
+  30% {
+    -webkit-transform: translate(5px,0);
+    -ms-transform: translate(5px,0);
+    transform: translate(5px,0);
+  }
+
+  36% {
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0);
+  }
+}
+
+.faa-horizontal.animated,
+.faa-horizontal.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-horizontal {
+  -webkit-animation: horizontal 2s ease infinite;
+  animation: horizontal 2s ease infinite;
+}
+
+
+
+      		/* new progress*/
+
+        .progress{
+            margin-top:20px;
+            width: 200px;
+            height: 130px;
+            background-color: transparent !important
+        }
+        .progress .track, .progress .fill{
+            fill: rgba(0, 0, 0, 0);
+            stroke-width: 3;
+            transform: rotate(90deg)translate(0px, -80px);
+        }
+        .progress .track{
+            /*stroke: rgb(0,167,185);*/
+            stroke: #000;
+            stroke-width:4;
+        }
+        .progress .fill {
+            stroke: rgb(255, 255, 255);
+            stroke-dasharray: 219.99078369140625;
+            stroke-dashoffset: -219.99078369140625;
+            transition: stroke-dashoffset 1s;
+        }
+        .progress.blue .fill {
+            /*stroke: rgb(237, 1, 97);*/
+            stroke: #b6b6b6;
+            stroke-width:5;
+        }
+        .progress.green .fill {
+            stroke: rgb(186, 223, 172);
+        }
+        .progress .value, .progress .text {
+            font-family: 'Roboto', sans-serif;
+            fill: #fff;
+            text-anchor: middle;
+            font-weight: 900;
+        }
+        .progress .text {
+            font-size: 12px;
+            color: stroke: rgb(237, 1, 97);
+        }
+
+        /*table*/
+        .table thead th ,.table td
+        {
+            border: none !important;
+        }
+
+        .table tbody tr
+        {
+            box-shadow: 3px 3px 10px #eee;
+        }
+
+@media (max-width: 792px) {
+        .clock-hide-sm
+        {
+            display: none;
+        }
+ }
+
+
+
+
+
+
+</style>
+<!-- main content start -->
+
+<div class="main-content">
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <nav aria-label="breadcrumb mb-4 backwhite" style="background: #fff !important;">
+            <ol class="breadcrumb my-breadcrumb  p-3">
+                <li class="breadcrumb-item"><a href="index.html">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Dashboard
+                    {% else %}
+                    لوحة القيادة
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+
+        <!--user login detail-->
+        <div class="row m-0 ">
+            <div class="col-lg-12 p-3 d-flex justify-content-between welcome-msg your-logged">
+                <div class="col-lg-6 col-md-6 text-center col-12    p-4 ">
+                    <h1>
+                        {% if request.session.lang == "EN" %}
+                        Hi
+                        {% else %}
+                        <strong>مرحبا</strong>
+                        {% endif %}
+                        <span class="text-white text-uppercase">{{user.first_name}} {{user.last_name}}</span>
+                        {% if request.session.lang == "EN" %}
+                        , Welcome back
+                        {% else %}
+                        <strong> ، مرحبا بعودتك</strong>
+                        {% endif %}
+                    </h1>
+                    <p class="pt-3">
+                        {% if request.session.lang == "EN" %}
+                        Quick Access From Your Dashboard.
+                        {% else %}
+                        <strong>وصول سريع من لوحة القيادة الخاصة بك.</strong>
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-6 text-center col-12 clock-hide-sm p-4 ">
+                    <div id="clock" class="dark">
+                        {% if request.session.lang == "EN" %}
+                        <div class="display">
+                            <div class="weekdays"></div>
+                            <div class="ampm"></div>
+                            <div class="alarm"></div>
+                            <div class="digits"></div>
+                        </div>
+                        {% else %}
+                        <div class="display" style="direction: ltr !important;">
+                            <div class="weekdays"></div>
+                            <div class="ampm"></div>
+                            <div class="alarm"></div>
+                            <div class="digits"></div>
+                        </div>
+                        {% endif %}
+
+                    </div>
+                    <!-- JavaScript Includes -->
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+                </div>
+            </div>
+            <!--                  <div class="col-lg-6 p-3">-->
+            <!--                    <div class="col-lg-12 col-12 mt-4 mb-4 welcome-msg p-5 your-logged">-->
+
+            <!--                    </div>-->
+            <!--                  </div>-->
+        </div>
+
+        {% if user.is_superuser %}
+        <!-- statistics data -->
+        <div class="statistics mt-5">
+            <div class="row">
+                <div class="col-xl-6 pr-xl-2">
+                    <div class="row">
+                        <div class="col-sm-6 pr-sm-2 statistics-grid">
+                            <div class="card tiles-br">
+                                <div class="row m-0">
+                                    <div class="col-4   p-4 new-tiles " style="background: #3E8E8D !important;">
+                                        <!--                    <i class="lnr lnr-users text-white"> </i>-->
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-users fa-2x pt-1" aria-hidden="true"></i>
+                                        {% else %}
+                                        <i class="fa fa-users fa-2x pt-1" aria-hidden="true"></i>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-8  p-4 new-tiles2"
+                                         style="border-radius: 1px; !important; background: #4ACDAC !important;">
+                                        <h3 class="text-primary number user-tile "
+                                            style="font-weight: 900 !important; font-family: 'Krona One', sans-serif !important;">
+                                            {{tu}}
+                                        </h3>
+
+                                        <p class="stat-text pt-2">
+                                            {% if request.session.lang == "EN" %}
+                                            Total Users
+                                            {% else %}
+                                            إجمالي المستخدمين
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 pl-sm-2 statistics-grid">
+                            <div class="card tiles-br">
+                                <div class="row m-0">
+                                    <div class="col-4   p-4 new-tiles " style="background: #6751C7 !important;">
+                                        <!--                    <i class="lnr lnr-users text-white"> </i>-->
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-eye fa-2x pt-1" aria-hidden="true"></i>
+                                        {% else %}
+                                        <i class="fa fa-eye fa-2x pt-1" aria-hidden="true"></i>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-8  p-4 new-tiles2"
+                                         style="border-radius: 1px; !important; background: #a293e4 !important;">
+                                        <h3 class="text-primary number user-tile "
+                                            style="font-weight: 900 !important; font-family: 'Krona One', sans-serif !important;">
+                                            1
+                                        </h3>
+
+                                        <p class="stat-text pt-2">
+                                            {% if request.session.lang == "EN" %}
+                                            Live Users
+                                            {% else %}
+                                            المستخدمون المباشرون
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                                <!--                                <i class="lnr lnr-eye"> </i>-->
+                                <!--                                <h3 class="text-secondary number">1</h3>-->
+                                <!--                                <p class="stat-text">-->
+                                <!--                                    {% if request.session.lang == "EN" %}-->
+                                <!--                                    Live Users-->
+                                <!--                                    {% else %}-->
+                                <!--                                    المستخدمون المباشرون-->
+                                <!--                                    {% endif %}-->
+                                <!--                                </p>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 pl-xl-2">
+                    <div class="row">
+                        <div class="col-sm-6 pr-sm-2 statistics-grid">
+                            <div class="card tiles-br">
+                                <div class="row m-0">
+                                    <div class="col-4   p-4 new-tiles " style="background: #2F72BC !important;">
+                                        <!--                    <i class="lnr lnr-users text-white"> </i>-->
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-building fa-2x pt-1" aria-hidden="true"></i>
+                                        {% else %}
+                                        <i class="fa fa-building fa-2x pt-1" aria-hidden="true"></i>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-8  p-4 new-tiles2"
+                                         style="border-radius: 1px; !important; background: #69B0EC !important;">
+                                        <h3 class="text-primary number user-tile "
+                                            style="font-weight: 900 !important; font-family: 'Krona One', sans-serif !important;">
+                                            {{com}}
+                                        </h3>
+
+                                        <p class="stat-text pt-2">
+                                            {% if request.session.lang == "EN" %}
+                                            Companies
+                                            {% else %}
+                                            شركات
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                                <!--                                <i class="lnr lnr-cloud-download"> </i>-->
+                                <!--                                <h3 class="text-success number">{{com}}</h3>-->
+                                <!--                                <p class="stat-text">Companies-->
+                                <!--                                    {% if request.session.lang == "EN" %}-->
+                                <!--                                    Companies-->
+                                <!--                                    {% else %}-->
+                                <!--                                    شركات-->
+                                <!--                                    {% endif %}-->
+                                <!--                                </p>-->
+                            </div>
+                        </div>
+                        <div class="col-sm-6 pl-sm-2 statistics-grid">
+                            <div class="card tiles-br">
+                                <div class="row m-0">
+                                    <div class="col-4   p-4 new-tiles " style="background: #3B9DB1 !important;">
+                                        <!--                    <i class="lnr lnr-users text-white"> </i>-->
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-pie-chart fa-2x pt-1" aria-hidden="true"></i>
+                                        {% else %}
+                                        <i class="fa fa-pie-chart fa-2x pt-1" aria-hidden="true"></i>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-8  p-4 new-tiles2"
+                                         style="border-radius: 1px; !important; background: #5CB4BD !important;">
+                                        <h3 class="text-primary number user-tile "
+                                            style="font-weight: 900 !important; font-family: 'Krona One', sans-serif !important;">
+                                            {{bill}}
+                                        </h3>
+
+                                        <p class="stat-text pt-2">
+                                            {% if request.session.lang == "EN" %}
+                                            Sales
+                                            {% else %}
+                                            مبيعات
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                                <!--                                <i class="lnr lnr-cart"> </i>-->
+                                <!--                                <h3 class="text-danger number"></h3>-->
+                                <!--                                <p class="stat-text">-->
+                                <!--                                    {% if request.session.lang == "EN" %}-->
+                                <!--                                    Sales-->
+                                <!--                                    {% else %}-->
+                                <!--                                    مبيعات-->
+                                <!--                                    {% endif %}-->
+                                <!--                                </p>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //statistics data -->
+
+        <!-- charts -->
+        <div class="chart mt-5">
+            <div class="row">
+                <div class="col-lg-6 pr-lg-2 chart-grid">
+                    <div class="card text-center card_border">
+                        <div class="card-header chart-grid__header">
+
+                            {% if request.session.lang == "EN" %}
+                            Sales
+                            {% else %}
+                            مبيعات
+                            {% endif %}
+                        </div>
+                        <div class="card-body">
+                            <!-- bar chart -->
+                            <div id="container">
+                                <canvas id="barchart"></canvas>
+                            </div>
+                            <!-- //bar chart -->
+                        </div>
+                        <div class="card-footer text-muted chart-grid__footer">
+
+                            Updated 2 hours ago
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 pl-lg-2 chart-grid">
+                    <div class="card text-center card_border">
+                        <div class="card-header chart-grid__header">
+                            Users
+                        </div>
+                        <div class="card-body">
+                            <!-- line chart -->
+                            <div id="container">
+                                <canvas id="linechart"></canvas>
+                            </div>
+                            <!-- //line chart -->
+                        </div>
+                        <div class="card-footer text-muted chart-grid__footer">
+                            Updated just now
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //charts -->
+
+        <!-- chatting -->
+        <!--    <div class="data-tables">-->
+        <!--      <div class="row">-->
+        <!--        <div class="col-lg-12 chart-grid mb-4">-->
+        <!--          <div class="card card_border p-4">-->
+        <!--            <div class="card-header chart-grid__header pl-0 pt-0">-->
+        <!--              Chatting-->
+        <!--            </div>-->
+        <!--            <div class="messaging">-->
+        <!--              <div class="inbox_msg">-->
+        <!--                <div class="inbox_people">-->
+        <!--                  <div class="headind_srch">-->
+        <!--                    <div class="srch_bar">-->
+        <!--                      <div class="stylish-input-group">-->
+        <!--                        <input type="text" class="search-bar" placeholder="Search Chat">-->
+        <!--                        <span class="input-group-addon">-->
+        <!--                          <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>-->
+        <!--                        </span> </div>-->
+        <!--                    </div>-->
+        <!--                  </div>-->
+        <!--                  <div class="inbox_chat">-->
+        <!--                    <div class="chat_list active_chat">-->
+        <!--                      <div class="chat_people">-->
+        <!--                        <div class="chat_img"> <img src="/static/assets/images/avatar5.jpg" alt="Alexander" class="img-fluid">-->
+        <!--                        </div>-->
+        <!--                        <div class="chat_ib">-->
+        <!--                          <h5>Alexander <span class="chat_date">1 hour ago</span></h5>-->
+        <!--                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>-->
+        <!--                        </div>-->
+        <!--                      </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="chat_list">-->
+        <!--                      <div class="chat_people">-->
+        <!--                        <div class="chat_img"> <img src="/static/assets/images/avatar3.jpg" alt="Anderson" class="img-fluid">-->
+        <!--                        </div>-->
+        <!--                        <div class="chat_ib">-->
+        <!--                          <h5>Anderson <span class="chat_date">5 hours ago</span></h5>-->
+        <!--                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>-->
+        <!--                        </div>-->
+        <!--                      </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="chat_list">-->
+        <!--                      <div class="chat_people">-->
+        <!--                        <div class="chat_img"> <img src="/static/assets/images/avatar5.jpg" alt="Isabella" class="img-fluid">-->
+        <!--                        </div>-->
+        <!--                        <div class="chat_ib">-->
+        <!--                          <h5>Isabella <span class="chat_date">Yesterday</span></h5>-->
+        <!--                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>-->
+        <!--                        </div>-->
+        <!--                      </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="chat_list">-->
+        <!--                      <div class="chat_people">-->
+        <!--                        <div class="chat_img"> <img src="/static/assets/images/avatar4.jpg" alt="Charlotte" class="img-fluid">-->
+        <!--                        </div>-->
+        <!--                        <div class="chat_ib">-->
+        <!--                          <h5>Charlotte <span class="chat_date">Mar 04</span></h5>-->
+        <!--                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>-->
+        <!--                        </div>-->
+        <!--                      </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="chat_list">-->
+        <!--                      <div class="chat_people">-->
+        <!--                        <div class="chat_img"> <img src="/static/assets/images/avatar2.jpg" alt="Davidson" class="img-fluid">-->
+        <!--                        </div>-->
+        <!--                        <div class="chat_ib">-->
+        <!--                          <h5>Davidson <span class="chat_date">Feb 18</span></h5>-->
+        <!--                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>-->
+        <!--                        </div>-->
+        <!--                      </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="chat_list">-->
+        <!--                      <div class="chat_people">-->
+        <!--                        <div class="chat_img"> <img src="/static/assets/images/avatar1.jpg" alt="Elexa ker" class="img-fluid">-->
+        <!--                        </div>-->
+        <!--                        <div class="chat_ib">-->
+        <!--                          <h5>Elexa ker <span class="chat_date">Feb 04</span></h5>-->
+        <!--                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>-->
+        <!--                        </div>-->
+        <!--                      </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="chat_list">-->
+        <!--                      <div class="chat_people">-->
+        <!--                        <div class="chat_img"> <img src="/static/assets/images/avatar4.jpg" alt="Charlotte" class="img-fluid">-->
+        <!--                        </div>-->
+        <!--                        <div class="chat_ib">-->
+        <!--                          <h5>Charlotte <span class="chat_date">Jan 28</span></h5>-->
+        <!--                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>-->
+        <!--                        </div>-->
+        <!--                      </div>-->
+        <!--                    </div>-->
+        <!--                  </div>-->
+        <!--                </div>-->
+        <!--                <div class="mesgs">-->
+        <!--                  <div class="msg_history">-->
+        <!--                    <div class="incoming_msg">-->
+        <!--                      <div class="incoming_msg_img"> <img src="/static/assets/images/avatar5.jpg" alt="Alexander"-->
+        <!--                          class="img-fluid"> </div>-->
+        <!--                      <div class="received_msg">-->
+        <!--                        <div class="received_withd_msg">-->
+        <!--                          <p>Coming along nicely, we've got a Lorem ipsum dolor sit amet consectetur adipisicing elit.-->
+        <!--                          </p>-->
+        <!--                          <span class="time_date"> 10:05 AM | Mar 9</span>-->
+        <!--                        </div>-->
+        <!--                      </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="outgoing_msg">-->
+        <!--                      <div class="sent_msg">-->
+        <!--                        <p>Great start, I've added some Lorem ipsum dolor sit amet. </p>-->
+        <!--                        <span class="time_date"> 12:15 PM | Mar 9</span>-->
+        <!--                      </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="incoming_msg">-->
+        <!--                      <div class="incoming_msg_img"> <img src="/static/assets/images/avatar5.jpg" alt="Alexander"-->
+        <!--                          class="img-fluid"> </div>-->
+        <!--                      <div class="received_msg">-->
+        <!--                        <div class="received_withd_msg">-->
+        <!--                          <p>Sed ut perspiciatis unde omnis iste natus error sit</p>-->
+        <!--                          <span class="time_date"> 09:16 AM | Yesterday</span>-->
+        <!--                        </div>-->
+        <!--                      </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="outgoing_msg">-->
+        <!--                      <div class="sent_msg">-->
+        <!--                        <p>But I must explain to you.</p>-->
+        <!--                        <span class="time_date"> 03:15 PM | Today</span>-->
+        <!--                      </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="incoming_msg">-->
+        <!--                      <div class="incoming_msg_img"> <img src="/static/assets/images/avatar5.jpg" alt="Alexander"-->
+        <!--                          class="img-fluid"> </div>-->
+        <!--                      <div class="received_msg">-->
+        <!--                        <div class="received_withd_msg">-->
+        <!--                          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium-->
+        <!--                            voluptatum deleniti atque corrupti quos dolores.</p>-->
+        <!--                          <span class="time_date"> 03:16 PM | Today</span>-->
+        <!--                        </div>-->
+        <!--                      </div>-->
+        <!--                    </div>-->
+        <!--                  </div>-->
+        <!--                  <div class="type_msg">-->
+        <!--                    <div class="input_msg_write">-->
+        <!--                      <input type="text" class="write_msg" placeholder="Type a message" />-->
+        <!--                      <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o"-->
+        <!--                          aria-hidden="true"></i></button>-->
+        <!--                    </div>-->
+        <!--                  </div>-->
+        <!--                </div>-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </div>-->
+        <!--      </div>-->
+        <!--    </div>-->
+        <!-- //chatting -->
+        {% else %}
+        <!-- statistics data -->
+        <div class="statistics mt-5">
+            <div class="row m-0">
+                <div class="col-xl-6 pr-xl-2">
+                    <div class="row">
+                        <a class="col-sm-6 pr-sm-2 statistics-grid" href="{% url 'employees' emp.id %}">
+                            <!--              <div class="card card_border border-primary-top">-->
+                            <div class="card tiles-br" style="border-radius: 1px; !important;">
+                                <div class="row m-0">
+                                    <div class="col-4   p-4 new-tiles">
+                                        <!--                    <i class="lnr lnr-users text-white"> </i>-->
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-users fa-2x pt-1" aria-hidden="true"></i>
+                                        {% else %}
+                                        <i class="fa fa-users fa-2x pt-1" aria-hidden="true"></i>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-8  p-4 new-tiles2" style="border-radius: 1px; !important;">
+                                        <h3 class="text-primary number">
+                                            {% if request.session.lang == "EN" %}
+                                            My Details
+                                            {% else %}
+                                            تفاصيلي
+                                            {% endif %}
+                                        </h3>
+
+                                        <p class="stat-text">
+                                            {% if request.session.lang == "EN" %}
+                                            Employee Dashboard
+                                            {% else %}
+                                            لوحة تحكم الموظف
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="col-sm-6 pl-sm-2 statistics-grid">
+                            <a class="card tiles-br" href="{% url 'AllLeaves'%}">
+                                <div class="row m-0">
+                                    <div class="col-4   p-4 new-tiles" style="background: #00A7B9 !important">
+                                        <!--                    <i class="lnr lnr-users text-white"> </i>-->
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-briefcase fa-2x pt-2 pl-1" aria-hidden="true"></i>
+                                        {% else %}
+                                        <i class="fa fa-briefcase fa-2x pt-2 pr-2" aria-hidden="true"></i>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-8  p-4 new-tiles2"
+                                         style="border-radius: 1px; !important;background:#00BED3 !important;">
+                                        <h3 class="text-primary number">
+                                            {% if request.session.lang == "EN" %}
+                                            Leaves
+                                            {% else %}
+                                            يغادر
+                                            {% endif %}
+                                        </h3>
+
+                                        <p class="stat-text">
+                                            {% if request.session.lang == "EN" %}
+                                            Leave Requests
+                                            {% else %}
+                                            طلبات المغادرة
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 pr-xl-2">
+                    <div class="row">
+                        <a class="col-sm-6 pr-sm-2 statistics-grid" href="{% url 'Contracts' %}">
+                            <!--              <div class="card card_border border-primary-top">-->
+                            <div class="card tiles-br" style="border-radius: 1px; !important;">
+                                <div class="row m-0">
+                                    <div class="col-4   p-4 new-tiles" style="background: #7CAB4C !important">
+                                        <!--                    <i class="lnr lnr-users text-white"> </i>-->
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-file-text fa-2x pt-2 pl-2" aria-hidden="true"></i>
+                                        {% else %}
+                                        <i class="fa fa-file-text fa-2x pt-2 pr-2" aria-hidden="true"></i>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-8  p-4 new-tiles2"
+                                         style="border-radius: 1px; !important;background:#8DC357 !important;">
+                                        <h3 class="text-success number">
+                                            {% if request.session.lang == "EN" %}
+                                            Documents
+                                            {% else %}
+                                            وثائق
+                                            {% endif %}
+                                        </h3>
+                                        <p class="stat-text">
+                                            {% if request.session.lang == "EN" %}
+                                            Contracts
+                                            {% else %}
+                                            انكماش
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="col-sm-6 pl-sm-2 statistics-grid">
+                            <a class="card tiles-br" href="{% url 'employeePayslip' %}">
+                                <div class="row m-0">
+                                    <div class="col-4  p-4 new-tiles" style="background: #D98628 !important">
+                                        <!--                    <i class="lnr lnr-users text-white"> </i>-->
+                                        <i class="fa fa-line-chart fa-2x pt-2" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-8  p-4 new-tiles2"
+                                         style="border-radius: 1px; !important;background:#F7992D !important;">
+                                        <h3 class="text-danger number">
+                                            {% if request.session.lang == "EN" %}
+                                            Salaries
+                                            {% else %}
+                                            الرواتب
+                                            {% endif %}
+                                        </h3>
+                                        <p class="stat-text">
+                                            {% if request.session.lang == "EN" %}
+                                            Payroll Information
+                                            {% else %}
+                                            معلومات الرواتب
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //statistics data -->
+
+        <!-- accordions -->
+        <div class="accordions mt-5">
+            <div class="row m-0">
+                <div class="col-lg-7 col-md-12 col-12 p-3 col-md-6 col-12">
+                    <div class="row">
+                        <!-- accordion style 1 -->
+                        <div class="col-lg-12">
+                            <div class="card  pt-5 pb-5 p-4 ann-card"
+                                 style="height: 517px !important; overflow:scroll;">
+                                <div class="card-header chart-grid__header" style="background: #8dc357;">
+                                    {% if request.session.lang == "EN" %}
+                                    <h4 class="text-white text-uppercase pt-2"><b><i class="fa fa-bullhorn mr-3"></i>Announcements</b>
+                                    </h4>
+                                    {% else %}
+                                    <h4 class="text-white"><b><i class="fa fa-bullhorn ml-3"></i>الإعلانات</b></h4>
+                                    {% endif %}
+                                </div>
+                                <div class="card-body p-0 pt-3">
+                                    <div class="accordion" id="accordionExample">
+                                        {% for d in ann %}
+                                        <div class="card accord-card mt-3"
+                                             style="border: none; box-shadow: 3px 3px 10px #eee;">
+                                            <div class="card-header bg-white p-0" id="heading{{d.id}}">
+                                                <a href="#" class="card__title p-3" data-toggle="collapse"
+                                                   data-target="#collapse{{d.id}}"
+                                                   aria-expanded="true" aria-controls="collapse{{d.id}}">{{d.title}}
+                                                </a>
+                                            </div>
+
+                                            <div id="collapse{{d.id}}" class="collapse
+                  {% if forloop.counter == 1 %}
+                  show
+{% endif %}
+" aria-labelledby="heading{{d.id}}"
+                                                 data-parent="#accordionExample">
+                                                <div class="card-body para__style">
+                                                    {{d.letter}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                        <!--                <div class="card">-->
+                                        <!--                  <div class="card-header bg-white p-0" id="headingTwo">-->
+                                        <!--                    <a href="#" class="card__title p-3" data-toggle="collapse" data-target="#collapseTwo"-->
+                                        <!--                      aria-expanded="false" aria-controls="collapseTwo">Click here to collapse accordion</a>-->
+                                        <!--                  </div>-->
+                                        <!--                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">-->
+                                        <!--                    <div class="card-body para__style">-->
+                                        <!--                      l, blandit at nunc a, lobortis sagittis-->
+                                        <!--                      ex. Maecenas pharetra pulvinar tincidunt.-->
+                                        <!--                    </div>-->
+                                        <!--                  </div>-->
+                                        <!--                </div>-->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //accordion style 1 -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-5 col-md-12 col-12 p-3 col-md-6 col-12">
+                    <div class="row">
+                        <div class="col-lg-12  p-3  ann-card">
+                            <div class="col-12  p-2 pt-2">
+                                <div class="row m-0">
+                                    <div class="col-lg-6  p-2  d-flex justify-content-center ">
+                                        <div class="col-12 tot-salary p-3 tiles-br"
+                                             style="background: #d00155 !important;">
+                                            {% if request.session.lang == "EN" %}
+                                            <span class="text-uppercase" style="letter-spacing: 1.88px;"><b>Projects</b></span>
+                                            <h2 class="text-center pt-3 pb-3 count">{{projects}}</h2>
+                                            <span class="pt-3">Total Projects</span>
+                                            {% else %}
+                                            <span class=""><b>المشاريع</b></span>
+                                            <h2 class="text-center pt-3 pb-3 count">{{projects}}</h2>
+                                            <span class="pt-4">إجمالي المشاريع</span>
+                                            {% endif %}
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-lg-6  p-2 d-flex justify-content-center tot-salary">
+                                        <div class="col-12 tot-salary p-3 tiles-br"
+                                             style="background: #7CAB4C !important;">
+                                            {% if request.session.ishr %}
+                                            {% if request.session.lang == "EN" %}
+                                            <span class="text-uppercase" style="letter-spacing: 1.88px;"><b>Employee Status</b></span>
+                                            <h2 class="text-center pt-3 pb-3 count">{{users}}</h2>
+                                            <span class="pt-4">Total Employees</span>
+                                            {% else %}
+                                            <span class=""><b>حالة الموظفين</b></span>
+                                            <h2 class="text-center pt-3 pb-3 count">{{users}}</h2>
+                                            <span class="pt-4">عدد الموظفي</span>
+                                            {% endif %}
+                                            {% else %}
+                                            {% if request.session.lang == "EN" %}
+                                            <span class="text-uppercase"
+                                                  style="letter-spacing: 1.88px;"><b>Leave Status</b></span>
+                                            <h2 class="text-center pt-3 pb-3 count">{{leaves}}</h2>
+                                            <span class="pt-4">Total Leaves</span>
+                                            {% else %}
+                                            <span class=""><b>ترك الحالة</b></span>
+                                            <h2 class="text-center pt-3 pb-3 count">{{leaves}}</h2>
+                                            <span class="pt-4">مجموع الأوراق</span>
+                                            {% endif %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12  p-3 mt-3 ann-card" style="height:282px;">
+                            <div class="col-12  p-2 pt-2">
+                                <div class="row m-0">
+                                    <div class="col-lg-12  p-2 d-flex justify-content-center tot-salary">
+                                        <div class="col-12 tot-salary p-3 tiles-br"
+                                             style="background: linear-gradient(90deg, rgba(129,58,187,1) 39%, rgba(133,41,156,1) 78%);">
+                                            <span class="text-uppercase" style="letter-spacing: 1.88px;">
+                                                 {% if request.session.lang == "EN" %}
+                                                    <b>Recruitment</b>
+                                                 {% else %}
+                                                    <b>تجنيد</b>
+                                                 {% endif %}
+                                            </span>
+                                            <div class="row">
+                                                <div class="col-12 d-flex "
+                                                     style=" margin:4px, 4px;padding:4px;width: 500px;height: 156px;overflow-x: hidden;overflow-y: auto;text-align:justify;">
+                                                    <div id="wrapper" class="" style="">
+                                                        <ul class="mt-3">
+                                                            {% for d in jobs %}
+                                                            <li class="col-12 mb-3"><a
+                                                                    href="{% url 'Recruitment' %}" class="">
+                                                                <div class="notification_desc">
+                                                                    <p class="text-white"><b>
+                                                                        {% if request.session.lang == "EN" %}
+                                                                        <i class='fa fa-hand-o-right faa-horizontal animated   mr-2'
+                                                                            style="font-size:26px;"></i>{{d.title}}</b>
+                                                                        {% else %}
+                                                                        <i class='fa fa-hand-o-left faa-horizontal animated   ml-2'
+                                                                            style="font-size:26px;"></i>{{d.title}}</b>
+                                                                        {% endif %}
+                                                                    </p>
+                                                                    <span class="text-center">{{d.Description|slice:":100"}}...</span>
+                                                                </div>
+                                                            </a></li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!--                                    <div class="col-lg-6  p-2  d-flex justify-content-center align-items-center">-->
+                                    <!--                                        <div class="col-12 tot-salary p-3 tiles-br"-->
+                                    <!--                                             style="background: rgba(111,111,111,100) !important;">-->
+
+                                    <!--                                            <span class="text-uppercase" style="letter-spacing: 1.88px;">-->
+                                    <!--                                                 {% if request.session.lang == "EN" %}-->
+                                    <!--                                                    <b>Employees Attendance</b>-->
+                                    <!--                                                 {% else %}-->
+                                    <!--                                                    <b>حضور الموظف</b>-->
+                                    <!--                                                 {% endif %}-->
+                                    <!--                                            </span>-->
+
+                                    <!--                                            <div class="row">-->
+                                    <!--                                                <div class="col-12 d-flex justify-content-center">-->
+                                    <!--                                                    <div id="wrapper" class="center">-->
+                                    <!--                                                        <svg class="progress blue noselect " data-progress="78" x="0px"-->
+                                    <!--                                                             y="0px"-->
+                                    <!--                                                             viewBox="0 0 80 80">-->
+                                    <!--                                                            <path class="track"-->
+                                    <!--                                                                  d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0"/>-->
+                                    <!--                                                            <path class="fill"-->
+                                    <!--                                                                  d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0"/>-->
+                                    <!--                                                            <text class="value" x="50%" y="55%">0%</text>-->
+                                    <!--                                                        </svg>-->
+                                    <!--                                                    </div>-->
+                                    <!--                                                </div>-->
+                                    <!--                                            </div>-->
+                                    <!--                                        </div>-->
+
+                                    <!--                                    </div>-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <!-- //accordions -->
+
+    <!--ATENDANCE TABLE-->
+    <section id="hr-attendance" class="mt-5 p-2">
+        <div class="row m-0">
+            <div class="col-12 pt-3" style="background: #fff;">
+                {% if request.session.lang == "EN" %}
+                <h4 class="p-3 text-white" style="background: #8DC357;"><i class="fa fa-calendar-check-o mr-3"
+                                                                           aria-hidden="true"></i>
+                    <b>Employees Attendance</b></h4>
+                {% else %}
+                <h4 class="p-3 text-white" style="background: #8DC357;"><i class="fa fa-calendar-check-o ml-3"
+                                                                           aria-hidden="true"></i>
+                    <b>حضور الموظفين</b></h4>
+                {% endif %}
+            </div>
+            <div class="col-12 p-4" style="background: #fff;height: 230px;overflow: scroll;">
+                <div class="table-responsive">
+                    <table class="table table-hover p-3">
+                        <thead class="text-center" style="color: #D00155;">
+                        <tr>
+                            <th>
+                                {% if request.session.lang == "EN" %}
+                                Employee
+                                {% else %}
+                                الموظف
+                                {% endif %}
+                            </th>
+                            <th>
+                                {% if request.session.lang == "EN" %}
+                                Project
+                                {% else %}
+                                المشروع
+                                {% endif %}
+                            </th>
+                            <th>
+                                {% if request.session.lang == "EN" %}
+                                Check In
+                                {% else %}
+                                تحقق في
+                                {% endif %}
+                            </th>
+                            <th>
+                                {% if request.session.lang == "EN" %}
+                                Check Out
+                                {% else %}
+                                تحقق خارج
+                                {% endif %}
+                            </th>
+                            <th>
+                                {% if request.session.lang == "EN" %}
+                                Description
+                                {% else %}
+                                وصف
+                                {% endif %}
+                            </th>
+                            <th>
+                                {% if request.session.lang == "EN" %}
+                                Remarks
+                                {% else %}
+                                ملاحظات
+                                {% endif %}
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-center font-weight-bold">
+                        {% for d in data %}
+                        <tr class="spacer" style="height: 16px;box-shadow: none !important;">
+                        <tr>
+                            <!--<th style="padding: 17px;"><input type="checkbox"></th>-->
+                            <td style="padding: 23px;"> {{d.user.first_name}} {{d.user.last_name}}</td>
+                            <td style="padding: 23px;">{{d.project}}</td>
+                            <td style="padding: 23px;">{{d.Start}}</td>
+                            <td style="padding: 23px;">{{d.End}}</td>
+                            <td style="padding: 23px;">{{d.Description}}</td>
+                            <td style="padding: 23px;">{{d.Remarks}}</td>
+                            <!--                                    <td><a href="/Project/editproject/{{d.id}}"><i-->
+                            <!--                                            style="color: #4755AB;font-size: 25px;padding: 11px;"-->
+                            <!--                                            class="fa fa-pencil-square-o"-->
+                            <!--                                            aria-hidden="true"></i></a></td>-->
+
+                            <!--                                    <td>-->
+                            <!--                                        <form action="/Project/delproject/" method="post">-->
+                            <!--                                            {% csrf_token %}-->
+                            <!--                                            <button type="submit"-->
+                            <!--                                                    style="color: #4755AB;font-size: 25px;padding: 3px;margin-left: 8px; border:none;"-->
+                            <!--                                                    value="{{d.id}}" name="project_id"><i class="fa fa-trash-o"></i>-->
+                            <!--                                            </button>-->
+                            <!--                                        </form>-->
+                            <!--                                    </td>-->
+
+
+                        </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--ATENDANCE TABLE ends-->
+    {% endif %}
+    <!-- modals -->
+    <!--    <section class="template-cards">-->
+    <!--      <div class="card card_border">-->
+    <!--        <div class="cards__heading">-->
+    <!--          <h3>Modals - <span>2 different types of bootstrap modals</span></h3>-->
+    <!--        </div>-->
+    <!--        <div class="card-body pb-0">-->
+    <!--          <div class="row">-->
+    <!--            <div class="col-lg-6 pr-lg-2 chart-grid">-->
+    <!--              <div class="card text-center card_border">-->
+    <!--                <div class="card-header chart-grid__header">-->
+    <!--                  Demo modal-->
+    <!--                </div>-->
+    <!--                <div class="card-body">-->
+    <!--                  &lt;!&ndash; Button trigger modal &ndash;&gt;-->
+    <!--                  <button type="button" class="btn btn-primary btn-style" data-toggle="modal"-->
+    <!--                    data-target="#exampleModal">-->
+    <!--                    Launch demo-->
+    <!--                  </button>-->
+
+    <!--                  &lt;!&ndash; Modal &ndash;&gt;-->
+    <!--                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"-->
+    <!--                    aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+    <!--                    <div class="modal-dialog" role="document">-->
+    <!--                      <div class="modal-content">-->
+    <!--                        <div class="modal-header">-->
+    <!--                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+    <!--                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+    <!--                            <span aria-hidden="true">&times;</span>-->
+    <!--                          </button>-->
+    <!--                        </div>-->
+    <!--                        <div class="modal-body">-->
+    <!--                          ...-->
+    <!--                        </div>-->
+    <!--                        <div class="modal-footer">-->
+    <!--                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
+    <!--                          <button type="button" class="btn btn-success">Save changes</button>-->
+    <!--                        </div>-->
+    <!--                      </div>-->
+    <!--                    </div>-->
+    <!--                  </div>-->
+    <!--                </div>-->
+    <!--              </div>-->
+    <!--            </div>-->
+    <!--            <div class="col-lg-6 chart-grid">-->
+    <!--              <div class="card text-center card_border">-->
+    <!--                <div class="card-header chart-grid__header">-->
+    <!--                  Vertical centered-->
+    <!--                </div>-->
+    <!--                <div class="card-body">-->
+    <!--                  &lt;!&ndash; Button trigger modal &ndash;&gt;-->
+    <!--                  <button type="button" class="btn btn-primary btn-style" data-toggle="modal"-->
+    <!--                    data-target="#exampleModalCenter">-->
+    <!--                    Launch demo-->
+    <!--                  </button>-->
+    <!--                  &lt;!&ndash; Modal &ndash;&gt;-->
+    <!--                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"-->
+    <!--                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
+    <!--                    <div class="modal-dialog modal-dialog-centered" role="document">-->
+    <!--                      <div class="modal-content">-->
+    <!--                        <div class="modal-header">-->
+    <!--                          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>-->
+    <!--                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+    <!--                            <span aria-hidden="true">&times;</span>-->
+    <!--                          </button>-->
+    <!--                        </div>-->
+    <!--                        <div class="modal-body">-->
+    <!--                          ...-->
+    <!--                        </div>-->
+    <!--                        <div class="modal-footer">-->
+    <!--                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
+    <!--                          <button type="button" class="btn btn-success">Save changes</button>-->
+    <!--                        </div>-->
+    <!--                      </div>-->
+    <!--                    </div>-->
+    <!--                  </div>-->
+    <!--                </div>-->
+    <!--              </div>-->
+    <!--            </div>-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </section>-->
+    <!-- //modals -->
+
+</div>
+<!-- //content -->
+</div>
+<!-- main content end-->
+<script>
+  /*progress*/
+var forEach = function (array, callback, scope) {
+	for (var i = 0; i < array.length; i++) {
+		callback.call(scope, i, array[i]);
+	}
+};
+window.onload = function(){
+	var max = -219.99078369140625;
+	forEach(document.querySelectorAll('.progress'), function (index, value) {
+	percent = value.getAttribute('data-progress');
+		value.querySelector('.fill').setAttribute('style', 'stroke-dashoffset: ' + ((100 - percent) / 100) * max);
+		value.querySelector('.value').innerHTML = percent + '%';
+	});
+}
+
+
+<!--counter numbers-->
+$('.count').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 3000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+        }
+    });
+});
+
+
+
+
+
+</script>
+<script>
+    $(function(){
+
+    // Cache some selectors
+
+    var clock = $('#clock'),
+        alarm = clock.find('.alarm'),
+        ampm = clock.find('.ampm');
+
+    // Map digits to their names (this will be an array)
+    var digit_to_name = 'zero one two three four five six seven eight nine'.split(' ');
+
+    // This object will hold the digit elements
+    var digits = {};
+
+    // Positions for the hours, minutes, and seconds
+    var positions = [
+        'h1', 'h2', ':', 'm1', 'm2', ':', 's1', 's2'
+    ];
+
+    // Generate the digits with the needed markup,
+    // and add them to the clock
+
+    var digit_holder = clock.find('.digits');
+
+    $.each(positions, function(){
+
+        if(this == ':'){
+            digit_holder.append('<div class="dots">');
+        }
+        else{
+
+            var pos = $('<div>');
+
+            for(var i=1; i<8; i++){
+                pos.append('<span class="d' + i + '">');
+            }
+
+            // Set the digits as key:value pairs in the digits object
+            digits[this] = pos;
+
+            // Add the digit elements to the page
+            digit_holder.append(pos);
+        }
+
+    });
+
+    // Add the weekday names
+
+    var weekday_names = 'MON TUE WED THU FRI SAT SUN'.split(' '),
+        weekday_holder = clock.find('.weekdays');
+
+    $.each(weekday_names, function(){
+        weekday_holder.append('<span>' + this + '</span>');
+    });
+
+    var weekdays = clock.find('.weekdays span');
+
+    // Run a timer every second and update the clock
+
+    (function update_time(){
+
+        // Use moment.js to output the current time as a string
+        // hh is for the hours in 12-hour format,
+        // mm - minutes, ss-seconds (all with leading zeroes),
+        // d is for day of week and A is for AM/PM
+
+        var now = moment().format("hhmmssdA");
+
+        digits.h1.attr('class', digit_to_name[now[0]]);
+        digits.h2.attr('class', digit_to_name[now[1]]);
+        digits.m1.attr('class', digit_to_name[now[2]]);
+        digits.m2.attr('class', digit_to_name[now[3]]);
+        digits.s1.attr('class', digit_to_name[now[4]]);
+        digits.s2.attr('class', digit_to_name[now[5]]);
+
+        // The library returns Sunday as the first day of the week.
+        // Stupid, I know. Lets shift all the days one position down,
+        // and make Sunday last
+
+        var dow = now[6];
+        dow--;
+
+        // Sunday!
+        if(dow < 0){
+            // Make it last
+            dow = 6;
+        }
+
+        // Mark the active day of the week
+        weekdays.removeClass('active').eq(dow).addClass('active');
+
+        // Set the am/pm text:
+        ampm.text(now[7]+now[8]);
+
+        // Schedule this function to be run again in 1 sec
+        setTimeout(update_time, 1000);
+
+    })();
+
+    // Switch the theme
+
+    $('a.button').click(function(){
+        clock.toggleClass('light dark');
+    });
+
+});
+
+
+</script>
+{% endblock %}
+

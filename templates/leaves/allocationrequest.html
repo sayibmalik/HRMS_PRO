@@ -1,0 +1,260 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">
+                {% if request.session.lang == "EN" %}
+                                         Home
+                                         {% else %}
+                                           الصفحة الرئيسية
+                                         {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                                         Allocation Request
+                                         {% else %}
+                                           الصفحة الرئيسية
+                                         {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+
+            <div class="card card_border py-2 mb-4">
+                <div class="cards__heading" style="padding: 15px;">
+                    <div class="row">
+                        <div class="col">
+                            <h3><span>
+                            {% if request.session.lang == "EN" %}
+                                         Allocation Request
+                                         {% else %}
+                                           الصفحة الرئيسية
+                                         {% endif %}
+                            </span></h3>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-3">
+                            <a href="/" class="btn btn-lg btn-outline-primary btn-style border-btn">
+                            {% if request.session.lang == "EN" %}
+                                         Save
+                                         {% else %}
+                                           حفظ
+                                         {% endif %}
+                            </a>
+                            <button type="submit" class="btn btn-primary btn-style ">
+                            {% if request.session.lang == "EN" %}
+                                         Discard
+                                         {% else %}
+                                           تجاهل
+                                         {% endif %}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-3 mt-3 ">
+                            <a href="/" class="btn btn-lg btn-outline-primary btn-style border-btn ml-1">
+                            {% if request.session.lang == "EN" %}
+                                         Approve
+                                         {% else %}
+                                           اعتماد
+                                         {% endif %}
+                            </a>
+                            <button type="submit" class="btn btn-primary btn-style ">
+                            {% if request.session.lang == "EN" %}
+                                         Refuse
+                                         {% else %}
+                                           رفض
+                                         {% endif %}
+                            </button>
+                        </div>
+                        <div class="col-9 mt-3">
+                            <ol style="float:right;">
+                                <li class="btn btn-white" style="border-right: 1px solid lightgray;"><a href="/">
+                                  {% if request.session.lang == "EN" %}
+                                         To Submit
+                                         {% else %}
+                                           للإرسال
+                                         {% endif %}
+                                </a>
+                                </li>
+                                <li class="btn btn-white" style="border-right: 1px solid lightgray;"><a
+                                        href="/">
+                                    {% if request.session.lang == "EN" %}
+                                         To Approve
+                                         {% else %}
+                                           ليوافق
+                                         {% endif %}</a></li>
+                                <li class="btn btn-white" style="border-right: 1px solid lightgray;"><a
+                                        href="/">
+                                {% if request.session.lang == "EN" %}
+                                         Approved
+                                         {% else %}
+                                           موافق عليه
+                                         {% endif %}
+                                </a>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <form action="#" method="post">
+                    <div class="container-fluid">
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6>
+                                    {% if request.session.lang == "EN" %}
+                                         Description
+                                         {% else %}
+                                           الوصف
+                                         {% endif %}
+                                    </h6>
+                                </div>
+                                <div class="col-8" style="border-left: 1px solid gray;">
+                                    <input type="text" style="width: 390px;">
+                                </div>
+                            </div>
+                            <div class="row mt-1">
+                                <div class="col-4 mt-3">
+                                    <h6>
+                                        {% if request.session.lang == "EN" %}
+                                         Leave Type
+                                         {% else %}
+                                           نوع الإجازة
+                                         {% endif %}
+                                    </h6>
+                                </div>
+                                <div class="col-8" style="border-left: 1px solid gray; width: 180px;">
+                                    <select id="leavetype" class="form-control input-style">
+                                        <option selected> unpaid</option>
+                                        <option>dd/mm/yy</option>
+                                        <option>dd/mm/yy</option>
+                                        <option>dd/mm/yy</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row  mt-1">
+                                <div class="col-4 mt-3">
+                                    <h6>
+                                    {% if request.session.lang == "EN" %}
+                                         Duration
+                                         {% else %}
+                                           المدة الزمنية
+                                         {% endif %}
+                                    </h6>
+                                </div>
+                                <div class="col-8 mt-1" style=" border-left: 1px solid gray;">
+                                    <input type="text" placeholder="2.00" style="width: 180px;">
+                                    <span>
+                                        {% if request.session.lang == "EN" %}
+                                         Days
+                                         {% else %}
+                                          أيام
+                                         {% endif %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="row ">
+                                <div class="col-4">
+                                    <h6>
+                                        {% if request.session.lang == "EN" %}
+                                         Mode
+                                         {% else %}
+                                          طريقة
+                                         {% endif %}
+                                    </h6>
+                                </div>
+                                <div class="col-8" style="border-left: 1px solid gray;">
+                                    {% if request.session.lang == "EN" %}
+                                         By Employee
+                                         {% else %}
+                                          من قبل الموظف
+                                         {% endif %}
+                                </div>
+                            </div>
+                            <div class="row mt-1">
+                                <div class="col-4">
+                                    <h6>
+                                        {% if request.session.lang == "EN" %}
+                                         Employee
+                                         {% else %}
+                                          الموظف
+                                         {% endif %}
+                                    </h6>
+                                </div>
+                                <div class="col-8" style="border-left: 1px solid gray;">
+                                    <select id="employee" class="form-control input-style">
+                                        <option selected> Admin</option>
+                                        <option>dd/mm/yy</option>
+                                        <option>dd/mm/yy</option>
+                                        <option>dd/mm/yy</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-1">
+                                <div class="col-4">
+                                    <h6>
+                                        {% if request.session.lang == "EN" %}
+                                         Department
+                                         {% else %}
+                                          قسم
+                                         {% endif %}
+                                    </h6>
+                                </div>
+                                <div class="col-8" style="border-left: 1px solid gray;">
+                                    <select id="department" class="form-control input-style">
+                                        <option selected> Administration</option>
+                                        <option>dd/mm/yy</option>
+                                        <option>dd/mm/yy</option>
+                                        <option>dd/mm/yy</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-4">
+                                    <h6>
+                                        {% if request.session.lang == "EN" %}
+                                         Company
+                                         {% else %}
+                                          شركة
+                                         {% endif %}
+                                    </h6>
+                                </div>
+                                <div class="col-8" style="border-left: 1px solid gray;">
+                                    <span>
+                                    {% if request.session.lang == "EN" %}
+                                         Your Company
+                                         {% else %}
+                                          شركتك
+                                         {% endif %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="textarea" style="width: 96%; margin-top: 20px; height: 200px; margin-left: 22px;">
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

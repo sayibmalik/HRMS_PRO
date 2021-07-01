@@ -1,0 +1,252 @@
+{% extends 'base.html'%}
+{% block content%}
+
+<style>
+     .backwhite
+    {
+        padding: 9px;
+    padding-left: 15px;
+    background: #fff;
+    }
+
+    .cc-tbl
+    {
+        padding-top: 24px !important;
+        font-weight: bold;
+    }
+</style>
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Departments
+                    {% else %}
+                    الأقسام
+                    {% endif %}</li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+
+             <div class="row m-0">
+                    <div class="col-lg-12 backwhite">
+                        <h4 class="ml-2 text-primary pt-4">
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-building  fa-1x mr-3"></i><b>Departments</b>
+                            {% else %}
+                            <i class="fa fa-building  fa-1x ml-3"></i><b>الأقسام</b>
+                            {% endif %}
+                        </h4>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-12 p-2 backwhite ">
+                          <a href="/app/dashboard" class="btn btn-danger btn-style ml-3"
+                       style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                        Discard
+                        {% else %}
+                        تجاهل
+                        {% endif %}
+                    </a>
+                        <a href="/Setting/createdepartments" class="btn btn-success btn-style ml-3"
+                       style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                        Create
+                        {% else %}
+                        خلق
+                        {% endif %}
+                    </a>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite">
+                        <form action="#" method="post">
+                            <div class="table-responsive pt-5">
+                                <table class="table table-hover table-bordered">
+                                <thead class="text-center thead-dark">
+                                <tr>
+
+                                    <th>{% if request.session.lang == "EN" %}
+                                                        Title
+                                                        {% else %}
+                                                        لقب
+                                                        {% endif %}</th>
+
+                                    <th>{% if request.session.lang == "EN" %}
+                                                        Floor
+                                                        {% else %}
+                                                        الأرض
+                                                        {% endif %}</th>
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                    Edit
+                    {% else %}
+                    تعديل
+                    {% endif %}
+                                    </th>
+                                    <th>
+                                        {% if request.session.lang == "EN" %}
+                    Delete
+                    {% else %}
+                    حذف
+                    {% endif %}
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                {% for d in data %}
+                                <tr>
+                                    <td class="cc-tbl">{{d.title}}</td>
+                                    <td class="cc-tbl">{{d.floor}}</td>
+                                    <td><a href="/Setting/editdepartment/{{d.id}}"><i
+                                            style="color: #4755AB;font-size: 25px;padding: 11px;"
+                                            class="fa fa-pencil-square-o text-success"
+                                            aria-hidden="true"></i></a></td>
+                                    <td>
+                                        <form action="/Setting/deldepartment/" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit"
+                                                    style="color: #4755AB;font-size: 25px;padding: 3px;margin-left: 8px; border:none;background: none;"
+                                                    value="{{d.id}}" name="department_id"><i class="fa fa-trash-o text-danger"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+<!--OLD CODE-->
+
+<!--            <div class="card card_border py-2 mb-4">-->
+<!--                <div class="cards__heading">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-9">-->
+<!--                            <h3><span>-->
+<!--                                {% if request.session.lang == "EN" %}-->
+<!--                    Departments-->
+<!--                    {% else %}-->
+<!--                    الأقسام-->
+<!--                    {% endif %}-->
+<!--                            </span></h3>-->
+<!--                        </div>-->
+<!--                        <div class="col-3">-->
+
+<!--                            <a href="/Setting/createdepartments" class="btn btn-primary btn-style"-->
+<!--                               style= "margin-left: 175px">-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                    Create-->
+<!--                    {% else %}-->
+<!--                    خلق-->
+<!--                    {% endif %}                        </a>-->
+<!--                            &lt;!&ndash;                            <button type="submit" class="btn btn-lg btn-outline-primary btn-style border-btn ">Import</button>&ndash;&gt;-->
+
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                    &lt;!&ndash;                    <div class="col-9"></div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <div class="col-3">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                         <ul class="pagination">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <li class="page-item"><a class="page-link" href="#">1</a></li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <li class="page-item"><a class="page-link" href="#">2</a></li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <li class="page-item"><a class="page-link" href="#">3</a></li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <li class="page-item"><a class="page-link" href="#">Next</a></li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            </ul>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--                </div>-->
+<!--                <div class="card-body">-->
+<!--                    <form action="#" method="post">-->
+
+<!--                        <div class="container-fluid">-->
+<!--                            <table class="table table-striped">-->
+<!--                                <thead>-->
+<!--                                <tr>-->
+
+<!--                                    <th>{% if request.session.lang == "EN" %}-->
+<!--                                                        Title-->
+<!--                                                        {% else %}-->
+<!--                                                        لقب-->
+<!--                                                        {% endif %}</th>-->
+
+<!--                                    <th>{% if request.session.lang == "EN" %}-->
+<!--                                                        Floor-->
+<!--                                                        {% else %}-->
+<!--                                                        الأرض-->
+<!--                                                        {% endif %}</th>-->
+<!--                                    <th>-->
+<!--                                        {% if request.session.lang == "EN" %}-->
+<!--                    Edit-->
+<!--                    {% else %}-->
+<!--                    تعديل-->
+<!--                    {% endif %}-->
+<!--                                    </th>-->
+<!--                                    <th>-->
+<!--                                        {% if request.session.lang == "EN" %}-->
+<!--                    Delete-->
+<!--                    {% else %}-->
+<!--                    حذف-->
+<!--                    {% endif %}-->
+<!--                                    </th>-->
+<!--                                </tr>-->
+<!--                                </thead>-->
+<!--                                <tbody>-->
+<!--                                {% for d in data %}-->
+<!--                                <tr>-->
+<!--                                    <td>{{d.title}}</td>-->
+<!--                                    <td>{{d.floor}}</td>-->
+<!--                                    <td><a href="/Setting/editdepartment/{{d.id}}"><i-->
+<!--                                            style="color: #4755AB;font-size: 25px;padding: 11px;"-->
+<!--                                            class="fa fa-pencil-square-o"-->
+<!--                                            aria-hidden="true"></i></a></td>-->
+<!--                                    <td>-->
+<!--                                        <form action="/Setting/deldepartment/" method="post">-->
+<!--                                            {% csrf_token %}-->
+<!--                                            <button type="submit"-->
+<!--                                                    style="color: #4755AB;font-size: 25px;padding: 3px;margin-left: 8px; border:none;"-->
+<!--                                                    value="{{d.id}}" name="department_id"><i class="fa fa-trash-o"></i>-->
+<!--                                            </button>-->
+<!--                                        </form>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                                {% endfor %}-->
+<!--                                </tbody>-->
+<!--                            </table>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

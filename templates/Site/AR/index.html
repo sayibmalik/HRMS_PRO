@@ -1,0 +1,1326 @@
+{% extends 'base2.html' %}
+{% block content %}
+<style>
+    .new-apple
+    {
+        background:#47536e;
+        min-width:140px;
+        border-radius: 15px 0;
+        transition : all .2s ease-out;
+    }
+
+    .new-apple:hover
+    {
+        background: #5777ba;
+        min-width:140px;
+        border-radius: 0 15px;
+        transform: scale(1.2)
+    }
+</style>
+<!-- ======= Hero Section ======= -->
+{% if request.session.lang == "EN" %}
+<a href="https://icons8.com/icon/IechyUIBuTJ3/checkmark"></a>
+<div>
+    <section id="hero" class="d-flex align-items-center">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-1 hero-img"
+                     data-aos="fade-up">
+                    <img src="/static/assets/img/gareenhero2.gif" class="img-fluid" alt="">
+                    <!--                <img src="/static/assets/img/feature2.jpg"  class="img-fluid" alt="">-->
+
+                </div>
+                <div class="col-lg-6 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-2"
+                     data-aos="fade-up">
+                    <div>
+                        <h1>Britx HRMS</h1>
+                        <h2>Britx HRMS is HR cloud-based system to manage human capital resources. The system covers
+                            all
+                            needs to manage human capital resource starting from, employees, self-services, payrolls,
+                            reports, attendances, appraisals, recruitments, leaves, end of services, fingerprints and
+                            multiple companies.</h2>
+
+                        <div class="row m-0">
+                            <div class="col-6   d-flex justify-content-center pt-3"><a href="#" class="text-white new-apple text-center p-2" ><i class="bx bxl-play-store"></i> Google Play</a></div>
+                            <div class="col-6   d-flex justify-content-center pt-3"><a href="#" class="text-white new-apple text-center p-2" ><i class="bx bxl-apple"></i> App Store</a></div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+        <!-- ======= App Features Section ======= -->
+        <section id="features" class="features">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2 data-aos="zoom-in">Features</h2>
+                    <p>We provide a wide array of Usable & Flexible Features</p>
+                </div>
+
+                <div class="row no-gutters">
+                    <div class="col-xl-7 d-flex align-items-stretch order-2 order-lg-1">
+                        <div class="content d-flex flex-column justify-content-center">
+                            <div class="row">
+                                <div class="col-md-6 icon-box" data-aos="fade-up">
+                                    <i class="bx bx-receipt"></i>
+                                    <h4>Recruitment</h4>
+                                    <p>An efficient applicant tracking system and dynamic recruiting software.</p>
+                                </div>
+                                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+                                    <i class="bx bx-cube-alt"></i>
+                                    <h4>Employee Database</h4>
+                                    <p>Centralised database to manage everything on your fingertip.</p>
+                                </div>
+                                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+                                    <i class="bx bx-images"></i>
+                                    <h4>HR Administration</h4>
+                                    <p>Spend time on your goals, not on routine administration.</p>
+                                </div>
+                                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                                    <i class="bx bx-shield"></i>
+                                    <h4>Payroll</h4>
+                                    <p>Painless payroll processing with Open HRMS.</p>
+                                </div>
+                                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+                                    <i class="bx bx-atom"></i>
+                                    <h4>Appraisal</h4>
+                                    <p>Transparent appraisal strategies with increased employee engagement.</p>
+                                </div>
+                                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
+                                    <i class="bx bx-id-card"></i>
+                                    <h4>Attendance & Leaves</h4>
+                                    <p> An intuitive attendance management system.</p>
+                                </div>
+                                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
+                                    <i class="bx bx-id-card"></i>
+                                    <h4>HR Reports</h4>
+                                    <p>Reports that can help you to stay on the top..</p>
+                                </div>
+                                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
+                                    <i class="bx bx-id-card"></i>
+                                    <h4>For More Features</h4>
+                                    <p> Timesheet, Branch transfer, GOSI contribution, etc</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image col-xl-5 d-flex align-items-stretch justify-content-center order-1 order-lg-2"
+                         data-aos="fade-left" data-aos-delay="100" style="z-index: -333;">
+                        <img src="/static/assets/img/configg.gif" class="" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End App Features Section -->
+
+        <!-- ======= Details Section ======= -->
+        <section id="details" class="details">
+            <div class="container">
+
+                <div class="row content">
+                    <div class="col-md-6" data-aos="fade-right">
+                        <img src="/static/assets/img/pro.gif" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-md-6 pt-4" data-aos="fade-up">
+                        <h3>Simply a better HR experience</h3>
+                        <p>
+                            We are determined to reinvent the way HR is perceived in companies across the Middle East.
+                            It is
+                            time to focus on what really moves an organization forward – its people!
+                        </p>
+                        <!--            <ul>-->
+                        <!--              <li><i class="icofont-check"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>-->
+                        <!--              <li><i class="icofont-check"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>-->
+                        <!--              <li><i class="icofont-check"></i> Iure at voluptas aspernatur dignissimos doloribus repudiandae.</li>-->
+                        <!--              <li><i class="icofont-check"></i> Est ipsa assumenda id facilis nesciunt placeat sed doloribus praesentium.</li>-->
+                        <!--            </ul>-->
+                        <p>
+                            HR is not about administrating staff, it is about engaging your team and equipping them with
+                            the
+                            right tools to activate their full potential - that’s what palm.hr is all about.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row content">
+                    <div class="col-md-6 order-1 order-md-2" data-aos="fade-left">
+                        <img src="/static/assets/img/chart.gif" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-md-6 pt-5 order-2 order-md-1" data-aos="fade-up">
+                        <h3>It's finally time to say goodbye to paper & spreadsheets.</h3>
+                        <!--            <p class="font-italic">-->
+                        <!--              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore-->
+                        <!--              magna aliqua.-->
+                        <!--            </p>-->
+                        <p>
+                            <!--              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate-->
+                            <!--              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in-->
+                            <!--              culpa qui officia deserunt mollit anim id est laborum-->
+                        </p>
+                        <!--            <p>-->
+                        <!--              Inventore id enim dolor dicta qui et magni molestiae. Mollitia optio officia illum ut cupiditate eos autem. Soluta dolorum repellendus repellat amet autem rerum illum in. Quibusdam occaecati est nisi esse. Saepe aut dignissimos distinctio id enim.-->
+                        <!--            </p>-->
+                    </div>
+                </div>
+
+
+            </div>
+        </section><!-- End Details Section -->
+
+        <!-- ======= Gallery Section ======= -->
+        <!--    <section id="gallery" class="gallery">-->
+        <!--      <div class="container">-->
+
+        <!--        <div class="section-title">-->
+        <!--          <h2>Gallery</h2>-->
+        <!--          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
+        <!--        </div>-->
+
+        <!--        <div class="owl-carousel gallery-carousel" data-aos="fade-up">-->
+        <!--          <a href="/static/assets/img/gallery/gallery-1.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-1.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-2.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-2.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-3.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-3.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-4.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-4.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-5.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-5.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-6.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-6.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-7.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-7.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-8.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-8.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-9.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-9.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-10.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-10.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-11.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-11.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-12.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-12.png" alt=""></a>-->
+        <!--        </div>-->
+
+        <!--      </div>-->
+        <!--    </section>-->
+        <!-- End Gallery Section -->
+
+        <!-- ======= Testimonials Section ======= -->
+        <!--    <section id="testimonials" class="testimonials section-bg">-->
+        <!--      <div class="container">-->
+
+        <!--        <div class="section-title">-->
+        <!--          <h2>Testimonials</h2>-->
+        <!--          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
+        <!--        </div>-->
+
+        <!--        <div class="owl-carousel testimonials-carousel" data-aos="fade-up">-->
+
+        <!--          <div class="testimonial-wrap">-->
+        <!--            <div class="testimonial-item">-->
+        <!--              <img src="/static/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">-->
+        <!--              <h3>Saul Goodman</h3>-->
+        <!--              <h4>Ceo &amp; Founder</h4>-->
+        <!--              <p>-->
+        <!--                <i class="bx bxs-quote-alt-left quote-icon-left"></i>-->
+        <!--                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.-->
+        <!--                <i class="bx bxs-quote-alt-right quote-icon-right"></i>-->
+        <!--              </p>-->
+        <!--            </div>-->
+        <!--          </div>-->
+
+        <!--          <div class="testimonial-wrap">-->
+        <!--            <div class="testimonial-item">-->
+        <!--              <img src="/static/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">-->
+        <!--              <h3>Sara Wilsson</h3>-->
+        <!--              <h4>Designer</h4>-->
+        <!--              <p>-->
+        <!--                <i class="bx bxs-quote-alt-left quote-icon-left"></i>-->
+        <!--                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.-->
+        <!--                <i class="bx bxs-quote-alt-right quote-icon-right"></i>-->
+        <!--              </p>-->
+        <!--            </div>-->
+        <!--          </div>-->
+
+        <!--          <div class="testimonial-wrap">-->
+        <!--            <div class="testimonial-item">-->
+        <!--              <img src="/static/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">-->
+        <!--              <h3>Jena Karlis</h3>-->
+        <!--              <h4>Store Owner</h4>-->
+        <!--              <p>-->
+        <!--                <i class="bx bxs-quote-alt-left quote-icon-left"></i>-->
+        <!--                Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.-->
+        <!--                <i class="bx bxs-quote-alt-right quote-icon-right"></i>-->
+        <!--              </p>-->
+        <!--            </div>-->
+        <!--          </div>-->
+
+        <!--          <div class="testimonial-wrap">-->
+        <!--            <div class="testimonial-item">-->
+        <!--              <img src="/static/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">-->
+        <!--              <h3>Matt Brandon</h3>-->
+        <!--              <h4>Freelancer</h4>-->
+        <!--              <p>-->
+        <!--                <i class="bx bxs-quote-alt-left quote-icon-left"></i>-->
+        <!--                Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.-->
+        <!--                <i class="bx bxs-quote-alt-right quote-icon-right"></i>-->
+        <!--              </p>-->
+        <!--            </div>-->
+        <!--          </div>-->
+
+        <!--          <div class="testimonial-wrap">-->
+        <!--            <div class="testimonial-item">-->
+        <!--              <img src="/static/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">-->
+        <!--              <h3>John Larson</h3>-->
+        <!--              <h4>Entrepreneur</h4>-->
+        <!--              <p>-->
+        <!--                <i class="bx bxs-quote-alt-left quote-icon-left"></i>-->
+        <!--                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.-->
+        <!--                <i class="bx bxs-quote-alt-right quote-icon-right"></i>-->
+        <!--              </p>-->
+        <!--            </div>-->
+        <!--          </div>-->
+
+        <!--        </div>-->
+
+        <!--      </div>-->
+        <!--    </section>&lt;!&ndash; End Testimonials Section &ndash;&gt;-->
+
+        <!-- ======= Pricing Section ======= -->
+        <section id="pricing" class="pricing">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2 data-aos="zoom-in" style="position: relative">Pricing</h2>
+                    <p>Whether you're part of a startup or a large enterprise, Britx helps companies of all sizes
+                        manage
+                        and engage their teams. We offer a full suite of features and tools to help you at ever stage of
+                        your journey.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 p-3 d-flex justify-content-center">
+                        <div class="card col-lg-12 col-12 p-0 crd-cover">
+                            <div class="card-body price-crd">
+                                <h5 class="card-title text-center font-weight-bold">BASIC</h5>
+                                <p class="card-subtitle mb-2 text-center  font-weight-normal crd-pricing"><span
+                                        style="font-size: 42px; letter-spacing: 1.2px;"
+                                        class="font-weight-bold">138</span> SAR </p>
+                                <h6 class="text-center text-light permon">6 month</h6>
+                                <ul class="list-group list-group-flush price-tg">
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        Free one month trial
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        10 Min number of employees
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        150 Max number of employees
+                                    </li>
+
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        Full Access
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        All Features
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        Real-time setup
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        Support via Livechat
+                                    </li>
+
+                                    <li class="list-group-item d-none" style="background: yellow;">
+                                        <i class="fa  fa-times-rectangle-o mr-2 text-danger"></i>
+                                        <del>Task Management</del>
+                                    </li>
+
+                                    <div class="mt-4 text-center">
+                                        <a href="{% url 'landing-page' %}?sub_plan=Basic" class="get-started-btn col-lg-6 m-auto"
+                                           style="height: 35px;">Get Started</a>
+                                    </div>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 p-3 d-flex justify-content-center">
+                        <div class="card col-lg-12 col-12 p-0 crd-cover">
+                            <div class="card-body price-crd">
+                                <h5 class="card-title text-center font-weight-bold">MEDIUM</h5>
+                                <p class="card-subtitle mb-2 text-center  font-weight-normal crd-pricing"><span
+                                        style="font-size: 42px; letter-spacing: 1.2px;"
+                                        class="font-weight-bold">120</span> SAR </p>
+                                <h6 class="text-center text-light permon">6 month</h6>
+                                <ul class="list-group list-group-flush price-tg">
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        Free one month trial
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        110 Min number of employees
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        250 Max number of employees
+                                    </li>
+
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        Full Access
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        All Features
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        Real-time setup
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        Support via Livechat
+                                    </li>
+                                    <li class="list-group-item d-none" style="background: yellow;">
+                                        <i class="fa  fa-check-square-o mr-2 text-success"></i>
+                                        Task Management <strong class="text-danger"> &nbsp; 3 month</strong></li>
+
+                                    <div class="mt-4 text-center">
+                                        <a href="{% url 'landing-page' %}?sub_plan=Medium" class="get-started-btn col-lg-6 m-auto"
+                                           style="height: 35px;">Get Started</a>
+                                    </div>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 p-3 d-flex justify-content-center">
+                        <div class="card col-lg-12 col-12 p-0 crd-cover">
+                            <div class="card-body price-crd">
+                                <h5 class="card-title text-center font-weight-bold">ADVANCE</h5>
+                                <p class="card-subtitle mb-2 text-center  font-weight-normal crd-pricing"><span
+                                        style="font-size: 42px; letter-spacing: 1.2px;"
+                                        class="font-weight-bold">90</span> SAR </p>
+                                <h6 class="text-center text-light permon">6 month</h6>
+                                <ul class="list-group list-group-flush price-tg">
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        Free one month trial
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        250 Min number of employees
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        999 Max number of employees
+                                    </li>
+
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        Full Access
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        All Features
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        Real-time setup
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        Support via Livechat
+                                    </li>
+                                    <li class="list-group-item d-none" style="background: yellow;">
+                                        <i class="fa  fa-check-square-o mr-2 text-success"></i>
+                                        Task Management <strong class="text-danger"> &nbsp;6 month</strong></li>
+
+                                    <div class="mt-4 text-center">
+                                        <a href="{% url 'landing-page' %}?sub_plan=Advanced" class="get-started-btn col-lg-6 m-auto"
+                                           style="height: 35px;">Get Started</a>
+                                    </div>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--            <div class="row no-gutters">-->
+                <!--{% for d in data %}-->
+                <!--                <div class="col-lg-4 box" data-aos="fade-right">-->
+                <!--                    <h3>{{d.title}}</h3>-->
+                <!--                    <h4>{{d.price}} SR<span>per month</span></h4>-->
+                <!--                    <ul>-->
+                <!--                        <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>-->
+                <!--                        <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>-->
+                <!--                        <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>-->
+                <!--                        <li class="na"><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>-->
+                <!--                        <li class="na"><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>-->
+                <!--                    </ul>-->
+                <!--                    <a href="{% url 'signup' %}" class="get-started-btn">Get Started</a>-->
+                <!--                </div>-->
+                <!--{% endfor %}-->
+                <!--&lt;!&ndash;                <div class="col-lg-4 box featured" data-aos="fade-up">&ndash;&gt;-->
+                <!--&lt;!&ndash;                    <h3>Business</h3>&ndash;&gt;-->
+                <!--&lt;!&ndash;                    <h4>23 SR<span>per month</span></h4>&ndash;&gt;-->
+                <!--&lt;!&ndash;                    <ul>&ndash;&gt;-->
+                <!--&lt;!&ndash;                        <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;                        <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;                        <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;                        <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;                        <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;                    </ul>&ndash;&gt;-->
+                <!--&lt;!&ndash;                    <a href="{% url 'signup' %}" class="get-started-btn">Get Started</a>&ndash;&gt;-->
+                <!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;                <div class="col-lg-4 box" data-aos="fade-left">&ndash;&gt;-->
+                <!--&lt;!&ndash;                    <h3>Developer</h3>&ndash;&gt;-->
+                <!--&lt;!&ndash;                    <h4>20 SR <span>per month</span></h4>&ndash;&gt;-->
+                <!--&lt;!&ndash;                    <ul>&ndash;&gt;-->
+                <!--&lt;!&ndash;                        <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;      Fpri                  <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;                        <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;                        <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;                        <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;                    </ul>&ndash;&gt;-->
+                <!--&lt;!&ndash;                    <a href="{% url 'signup' %}" class="get-started-btn">Get Started</a>&ndash;&gt;-->
+                <!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+                <!--            </div>-->
+
+            </div>
+        </section><!-- End Pricing Section -->
+
+        <!-- ======= Frequently Asked Questions Section ======= -->
+        <section id="faq" class="faq section-bg">
+            <div class="container">
+
+                <div class="section-title">
+
+                    <h2>Frequently Asked Questions</h2>
+                    <p></p>
+                </div>
+
+                <div class="accordion-list">
+                    <ul>
+
+
+                        <li data-aos="fade-up" data-aos-delay="100">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse"
+                                                                           href="#accordion-list-2"
+                                                                           class="collapsed">What is an HRMS?<i
+                                class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="accordion-list-2" class="collapse" data-parent=".accordion-list">
+                                <p>
+                                    A Human Resource Management System (HRMS) is a form of human resources software that
+                                    combines a number of systems and processes to ensure the easy management of human
+                                    resources, business processes and data.
+                                </p>
+                            </div>
+                        </li>
+                        <li data-aos="fade-up">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" class="collapse"
+                                                                           href="#accordion-list-1">
+                            Why do I need HR Software?<i class="bx bx-chevron-down icon-show"></i><i
+                                class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="accordion-list-1" class="collapse show" data-parent=".accordion-list">
+                                <p>
+                                    Research shows that companies with a newly upgraded HR systems see cost savings of
+                                    22% per employee (Bersin by Deloitte). With HR software, you save time & money, keep
+                                    your team informed & engaged and make sure you are compliant with local labor
+                                    regulations.
+                                </p>
+                            </div>
+                        </li>
+                        <li data-aos="fade-up" data-aos-delay="200">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse"
+                                                                           href="#accordion-list-3"
+                                                                           class="collapsed">
+                            What languages are supported?<i class="bx bx-chevron-down icon-show"></i><i
+                                class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="accordion-list-3" class="collapse" data-parent=".accordion-list">
+                                <p>
+                                    Britx Hr is available in Arabic and English. We even help you make sure all inputs
+                                    and fields are available in both languages.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li data-aos="fade-up" data-aos-delay="300">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse"
+                                                                           href="#accordion-list-4"
+                                                                           class="collapsed">
+                            How fast can I get started?
+                            <i class="bx bx-chevron-down icon-show"></i><i
+                                class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="accordion-list-4" class="collapse" data-parent=".accordion-list">
+                                <p>
+                                    It's a matter of hours, not days & weeks. We believe setting up your Britx HRMS
+                                    experience should be fun & intuitive, therefore you can easily onboard all employees
+                                    yourself. We have created an onboarding journey & course to set up the system to
+                                    match your needs. Your team will receive a brief explanation video that makes sure
+                                    they adapt to the new solution seamlessly. And of course if you face any issues, or
+                                    you wish for us to set everything up for you, we are here and are confident to
+                                    provide a suitable solution.
+                                </p>
+                            </div>
+                        </li>
+
+                        <!--                    <li data-aos="fade-up" data-aos-delay="400">-->
+                        <!--                        <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#accordion-list-5"-->
+                        <!--                                                                       class="collapsed">Tortor vitae purus faucibus-->
+                        <!--                        ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i-->
+                        <!--                                class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>-->
+                        <!--                        <div id="accordion-list-5" class="collapse" data-parent=".accordion-list">-->
+                        <!--                            <p>-->
+                        <!--                                Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo-->
+                        <!--                                integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc-->
+                        <!--                                eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.-->
+                        <!--                            </p>-->
+                        <!--                        </div>-->
+                        <!--                    </li>-->
+
+                    </ul>
+                </div>
+
+            </div>
+        </section><!-- End Frequently Asked Questions Section -->
+
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Contact Us</h2>
+                    <!--          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-6 info" data-aos="fade-up">
+                                <i class="bx bx-map shaky-icon"></i>
+                                <h4 class="shaky-text shaky-icon">Address</h4>
+                                <p class="font-weight-bold">Exit-14 Al-Rayan<br>Riyadh, Saudi Arabia</p>
+                            </div>
+                            <div class="col-lg-6 info" data-aos="fade-up" data-aos-delay="100">
+                                <i class="bx bx-phone shaky-icon"></i>
+                                <h4 class="shaky-text shaky-icon">Call Us</h4>
+                                <p class="font-weight-bold">+966 563333302<br>+966 551439287</p>
+                            </div>
+                            <div class="col-lg-6 info" data-aos="fade-up" data-aos-delay="200">
+                                <i class="bx bx-envelope shaky-icon"></i>
+                                <h4 class="shaky-text shaky-icon">Email Us</h4>
+                                <p class="font-weight-bold">aalmutlaq83@yahoo.com<br>info@britx.com</p>
+                            </div>
+                            <div class="col-lg-6 info" data-aos="fade-up" data-aos-delay="300">
+                                <i class="bx bx-time-five shaky-icon"></i>
+                                <h4 class="shaky-text shaky-icon">Working Hours</h4>
+                                <p class="font-weight-bold">Sun - Wed: 9AM to 5PM<br>Saturday: 9AM to 5PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <form action="forms/contact.php" method="post" role="form" class="php-email-form"
+                              data-aos="fade-up">
+                            <div class="form-group">
+                                <input placeholder="Your Name" type="text" name="name" class="form-control" id="name"
+                                       data-rule="minlen:4" data-msg="Please enter at least 4 chars"/>
+                                <div class="validate"></div>
+                            </div>
+                            <div class="form-group">
+                                <input placeholder="Your Email" type="email" class="form-control" name="email"
+                                       id="email"
+                                       data-rule="email" data-msg="Please enter a valid email"/>
+                                <div class="validate"></div>
+                            </div>
+                            <div class="form-group">
+                                <input placeholder="Subject" type="text" class="form-control" name="subject"
+                                       id="subject"
+                                       data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject"/>
+                                <div class="validate"></div>
+                            </div>
+                            <div class="form-group">
+                            <textarea placeholder="Message" class="form-control" name="message" rows="5"
+                                      data-rule="required" data-msg="Please write something for us"></textarea>
+                                <div class="validate"></div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="loading">Loading</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">Your message has been sent. Thank you!</div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Contact Section -->
+
+    </main><!-- End #main -->
+</div>
+{% else %}
+<div>
+    <section id="hero" class="d-flex align-items-center">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1"
+                     data-aos="fade-up">
+                    <div>
+                        <h1> قريب</h1>
+                        <h2> قريب هو نظام قائم على السحابة البشرية لإدارة موارد رأس المال البشري. يغطي النظام جميع
+                            احتياجات إدارة الموارد البشرية بدءًا من الموظفين والخدمات الذاتية وكشوف الرواتب والتقارير
+                            والحضور والتقييمات والتوظيفات والإجازات ونهاية الخدمات والبصمات والشركات المتعددة</h2>
+
+
+                        <div class="row m-0">
+                            <div class="col-6   d-flex justify-content-center pt-3"><a href="#" class="text-white new-apple text-center p-2" ><i class="bx bxl-play-store"></i>  تطبيقات جوجل</a></div>
+                            <div class="col-6   d-flex justify-content-center pt-3"><a href="#" class="text-white new-apple text-center p-2" ><i class="bx bxl-apple"></i>  متجر التطبيقات</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img"
+                     data-aos="fade-up">
+                    <img src="/static/assets/img/gareenhero2.gif" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+
+    </section><!-- End Hero -->
+    <main id="main">
+
+        <!-- ======= App Features Section ======= -->
+        <section id="features" class="features">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2 data-aos="zoom-in" class="text-center">المميزات</h2>
+                    <p>نحن نقدم مجموعة واسعة من الميزات القابلة للاستخدام والمرنة</p>
+                </div>
+
+                <div class="row no-gutters">
+                    <div class="col-xl-7 d-flex align-items-stretch order-2 order-lg-1">
+                        <div class="content d-flex flex-column justify-content-center">
+                            <div class="row">
+                                <div class="col-md-6 icon-box" data-aos="fade-up">
+                                    <i class="bx bx-receipt"></i>
+                                    <h4>تجنيد</h4>
+                                    <p>نظام فعال لتتبع المتقدمين وبرنامج توظيف ديناميكي.</p>
+                                </div>
+                                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+                                    <i class="bx bx-cube-alt"></i>
+                                    <h4>قاعدة بيانات الموظفين</h4>
+                                    <p>قاعدة بيانات مركزية لإدارة كل شيء في متناول يدك.</p>
+                                </div>
+                                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+                                    <i class="bx bx-images"></i>
+                                    <h4>الموارد البشرية والإدارة</h4>
+                                    <p>اقضِ وقتًا في تحقيق أهدافك ، وليس في الإدارة الروتينية.</p>
+                                </div>
+                                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                                    <i class="bx bx-shield"></i>
+                                    <h4>كشف رواتب</h4>
+                                    <p>معالجة كشوف المرتبات بدون ألم</p>
+                                </div>
+                                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+                                    <i class="bx bx-atom"></i>
+                                    <h4>توصيه</h4>
+                                    <p>استراتيجيات تقييم شفافة مع زيادة مشاركة الموظفين.</p>
+                                </div>
+                                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
+                                    <i class="bx bx-id-card"></i>
+                                    <h4>الحضور والإجازات</h4>
+                                    <p> نظام بسيط لإدارة الحضور.</p>
+                                </div>
+                                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
+                                    <i class="bx bx-id-card"></i>
+                                    <h4>تقارير الموارد البشرية</h4>
+                                    <p>التقارير التي يمكن أن تساعدك على البقاء في القمة</p>
+                                </div>
+                                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
+                                    <i class="bx bx-id-card"></i>
+                                    <h4>لمزيد من الميزات</h4>
+                                    <p>سجل الدوام ، تحويل الفرع ، مساهمة التأمينات الاجتماعية ، إلخ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image col-xl-5 d-flex align-items-stretch justify-content-center order-1 order-lg-2"
+                         data-aos="fade-left" data-aos-delay="100" style="z-index: -333;">
+                        <img src="/static/assets/img/configg.gif" class="" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End App Features Section -->
+
+        <!-- ======= Details Section ======= -->
+        <section id="details" class="details">
+            <div class="container">
+
+                <div class="row content">
+                    <div class="col-md-6" data-aos="fade-right">
+                        <img src="/static/assets/img/pro.gif" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-md-6 pt-4" data-aos="fade-up">
+                        <h3>ببساطة تجربة أفضل للموارد البشرية</h3>
+                        <p>
+                            نحن مصممون على إعادة ابتكار الطريقة التي يُنظر بها إلى الموارد البشرية في الشركات في جميع
+                            أنحاء الشرق الأوسط. حان الوقت للتركيز على ما يدفع المنظمة حقًا إلى الأمام - موظفوها!
+                        </p>
+                        <!--            <ul>-->
+                        <!--              <li><i class="icofont-check"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>-->
+                        <!--              <li><i class="icofont-check"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>-->
+                        <!--              <li><i class="icofont-check"></i> Iure at voluptas aspernatur dignissimos doloribus repudiandae.</li>-->
+                        <!--              <li><i class="icofont-check"></i> Est ipsa assumenda id facilis nesciunt placeat sed doloribus praesentium.</li>-->
+                        <!--            </ul>-->
+                        <p>
+                            لا يتعلق قسم الموارد البشرية بإدارة الموظفين ، بل يتعلق بإشراك فريقك وتزويدهم بالأدوات
+                            المناسبة لتفعيل إمكاناتهم الكاملة - وهذا ما قريب هو كل شي
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row content">
+                    <div class="col-md-6 order-1 order-md-2" data-aos="fade-left">
+                        <img src="/static/assets/img/chart.gif" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-md-6 pt-5 order-2 order-md-1" data-aos="fade-up">
+                        <h3>حان الوقت أخيرًا لتوديع الورق وجداول البيانات.</h3>
+                        <!--            <p class="font-italic">-->
+                        <!--              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore-->
+                        <!--              magna aliqua.-->
+                        <!--            </p>-->
+                        <p>
+                            <!--              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate-->
+                            <!--              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in-->
+                            <!--              culpa qui officia deserunt mollit anim id est laborum-->
+                        </p>
+                        <!--            <p>-->
+                        <!--              Inventore id enim dolor dicta qui et magni molestiae. Mollitia optio officia illum ut cupiditate eos autem. Soluta dolorum repellendus repellat amet autem rerum illum in. Quibusdam occaecati est nisi esse. Saepe aut dignissimos distinctio id enim.-->
+                        <!--            </p>-->
+                    </div>
+                </div>
+
+
+            </div>
+        </section><!-- End Details Section -->
+
+        <!-- ======= Gallery Section ======= -->
+        <!--    <section id="gallery" class="gallery">-->
+        <!--      <div class="container">-->
+
+        <!--        <div class="section-title">-->
+        <!--          <h2>Gallery</h2>-->
+        <!--          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
+        <!--        </div>-->
+
+        <!--        <div class="owl-carousel gallery-carousel" data-aos="fade-up">-->
+        <!--          <a href="/static/assets/img/gallery/gallery-1.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-1.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-2.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-2.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-3.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-3.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-4.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-4.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-5.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-5.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-6.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-6.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-7.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-7.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-8.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-8.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-9.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-9.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-10.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-10.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-11.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-11.png" alt=""></a>-->
+        <!--          <a href="/static/assets/img/gallery/gallery-12.png" class="venobox" data-gall="gallery-carousel"><img src="/static/assets/img/gallery/gallery-12.png" alt=""></a>-->
+        <!--        </div>-->
+
+        <!--      </div>-->
+        <!--    </section>-->
+        <!-- End Gallery Section -->
+
+        <!-- ======= Testimonials Section ======= -->
+        <!--    <section id="testimonials" class="testimonials section-bg">-->
+        <!--      <div class="container">-->
+
+        <!--        <div class="section-title">-->
+        <!--          <h2>الشهادات - التوصيات</h2>-->
+        <!--          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
+        <!--        </div>-->
+
+        <!--        <div class="owl-carousel testimonials-carousel" data-aos="fade-up">-->
+
+        <!--          <div class="testimonial-wrap">-->
+        <!--            <div class="testimonial-item">-->
+        <!--              <img src="/static/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">-->
+        <!--              <h3>Saul Goodman</h3>-->
+        <!--              <h4>Ceo &amp; Founder</h4>-->
+        <!--              <p>-->
+        <!--                <i class="bx bxs-quote-alt-left quote-icon-left"></i>-->
+        <!--                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.-->
+        <!--                <i class="bx bxs-quote-alt-right quote-icon-right"></i>-->
+        <!--              </p>-->
+        <!--            </div>-->
+        <!--          </div>-->
+
+        <!--          <div class="testimonial-wrap">-->
+        <!--            <div class="testimonial-item">-->
+        <!--              <img src="/static/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">-->
+        <!--              <h3>Sara Wilsson</h3>-->
+        <!--              <h4>Designer</h4>-->
+        <!--              <p>-->
+        <!--                <i class="bx bxs-quote-alt-left quote-icon-left"></i>-->
+        <!--                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.-->
+        <!--                <i class="bx bxs-quote-alt-right quote-icon-right"></i>-->
+        <!--              </p>-->
+        <!--            </div>-->
+        <!--          </div>-->
+
+        <!--          <div class="testimonial-wrap">-->
+        <!--            <div class="testimonial-item">-->
+        <!--              <img src="/static/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">-->
+        <!--              <h3>Jena Karlis</h3>-->
+        <!--              <h4>Store Owner</h4>-->
+        <!--              <p>-->
+        <!--                <i class="bx bxs-quote-alt-left quote-icon-left"></i>-->
+        <!--                Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.-->
+        <!--                <i class="bx bxs-quote-alt-right quote-icon-right"></i>-->
+        <!--              </p>-->
+        <!--            </div>-->
+        <!--          </div>-->
+
+        <!--          <div class="testimonial-wrap">-->
+        <!--            <div class="testimonial-item">-->
+        <!--              <img src="/static/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">-->
+        <!--              <h3>Matt Brandon</h3>-->
+        <!--              <h4>Freelancer</h4>-->
+        <!--              <p>-->
+        <!--                <i class="bx bxs-quote-alt-left quote-icon-left"></i>-->
+        <!--                Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.-->
+        <!--                <i class="bx bxs-quote-alt-right quote-icon-right"></i>-->
+        <!--              </p>-->
+        <!--            </div>-->
+        <!--          </div>-->
+
+        <!--          <div class="testimonial-wrap">-->
+        <!--            <div class="testimonial-item">-->
+        <!--              <img src="/static/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">-->
+        <!--              <h3>John Larson</h3>-->
+        <!--              <h4>Entrepreneur</h4>-->
+        <!--              <p>-->
+        <!--                <i class="bx bxs-quote-alt-left quote-icon-left"></i>-->
+        <!--                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.-->
+        <!--                <i class="bx bxs-quote-alt-right quote-icon-right"></i>-->
+        <!--              </p>-->
+        <!--            </div>-->
+        <!--          </div>-->
+
+        <!--        </div>-->
+
+        <!--      </div>-->
+        <!--    </section>&lt;!&ndash; End Testimonials Section &ndash;&gt;-->
+
+        <!-- ======= Pricing Section ======= -->
+        <section id="pricing" class="pricing">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2 data-aos="zoom-in" class="text-center">التسعير</h2>
+                    <p class="text-center">سواء كنت جزءا من شركة مبتدئة او مؤسسة كبيرة يساعد قريب في إدارة و إشراك فريقك. نقدم مجموعة كاملة
+                        من الميزات والأدوات لمساعدتك في كل مرحلة من مراحل رحلتك.</p>
+                </div>
+
+                 <div class="row">
+                    <div class="col-lg-4 p-3 d-flex justify-content-center">
+                        <div class="card col-lg-12 col-12 p-0 crd-cover">
+                            <div class="card-body price-crd">
+                                <h5 class="card-title text-center font-weight-bold">أساسي</h5>
+                                <p class="card-subtitle mb-2 text-center  font-weight-normal crd-pricing"><span
+                                        style="font-size: 42px; letter-spacing: 1.2px;"
+                                        class="font-weight-bold">١٣٨</span>&nbsp;(ر.س)</p>
+                                <h6 class="text-center text-light permon permon-ar">٦ شهور</h6>
+                                <ul class="list-group list-group-flush price-tg price-tgar">
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                       <span class="badge badge-pill badge-danger float-left">شهر واحد</span>نسخة تجريبية مجانية لمدة
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        عشرة كحد أدنى لعدد الموظفين
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        مائة وخمسون كحد أقصى لعدد الموظفين
+                                    </li>
+
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        الوصول الكامل
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        كل المميزات
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        الإعداد في الوقت الحقيقي
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                       دعم الدردشة عبر الإنترنت
+                                    </li>
+
+                                    <li class="list-group-item d-none" style="background: yellow;">
+                                        <i class="fa  fa-times-rectangle-o mr-2 text-danger"></i>
+                                        <del>ادارة المهام</del>
+                                    </li>
+
+                                    <div class="mt-4 text-center">
+                                        <a href="{% url 'signup' %}" class="get-started-btn col-lg-6 m-auto text-center"
+                                           style="height: 35px;">البدء</a>
+                                    </div>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 p-3 d-flex justify-content-center">
+                        <div class="card col-lg-12 col-12 p-0 crd-cover">
+                            <div class="card-body price-crd">
+                                <h5 class="card-title text-center font-weight-bold">المتوسطة</h5>
+                                <p class="card-subtitle mb-2 text-center  font-weight-normal crd-pricing"><span
+                                        style="font-size: 42px; letter-spacing: 1.2px;"
+                                        class="font-weight-bold">١٢٠</span> &nbsp;(ر.س) </p>
+                                <h6 class="text-center text-light permon permon-ar">٦ شهور</h6>
+                                <ul class="list-group list-group-flush price-tg">
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        <span class="badge badge-pill badge-danger float-left">شهر واحد</span>نسخة تجريبية مجانية لمدة
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        مائة وعشرة دقيقة لعدد الموظفين
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        مائتان وخمسون كحد أدنى لعدد الموظفين
+                                    </li>
+
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        الوصول الكامل
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        كل المميزات
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        الإعداد في الوقت الحقيقي
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                       دعم الدردشة عبر الإنترنت
+                                    </li>
+
+                                    <li class="list-group-item d-none" style="background: yellow;">
+                                        <i class="fa  fa-times-rectangle-o mr-2 text-danger"></i>
+                                        <del>ادارة المهام</del>
+                                    </li>
+
+                                    <div class="mt-4 text-center">
+                                        <a href="{% url 'signup' %}" class="get-started-btn col-lg-6 m-auto text-center"
+                                           style="height: 35px;">البدء</a>
+                                    </div>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 p-3 d-flex justify-content-center">
+                        <div class="card col-lg-12 col-12 p-0 crd-cover">
+                            <div class="card-body price-crd">
+                                <h5 class="card-title text-center font-weight-bold">مشروع</h5>
+                                <p class="card-subtitle mb-2 text-center  font-weight-normal crd-pricing"><span
+                                        style="font-size: 42px; letter-spacing: 1.2px;"
+                                        class="font-weight-bold">٩٠</span> &nbsp;(ر.س)  </p>
+                                <h6 class="text-center text-light permon permon-ar">٦ شهور</h6>
+                                <ul class="list-group list-group-flush price-tg">
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                       <span class="badge badge-pill badge-danger float-left">شهر واحد</span>نسخة تجريبية مجانية لمدة
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        مائتان وخمسون كحد أدنى لعدد الموظفين
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        تسعمائة وتسعة وتسعون أقصى عدد من الموظفين
+                                    </li>
+
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        الوصول الكامل
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        كل المميزات
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                        الإعداد في الوقت الحقيقي
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-check-square-o mr-2 text-success"></i>
+                                       دعم الدردشة عبر الإنترنت
+                                    </li>
+
+                                    <li class="list-group-item d-none" style="background: yellow;">
+                                        <i class="fa  fa-times-rectangle-o mr-2 text-danger"></i>
+                                        <del>ادارة المهام</del>
+                                    </li>
+
+                                    <div class="mt-4 text-center">
+                                        <a href="{% url 'signup' %}" class="get-started-btn col-lg-6 m-auto text-center"
+                                           style="height: 35px;">البدء</a>
+                                    </div>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- price card previous-->
+
+<!--                <div class="row no-gutters">-->
+<!--                    {% for d in data %}-->
+<!--                    <div class="col-lg-4 box" data-aos="fade-right">-->
+<!--                        <h3>{{d.artitle}}</h3>-->
+<!--                        <h4> ريال {{d.price}} <span>كل شهر</span></h4>-->
+<!--                        <ul>-->
+<!--                            <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>-->
+<!--                            <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>-->
+<!--                            <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>-->
+<!--                            <li class="na"><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>-->
+<!--                            <li class="na"><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>-->
+<!--                        </ul>-->
+<!--                        <a href="{% url 'signup' %}" class="get-started-btn">البدء</a>-->
+<!--                    </div>-->
+<!--                    {% endfor %}-->
+<!--                    &lt;!&ndash;          <div class="col-lg-4 box featured" data-aos="fade-up">&ndash;&gt;-->
+<!--                    &lt;!&ndash;            <h3>اعمال</h3>&ndash;&gt;-->
+<!--                    &lt;!&ndash;            <h4>ريال 29<span>كل شهر</span></h4>&ndash;&gt;-->
+<!--                    &lt;!&ndash;            <ul>&ndash;&gt;-->
+<!--                    &lt;!&ndash;              <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;              <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;              <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;              <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;              <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;            </ul>&ndash;&gt;-->
+<!--                    &lt;!&ndash;            <a href="{% url 'signup' %}" class="get-started-btn">البدء</a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;          </div>&ndash;&gt;-->
+
+<!--                    &lt;!&ndash;          <div class="col-lg-4 box" data-aos="fade-left">&ndash;&gt;-->
+<!--                    &lt;!&ndash;            <h3>مطور</h3>&ndash;&gt;-->
+<!--                    &lt;!&ndash;            <h4>49 ريال<span>كل شهر</span></h4>&ndash;&gt;-->
+<!--                    &lt;!&ndash;            <ul>&ndash;&gt;-->
+<!--                    &lt;!&ndash;              <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;              <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;              <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;              <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;              <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;            </ul>&ndash;&gt;-->
+<!--                    &lt;!&ndash;            <a href="{% url 'signup' %}" class="get-started-btn">البدء</a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;          </div>&ndash;&gt;-->
+
+<!--                </div>-->
+
+            </div>
+        </section><!-- End Pricing Section -->
+
+        <!-- ======= Frequently Asked Questions Section ======= -->
+        <section id="faq" class="faq section-bg">
+            <div class="container">
+
+                <div class="section-title">
+
+                    <h2 data-aos="zoom-in" class="text-center">الأسئلة الشائعة</h2>
+                    <!--          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
+                </div>
+
+                <div class="accordion-list">
+                    <ul>
+                        <li data-aos="fade-up">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" class="collapse"
+                                                                           href="#accordion-list-1">ما هوة نظام إدارة
+                            الموارد البشرية (نظام إدارة الموارد البشرية) ؟ <i class="bx bx-chevron-down icon-show"></i><i
+                                    class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="accordion-list-1" class="collapse show" data-parent=".accordion-list">
+                                <p>
+                                    برنامج ادارة الموارد البشرية (نظام إدارة الموارد البشرية) هو شكل من اشكال برامج الموارد البشرية الذي يجمع
+                                    بين عدد من الأنظمة لضمان سهولة إدارة الموارد البشرية و العمليات التجارية و البيانات
+                                </p>
+                            </div>
+                        </li>
+
+                        <li data-aos="fade-up" data-aos-delay="100">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse"
+                                                                           href="#accordion-list-2" class="collapsed">لماذا
+                            احتاج الى برنامج لإدارة الموارد البشرية ؟ <i class="bx bx-chevron-down icon-show"></i><i
+                                    class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="accordion-list-2" class="collapse" data-parent=".accordion-list">
+                                <p>
+                                    تظهر الأبحاث أن الشركات التي لديها أنظمة موارد بشرية مطورة حديثًا تحقق توفير في
+                                    التكاليف بنسبة 22٪ لكل موظف (Bersin by Deloitte). باستخدام برنامج الموارد البشرية ،
+                                    يمكنك توفير الوقت والمال ، وإبقاء فريقك على اطلاع والمشاركة ، وتأكد التزامك بقوانين
+                                    العمل المحلية
+                                </p>
+                            </div>
+                        </li>
+
+                        <li data-aos="fade-up" data-aos-delay="200">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse"
+                                                                           href="#accordion-list-3" class="collapsed">ما
+                            اللغات المدعومة؟<i class="bx bx-chevron-down icon-show"></i><i
+                                    class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="accordion-list-3" class="collapse" data-parent=".accordion-list">
+                                <p>
+                                    متوفر قريب باللغة العربية و الانجليزية. و ايضا نسعى لنتأكد ان جميع المعلومات الذي
+                                    تريد ان تدخلها متوفرة باللغتين
+                                </p>
+                            </div>
+                        </li>
+
+                        <li data-aos="fade-up" data-aos-delay="300">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse"
+                                                                           href="#accordion-list-4" class="collapsed">كيف
+                            يمكنني ان ابدا باسرع وقت؟ <i class="bx bx-chevron-down icon-show"></i><i
+                                    class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="accordion-list-4" class="collapse" data-parent=".accordion-list">
+                                <p>
+                                    إنها مسألة ساعات وليس أيامًا وأسابيع. نحن نؤمن بأن إنشاء تجربة قريب الخاصة بك ينبغي
+                                    أن تكون ممتعة وسهلة، لاجل تمكينك الى ضم موظفينك الى البرنامج بسهولة. لقد انشأنا رحلة
+                                    لضم المعلومات الخاصة بشركتك لتنصيب البرنامج بناءا على احتياجاتك. سيستلم فريقك مقطع
+                                    فيديو توضيحي للتأكد من ضبطهم للحل الجديد بسلاسة. وبالطبع إذا واجهت أي مشاكل ، أو كنت
+                                    ترغب في أن نقوم بإعداد كل شيء لك ، فنحن هنا وواثقون من تقديم حل مناسب.
+
+                            </div>
+                        </li>
+
+                        <!--            <li data-aos="fade-up" data-aos-delay="400">-->
+                        <!--              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#accordion-list-5" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>-->
+                        <!--              <div id="accordion-list-5" class="collapse" data-parent=".accordion-list">-->
+                        <!--                <p>-->
+                        <!--                  Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.-->
+                        <!--                </p>-->
+                        <!--              </div>-->
+                        <!--            </li>-->
+
+                    </ul>
+                </div>
+
+            </div>
+        </section><!-- End Frequently Asked Questions Section -->
+
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2 data-aos="zoom-in" class="text-center">اتصل</h2>
+                    <!--          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-6 info" data-aos="fade-up">
+<!--                                <i class="bx bx-map "></i>-->
+                                <i class="bx bx-map shaky-icon"></i>
+                                <h4 class="text-center"><b>عنوان</b></h4>
+                                <p class="text-center">مخرج 14 الريان الرياض <br>المملكة العربية السعودية</p>
+                            </div>
+                            <div class="col-lg-6 info " data-aos="fade-up" data-aos-delay="100">
+                                <i class="bx bx-phone shaky-icon"></i>
+                                <h4 class="text-center">اتصل بنا</h4>
+                                <p style="direction: ltr;" class="text-center">
+                                    <b>+۹٦٦ ٥٦۳۳۳۳۳۰۲<br>
+                                    +۹٦٦ ٥٥۱٤۳۹۲۸۷</b></p>
+<!--                                <p>+966 563333302<br>+966 551439287</p>-->
+                            </div>
+                            <div class="col-lg-6 info" data-aos="fade-up" data-aos-delay="200">
+                                <i class="bx bx-envelope shaky-icon"></i>
+                                <h4 class="text-center">ارسل لنا عبر البريد الإلكتروني</h4>
+                                <p class="text-center">aalmutlaq83@yahoo.com<br>info@britx.com</p>
+                            </div>
+                            <div class="col-lg-6 info" data-aos="fade-up" data-aos-delay="300">
+                                <i class="bx bx-time-five shaky-icon"></i>
+                                <h4 class="text-center">ساعات العمل</h4>
+                                <p class="text-center">الأحد - الأربعاء: 9 صباحًا حتى 5 مساءً <br> السبت: 9 صباحًا إلى 5 مساءً</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <form action="forms/contact.php" method="post" role="form" class="php-email-form"
+                              data-aos="fade-up">
+                            <div class="form-group">
+                                <input placeholder="اسمك" type="text" name="name" class="form-control" id="name"
+                                       data-rule="minlen:4" data-msg="Please enter at least 4 chars"/>
+                                <div class="validate"></div>
+                            </div>
+                            <div class="form-group">
+                                <input placeholder="بريدك الالكتروني" type="email" class="form-control" name="email"
+                                       id="email" data-rule="email" data-msg="Please enter a valid email"/>
+                                <div class="validate"></div>
+                            </div>
+                            <div class="form-group">
+                                <input placeholder="موضوع" type="text" class="form-control" name="subject" id="subject"
+                                       data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject"/>
+                                <div class="validate"></div>
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="رسالة" class="form-control" name="message" rows="5"
+                                          data-rule="required" data-msg="Please write something for us"></textarea>
+                                <div class="validate"></div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="loading">جار التحميل</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">تم ارسال رسالتك. شكرا لك!</div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit">أرسل رسالة</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Contact Section -->
+
+    </main><!-- End #main -->
+
+</div>
+{% endif %}
+
+{% endblock %}

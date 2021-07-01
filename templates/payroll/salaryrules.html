@@ -1,0 +1,109 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Salary Rules</li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+
+            <div class="card card_border py-2 mb-4">
+                <div class="cards__heading">
+                    <div class="row">
+                        <div class="col-9">
+                            <h3><span>Salary Rules</span></h3>
+                        </div>
+                        <div class="col-3">
+                            <a href="/" type="submit" class="btn btn-primary btn-style ">Cancel</a>
+                            <a href="{% url 'CreateSalaryRules' %}"
+                               class="btn btn-lg btn-outline-primary btn-style border-btn">Create</a>
+
+
+                        </div>
+
+                    </div>
+                    <!--                    <div class="col-9"></div>-->
+                    <!--                    <div class="col-3">-->
+                    <!--                        <ul class="pagination">-->
+                    <!--                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
+                    <!--                            <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+                    <!--                            <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+                    <!--                            <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+                    <!--                            <li class="page-item"><a class="page-link" href="#">Next</a></li>-->
+                    <!--                        </ul>-->
+                    <!--                    </div>-->
+
+                </div>
+                <div class="card-body">
+                    <form action="#" method="post">
+
+                        <div class="container-fluid">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr class="text-primary">
+                                    <!--                                    <th><input type="checkbox"></th>-->
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Amount Type</th>
+                                    <th>Quantity</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for d in data %}
+                                <tr>
+                                    <!--                                    <th><input type="checkbox"></th>-->
+                                    <td>{{d.Name}}</td>
+                                    <td>{{d.Category}}</td>
+                                    <td>{{d.AmountType}}</td>
+                                    <td>{{d.Quantity}}</td>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="{% url 'editleave' d.id %}"><i
+                                                        style="color: #4755AB;font-size: 25px;"
+                                                        class="fa fa-pencil-square-o"
+                                                        aria-hidden="true"></i></a>
+                                            </div>
+                                            <div class="col">
+                                                <form action="{% url 'delleave' %}" method="post">
+                                                    {% csrf_token %}
+                                                    <button type="submit"
+                                                            style="color: #4755AB;font-size: 25px; border:none;"
+                                                            value="{{d.id}}" name="id"><i class="fa fa-trash-o"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

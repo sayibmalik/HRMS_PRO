@@ -1,0 +1,490 @@
+{% extends 'base.html'%}
+{% block content%}
+<style>
+     .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+
+    .note-cov
+    {
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        border-radius: 20px;
+    }
+
+    .curve-around input , .curve-around select
+    {
+        border-radius: 6px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+
+
+
+
+</style>
+
+
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Attendance
+                    {% else %}
+                    حضور
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <div class="row m-0 ">
+                <div class="col-lg-12 backwhite pt-5">
+                    <h4 class="ml-2 text-primary">
+                        {% if request.session.lang == "EN" %}
+                        <i class="fa fa-calendar mr-2" aria-hidden="true"></i><b>Attendance</b>
+                        {% else %}
+                        إنشاء أقسام
+                        {% endif %}
+                    </h4>
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-lg-12 backwhite ">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-5 col-md-10 col-12 p-4 note-cov mt-5 mb-5" style="position:relative;">
+                            <div class="col-lg-10 col-12 m-auto curve-around p-2 pt-4">
+
+                                <div class="row m-0">
+                                    <div class="col-lg-6 col-12">
+                                        {% if request.session.lang == "EN" %}
+                                        <h4 class="text-success"><b>Timesheet</b></h4>
+                                        {% else %}
+                                          <h4 class="text-success"><b> ورقة التوقيت</b></h4>
+
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="col-lg-6 col-12">
+                                        {% if request.session.lang == "EN" %}
+                                        <p style="font-size:20px; "><b> Date</b></p>
+
+                                        <strong><span class="text-muted  text-success" id="today"></span></strong>
+                                        <script>
+var d = new Date();
+var m =d.getMonth()+1;
+document.getElementById("today").innerHTML = d.getDate() + "-" + m + "-" + d.getFullYear();
+
+
+
+
+                                        </script>
+                                        {% else %}
+                                        <span style="margin-left: 20px;font-size:20px;"><b> تاريخ</b></span>
+                                        <strong><span class="text-muted pl-5 text-success" id="today"></span></strong>
+                                                                                <script>
+var d = new Date();
+var m =d.getMonth()+1;
+document.getElementById("today").innerHTML = d.getDate() + "-" + m + "-" + d.getFullYear();
+
+
+
+
+                                        </script>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-10 col-12 m-auto curve-around p-2 pt-4">
+                                <div class="row m-0">
+                                    <div class="col">
+                                        <form method="post" action="">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                                <div class="col-sm-7 col-md-7">
+                                                    <h5 class="card-title">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Project
+                                                        {% else %}
+                                                        المشروع
+                                                        {% endif %}
+                                                        <br>
+                                                    </h5>
+                                                    <!--                                    <small class="text-muted" id="today">-->
+                                                    <!--                                        </small>-->
+                                                    <!--<script>-->
+                                                    <!--var d = new Date();-->
+                                                    <!--var m =d.getMonth()+1;-->
+                                                    <!--document.getElementById("today").innerHTML = d.getDate() + "-" + m + "-" + d.getFullYear();-->
+                                                    <!--</script>-->
+                                                    <!--                                </h5>-->
+                                                </div>
+                                                <div class="col-sm-5 col-md-5">
+
+                                                    <div class="form-group form-focus select-focus focused">
+                                                        <select name="project"
+                                                                class="select floating select2-hidden-accessible form-control input-style"
+                                                                required>
+                                                            {% if punchtype == 'Out' %}
+                                                            disabled
+                                                            {% endif %}
+
+                                                            {% for d in data %}
+                                                            <option value="{{d.id}}" >{{d.Name}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="wrap">
+
+                                                <h6>
+                                                    {% if request.session.lang == "EN" %}
+                                                    Check
+                                                    {% else %}
+                                                    الشيك
+                                                    {% endif %}
+                                                    {{punchedtype}}
+                                                    {% if request.session.lang == "EN" %}
+                                                    at
+                                                     {% else %}
+                                                    في
+                                                     {% endif %}
+
+                                                </h6>
+
+                                                <p>
+                                                    {{punchdata}}
+                                                </p>
+                                            </div>
+
+
+                                        {% if request.session.lang == "EN" %}
+                                        <h6 class="mt-4 mb-3 text-center"><b>Short Description</b></h6>
+                                        {% else %}
+                                             <h6 class="mt-4 mb-3 text-center"><b>وصف قصير</b></h6>
+                                        {% endif %}
+
+                                            <div class="wrap m-auto  ">
+                       <textarea type="text"
+                                 style="min-height: 120px;max-height: 120px; border: 2px solid #4755AB; width:100%"
+                                 maxlength="500" name="description"
+                                 required></textarea>
+                                            </div>
+                                            <div class="wrap-btn-section text-center  p-2">
+                                                <button type="submit" class="btn btn-sm btn-success  btn-style  col-lg-4 ml-1 text-white "
+                                        style="height: 40px;font-size: 16px;padding-top: 8px; margin-top: 30px; border-radius: 20px;"><i class="fa fa-clock-o mr-1 ml-1"></i>Check {{punchtype}}
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+<!--                            <div class="col-lg-10 col-12 m-auto curve-around p-2 pt-4">-->
+<!--                                <div class="row m-0">-->
+<!--                                    <div class="col">-->
+<!--                                        {% if request.session.lang == "EN" %}-->
+<!--                                        <h6><b>Check <span>In</span> at</b></h6>-->
+<!--                                        {% else %}-->
+<!--                                        تحقق (داخل أو خارج) الوقت-->
+<!--                                        {% endif %}-->
+<!--                                    </div>-->
+<!--                                    <div class="col">-->
+<!--                                        <input type="time" name="checkinout">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+<!--                            <div class="col-lg-10 col-12 m-auto curve-around p-2 pt-4">-->
+<!--                                <div class="row m-0">-->
+<!--                                    <div class="col">-->
+<!--                                        {% if request.session.lang == "EN" %}-->
+<!--                                        <h6><b>Short Description</b></h6>-->
+<!--                                        {% else %}-->
+<!--                                        وصف قصير-->
+<!--                                        {% endif %}-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+
+<!--                            <div class="col-lg-10 col-12 m-auto  p-2">-->
+<!--                                <div class="row m-0">-->
+<!--                                    <div class="col">-->
+<!--                                            <textarea name="note" class="form-control "-->
+<!--                                                      style="min-height: 120px;max-height: 120px; border: 2px solid #4755AB;"></textarea>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+<!--                            <div class="col-lg-10 col-12 m-auto text-right  p-2">-->
+<!--                                <button type="submit"-->
+<!--                                        class="btn btn-sm btn-success  btn-style  col-lg-4 ml-1 text-white "-->
+<!--                                        style="height: 40px;font-size: 16px;padding-top: 8px; margin-top: 30px; border-radius: 20px;">-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    <i class="fa fa-clock-o mr-2"></i>check <span>In</span>-->
+<!--                                    {% else %}-->
+<!--                                    <i class="fa fa-clock-o ml-2"></i>check <span>In</span>-->
+<!--                                    {% endif %}-->
+<!--                                </button>-->
+<!--                            </div>-->
+
+                            <i class="fa fa-calendar-check-o fa-3x text-success" aria-hidden="true"
+                               style="position: absolute; top: -17px;left:-12px;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--old code-->
+
+
+            <!--            <div class="card card_border py-2 mb-4">-->
+            <!--                <div class="cards__heading">-->
+            <!--                    <div class="row">-->
+            <!--                        <h3><span>-->
+            <!--                  {% if request.session.lang == "EN" %}-->
+            <!--                  Attendance-->
+            <!--                  {% else %}-->
+            <!--                  حضور-->
+            <!--                  {% endif %}-->
+            <!--                        </span></h3>-->
+            <!--                    </div>-->
+            <!--                    <div class="row mt-3">-->
+            <!--                    </div>-->
+            <!--                </div>-->
+
+            <!--                <div class="card-body">-->
+            <!--                    <form action="#" method="post">-->
+
+            <!--<div class="row">-->
+            <!--        <div class="col-md-4 mx-auto">-->
+
+            <!--            <div class="card punch-status">-->
+            <!--                <div class="card-body">-->
+            <!--                    <form method="post" action="">-->
+            <!--                        {% csrf_token %}-->
+            <!--                        <div class="row">-->
+            <!--                            <div class="col-sm-7 col-md-7">-->
+            <!--                                <h5 class="card-title">-->
+            <!--                                    {% if request.session.lang == "EN" %}-->
+            <!--                                     Timesheet-->
+            <!--                                     {% else %}-->
+            <!--                                     ورقة التوقيت-->
+            <!--                                     {% endif %}-->
+            <!--                                    <br>-->
+            <!--&lt;!&ndash;                                    <small class="text-muted" id="today">&ndash;&gt;-->
+            <!--&lt;!&ndash;                                        </small>&ndash;&gt;-->
+            <!--&lt;!&ndash;<script>&ndash;&gt;-->
+            <!--&lt;!&ndash;var d = new Date();&ndash;&gt;-->
+            <!--&lt;!&ndash;var m =d.getMonth()+1;&ndash;&gt;-->
+            <!--&lt;!&ndash;document.getElementById("today").innerHTML = d.getDate() + "-" + m + "-" + d.getFullYear();&ndash;&gt;-->
+            <!--&lt;!&ndash;</script>&ndash;&gt;-->
+            <!--&lt;!&ndash;                                </h5>&ndash;&gt;-->
+            <!--                            </div>-->
+            <!--                            <div class="col-sm-5 col-md-5">-->
+
+            <!--                                <div class="form-group form-focus select-focus focused">-->
+            <!--                                    <select name="project" class="select floating select2-hidden-accessible form-control input-style" required>-->
+            <!--                                    {% if punchtype == 'Out' %}-->
+            <!--                                            disabled-->
+            <!--                                    {% endif %}-->
+
+            <!--                                          {% for d in data %}-->
+            <!--                                        <option value="{{d.id}}" >{{d.Name}}</option>-->
+            <!--                                           {% endfor %}-->
+            <!--                                    </select>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                        <div class="wrap">-->
+
+            <!--                                <h6>Check {{punchedtype}} at-->
+
+            <!--                                </h6>-->
+
+            <!--                            <p>-->
+            <!--                                {{punchdata}}-->
+            <!--                            </p>-->
+            <!--                        </div>-->
+
+
+            <!--                        <div class="wrap">-->
+            <!--                       <textarea type="text" style="background:inherit;height:70px;outline:none;border:none;resize: none;width:100%" maxlength="500" name="description" placeholder="-->
+            <!--                       Enter Short Information Related Task-->
+            <!--" required></textarea>-->
+            <!--                        </div>-->
+            <!--                        <div class="wrap-btn-section">-->
+
+
+            <!--                                <button type="submit"  class="btn btn-primary ">Check {{punchtype}}-->
+            <!--                                </button>-->
+
+
+            <!--                        </div>-->
+            <!--                    </form>-->
+            <!--                    &lt;!&ndash;                    <div class="statistics">&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                        <div class="row">&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                            <div class="col-md-6 col-6 text-center">&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                                <div class="Box-box">&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                                    <p>Break</p>&ndash;&gt;-->
+
+            <!--                    &lt;!&ndash;                                    <h6>-1.38 hrs</h6>&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                                </div>&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                            </div>&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                            <div class="col-md-6 col-6 text-center">&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                                <div class="Box-box">&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                                    <p>Overtime</p>&ndash;&gt;-->
+
+            <!--                    &lt;!&ndash;                                        <h6>0 hrs</h6>&ndash;&gt;-->
+
+            <!--                    &lt;!&ndash;                                </div>&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                            </div>&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                        </div>&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                    </div>&ndash;&gt;-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <!--        </div>-->
+            <!--&lt;!&ndash;        <div class="col-md-4">&ndash;&gt;-->
+            <!--&lt;!&ndash;            <div class="card card2">&ndash;&gt;-->
+            <!--&lt;!&ndash;                <div class="card-body">&ndash;&gt;-->
+            <!--&lt;!&ndash;                    <h5 class="card-title">Statistics</h5>&ndash;&gt;-->
+            <!--&lt;!&ndash;                    <div class="stats-list">&ndash;&gt;-->
+            <!--&lt;!&ndash;                        <div class="info-info">&ndash;&gt;-->
+            <!--&lt;!&ndash;                            <p>Today <strong>5.79&ndash;&gt;-->
+            <!--&lt;!&ndash;                                <small>/ 8 hrs</small>&ndash;&gt;-->
+            <!--&lt;!&ndash;                            </strong></p>&ndash;&gt;-->
+            <!--&lt;!&ndash;                            <div class="progress">&ndash;&gt;-->
+
+            <!--&lt;!&ndash;                                <div class="progress-bar bg-primary" role="progressbar" style="width:72.375%" aria-valuenow="72.375" aria-valuemin="0" aria-valuemax="100"></div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                        <div class="info-info">&ndash;&gt;-->
+            <!--&lt;!&ndash;                            <p>This Week <strong>2.32&ndash;&gt;-->
+            <!--&lt;!&ndash;                                <small>/ 40 hrs</small>&ndash;&gt;-->
+            <!--&lt;!&ndash;                            </strong></p>&ndash;&gt;-->
+            <!--&lt;!&ndash;                            <div class="progress">&ndash;&gt;-->
+            <!--&lt;!&ndash;                                <div class="progress-bar bg-warning" role="progressbar" style="width: 5.8%" aria-valuenow="5.8" aria-valuemin="0" aria-valuemax="100"></div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                        <div class="info-info">&ndash;&gt;-->
+            <!--&lt;!&ndash;                            <p>This Month <strong>2.32&ndash;&gt;-->
+            <!--&lt;!&ndash;                                <small>/ 184 hrs</small>&ndash;&gt;-->
+            <!--&lt;!&ndash;                            </strong></p>&ndash;&gt;-->
+            <!--&lt;!&ndash;                            <div class="progress">&ndash;&gt;-->
+            <!--&lt;!&ndash;                                <div class="progress-bar bg-success" role="progressbar" style="width: 1.2608695652173911%" aria-valuenow="1.2608695652173911" aria-valuemin="0" aria-valuemax="100"></div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                        <div class="info-info">&ndash;&gt;-->
+
+            <!--&lt;!&ndash;                            <p>Remaining this month <strong>181.68&ndash;&gt;-->
+            <!--&lt;!&ndash;                                <small>/ 184 hrs</small>&ndash;&gt;-->
+            <!--&lt;!&ndash;                            </strong></p>&ndash;&gt;-->
+            <!--&lt;!&ndash;                            <div class="progress">&ndash;&gt;-->
+            <!--&lt;!&ndash;                                <div class="progress-bar bg-danger" role="progressbar" style="width: 98.73913043478261%" aria-valuenow="98.73913043478261" aria-valuemin="0" aria-valuemax="100"></div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                        <div class="info-info">&ndash;&gt;-->
+
+            <!--&lt;!&ndash;                                <p>Overtime this month&ndash;&gt;-->
+            <!--&lt;!&ndash;                                    <small>0 hrs</small>&ndash;&gt;-->
+            <!--&lt;!&ndash;                                </p>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;                            <div class="progress">&ndash;&gt;-->
+            <!--&lt;!&ndash;                                <div class="progress-bar bg-info" role="progressbar" style="width: -363.36%" aria-valuenow="-363.36" aria-valuemin="0" aria-valuemax="100"></div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;            </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;        </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;        <div class="col-md-4">&ndash;&gt;-->
+            <!--&lt;!&ndash;            <div class="card recent-activity">&ndash;&gt;-->
+            <!--&lt;!&ndash;                <div class="card-body">&ndash;&gt;-->
+            <!--&lt;!&ndash;                    <h5 class="card-title">Today Activity</h5>&ndash;&gt;-->
+            <!--&lt;!&ndash;                    <ul class="res-activity-list">&ndash;&gt;-->
+            <!--&lt;!&ndash;                        <div class="row ml-0 mr-0">&ndash;&gt;-->
+            <!--&lt;!&ndash;                            <div class="col-md-7 p-0">&ndash;&gt;-->
+
+
+            <!--&lt;!&ndash;                                    <li>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;                                        <p class="mb-0">Punch In at</p>&ndash;&gt;-->
+            <!--&lt;!&ndash;                                        <p class="res-activity-time">&ndash;&gt;-->
+            <!--&lt;!&ndash;                                            <i class="fa fa-clock-o"></i>&ndash;&gt;-->
+            <!--&lt;!&ndash;                                            Oct. 6, 2020, 7:48 a.m.&ndash;&gt;-->
+            <!--&lt;!&ndash;                                        </p>&ndash;&gt;-->
+            <!--&lt;!&ndash;                                    </li>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;                                        <li>&ndash;&gt;-->
+            <!--&lt;!&ndash;                                            <p class="mb-0">Punch Out at</p>&ndash;&gt;-->
+            <!--&lt;!&ndash;                                            <p class="res-activity-time">&ndash;&gt;-->
+            <!--&lt;!&ndash;                                                <i class="fa fa-clock-o"></i>&ndash;&gt;-->
+            <!--&lt;!&ndash;                                                Oct. 6, 2020, 11:16 a.m.&ndash;&gt;-->
+            <!--&lt;!&ndash;                                            </p>&ndash;&gt;-->
+            <!--&lt;!&ndash;                                        </li>&ndash;&gt;-->
+
+
+            <!--&lt;!&ndash;                                    <li>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;                                        <p class="mb-0">Punch In at</p>&ndash;&gt;-->
+            <!--&lt;!&ndash;                                        <p class="res-activity-time">&ndash;&gt;-->
+            <!--&lt;!&ndash;                                            <i class="fa fa-clock-o"></i>&ndash;&gt;-->
+            <!--&lt;!&ndash;                                            Dec. 6, 2020, 10:05 a.m.&ndash;&gt;-->
+            <!--&lt;!&ndash;                                        </p>&ndash;&gt;-->
+            <!--&lt;!&ndash;                                    </li>&ndash;&gt;-->
+
+
+            <!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                            <div class="col-md-5">&ndash;&gt;-->
+            <!--&lt;!&ndash;                                <div class="punch-info">&ndash;&gt;-->
+            <!--&lt;!&ndash;                                    <div class="punch-hours">&ndash;&gt;-->
+            <!--&lt;!&ndash;                                        <span id="currenthours">5.79 hrs</span>&ndash;&gt;-->
+            <!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;                    </ul>&ndash;&gt;-->
+            <!--&lt;!&ndash;                </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;            </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;        </div>&ndash;&gt;-->
+            <!--    </div>-->
+
+            <!--                    </form>-->
+            <!--                </div>-->
+            <!--            </div>-->
+
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+
+{% endblock %}

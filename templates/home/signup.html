@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>
+        {% if request.session.lang == "EN" %}
+        Gareeb
+        {% else %}
+        قريب
+        {% endif %}
+    </title>
+    <script type="text/javascript" src="/static/assets/js/ext.js"></script>
+    <link href="/static/assets/img/icon.png" rel="icon">
+    <link href="/static/assets/img/icon.png" rel="apple-touch-icon">
+    <link href="/static/bootstrap-4.5.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/static/bootstrap-4.5.3-dist/js/jquery.min.js"></script>
+    <script src="/static/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/static/assets/css/style-starter.css">
+    <link href="/static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Poppins:wght@100&display=swap"
+          rel="stylesheet">
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="/static/assets/css/stylesheet.css" rel="stylesheet">
+    <link href=https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9924696333.js" crossorigin="anonymous"></script>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Roboto&display=swap');
+    body{
+    background-color:white;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    button:focus{
+        outline:none;
+    }
+
+    input[type="text"]:hover,input[type="password"]:hover,input[type="email"]:hover,input[type="number"]:hover{
+        border-bottom:2px solid #4755AB;
+        border-radius: 1px;
+    }
+
+<!--    .sign img {-->
+<!--    position: absolute;-->
+<!--    top: 30%;-->
+<!--    left: 50%;-->
+<!--    width: 120px;-->
+<!--    height: 120px;-->
+<!--    margin:-60px 0 0 -60px;-->
+<!--    -webkit-animation:spin 4s linear infinite;-->
+<!--    -moz-animation:spin 4s linear infinite;-->
+<!--    animation:spin 4s linear infinite;-->
+<!--}-->
+<!--@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }-->
+<!--@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }-->
+<!--@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }-->
+        /*--------------------------------------------------------------
+# Pricing
+--------------------------------------------------------------*/
+.pricing .row {
+  padding-top: 40px;
+}
+
+.pricing .box {
+  padding: 40px;
+  margin-bottom: 30px;
+  box-shadow: 0px 0px 30px rgba(73, 78, 92, 0.15);
+  background: #fff;
+  text-align: center;
+}
+
+.pricing h3 {
+  font-weight: 300;
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+.pricing h4 {
+  font-size: 46px;
+  color: #5777ba;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 25px;
+}
+
+.pricing h4 span {
+  color: #bababa;
+  font-size: 18px;
+  display: block;
+}
+
+.pricing ul {
+  padding: 0;
+  list-style: none;
+  color: #999;
+  text-align: left;
+  line-height: 20px;
+}
+
+.pricing ul li {
+  padding-bottom: 12px;
+}
+
+.pricing ul i {
+  color: #5777ba;
+  font-size: 18px;
+  padding-right: 4px;
+}
+
+.pricing ul .na {
+  color: #ccc;
+}
+
+.pricing ul .na i {
+  color: #ccc;
+}
+
+.pricing ul .na span {
+  text-decoration: line-through;
+}
+
+.f-bold{font-weight: bold;}
+
+.pricing .get-started-btn {
+  background: #47536e;
+  display: inline-block;
+  padding: 6px 30px;
+  border-radius: 20px;
+  color: #fff;
+  transition: none;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Raleway", sans-serif;
+  transition: 0.3s;
+}
+
+.pricing .get-started-btn:hover {
+  background: #5777ba;
+}
+
+.pricing .featured {
+  z-index: 10;
+  margin: -30px -5px 0 -5px;
+}
+
+.pricing .featured .get-started-btn {
+ background-color: #000000;
+           background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
+}
+
+.pricing .featured .get-started-btn:hover {
+  background-color: #000000;
+           background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
+}
+
+.bx-check:before {
+    content: "\ea0f";
+}
+
+@media (max-width: 992px) {
+  .pricing .box {
+    max-width: 60%;
+    margin: 0 auto 30px auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .pricing .box {
+    max-width: 80%;
+    margin: 0 auto 30px auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .pricing .box {
+    max-width: 100%;
+    margin: 0 auto 30px auto;
+  }
+}
+
+
+@media (max-width: 766px){
+.nun{
+margin-left:10%;
+}
+}
+
+
+
+
+    </style>
+</head>
+<body class="sidebar-menu-collapsed" style="">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+<section>
+
+    <!-- content -->
+    <div class="row m-0" style="min-height: 100vh;">
+        <div class="col-md-5" style="background: linear-gradient(to right, #4755ab 0%, #a3aad5 100%);">
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <!--           <div class="sign">-->
+                    <img src="/static/assets/images/g2.png" style="height:120px;width120px; margin-top:145px;">
+
+                    <!--            </div>-->
+                </div>
+            </div>
+            <p style="font-size:2rem; font-weight:bold;color:white;font-family:'Open Sans', sans-serif !important;"
+               class="text-center mt-4"><b></b>Gareeb <span
+                    style="color:#fff; font-family: 'Krona One', sans-serif !important;">HRM</span></p>
+
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    {% if request.session.lang == "EN" %}
+                    <div class="gareeb ml-5" style="margin-top:13vh; font-family: 'Poppins', sans-serif;">
+                        <h2 class="text-light font-weight-bold">Gareeb</h2>
+                        <h6 class="text-light mt-4">HR cloud-based solution that helps take better care of your
+                            teams.</h6>
+                        <h6 class="text-light mt-5 mb-3"><span>© Gareeb 2019 - 2021</span></h6>
+
+                    </div>
+                    {% else %}
+                    <div class="gareeb mr-5" style="margin-top:13vh;font-family: 'Poppins', sans-serif;">
+                        <h2 class="text-light">قريب</h2>
+                        <h6 class="text-light mt-4">هو الحل السحابي لإدارة الرأس المال البشري الذي يساعدك على توفير افضل
+                            رعاية
+                            واهتمام لفريقك</h6>
+                        <h6 class="text-light mt-5 mb-3"><span>  قريب © 2019 - 2021</span></h6>
+
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-7">
+            <section class="register-form py-md-5 py-3">
+                <div class="card card_border col-lg-12" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                    <div class="card-body">
+                        <!--                        Step: {{request.session.stage}}-->
+                        <!--                    <div class="register__header text-center mb-lg-5 mb-4">-->
+                        <!--                        <a href="/" title="logo"><img src="/static/assets/images/Gareeb_Color-blue.png"-->
+                        <!--                                                      alt="logo-icon" style="height:100px;width:100px;"> </a>-->
+                        <!--                    </div>-->
+                        {% if stage == 1 %}
+                        <!-- form signup-->
+                        {% for message in messages %}
+                        <div class="alert alert-{{message.tags}} allert-dismissible fade show" role="alert">
+                            {% if request.session.lang == "EN" %}
+                            <strong>Message : </strong> {{message}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {% else %}
+                            <strong>رسالة : </strong>البريد الإلكتروني موجود بالفعل
+                            <button type="button" class="close ml-3" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">   &times;</span>
+                            </button>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                        <form action="" method="POST" onsubmit="return validation()" id="stage1"
+                              class="needs-validation" novalidate>
+                            {% csrf_token %}
+                            <h3 class="register__title mb-3 d-flex justify-content-center"
+                                style="font-family: 'Krona One', sans-serif;">
+                                {% if request.session.lang == "EN" %}
+                                Signup
+                                {% else %}
+                                اشتراك
+                                {% endif %}
+                            </h3>
+
+                            <p>
+                                {% if request.session.lang == "EN" %}
+                            <h6 class="text-center f-bold">Create your account here, and continue</h6>
+                            {% else %}
+                            <h6 class="text-center f-bold">أنشئ حسابك هنا وتابع</h6>
+                            {% endif %}
+                            </p>
+
+                            <div class="form-group pt-4">
+
+                                <label for="fname" class="input__label text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <small class="f-bold"><i class="fa fa-user mr-2" aria-hidden="true"></i> Full
+                                        Name</small>
+                                    {% else %}
+                                    <i class="fa fa-user ml-2" aria-hidden="true"></i>الاسم الكامل
+                                    {% endif %}
+                                </label>
+                                <div class="row ">
+                                    <div class="col-lg-6 col-12">
+                                        {% if request.session.lang == "EN" %}
+                                        <input type="text"
+                                               class="form-control login_text_field_bg input-style col-lg-12"
+                                               id="fname" name="fname" aria-describedby="emailHelp"
+                                               placeholder="firstname"
+                                               required=""
+                                               autofocus="">
+                                        {% else %}
+                                        <input type="text"
+                                               class="form-control login_text_field_bg input-style col-lg-12"
+                                               id="fname" name="fname" aria-describedby="emailHelp"
+                                               placeholder="الاسم الأول"
+                                               required=""
+                                               autofocus="">
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-lg-6 col-12">
+                                        {% if request.session.lang == "EN" %}
+                                        <input type="text"
+                                               class="form-control login_text_field_bg input-style col-lg-12"
+                                               id="lname" name="lname" aria-describedby="emailHelp"
+                                               placeholder="lastname"
+                                               required=""
+                                               autofocus="">
+                                        {% else %}
+                                        <input type="text"
+                                               class="form-control login_text_field_bg input-style col-lg-12"
+                                               id="lname" name="lname" aria-describedby="emailHelp" placeholder="الكنية"
+                                               required=""
+                                               autofocus="">
+                                        {% endif %}
+                                    </div>
+
+
+                                </div>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+
+
+                            </div>
+                            <div class="form-group">
+
+                                <label for="Number" class="input__label text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <small class="f-bold"> <i class="fa fa-address-book mr-2" aria-hidden="true"></i>Phone</small>
+                                    {% else %}
+                                    <i class="fa fa-address-book ml-2" aria-hidden="true"></i>رقم الجوال
+                                    {% endif %}
+                                </label>
+                                <div id="error_message1"></div>
+                                <input type="Number" class="form-control login_text_field_bg input-style "
+                                       id="Number" name="Number" aria-describedby="emailHelp" placeholder=""
+                                       required=""
+                                       autofocus="">
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="input__label text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <small class="f-bold"><i class="fa fa-envelope mr-2" aria-hidden="true"></i>Email
+                                        address</small>
+                                    {% else %}
+                                    <i class="fa fa-envelope ml-2" aria-hidden="true"></i>عنوان بريد الكتروني
+                                    {% endif %}
+                                </label>
+                                <input type="email" class="form-control login_text_field_bg input-style"
+                                       id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder=""
+                                       required="">
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1" class="input__label text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <small class="f-bold"><i class="fa fa-unlock-alt mr-2" aria-hidden="true"></i>Password</small>
+                                    {% else %}
+                                    <i class="fa fa-unlock-alt ml-2" aria-hidden="true"></i>كلمه السر
+                                    {% endif %}
+                                </label>
+
+                                <input type="password" class="form-control login_text_field_bg input-style"
+                                       id="exampleInputPassword1" name="password" placeholder="" required>
+
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="form-check check-remember check-me-out">
+                                <input type="checkbox" class="form-check-input checkbox" id="exampleCheck1" required>
+                                <label class="form-check-label checkmark" for="exampleCheck1">
+                                    {% if request.session.lang == "EN" %}
+                                    I agree to the
+                                    {% else %}
+                                    أنا أوافق على
+                                    {% endif %}
+                                    <a href="#terms">
+                                        {% if request.session.lang == "EN" %}
+                                        Terms of service
+                                        {% else %}
+                                        شروط الخدمة
+                                        {% endif %}
+                                    </a> and <a href="#privacy">
+                                    {% if request.session.lang == "EN" %}
+                                    Privacy policy
+                                    {% else %}
+                                    سياسة خاصة
+                                    {% endif %}
+                                </a> </label>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Check this checkbox to continue.</div>
+                            </div>
+                            <!--                            {% if request.session.lang == "EN" %}-->
+                            <!--                            <div class="d-flex justify-content-center">-->
+                            <!--                                <div class="card mt-3" style="width:auto;">-->
+                            <!--                                    <div class="card-body m-0 p-1">-->
+                            <!--                                        <div class="row ">-->
+                            <!--                                            <div class="col-md-12 d-flex justify-content-center">-->
+                            <!--                                                <img src="/static/assets/images/search.svg"-->
+                            <!--                                                     style="height:20px;width:20px; margin-top:2px;">-->
+                            <!--                                                <span class="ml-2 "><small><b>Sign up with google</b></small></span>-->
+                            <!--                                            </div>-->
+
+                            <!--                                        </div>-->
+                            <!--                                    </div>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            {% else %}-->
+                            <!--                            <div class="d-flex justify-content-center">-->
+                            <!--                                <div class="card mt-3" style="width:auto;">-->
+                            <!--                                    <div class="card-body m-0 p-1">-->
+                            <!--                                        <div class="row ">-->
+                            <!--                                            <div class="col-md-12 d-flex justify-content-center">-->
+                            <!--                                                <span class="ml-2 "><small><b>اشترك مع جوجل</b></small></span>-->
+                            <!--                                                <img src="/static/assets/images/search.svg"-->
+                            <!--                                                     style="height:20px;width:20px; margin-top:2px;">-->
+
+                            <!--                                            </div>-->
+
+                            <!--                                        </div>-->
+                            <!--                                    </div>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            {% endif %}-->
+
+
+                            <div class="d-flex align-items-center flex-wrap justify-content-between">
+                                <button type="submit" class=" btn btn-primary btn-sm btn-style mt-4"
+                                        style="height: 35px;font-size: 14px;padding-top: 4px;">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class=" fa fa-arrow-circle-right mr-3"></i>Continue
+                                    {% else %}
+                                    <i class=" fa fa-arrow-circle-right ml-3"></i>استمر
+                                    {% endif %}
+                                </button>
+                                <p class="signup mt-4">
+                                    {% if request.session.lang == "EN" %}
+                                    Already have an account?
+                                    {% else %}
+                                    هل لديك حساب؟
+                                    {% endif %}
+                                    <a href="/app/login" class="signuplink">
+                                        {% if request.session.lang == "EN" %}
+                                        Login
+                                        {% else %}
+                                        يسجل دخول
+                                        {% endif %}
+                                    </a>
+                                </p>
+                            </div>
+                        </form>
+                        {% elif stage == 2 %}
+                        <!-- //form signup-->
+                        <!-- form plan -->
+                        <form action="" method="POST" id="stage2">
+                            {% csrf_token %}
+                            <section id="pricing" class="pricing mt-5">
+                                <h3 class=" text-center mb-4 text-primary"
+                                    style="text-transform: uppercase; font-weight: 700; font-size: 30px; line-height: 35px;font-family: 'Krona One', sans-serif;">
+                                    {% if request.session.lang == "EN" %}
+                                    PLAN
+                                    {% else %}
+                                    خطة
+                                    {% endif %}
+
+                                </h3>
+                                <select id="" name="pricing" class="form-control" value="" required>
+                                    {% for d in plan %}
+                                    <option value="{{d.id}}">{{d.title}}</option>
+                                    {% endfor %}
+                                </select>
+                                <div class="container">
+                                    <div class="row no-gutters">
+                                        <div class="col box featured aos-init aos-animate" data-aos="fade-up">
+                                            <h3>
+                                                {% if request.session.lang == "EN" %}
+                                                Business
+                                                {% else %}
+                                                عمل
+                                                {% endif %}
+                                            </h3>
+                                            <h4 style="color: #67666E;">$29<span>
+
+                                        {% if request.session.lang == "EN" %}
+                                                 per month
+                                                {% else %}
+                                                كل شهر
+                                                {% endif %}
+                                        </span></h4>
+                                            <ul>
+                                                <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
+                                                <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
+                                                <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
+                                                <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
+                                                <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
+                                            </ul>
+                                            <br><br><br>
+
+                                            <button type="submit" class="get-started-btn mt-3 bg-primary"
+                                                    style="border: none;background:#4755AB !important;">
+                                                {% if request.session.lang == "EN" %}
+                                                <i class=" fa fa-arrow-circle-right mr-3"></i>Continue
+                                                {% else %}
+                                                <i class=" fa fa-arrow-circle-right ml-3"></i>استمر
+                                                {% endif %}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                        </form>
+                        <!-- //form plan -->
+                        {% elif stage == 3 %}
+
+
+                        <!-- form Company -->
+                        <form action="" method="POST" id="stage3" class="needs-validation" novalidate>
+                            {% csrf_token %}
+                            <div class="register__header text-center mb-lg-5 mb-4 mt-5">
+
+                                <h3 class="register__title  mb-2 text-primary"
+                                    style="text-transform: uppercase; font-weight: 700; font-size: 30px; line-height: 35px;font-family: 'Krona One', sans-serif;">
+                                    {% if request.session.lang == "EN" %}
+                                    Company
+                                    {% else %}
+                                    شركة
+                                    {% endif %}
+
+                                </h3>
+                                <p>
+                                    {% if request.session.lang == "EN" %}
+                                    <b>Enter your company details here, and continue</b>
+                                    {% else %}
+                                    <b>أدخل تفاصيل شركتك هنا ، وتابع</b>
+                                    {% endif %}
+                                </p>
+                            </div>
+                            {% if request.session.lang == "EN" %}
+                            <div class="form-group">
+
+                                <label for="companyname" class="input__label text-primary pb-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-building mr-2" aria-hidden="true"></i><b><small>Company name</small></b>
+                                    {% else %}
+                                    <i class="fa fa-building ml-2" aria-hidden="true"></i> <b>اسم الشركة</b>
+                                    {% endif %}
+
+                                </label>
+                                <input type="text" class="form-control  login_text_field_bg input-style"
+                                       id="companyname" name="companyname" aria-describedby="emailHelp"
+                                       placeholder="Company Name" required=""
+                                       autofocus="">
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="companytagline" class="input__label text-primary pb-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-tag mr-2" aria-hidden="true"></i><b>
+                                    <small>Company Tagline</small></b>
+                                    {% else %}
+                                    <i class="fa fa-tag ml-2" aria-hidden="true"></i> <b>شركة تاجلاين</b>
+                                    {% endif %}
+
+
+                                </label>
+                                <input type="text" class="form-control login_text_field_bg input-style"
+                                       id="companytagline" name="companytagline" aria-describedby="emailHelp"
+                                       placeholder="Company Tagline"
+                                       required="">
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address" class="input__label pb-2 text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-address-card mr-2" aria-hidden="true"></i><b>
+                                    <small>Address</small></b>
+                                    {% else %}
+                                    <i class="fa fa-address-card ml-2" aria-hidden="true"></i> <b>عنوان</b>
+                                    {% endif %}
+                                </label>
+                                <input type="text" name="address1" class="form-control login_text_field_bg input-style"
+                                       id="address" placeholder="Address 1 " required="">
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="form-group">
+                                <!--                            <label for="address" class="input__label">Address</label>-->
+                                <input type="text" class="form-control login_text_field_bg input-style"
+                                       id="address2" name="address2" placeholder="Address 2 " required="">
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="form-group">
+                                <!--                            <label for="address" class="input__label">Address</label>-->
+                                <input type="text" class="form-control login_text_field_bg input-style"
+                                       id="state" name="state" placeholder="State " required="">
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="form-group">
+                                <!--                            <label for="address" class="input__label">Address</label>-->
+                                <input type="text" class="form-control login_text_field_bg input-style"
+                                       id="city" name="city" placeholder="City " required="">
+                            </div>
+                            <div class="form-group">
+                                <!--                            <label for="address" class="input__label">Address</label>-->
+                                <input type="text" class="form-control login_text_field_bg input-style"
+                                       id="pincode" name="pincode" placeholder="Pincode " required="">
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            {% else %}
+                            <div class="form-group">
+
+
+                                <label for="companyname" class="input__label text-primary pb-2 pt-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-building mr-2" aria-hidden="true"></i>Company name
+                                    {% else %}
+                                    <i class="fa fa-building ml-2" aria-hidden="true"></i> <b>اسم الشركة</b>
+                                    {% endif %}
+                                </label>
+
+                                <input type="text" class="form-control login_text_field_bg input-style"
+                                       id="companyname" name="companyname" aria-describedby="emailHelp"
+                                       placeholder="اسم الشركة" required=""
+                                       autofocus="">
+                                <div class="valid-feedback">صالح.</div>
+                                <div class="invalid-feedback">الرجاء ملء هذه الخانة.</div>
+                            </div>
+                            <div class="form-group">
+
+
+                                <label for="companytagline" class="input__label pt-2 pb-2 text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-tag mr-2" aria-hidden="true"></i>Company Tagline
+                                    {% else %}
+                                    <i class="fa fa-tag ml-2" aria-hidden="true"></i><b>شركة سطر الوصف</b>
+                                    {% endif %}
+                                </label>
+                                <input type="text" class="form-control login_text_field_bg input-style"
+                                       id="companytagline" name="companytagline" aria-describedby="emailHelp"
+                                       placeholder="شركة تاجلاين"
+                                       required="">
+                                <div class="valid-feedback">صالح.</div>
+                                <div class="invalid-feedback">الرجاء ملء هذه الخانة.</div>
+                            </div>
+                            <div class="form-group">
+
+
+                                <label for="address" class="input__label pt-2 pb-2 text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-map-marker mr-2" aria-hidden="true"></i>Address
+                                    {% else %}
+                                    <i class="fa fa-map-marker mr-2" aria-hidden="true"></i><b>العنوان</b>
+                                    {% endif %}
+                                </label>
+                                <input type="text" name="address1"
+                                       class="form-control login_text_field_bg input-style"
+                                       id="address" placeholder="العنوان ١ " required="">
+                                <div class="valid-feedback">صالح.</div>
+                                <div class="invalid-feedback">الرجاء ملء هذه الخانة.</div>
+                            </div>
+                            <div class="form-group">
+                                <!--                            <label for="address" class="input__label">Address</label>-->
+                                <input type="text" class="form-control login_text_field_bg input-style"
+                                       id="address2" name="address2" placeholder="العنوان ٢ " required="">
+                                <div class="valid-feedback">صالح.</div>
+                                <div class="invalid-feedback">الرجاء ملء هذه الخانة.</div>
+                            </div>
+                            <div class="form-group">
+                                <!--                            <label for="address" class="input__label">Address</label>-->
+                                <input type="text" class="form-control login_text_field_bg input-style"
+                                       id="state" name="state" placeholder="حالة " required="">
+                                <div class="valid-feedback">صالح.</div>
+                                <div class="invalid-feedback">الرجاء ملء هذه الخانة.</div>
+                            </div>
+                            <div class="form-group">
+                                <!--                            <label for="address" class="input__label">Address</label>-->
+                                <input type="text" class="form-control login_text_field_bg input-style"
+                                       id="city" name="city" placeholder="مدينة " required="">
+                                <div class="valid-feedback">صالح.</div>
+                                <div class="invalid-feedback">الرجاء ملء هذه الخانة.</div>
+                            </div>
+                            <div class="form-group">
+                                <!--                            <label for="address" class="input__label">Address</label>-->
+                                <input type="text" class="form-control login_text_field_bg input-style"
+                                       id="pincode" name="pincode" placeholder="مدينة " required="">
+                                <div class="valid-feedback">صالح.</div>
+                                <div class="invalid-feedback">الرجاء ملء هذه الخانة.</div>
+                            </div>
+                            {% endif %}
+
+
+                            <div class="d-flex align-items-center flex-wrap justify-content-between">
+                                <!--                                <button type="submit"-->
+                                <!--                                        class=" btn btn-primary btn-style mt-4 " style="height:35px; padding-top: 4px">-->
+                                <!--                                    {% if request.session.lang == "EN" %}-->
+                                <!--                                    <i class=" fa fa-arrow-circle-right mr-3"></i>Continue-->
+                                <!--                                              {% else %}-->
+                                <!--                                              <i class=" fa fa-arrow-circle-right ml-3"></i>استمر-->
+                                <!--                                    {% endif %}-->
+                                <!--                                </button>-->
+                                <button type="submit" class="btn btn-primary btn-style mt-4"
+                                        style="height:35px; padding-top: 4px;">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class=" fa fa-arrow-circle-right mr-3"></i>Continue
+                                    {% else %}
+                                    <i class=" fa fa-arrow-circle-right ml-3"></i>استمر
+                                    {% endif %}
+                                </button>
+
+                            </div>
+
+                        </form>
+                        <!-- //form Company-->
+                        {% elif stage == 4 %}
+                        <!-- form Billing-->
+                        <form action="" method="POST" id="stage4" class="needs-validation" novalidate>
+                            {% csrf_token %}
+                            <div class="register__header text-center mb-lg-5 mb-4 mt-5">
+                                <h3 class="register__title mb-2 text-primary"
+                                    style="text-transform: uppercase; font-weight: 700; font-size: 30px; line-height: 35px;font-family: 'Krona One', sans-serif;">
+                                    {% if request.session.lang == "EN" %}
+                                    Billing
+                                    {% else %}
+                                    الفواتير
+                                    {% endif %}
+                                </h3>
+                                <p>
+                                    {% if request.session.lang == "EN" %}
+                                    <b>Enter your billing details, and continue</b>
+                                    {% else %}
+                                    <b>أدخل تفاصيل الفواتير الخاصة بك ، وتابع</b>
+                                    {% endif %}
+                                </p>
+                            </div>
+                            {% if request.session.lang == "EN" %}
+                            <div class="form-group">
+                                <label for="billingaddress" class="input__label text-primary pb-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fas fa-file-invoice-dollar mr-2"></i>
+                                    <small><b>Billing Address</b></small>
+                                    {% else %}
+                                    عنوان وصول الفواتير<i class="fas fa-file-invoice-dollar mr-2"></i>
+                                    {% endif %}
+                                </label>
+                                <input type="text" name="billingaddress"
+                                       class="form-control login_text_field_bg input-style"
+                                       id="billingaddress" aria-describedby="emailHelp" placeholder="Billing Address"
+                                       required=""
+                                       autofocus="">
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="form-group">
+
+                                <label for="zipcode" class="input__label pt-2 text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fas fa-file-archive mr-2"></i><small><b>Zip Code</b></small>
+                                    {% else %}
+                                    الرمز البريدي<i class="fas fa-file-archive mr-2"></i>
+                                    {% endif %}
+                                </label>
+                                <input type="number" name="zipcode" class="form-control login_text_field_bg input-style"
+                                       id="zipcode" aria-describedby="emailHelp" placeholder="Zip Code" required="">
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="form-group">
+
+                                <label for="city" class="input__label pt-2 text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fas fa-city mr-2"></i><small><b>City</b></small>
+                                    {% else %}
+                                    مدينة<i class="fas fa-city mr-2"></i>
+                                    {% endif %}
+                                </label>
+                                <input type="text" name="city" class="form-control login_text_field_bg input-style"
+                                       id="city" placeholder="City" required="">
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="form-group">
+
+                                <label for="state" class="input__label pt-2 text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fas fa-location-arrow mr-2"></i><small><b>State</b></small>
+                                    {% else %}
+                                    حالة<i class="fas fa-location-arrow ml-2"></i>
+                                    {% endif %}
+                                </label>
+                                <input type="text" name="state" class="form-control login_text_field_bg input-style"
+                                       id="state" placeholder="State" required="">
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="country" class="input__label pt-2 text-primary pt-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fas fa-flag mr-2"></i><small><b>Country</b></small>
+                                    {% else %}
+                                    <i class="fas fa-flag mr-2"></i>دولة
+                                    {% endif %}
+                                </label>
+                                <input type="text" name="country" class="form-control login_text_field_bg input-style"
+                                       id="country" placeholder="Country" required="">
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                            {% else %}
+                            <div class="form-group">
+                                <label for="billingaddress"
+                                       class="input__label pr-3 pb-2 pt-3 font-weight-bold text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fas fa-file-invoice-dollar mr-2"></i>Billing Address
+                                    {% else %}
+                                    <i class="fas fa-file-invoice-dollar ml-2"></i>عنوان وصول الفواتير
+                                    {% endif %}
+                                </label>
+                                <input type="text" name="billingaddress"
+                                       class="form-control login_text_field_bg input-style"
+                                       id="billingaddress" aria-describedby="emailHelp"
+                                       placeholder="عنوان وصول الفواتير"
+                                       required=""
+                                       autofocus="">
+                                <div class="valid-feedback">صالح.</div>
+                                <div class="invalid-feedback">الرجاء ملء هذه الخانة.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="zipcode" class="input__label pr-3 pb-2 pt-3 font-weight-bold text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fas fa-file-archive mr-2"></i>Zip Code
+                                    {% else %}
+                                    <i class="fas fa-file-archive  ml-2"></i> الرمز البريدي
+                                    {% endif %}
+                                </label>
+                                <input type="number" name="zipcode" class="form-control login_text_field_bg input-style"
+                                       id="zipcode" aria-describedby="emailHelp" placeholder="الرمز البريدي"
+                                       required="">
+                                <div class="valid-feedback">صالح.</div>
+                                <div class="invalid-feedback">الرجاء ملء هذه الخانة.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="city" class="input__label pr-3 pb-2 pt-3 font-weight-bold text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fas fa-city mr-2"></i>City
+                                    {% else %}
+                                    <i class="fas fa-city ml-2"></i>مدينة
+                                    {% endif %}
+                                </label>
+                                <input type="text" name="city" class="form-control login_text_field_bg input-style"
+                                       id="city" placeholder="مدينة" required="">
+                                <div class="valid-feedback">صالح.</div>
+                                <div class="invalid-feedback">الرجاء ملء هذه الخانة.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="state" class="input__label pr-3 pb-2 pt-3 font-weight-bold text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fas fa-location-arrow mr-2"></i>State
+                                    {% else %}
+                                    <i class="fas fa-location-arrow ml-2"></i>حالة
+                                    {% endif %}
+                                </label>
+                                <input type="text" name="state" class="form-control login_text_field_bg input-style"
+                                       id="state" placeholder="حالة" required="">
+                                <div class="valid-feedback">صالح.</div>
+                                <div class="invalid-feedback">الرجاء ملء هذه الخانة.</div>
+                            </div>
+                            <div class="form-group">
+
+                                <label for="country" class="input__label pr-3 pb-2 pt-3 font-weight-bold text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fas fa-flag mr-2"></i>Country
+                                    {% else %}
+                                    <i class="fas fa-flag ml-2"></i>دولة
+                                    {% endif %}
+                                </label>
+                                <input type="text" name="country" class="form-control login_text_field_bg input-style"
+                                       id="country" placeholder="دولة" required="">
+                                <div class="valid-feedback">صالح.</div>
+                                <div class="invalid-feedback">الرجاء ملء هذه الخانة.</div>
+                            </div>
+                            {% endif %}
+
+
+                            <div class="d-flex align-items-center flex-wrap justify-content-between">
+                                <button type="submit" class="btn btn-primary btn-style mt-4"
+                                        style="height:35px; padding-top: 4px;">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class=" fa fa-arrow-circle-right mr-3"></i>Continue
+                                    {% else %}
+                                    <i class=" fa fa-arrow-circle-right ml-3"></i>استمر
+                                    {% endif %}
+                                </button>
+                            </div>
+                        </form>
+                        <!-- //form Billing-->
+                        {% elif stage == 5 %}
+                        <!-- form Payment-->
+                        <form action="#" method="GET" id="stage5">
+                            <div class="register__header text-center mb-lg-5 mb-4 mt-5">
+
+                                <h3 class="register__title mb-2"> Payment</h3>
+                                <p>Make Payment!</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="accname" class="input__label">Account Holder Name</label>
+                                <input type="text" class="form-control login_text_field_bg input-style"
+                                       id="accname" aria-describedby="Account Holder Name" placeholder="Billing Address"
+                                       required=""
+                                       autofocus="">
+                            </div>
+                            <div class="form-group">
+                                <label for="accnumber" class="input__label">Account Number</label>
+                                <input type="number" class="form-control login_text_field_bg input-style"
+                                       id="accnumber" aria-describedby="emailHelp" placeholder="Account Number"
+                                       required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="expiry" class="input__label">Expiry</label>
+                                <input type="text" class="form-control login_text_field_bg input-style"
+                                       id="expiry" placeholder="Expiry" required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="ifsc" class="input__label">IFSC</label>
+                                <input type="text" class="form-control login_text_field_bg input-style"
+                                       id="ifsc" placeholder="IFSC" required="">
+                            </div>
+                            <div class="d-flex align-items-center flex-wrap justify-content-between">
+                                <button type="submit" class="btn btn-primary btn-style mt-4">Continue</button>
+                            </div>
+                        </form>
+                        <!-- //form Payment-->
+                        {% endif %}
+                        {% if request.session.lang == "EN" %}
+                        <p class="backtohome mt-4"><a href="/" class="back"><i class="fa fa-chevron-left"
+                                                                               aria-hidden="true"></i>Back to Home
+                        </a></p>
+                        {% else %}
+                        <p class="backtohome mt-4"><a href="/" class="back">العودة إلى المنزل<i
+                                class="fa fa-chevron-left"
+                                aria-hidden="true"></i>
+                        </a></p>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Register form -->
+
+
+    </div>
+    <!-- //content -->
+
+</section>
+
+{% if request.session.lang != "EN" %}
+
+<style>
+     @font-face {
+    font-family: "Tajawal-Regular";
+    src: url('/static/assets/fonts/Tajawal-Regular.ttf');
+}
+body,h1,h2,h3,h4,h5,h6,p,span,label,a,li{
+font-family:"Tajawal-Regular" !important;
+direction: rtl;
+text-align:right;
+}
+.sidebar-menu {
+right:0;
+left:none
+}
+.main-content {
+  margin-left:0;
+  margin-right: 250px;
+  }
+  .sidebar-menu-collapsed .main-content {
+    margin-right: 60px;
+    margin-left:0
+}
+.nav{
+padding-right:0;
+padding-left:none;
+}
+.statistics-grid .lnr {
+left:30px
+}
+footer.dashboard p {
+    text-align:center
+}
+.cont-btn{
+left:50px;
+right: auto;
+}
+.drp-mnu {
+right:auto !important;
+left:0px !important
+}
+.drp-mnu:before{
+right:auto !important;
+left:25px !important
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+<script>
+    $('.lnr-chevron-right').each(function(){
+    $(this).removeClass('lnr-chevron-right').addClass('lnr-chevron-left');
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+{% endif %}
+<script>
+// Disable form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Get the forms we want to add validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+
+
+
+
+
+
+</script>
+</body>
+</html>

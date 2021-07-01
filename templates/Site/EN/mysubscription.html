@@ -1,0 +1,424 @@
+{% extends 'base2.html'%}
+{% block content%}
+
+<style>
+    .img-dashcover
+    {
+        height: 120px;
+        width: 140px;
+    }
+
+    .img-dashcover img
+    {
+        height: 100% !important;
+        width:  100% !important;
+    }
+
+    .imgdash2
+    {
+        height: 280px !important;
+        width: 100% !important;
+    }
+
+    .new-dash-tabs .card
+    {
+        border: none;
+        background: #f4f6f9;
+        border-radius: 30px 0;
+        -moz-transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+	    -o-transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+	    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .new-dash-tabs .card:hover
+    {
+        -webkit-transform: translate(0, -8px);
+        -moz-transform: translate(0, -8px);
+        -ms-transform: translate(0, -8px);
+        -o-transform: translate(0, -8px);
+        transform: translate(0, -8px);
+        box-shadow: 0 40px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .new-subs h6
+    {
+        color:#5777ba !important;
+    }
+
+    .newsubs-det
+    {
+         word-wrap: break-word;
+    }
+    .newsubs-det span
+    {
+        font-size: 14px !important;
+
+    }
+
+
+    @media (max-width: 766px)
+    {
+        .newsubs-det
+        {
+            text-align: left !important;
+            padding-left: 28px !important;
+        }
+    }
+
+
+
+
+
+
+</style>
+
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1"
+                 data-aos="fade-up">
+                <div>
+                    {% if request.session.lang == "EN" %}
+                    <h1 class="text-center">Subscription</h1>
+                    {% else %}
+                    <h1 class="text-center">الاشتراك</h1>
+                    {% endif %}
+                    <div class="img-dashcover m-auto pt-3">
+                        <img src="/static/assets/img/subscription.svg" class="card-img-top" alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section><!-- End Hero -->
+
+<section id="subscription-det">
+    <div class="container">
+        <div class="row m-0">
+            <div class="col-12 p-3 ">
+
+            </div>
+            <div class="col-12 p-3 mt-5">
+                <div class="row m-0">
+                    <div class="col-lg-6 pt-3 pb-3 col-md-6 col-12" style="">
+                        <div class="row m-0">
+                            <div class="col-12 p-3" style="color:#5777ba; background: #5777ba;">
+                                <h5 class="font-weight-bold text-center text-white">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-th-large mr-2" aria-hidden="true"></i> My Subscription
+                                    {% else %}
+                                    <i class="fa fa-th-large ml-2" aria-hidden="true"></i>اشتراكي
+                                    {% endif %}
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="row m-0 mt-5 ">
+                            <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                <h6 class="p-3 text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <b>STATUS</b>
+                                    {% else %}
+                                    <b>حالة</b>
+                                    {% endif %}
+                                </h6>
+                            </div>
+                            <div class="col-lg-6 col-12 newsubs-det text-center p-3" style="background: #f4f6f9;">
+                                {% if request.session.lang == "EN" %}
+                                <button type="button" class="btn btn-danger" style="border-radius:20px;"><i
+                                        class="fa fa-times-circle mr-2" aria-hidden="true"></i>Expired
+                                </button>
+                                {% else %}
+                                <button type="button" class="btn btn-danger" style="border-radius:20px;"><i
+                                        class="fa fa-times-circle ml-2" aria-hidden="true"></i>منتهية الصلاحية
+                                </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row m-0 mt-4 ">
+                            <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                <h6 class="p-3 text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <b>PLAN</b>
+                                    {% else %}
+                                    <b>خطة</b>
+                                    {% endif %}
+                                </h6>
+                            </div>
+                            <div class="col-lg-6 col-12 newsubs-det p-3 text-center" style="background: #f4f6f9;">
+                                <span class="text-success font-weight-bold">{{data.plan}}</span>
+                            </div>
+                        </div>
+                        <div class="row m-0 mt-4 ">
+                            <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                <h6 class="p-3 text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <b>No. of Employees</b>
+                                    {% else %}
+                                    <b>عدد الموظفين</b>
+                                    {% endif %}
+                                </h6>
+                            </div>
+                            <div class="col-lg-6 col-12 newsubs-det p-3 text-center" style="background: #f4f6f9;">
+                                <span class="text-success font-weight-bold">{{data.plan.limit}}</span>
+                            </div>
+                        </div>
+                        <div class="row m-0 mt-4 ">
+                            <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                <h6 class="p-3 text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <b>Expire Date</b>
+                                    {% else %}
+                                    <b>تاريخ انتهاء الصلاحية عدد الموظفين</b>
+                                    {% endif %}
+                                </h6>
+                            </div>
+                            <div class="col-lg-6 col-12 newsubs-det p-3 text-center" style="background: #f4f6f9;">
+                                <span class="text-success font-weight-bold">{{data.expirydate}}</span>
+                            </div>
+                        </div>
+                        <div class="row m-0 mt-4 ">
+                            <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                <h6 class="p-3 text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <b>Switch Plan </b><br>
+                                    <span style="font-size:10px;"><b><i class="fa fa-info-circle"
+                                                                        aria-hidden="true"></i> Note: </b>If you switch your plan old plan will be unsubscribed</span>
+                                    {% else %}
+                                    <b>تبديل الخطة </b><br>
+                                    <span style="font-size:10px;"><b><i class="fa fa-info-circle"
+                                                                        aria-hidden="true"></i> ملحوظة: </b>إذا قمت بتبديل خطتك ، فسيتم إلغاء اشتراك خطتك القديمة</span>
+                                    {% endif %}
+                                </h6>
+                            </div>
+                            <div class="col-lg-6 col-12 newsubs-det p-3 text-center" style="background: #f4f6f9;">
+                                <form action="{% url 'delMembership' %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-warning"
+                                            style="border-radius:20px;"
+                                            value="{{membership.id}}" name="id"><i
+                                            aria-hidden="true"></i>
+                                        {% if request.session.lang == "EN" %}
+                                        Switch Plan
+                                        {% else %}
+                                        تبديل الخطة
+                                        {% endif %}
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 pt-3 pb-3 col-md-6 col-12" style="">
+                        <div class="row m-0">
+                            <div class="col-12 p-3" style="color:#5777ba; background: #5777ba;">
+                                <h5 class="font-weight-bold text-center text-white">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-th-large mr-2" aria-hidden="true"></i>Subscription Details
+                                    {% else %}
+                                    <i class="fa fa-th-large ml-2" aria-hidden="true"></i>تفاصيل الاشتراك
+                                    {% endif %}
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="row m-0 mt-5 pb-2">
+                            <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                <h6 class="p-3 text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <b>NAME</b>
+                                    {% else %}
+                                    <b>اسم</b>
+                                    {% endif %}
+                                </h6>
+                            </div>
+                            <div class="col-lg-6 col-12  text-center newsubs-det p-3" style="background: #f4f6f9;">
+                                {% if request.session.lang == "EN" %}
+                                <span class="text-success font-weight-bold">{{data.user.first_name}} {{data.user.last_name}}</span>
+                                {% else %}
+                                <span class="text-success font-weight-bold text-right">{{data.user.first_name}} {{data.user.last_name}}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+
+
+                        <div class="row m-0 mt-4 ">
+                            <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                <h6 class="p-3 text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <b>Company Name</b>
+                                    {% else %}
+                                    <b>اسم الشركة</b>
+                                    {% endif %}
+                                </h6>
+                            </div>
+                            <div class="col-lg-6 col-12 newsubs-det p-3 text-center" style="background: #f4f6f9;">
+                                <span class="text-success font-weight-bold">{{data1.Company_Name}}</span>
+                            </div>
+                        </div>
+                        <div class="row m-0 mt-4 ">
+                            <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                <h6 class="p-3 text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <b>Subscription Start Date</b>
+                                    {% else %}
+                                    <b>تاريخ بدء الاشتراك</b>
+                                    {% endif %}
+                                </h6>
+                            </div>
+                            <div class="col-lg-6 col-12 newsubs-det  p-3 text-center" style="background: #f4f6f9;">
+                                <span class="text-success font-weight-bold"> {{data.joiningdate}}</span>
+                            </div>
+                        </div>
+                        <div class="row m-0 mt-4 ">
+                            <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                <h6 class="p-3 text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <b>Subscription End Date</b>
+                                    {% else %}
+                                    <b>تاريخ انتهاء الاشتراك</b>
+                                    {% endif %}
+                                </h6>
+                            </div>
+                            <div class="col-lg-6 col-12 newsubs-det  p-3 text-center" style="background: #f4f6f9;">
+                                <span class="text-success font-weight-bold">{{data.expirydate}}</span>
+                            </div>
+                        </div>
+                        <div class="row m-0 mt-4 ">
+                            <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                <h6 class="p-3 text-primary">
+                                    {% if request.session.lang == "EN" %}
+                                    <b>Billings</b>
+                                    {% else %}
+                                    <b>الفواتير</b>
+                                    {% endif %}
+                                </h6>
+                            </div>
+                            <div class="col-lg-6 col-12 newsubs-det  p-3 text-center" style="background: #f4f6f9;">
+                                <span class="text-success font-weight-bold">yearly</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row m-0">
+                    <div class="col-lg-12 text-left pt-4">
+                        <a href="{% url 'UserDashboard' %}" class="btn btn-success btn-style ml-3"
+                           style="height: 35px;font-size: 14px;padding-top: 4px; border-radius: 20px;">
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-arrow-left mr-3" aria-hidden="true"></i>Return to Dashboard
+                            {% else %}
+                            العودة إلى لوحة القيادة <i class="fa fa-arrow-left mr-3" aria-hidden="true"></i>
+                            {% endif %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+<!--******OLD CODE*****-->
+<!--<div class="row">-->
+
+<!--    <div class="col-4 ml-5">-->
+<!--        <div class="card text-center card_border" style="height:400px !important;">-->
+<!--            <div class="card-header ">-->
+<!--                My Subscription-->
+<!--            </div>-->
+<!--            <div class="card-body">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-12">-->
+
+
+<!--                        <div class="row mb-5 mt-5">-->
+<!--                            <div class="col-6" style="text-align:right;">Status :</div>-->
+<!--                            <button type="button" class="btn btn-primary btn-bold btn-sm">Expired</button>-->
+<!--                        </div>-->
+<!--                        <div class="row mb-5">-->
+<!--                            <div class="col-6" style="text-align:right;">Plan :</div>-->
+<!--                            <div class="col-6" style="text-align:left; font-weight: bold;">{{data.plan}}</div>-->
+<!--                        </div>-->
+<!--                        <div class="row mb-5">-->
+<!--                            <div class="col-6" style="text-align:right;">No of Employees :</div>-->
+<!--                            <div class="col-6" style="text-align:left; font-weight: bold;">{{data.plan.limit}}</div>-->
+<!--                        </div>-->
+<!--                        <div class="row mb-5">-->
+<!--                            <div class="col-6" style="text-align:right;">Expire Date :</div>-->
+<!--                            <div class="col-6" style="text-align:left;">{{data.expirydate}}</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="col-7 ">-->
+<!--        <div class="card text-center card_border" style="height:400px !important;">-->
+<!--            <div class="card-header ">-->
+<!--                Subscription-->
+<!--            </div>-->
+<!--            <div class="card-body">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-6">-->
+<!--                        <div class="row mt-5">-->
+<!--                            <div class="col" style="text-align:left; font-weight: bold;">Name</div>-->
+<!--                        </div>-->
+<!--                        <div class="row mt-2">-->
+<!--                            <a href="">-->
+<!--                                <div class="col" style="text-align:left; font-size: 20px;">-->
+<!--                                    {{data.user.first_name}} {{data.user.last_name}}-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="row mt-5">-->
+<!--                            <div class="col" style="text-align:left; font-weight: bold;">Subscription Start Date</div>-->
+<!--                        </div>-->
+<!--                        <div class="row mt-2">-->
+<!--                            <div class="col" style="text-align:left; font-size: 20px;">-->
+<!--                                {{data.joiningdate}}-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="row mt-5">-->
+<!--                            <div class="col" style="text-align:left; font-weight: bold;">Billings</div>-->
+<!--                        </div>-->
+<!--                        <div class="row mb-5 mt-2">-->
+<!--                            <div class="col" style="text-align:left; font-size: 20px;">-->
+<!--                                Yearly-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-6">-->
+<!--                        <div class="row mt-5">-->
+<!--                            <div class="col" style="text-align:left; font-weight: bold;">Company Name</div>-->
+<!--                        </div>-->
+<!--                        <div class="row mt-2">-->
+<!--                            <div class="col" style="text-align:left;  font-size: 20px; ">{{data1.Company_Name}}</div>-->
+<!--                        </div>-->
+<!--                        <div class="row mt-5">-->
+<!--                            <div class="col" style="text-align:left; font-weight: bold;">Subscription End Date</div>-->
+<!--                        </div>-->
+<!--                        <div class="row mt-2">-->
+<!--                            <div class="col" style="text-align:left;  font-size: 20px; ">{{data.expirydate}}</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
+
+<!--        </div>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+
+{% endblock %}

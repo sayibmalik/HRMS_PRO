@@ -1,0 +1,194 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+     .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+    .curve-around input , .curve-around select
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+<div class="main-content" xmlns:display="http://www.w3.org/1999/xhtml" xmlns:flex="http://www.w3.org/1999/xhtml">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Training Courses
+                    {% else %}
+                    الدورات التدريبية
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <div class="row m-0 backwhite">
+                <div class="col-lg-2">
+
+                </div>
+                <div class="col-lg-8 col-md-6 col-12 backwhite d-flex justify-content-center">
+                    <div class="card text-center" style="width:720px; height:600px;">
+                        <div class="card-header">
+                            <i class="fa fa-graduation-cap mr-2"></i><b>
+                            {% if request.session.lang == "EN" %}
+                            {{data.EN_Title}}
+                            {% else %}
+                            {{data.AR_Title}}
+                            {% endif %}
+                        </b>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mt-5">
+                                <div class="col-md-6">
+                                    <h6 style="font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        Course Name
+                                        {% else %}
+                                        اسم الدورة التدريبية
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+                                        {{data.EN_Title}}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 style="    font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        Course Instructor
+                                        {% else %}
+مدرس المقرر
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+                                        {{data.AR_courceInstructions}}</p>
+                                </div>
+
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-md-6">
+                                    <h6 style="    font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        Start date
+                                        {% else %}
+تاريخ البدء
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+                                        {{data.startDate}}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 style="    font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        Course Days
+                                        {% else %}
+أيام الدورة
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+                                        {{data.courceDays}}</p>
+                                </div>
+
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-md-6">
+                                    <h6 style="    font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        Available Seats
+                                        {% else %}
+المقاعد المتاحة
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+                                        {{data.numberOfSeats}}</p>
+                                </div>
+                                <div class="col-md-6">
+
+                                </div>
+
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-md-6">
+                                    <h6 style="    font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        Address
+                                        {% else %}
+عنوان
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+                                        {{data.address}}</p>
+                                </div>
+                                <div class="col-md-6">
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-footer text-muted">
+
+
+                            <a href="#" class="btn btn-success btn-style ml-3"
+                               style="height: 35px;font-size: 14px;padding-top: 4px;">
+                                {% if request.session.lang == "EN" %}
+                                <i class="fa fa-graduation-cap mr-2"></i> Request Enrollment
+                                {% else %}
+                                طلب الالتحاق بالدورة
+                                {% endif %}
+                            </a>
+                            {% if request.session.ishr %}
+                            <a href="{% url 'editTraining' data.id %}" class="btn  btn-style ml-3"
+                               style="height: 35px;font-size: 14px;padding-top: 4px; border:1px solid black;">
+                                {% if request.session.lang == "EN" %}
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+                                {% else %}
+                                يحرر
+                                {% endif %}
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+
+            </div>
+
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

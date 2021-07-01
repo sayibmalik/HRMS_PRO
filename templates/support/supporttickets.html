@@ -1,0 +1,212 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+       .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+
+     .cc-tbl
+    {
+        padding-top: 24px !important;
+        font-weight: bold;
+    }
+
+
+
+
+
+
+
+
+
+</style>
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Support Tickets
+                    {% else %}
+                    تذاكر الدعم الفني
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+
+            <div class="row m-0">
+                <div class="col-lg-12 backwhite">
+                    <h4 class="ml-2 text-primary pt-4">
+                        {% if request.session.lang == "EN" %}
+                        <i class="fa fa-ticket  fa-1x mr-3"></i><b>Support Tickets</b>
+                        {% else %}
+                        <i class="fa fa-ticket  fa-1x ml-3"></i><b>تذاكر الدعم الفني</b>
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="col-lg-12 p-2 backwhite">
+                    <a href="/app/dashboard" class="btn btn-danger btn-style ml-3"
+                       style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                        Discard
+                        {% else %}
+                        تجاهل
+                        {% endif %}
+                    </a>
+                    <a href="{% url 'createSupport'%}" class="btn btn-success btn-style ml-3"
+                       style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                        Create Support Ticket
+                        {% else %}
+                        إنشاء تذكرة دعم
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-12 backwhite pt-5">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-hover-cursor">
+                            <thead class="text-center thead-dark">
+                            <tr>
+                                <th>
+                                    {% if request.session.lang == "EN" %}
+                                    Ticket Number
+                                    {% else %}
+                                    رقم التذكرة
+                                    {% endif %}
+                                </th>
+                                <th>
+                                    {% if request.session.lang == "EN" %}
+                                    Subject
+                                    {% else %}
+                                    موضوع
+                                    {% endif %}
+                                </th>
+                                <th>
+                                    {% if request.session.lang == "EN" %}
+                                    Priority
+                                    {% else %}
+                                    أفضلية
+                                    {% endif %}
+                                </th>
+                                <th>
+                                    {% if request.session.lang == "EN" %}
+                                    Status
+                                    {% else %}
+                                    حالة
+                                    {% endif %}
+                                </th>
+                                <th>
+                                    {% if request.session.lang == "EN" %}
+                                    Created Date
+                                    {% else %}
+                                    تاريخ الإنشاء
+                                    {% endif %}
+                                </th>
+
+                                <th>
+                                    {% if request.session.lang == "EN" %}
+                                    Modified Date
+                                    {% else %}
+                                    تاريخ معدل
+                                    {% endif %}
+                                </th>
+                                <th>
+                                    {% if request.session.lang == "EN" %}
+                                    Action
+                                    {% else %}
+                                    عمل
+                                    {% endif %}
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody class="text-center">
+                            {% for d in data %}
+                            <tr>
+                                <td class="cc-tbl">{{d.ticketNumber}}</td>
+
+                                <td class="cc-tbl">{{d.subject}}</td>
+
+                                <td class="cc-tbl">{{d.priority}}</td>
+
+                                <td class="cc-tbl">
+                                    {% now "Y-m-d" as todays_date %}
+                                    {% if todays_date == d.status|date:"Y-m-d" %}
+                                    {% if request.session.lang == "EN" %}
+                                    New
+                                    {% else %}
+                                    جديد
+                                    {% endif %}
+                                    {% else %}
+                                    {% if request.session.lang == "EN" %}
+                                    Few Days Old
+                                    {% else %}
+                                    قبل أيام قليلة
+                                    {% endif %}
+                                    {% endif %}
+                                </td>
+                                <td class="cc-tbl">{{d.createdDate}}</td>
+                                <td class="cc-tbl">{{d.modifiedDate}}</td>
+                                <td>
+                                    <a href="{% url 'ticketDetails' d.id %}"
+                                       class="btn  btn-style ml-3"
+                                       style="height: 35px;font-size: 14px;padding-top: 4px;border:1px solid black;">
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Details
+                                        {% else %}
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> تفاصيل
+                                        {% endif %}
+                                    </a>
+                                </td>
+                            </tr>
+                            {% if todays_date == d.status|date:"Y-m-d" %}
+                            <audio  autoplay>
+                                <source src="/static/assets/audio/beep.mp3" type="audio/mpeg">
+                            </audio>
+                            {% endif %}
+
+                            <script>
+                            if(todays_date == d.status)
+                            {
+                                document.getElementById('xyz').play();
+                                alert("Thank you!");
+                            }
+
+
+                            </script>
+
+
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- //forms  -->
+    </div>
+    <!-- //content-->
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,1698 @@
+{% extends 'base.html'%}
+{% block content%}
+
+<style>
+    .new-tablink
+    {
+        background: #F4F6F9 !important;
+        border: 2px solid #F4F6F9 !important;
+        border-radius: 30px !important;
+        min-width: 182px !important;
+    }
+
+    .new-tag-edit,.dtm-2
+    {
+        background: #F4F6F9 !important;
+        border-radius:5px;
+    }
+
+    .dtm-2
+    {
+        border-radius: 1px !important;
+    }
+
+    .new-fa i
+    {
+        font-size: 25px !important;
+    }
+
+    .new-time li
+    {
+        border-bottom: 1px solid #eee;
+    }
+
+    .new-time li ,.new-count h6
+    {
+        color: #4755AB !important;
+        font-weight: normal;
+    }
+    .tm-spn
+    {
+         position: absolute;
+         right: 35px;
+         font-weight: 900;
+    }
+
+    .small-text span
+    {
+       word-wrap: break-word;
+    }
+
+
+</style>
+<link rel="stylesheet" href="/static/assets/css/sidenav.css">
+<div class="main-content">
+    <!-- content -->
+    <div id="cover-blur" class="m-0 p-0">
+        <div class="container ">
+            <div class="row">
+                <div class="col-lg-12 curved-cover  ">
+
+                    <div class="row">
+                        <!--                        <div class="col-lg-6  pt-3  ">-->
+                        <!--                            <ul class="link-container">-->
+                        <!--                                <li><a href="">Home</a></li>-->
+                        <!--                                <li><a href="">Team</a></li>-->
+                        <!--                                <li><a href="">Time</a></li>-->
+                        <!--                                <li><a href="">Pay</a></li>-->
+                        <!--                                <li><a href="">Requests</a></li>-->
+                        <!--                                <li><a href="">Files</a></li>-->
+                        <!--                            </ul>-->
+                        <!--                        </div>-->
+                        <!--                        <div class="col-lg-6 p-3 ">-->
+
+                        <!--                            <div class=" col-6  div-notifications">-->
+                        <!--                                &lt;!&ndash; button trial&ndash;&gt;-->
+                        <!--                                <a href="" class="btn btn-light trial-left"><span class="badge  badge-btn mr-2">4</span>days-->
+                        <!--                                    left in trial</a>-->
+                        <!--                            </div>-->
+                        <!--                            <div class=" col-2  div-notifications">-->
+                        <!--                                <a href="" class="btn    language-btn">EN</a>-->
+                        <!--                            </div>-->
+                        <!--                            <div class=" col-2  div-notifications">-->
+                        <!--                                <div class="div-bll">-->
+                        <!--                                    <i class="fa fa-bell-o icon-bell" aria-hidden="true"></i>-->
+                        <!--                                </div>-->
+
+                        <!--                            </div>-->
+                        <!--                            <div class=" col-2  div-notifications">-->
+                        <!--                                &lt;!&ndash;button dropdown&ndash;&gt;-->
+                        <!--                                <div class="dropdown show">-->
+                        <!--                                    <a class="btn btn-secondary dropdown-toggle  btn_custom" href="#" role="button"-->
+                        <!--                                       id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"-->
+                        <!--                                       aria-expanded="false">-->
+                        <!--                                        A-->
+                        <!--                                    </a>-->
+
+                        <!--                                    <div class="dropdown-menu pull-menu-left" aria-labelledby="dropdownMenuLink">-->
+                        <!--                                        <a class="dropdown-item" href="#">My Profile</a>-->
+                        <!--                                        <a class="dropdown-item" href="#">Abdullah</a>-->
+                        <!--                                        <div class="dropdown-divider"></div>-->
+                        <!--                                        <a class="dropdown-item " href="#">Sign In </a>-->
+                        <!--                                        <a class="dropdown-item " href="#">Sign Out</a>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+
+                        <!--                        </div>-->
+                    </div>
+
+                    <div class="row" id="mbl-row" style="margin-top:122px">
+                        <div class="col-lg-9 col-12">
+                            {% if request.session.lang == "EN" %}
+                            <div class="curved-div ">
+                                <img src="/static/assets/images/manager.jpg" class="img-fluid"/>
+                            </div>
+                            {% else %}
+                            <div class="curved-div " style="left:17px !important;">
+                                <img src="/static/assets/images/manager.jpg" class="img-fluid"/>
+                            </div>
+                            {% endif %}
+                            <div id="emplooyyee-name">
+                                <h2 class="text-capitalize font-weight-bold">{{data.user.first_name}} {{data.user.last_name}}</h2>
+                                <h5>{{data.Job_position}}</h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-12 mbl-btn text-md-right">
+
+                            <a href="{% url 'index' %}" class="btn btn-danger btn-style ml-3"
+                               style="height: 35px;font-size: 14px;padding-top: 4px;">
+                                {% if request.session.lang == "EN" %}
+                                Discard
+                                {% else %}
+                                تجاهل
+                                {% endif %}
+                            </a>
+                            {% if request.session.ishr %}
+                            <a href="{% url 'EditEmployee' data.id %}" type="submit"
+                               class="btn btn-success btn-style "
+                               style="height: 35px;font-size: 14px;padding-top: 4px;">
+                                {% if request.session.lang == "EN" %}
+                                Edit
+                                {% else %}
+                                يحرر
+                                {% endif %}
+                            </a>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container content-top-gap">
+
+        <!-- breadcrumbs -->
+        <!--        <nav aria-label="breadcrumb" class="mb-4 ">-->
+        <!--            <ol class="breadcrumb my-breadcrumb">-->
+        <!--                <li class="breadcrumb-item"><a href="/">Home</a></li>-->
+        <!--                <li class="breadcrumb-item active" aria-current="page">Employee Details</li>-->
+        <!--            </ol>-->
+        <!--        </nav>-->
+        <!-- //breadcrumbs -->
+        <div id="back-cover" class=" mb-5">
+            <div class="row">
+                <div class="col-12 side_nav mt-5 mb-5">
+
+                    <div class="tab p-3">
+                        <button class="tablinks new-tablink mt-3" onclick="Employees(event, 'personal')">
+                            <div class="float-left btnn-icon" style=""><i class="fa fa-user-circle-o mr-2"
+                                                                          aria-hidden="true"></i></div>
+                            <div class="float-left btn-title ml-2 mt-2">
+                                {% if request.session.lang == "EN" %}
+                                Personal
+                                {% else %}
+                                الشخصية
+                                {% endif %}
+                            </div>
+                        </button>
+                        <button class="tablinks new-tablink mt-3" onclick="Employees(event, 'job')">
+                            <div class="float-left btnn-icon" style=""><i class="fa fa-briefcase mr-2"
+                                                                          aria-hidden="true"></i></div>
+                            <div class="float-left btn-title ml-2 mt-2">
+                                {% if request.session.lang == "EN" %}
+                                Job
+                                {% else %}
+                                وظيفة
+                                {% endif %}
+                            </div>
+                        </button>
+                        <button class="tablinks new-tablink mt-3" onclick="Employees(event, 'contract')">
+                            <div class="float-left btnn-icon" style=""><i class="fa fa-handshake-o mr-2"
+                                                                          aria-hidden="true"></i></div>
+                            <div class="float-left btn-title ml-2 mt-2">
+                                {% if request.session.lang == "EN" %}
+                                Contract
+                                {% else %}
+                                اتفافية
+                                {% endif %}
+                            </div>
+                        </button>
+                        <!--                        <button class="tablinks" onclick="Employees(event, 'compensation')">-->
+                        <!--                            <div class="float-left btnn-icon" style=""><i class="fa fa-money mr-2"-->
+                        <!--                                                                          aria-hidden="true"></i></div>-->
+                        <!--                            <div class="float-left btn-title ml-2 mt-2">Compensation</div>-->
+                        <!--                        </button>-->
+                        <button class="tablinks new-tablink mt-3" onclick="Employees(event, 'leave')">
+                            <div class="float-left btnn-icon" style="">
+                                <i class="fa fa-ticket mr-2" style="font-size:26px;margin-top:9px;"
+                                   aria-hidden="true"></i></div>
+                            <div class="float-left btn-title ml-2 mt-2">
+                                {% if request.session.lang == "EN" %}
+                                Leaves
+                                {% else %}
+                                الاجازات
+                                {% endif %}
+                            </div>
+                        </button>
+                        <button class="tablinks new-tablink mt-3" onclick="Employees(event, 'timesheets')">
+                            <div class="float-left btnn-icon" style=""><i class="fa fa-clock-o mr-2" style="font-size:26px;margin-top:9px;"
+                                                                          aria-hidden="true"></i></div>
+                            <div class="float-left btn-title ml-2 ml-md-1 mt-2">
+                                {% if request.session.lang == "EN" %}
+                                Timesheets
+                                {% else %}
+                                الدوام
+                                {% endif %}
+                            </div>
+                        </button>
+                        <button class="tablinks new-tablink mt-3" onclick="Employees(event, 'documents')">
+                            <div class="float-left btnn-icon" style=""><i class="fa fa-file-text mr-2"
+                                                                          aria-hidden="true"></i></div>
+                            <div class="float-left btn-title ml-2  ml-md-1 mt-2">
+                                {% if request.session.lang == "EN" %}
+                                Documents
+                                {% else %}
+                                وثائق
+                                {% endif %}
+                            </div>
+                        </button>
+                        <button class="tablinks new-tablink mt-3" onclick="Employees(event, 'benifits')">
+                            <div class="float-left btnn-icon" style=""><i class="fa fa-star-o mr-2"
+                                                                          aria-hidden="true"></i></div>
+                            <div class="float-left btn-title ml-2 mt-2">
+                                {% if request.session.lang == "EN" %}
+                                Benefits
+                                {% else %}
+                                الفوائد
+                                {% endif %}
+                            </div>
+                        </button>
+                        <button class="tablinks new-tablink mt-3" onclick="Employees(event, 'assets')">
+                            <div class="float-left btnn-icon" style=""><i class="fa fa-tags mr-2"
+                                                                          aria-hidden="true"></i></div>
+                            <div class="float-left btn-title ml-2 mt-2">
+                                {% if request.session.lang == "EN" %}
+                                Assets
+                                {% else %}
+                                أصول
+                                {% endif %}
+                            </div>
+                        </button>
+                        <button class="tablinks new-tablink mt-3" onclick="Employees(event, 'notes')">
+                            <div class="float-left btnn-icon" style=""><i class="fa fa-file-text-o mr-2"
+                                                                          aria-hidden="true"></i></div>
+                            <div class="float-left btn-title ml-2 mt-2">
+                                {% if request.session.lang == "EN" %}
+                                Notes
+                                {% else %}
+                                ملاحظات
+                                {% endif %}
+                            </div>
+                        </button>
+                    </div>
+
+                    <!--persaonal-->
+                    <div id="personal" class="tabcontent active">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-12 p-3" style="border-bottom: 1px solid #eee;">
+                                <h4 class="p-3 p-head"><strong>
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-user-circle-o mr-2"></i>Personal
+                                    {% else %}
+                                    <i class="fa fa-user-circle-o ml-2"></i>الشخصية
+                                    {% endif %}
+                                </strong>
+                                </h4>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12 col-12 p-3">
+                                <h5 class="p-2 mt-4 p-head2 bg-primary text-center text-white"
+                                    style="border-radius: 10px 0 10px 0;"><strong>
+                                    {% if request.session.lang == "EN" %}
+                                    ABOUT
+                                    {% else %}
+                                    حول
+                                    {% endif %}
+                                </strong></h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10  col-12  p-2 new-tag-edit">
+
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2"><i class="fa fa-calendar m-auto pt-2"
+                                                                             aria-hidden="true"></i></div>
+                                            <div class="col-8 small-text">
+                                                <span class="text-primary"><b>{{data.birthdate}}</b></span>
+                                                <br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                DATE OF BIRTH
+                                                {% else %}
+                                                تاريخ الولادة
+                                                {% endif %}
+                                            </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10 col-12  p-2 new-tag-edit">
+
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2"><i class="fa fa-compass m-auto pt-2"
+                                                                             style="font-size: 31px; margin-top: 6px; margin-left: 8px;"
+                                                                             aria-hidden="true"></i></div>
+
+                                            <div class="col-8  small-text">
+                                                <span class="text-primary"><b>{{data.nationalid}}</b></span><br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                National ID or Iqama No.
+                                                {% else %}
+                                                الرقم القومي أو رقم الإقامة
+                                                {% endif %}
+                                            </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10  col-12  p-2 new-tag-edit">
+
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2"><i class="fa fa-male m-auto pt-2"
+                                                                             style="font-size: 28px;margin-top: 6px;"
+                                                                             aria-hidden="true"></i></div>
+                                            <div class="col-8  small-text">
+                                                <span class="text-primary"><b>{{data.gender}}</b></span>
+                                                <br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                GENDER
+                                                {% else %}
+                                                جنس تذكير أو تأنيث
+                                                {% endif %}
+                                            </small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10 col-12  p-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2"><i class="fa fa-globe m-auto pt-2"
+                                                                             style="font-size: 29px;margin-top: 6px;margin-left:10px"
+                                                                             aria-hidden="true"></i></div>
+                                            <div class="col-8  small-text">
+                                                <span class="text-primary"><b>{{data.employeenumber}}</b></span>
+                                                <br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                Employee No
+                                                {% else %}
+                                                هوية الموظف
+                                                {% endif %}
+                                            </small></div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10  col-12  p-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2"><i class="fa fa-flag m-auto pt-2"
+                                                                             style="font-size: 28px;margin-top: 6px;"
+                                                                             aria-hidden="true"></i></div>
+                                            <div class="col-8  small-text">
+                                                <span class="text-primary"><b>{{data.nationality}}</b></span>
+                                                <br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                Nationality
+                                                {% else %}
+                                                جنسية
+                                                {% endif %}
+                                            </small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12 col-12 p-3">
+                                <h5 class="p-2 mt-2 p-head2 bg-primary text-center text-white"
+                                    style="border-radius: 10px 0 10px 0;"><strong>
+                                    {% if request.session.lang == "EN" %}
+                                    CONTACT
+                                    {% else %}
+                                    اتصال
+                                    {% endif %}
+                                </strong></h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10  col-12  p-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2"><i class="fa fa-envelope mr-3"
+                                                                             aria-hidden="true"></i></div>
+                                            <div class="col-8  small-text">
+                                                <span class="text-primary"><b>{{data.Work_Email}}</b></span>
+                                                <br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                WORK EMAIL
+                                                {% else %}
+                                                البريد الإلكتروني العمل
+                                                {% endif %}
+                                            </small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10 col-12  p-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2"><i class="fa fa-mobile mr-3"
+                                                                             style="font-size: 32px;margin-top: 5px;margin-left: 15px;"
+                                                                             aria-hidden="true"></i></div>
+                                            <div class="col-8  small-text">
+                                                <span class="text-primary"><b>{{data.Work_Mobile}}</b></span>
+                                                <br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                MOBILE NO
+                                                {% else %}
+                                                رقم المحمول
+                                                {% endif %}
+                                            </small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--job-->
+                    <div id="job" class="tabcontent">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-12 p-3" style="border-bottom: 1px solid #eee;">
+                                <h4 class="p-3 p-head"><strong>
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-briefcase mr-2"></i>Job Info
+                                    {% else %}
+                                    <i class="fa fa-briefcase ml-2"></i>معلومات الوظيفة
+                                    {% endif %}
+                                </strong>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12 col-12 p-3">
+                                <h5 class="p-2 mt-4 p-head2 bg-primary text-center text-white"
+                                    style="border-radius: 10px 0 10px 0;"><strong>
+                                    {% if request.session.lang == "EN" %}
+                                    Details
+                                    {% else %}
+                                    تفاصيل
+                                    {% endif %}
+                                </strong></h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10  col-12  p-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2 new-fa"><i class="fa fa-briefcase m-auto pt-2"
+                                                                                    aria-hidden="true"></i></div>
+                                            <div class="col-8 small-text">
+                                                <span class="text-primary"><b>{{data.Job_position}}</b></span>
+                                                <br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                JOB TITLE
+                                                {% else %}
+                                                عنوان وظيفي
+                                                {% endif %}
+                                            </small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10 col-12  p-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2 new-fa"><i class="fa fa-calendar m-auto pt-2"
+                                                                                    aria-hidden="true"></i></div>
+                                            <div class="col-8  small-text">
+                                                <span class="text-primary"><b>{{data.DOJ}}</b></span>
+                                                <br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                HIRE DATE
+                                                {% else %}
+                                                موعد التوظيف
+                                                {% endif %}
+                                            </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10  col-12  p-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4  btnn-icon2  new-fa"><i class="fa fa-hashtag m-auto pt-2"
+                                                                                      aria-hidden="true"></i></div>
+                                            <div class="col-8 small-text">
+                                                <span class="text-primary"><b>{{data.employeenumber}}</b></span>
+                                                <br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                Employee No
+                                                {% else %}
+                                                هوية الموظف
+                                                {% endif %}
+                                            </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10 col-12  p-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2 new-fa"><i class="fa fa-globe m-auto pt-2"
+                                                                                    aria-hidden="true"></i></div>
+                                            <div class="col-8 small-text">
+                                                <span class="text-primary"><b>{{data.Working_Address}}</b></span>
+
+                                                <br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                LOCATION
+                                                {% else %}
+                                                موقعك
+                                                {% endif %}
+                                            </small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10  col-12  p-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2  new-fa"><i class="fa fa-building m-auto pt-2"
+                                                                                     aria-hidden="true"></i></div>
+                                            <div class="col-8 small-text">
+                                                <span class="text-primary"><b>{{data.Department}}</b></span>
+                                                <br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                DEPARTMENT
+                                                {% else %}
+                                                قسم
+                                                {% endif %}
+                                            </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10 col-12  p-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2 new-fa"><i class="fa fa-envelope m-auto pt-2"
+                                                                                    aria-hidden="true"></i></div>
+                                            <div class="col-8 small-text">
+                                                <span class="text-primary"><b>{{data.Manager}}</b></span>
+
+                                                <br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                Manager Email
+                                                {% else %}
+                                                البريد الإلكتروني للمدير
+                                                {% endif %}
+                                            </small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10 col-12  p-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2 new-fa"><i class="fa fa-user m-auto pt-2"
+                                                                                    aria-hidden="true"></i></div>
+                                            <div class="col-8 small-text">
+                                                <span class="text-primary"><b></b></span>
+
+                                                <br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                Grade
+                                                {% else %}
+                                                المرتبة
+                                                {% endif %}
+                                            </small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10 col-12  p-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2 new-fa"><i class="fa fa-line-chart m-auto pt-2"
+                                                                                    aria-hidden="true"></i></div>
+                                            <div class="col-8 small-text">
+                                                <span class="text-primary"><b></b></span>
+
+                                                <br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                Level
+                                                {% else %}
+                                                مستوى
+                                                {% endif %}
+                                            </small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--   contract        -->
+                    <div id="contract" class="tabcontent">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-12 p-3" style="border-bottom: 1px solid #eee;">
+                                <h4 class="p-3 p-head"><strong>
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-handshake-o mr-2"></i>Full Time
+                                    {% else %}
+                                    <i class="fa fa-handshake-o ml-2"></i> وقت كامل
+                                    {% endif %}
+                                </strong>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12 col-12 p-3">
+                                <h5 class="p-2 mt-4 p-head2 bg-primary text-center text-white"
+                                    style="border-radius: 10px 0 10px 0;"><strong>
+                                    {% if request.session.lang == "EN" %}
+                                    Details
+                                    {% else %}
+                                    تفاصيل
+                                    {% endif %}
+                                </strong></h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10  col-12  p-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2 new-fa"><i class="fa fa-briefcase m-auto pt-2"
+                                                                                    aria-hidden="true"></i></div>
+                                            <div class="col-8  small-text">
+                                                <span class="text-primary"><b>{{data2.ContractsReference}}</b></span>
+                                                <br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                Duration
+                                                {% else %}
+                                                مدة
+                                                {% endif %}
+                                            </small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10 col-12  p-2 mt-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2 new-fa"><i class="fa fa-calendar m-auto pt-2"
+                                                                                    aria-hidden="true"></i></div>
+                                            <div class="col-8  small-text">
+                                                {% if request.session.lang == "EN" %}
+                                                <span class="text-primary"><b>Date</b></span><br><span
+                                                    class="text-primary">{{data2.Date_From}}</span> <br> <span
+                                                    class="text-primary">{{data2.Date_To}}</span>
+                                                {% else %}
+                                                <span class="text-primary"><b>تاريخ</b></span><br><span
+                                                    class="text-primary">{{data2.Date_From}}</span> <br> <span
+                                                    class="text-primary">{{data2.Date_To}}</span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10 col-12  p-2 mt-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2 new-fa"><i class="fa fa-calendar m-auto pt-2"
+                                                                                    aria-hidden="true"></i></div>
+                                            <div class="col-8  small-text">
+                                                {% if request.session.lang == "EN" %}
+                                                <span class="text-primary"><b>Notice</b></span><br><span
+                                                    class="text-primary">{{data2.notice_period}}</span> <span
+                                                    class="text-primary">Days</span>
+                                                {% else %}
+                                                <span class="text-primary"><b>يلاحظ</b></span>: <br><span
+                                                    class="text-primary">{{data2.notice_period}}</span> <span
+                                                    class="text-primary">أيام</span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10 col-12  p-2 mt-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2 new-fa"><i class="fa fa-calendar m-auto pt-2"
+                                                                                    aria-hidden="true"></i></div>
+                                            <div class="col-8  small-text">
+                                                {% if request.session.lang == "EN" %}
+                                                <span class="text-primary"><b>Probation</b></span><br><span
+                                                    class="text-primary">{{data2.probation_period}}</span> <span
+                                                    class="text-primary">Days</span>
+                                                {% else %}
+                                                <span class="text-primary"><b>فترة التجربة</b></span> <br><span
+                                                    class="text-primary">{{data2.notice_period}}</span> <span
+                                                    class="text-primary">أيام</span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10  col-12  p-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2 new-fa"><i class="fa fa-briefcase m-auto pt-2"
+                                                                                    aria-hidden="true"></i></div>
+                                            <div class="col-8 small-text">
+                                                <span class="text-primary"><b>{{salarypackage}}</b></span>
+                                                <br><small>
+                                                {% if request.session.lang == "EN" %}
+                                                Salary package
+                                                {% else %}
+                                                حزمة الراتب
+                                                {% endif %}
+                                            </small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12  p-3 mt-4">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-10 col-12  p-2 mt-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2 new-fa"><i class="fa fa-money m-auto pt-2"
+                                                                                    aria-hidden="true"></i></div>
+                                            <div class="col-8 small-text">
+                                                        <span class="text-primary">
+                                                            {% if request.session.lang == "EN" %}
+                                                            <b>Basic Salary</b>
+                                                              {% else %}
+                                                              <b>راتب اساسي</b>
+                                                              {% endif %}
+                                                        </span> <br>
+
+                                                <span class=" text-primary">{{data2.base_salary}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10 col-12  p-2 mt-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2 new-fa"><i class="fa fa-home m-auto pt-2"
+                                                                                    aria-hidden="true"></i></div>
+                                            <div class="col-8 small-text">
+                                                        <span class="text-primary">
+                                                            {% if request.session.lang == "EN" %}
+                                                            <b>Housing Allowance</b>
+                                                              {% else %}
+                                                              <b>بدل سكن</b>
+                                                              {% endif %}
+                                                        </span> <br>
+
+                                                <span class=" text-primary">{{data2.Housing_Allowance}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10 col-12  p-2 mt-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2 new-fa"><i class="fa fa-bus m-auto pt-2"
+                                                                                    aria-hidden="true"></i></div>
+                                            <div class="col-8 small-text">
+                                                        <span class="text-primary">
+                                                            {% if request.session.lang == "EN" %}
+                                                            <b>Transport Allowance</b>
+                                                              {% else %}
+                                                              <b>بدل النقل</b>
+                                                              {% endif %}
+                                                        </span> <br>
+
+                                                <span class=" text-primary">{{data2.Transport_Allowance}}</span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10 col-12  p-2 mt-2 new-tag-edit">
+                                        <div class="row m-0">
+                                            <div class="col-4 btnn-icon2 new-fa"><i
+                                                    class="fa fa-exclamation-circle m-auto pt-2"
+                                                    aria-hidden="true"></i></div>
+                                            <div class="col-8 small-text">
+                                                        <span class="text-primary">
+                                                            {% if request.session.lang == "EN" %}
+                                                            <b>Other Allowance</b>
+                                                              {% else %}
+                                                              <b>بدلات أخرى</b>
+                                                              {% endif %}
+                                                        </span> <br>
+
+                                                <span class=" text-primary">{{data2.otherallowance}}</span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--OLD CODE-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-12 ">-->
+<!--                                <h5 class="p-3 p-head2"><strong>-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Details-->
+<!--                                    {% else %}-->
+<!--                                    تفاصيل-->
+<!--                                    {% endif %}-->
+<!--                                </strong></h5>-->
+<!--                            </div>-->
+<!--                            <div class="col-6  p-2">-->
+<!--                                <div class="col-12 abt-det">-->
+
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-12">-->
+<!--                                            <div class="float-left btnn-icon2"><i class="fa fa-briefcase mr-3"-->
+<!--                                                                                  aria-hidden="true"></i></div>-->
+<!--                                            <div class="float-left ml-3 small-text">-->
+<!--                                                {{data2.ContractsReference}}<br><small>-->
+<!--                                                {% if request.session.lang == "EN" %}-->
+<!--                                                Duration-->
+<!--                                                {% else %}-->
+<!--                                                مدة-->
+<!--                                                {% endif %}-->
+<!--                                            </small></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+<!--                            <div class="col-6  p-3 ">-->
+<!--                                <div class="col-12 abt-det  abt-2">-->
+<!--                                    <i class="fa fa-calendar mr-3" style="font-size:18px;"-->
+<!--                                       aria-hidden="true"></i>-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Date: {{data2.Date_From}} - {{data2.Date_To}}-->
+<!--                                    {% else %}-->
+<!--                                    {{data2.Date_To}} - {{data2.Date_From}} : تاريخ-->
+<!--                                    {% endif %}-->
+<!--                                    <br>-->
+<!--                                </div>-->
+<!--                                <div class="col-12 mt-2 abt-det abt-2"><i class="fa fa-clock-o mr-3"-->
+<!--                                                                          aria-hidden="true"></i>-->
+
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Notice {{data2.notice_period}} Days-->
+<!--                                    {% else %}-->
+<!--                                    يلاحظ {{data2.notice_period}} أيام-->
+<!--                                    {% endif %}-->
+<!--                                    <br>-->
+<!--                                </div>-->
+
+<!--                                <div class="col-12 mt-2 abt-det  abt-2"><i class="fa fa-calculator mr-3"-->
+<!--                                                                           aria-hidden="true"></i>-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Probation {{data2.probation_period}} days-->
+<!--                                    {% else %}-->
+<!--                                    فترة التجربة {{data2.probation_period}} أيام-->
+<!--                                    {% endif %}-->
+<!--                                    <br>-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+<!--                        </div>-->
+<!--                        <hr>-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-6  p-2">-->
+<!--                                <div class="col-12 abt-det">-->
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-12">-->
+<!--                                            <div class="float-left btnn-icon2"><i class="fa fa-money mr-3"-->
+<!--                                                                                  aria-hidden="true"></i></div>-->
+<!--                                            <div class="float-left ml-3 small-text">{{salarypackage}}<br><small>-->
+
+<!--                                                {% if request.session.lang == "EN" %}-->
+<!--                                                Salary package-->
+<!--                                                {% else %}-->
+<!--                                                حزمة الراتب-->
+<!--                                                {% endif %}-->
+<!--                                            </small></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+<!--                            <div class="col-6  p-3 ">-->
+<!--                                <div class="col-12 abt-det abt-2"><i class="fa fa-money mr-2" aria-hidden="true"></i>-->
+<!--                                    <span>-->
+
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                                Basic Salary-->
+<!--                                                  {% else %}-->
+<!--                                                  راتب اساسي-->
+<!--                                                  {% endif %}-->
+<!--                                    </span> <span class="ml-5 numbr-span">{{data2.base_salary}}</span><br>-->
+<!--                                </div>-->
+<!--                                <div class="col-12 mt-2 abt-det abt-2"><i class="fa fa-home mr-2"-->
+<!--                                                                          aria-hidden="true"></i><span>-->
+
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                                Housing Allowance-->
+<!--                                                  {% else %}-->
+<!--                                                  بدل سكن-->
+<!--                                                  {% endif %}-->
+<!--                                </span> <span class="ml-5 numbr-span">{{data2.Housing_Allowance}}</span><br>-->
+<!--                                </div>-->
+<!--                                <div class="col-12 mt-2 abt-det abt-2"><i class="fa fa-bus mr-2"-->
+<!--                                                                          aria-hidden="true"></i><span>-->
+
+<!--                                {% if request.session.lang == "EN" %}-->
+<!--                                               Transport Allowance-->
+<!--                                                  {% else %}-->
+<!--                                                  بدل النقل-->
+<!--                                                  {% endif %}-->
+<!--                                </span> <span class="ml-5 numbr-span">{{data2.Transport_Allowance}}</span><br>-->
+<!--                                </div>-->
+<!--                                <div class="col-12 mt-2 abt-det abt-2"><i class="fa fa-exclamation-circle mr-2"-->
+<!--                                                                          aria-hidden="true"></i><span>-->
+
+<!--                                {% if request.session.lang == "EN" %}-->
+<!--                                               Other Allowance-->
+<!--                                                  {% else %}-->
+<!--                                                  بدلات أخرى-->
+<!--                                                  {% endif %}-->
+<!--                                </span> <span class="ml-5 numbr-span">{{data2.otherallowance}}</span><br>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+                    </div>
+
+                    <!--Leave-->
+                    <div id="leave" class="tabcontent">
+                        <h4 class="p-3 phead text-primary"><strong>
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-ticket mr-2"></i>Leaves
+                            {% else %}
+                            <i class="fa fa-ticket ml-2"></i>الاجازات
+                            {% endif %}
+                        </strong>
+                            <hr>
+                        </h4>
+
+                        <div class="row m-0">
+                            <div class="col-12">
+                                <figure class="highcharts-figure">
+                                    <div id="leave-container">
+
+                                    </div>
+
+                                </figure>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--timesheet-->
+                    <div id="timesheets" class="tabcontent">
+                        <h4 class="p-3 p-head"><strong>
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-clock-o mr-2"></i>Timesheets
+                                    {% else %}
+                                    <i class="fa fa-clock-o ml-2"></i> الدوام
+                                    {% endif %}
+                                </strong>
+                                    <hr>
+                                </h4>
+
+
+
+                        <div class="row">
+                            <!--days-->
+                            <div class="col-lg-6 col-12 p-3">
+
+                                <div class="row p-3">
+                                    <div class="col-12 p-4 day-cover">
+<!--                                        <div class="days-time p-head">-->
+<!--                                            {% if request.session.lang == "EN" %}-->
+<!--                                            Days-->
+<!--                                            {% else %}-->
+<!--                                            أيام-->
+<!--                                            {% endif %}-->
+<!--                                            <span>31</span>-->
+<!--                                        </div>-->
+<!--                                        <hr>-->
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="row m-0">
+                                                    <div class="col-6  days-time dtm-2 p-3 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        <i class="fa fa-calendar mr-2"></i> <b>Days</b>
+                                                        {% else %}
+                                                        <i class="fa fa-calendar ml-2"></i><b>أيام</b>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-6 dtm-2 p-3 text-primary ">
+                                                        {% if request.session.lang == "EN" %}
+                                                        <span><b>31</b></span>
+                                                        {% else %}
+                                                        <span><b>31</b></span>
+                                                        {% endif %}
+                                                    </div>
+                                                    <hr>
+                                                </div>
+                                                <hr>
+                                            </div>
+                                            <div class="col-12">
+                                                <ul class="timesheet-det new-time m-0 p-0">
+                                                    <li style="position-relative;">
+                                                       <div class="row m-0">
+                                                           <div class="col-8">
+
+                                                               {% if request.session.lang == "EN" %}
+                                                               <i class="fa fa-circle mr-3 green" aria-hidden="true"></i>
+                                                               Present
+                                                               {% else %}
+                                                               <i class="fa fa-circle ml-3 green" aria-hidden="true"></i>
+                                                               هدايا
+                                                               {% endif %}
+                                                           </div>
+
+                                                           <div class="col-4">
+                                                               <span class="text-primary tm-spn">3</span>
+                                                           </div>
+                                                       </div>
+                                                    </li>
+                                                    <li style="position-relative;">
+                                                        <div class="row m-0">
+                                                           <div class="col-8">
+                                                               {% if request.session.lang == "EN" %}
+                                                               <i class="fa fa-circle mr-3 orange" aria-hidden="true"></i>
+                                                                For Review
+                                                               {% else %}
+                                                               <i class="fa fa-circle ml-3 orange" aria-hidden="true"></i>
+                                                               للمراجعة
+                                                               {% endif %}
+                                                           </div>
+
+                                                           <div class="col-4">
+                                                               <span class="text-primary tm-spn">5</span>
+                                                           </div>
+                                                       </div>
+                                                    </li>
+                                                    <li style="position-relative;">
+                                                         <div class="row m-0">
+                                                           <div class="col-8">
+                                                               {% if request.session.lang == "EN" %}
+                                                               <i class="fa fa-circle mr-3 red" aria-hidden="true"></i>
+                                                                Leaves
+                                                               {% else %}
+                                                               <i class="fa fa-circle ml-3 red" aria-hidden="true"></i>
+                                                               يغادر
+                                                               {% endif %}
+                                                           </div>
+
+                                                           <div class="col-4">
+                                                               <span class="text-primary tm-spn">11</span>
+                                                           </div>
+                                                       </div>
+                                                    </li>
+                                                    <li  style="position-relative;">
+                                                         <div class="row m-0">
+                                                           <div class="col-8">
+                                                               {% if request.session.lang == "EN" %}
+                                                               <i class="fa fa-circle mr-3 grey" aria-hidden="true"></i>
+                                                                Weekend
+                                                               {% else %}
+                                                               <i class="fa fa-circle ml-3 grey" aria-hidden="true"></i>
+                                                               عطلة  الاسبوع
+                                                               {% endif %}
+                                                           </div>
+
+                                                           <div class="col-4">
+                                                               <span class="text-primary tm-spn">8</span>
+                                                           </div>
+                                                       </div>
+                                                    </li>
+                                                    <li style="position-relative;">
+                                                        <div class="row m-0">
+                                                           <div class="col-8">
+                                                               {% if request.session.lang == "EN" %}
+                                                               <i class="fa fa-circle mr-3 blue" aria-hidden="true"></i>
+                                                                Holiday
+                                                               {% else %}
+                                                               <i class="fa fa-circle ml-3 blue" aria-hidden="true"></i>
+                                                               الاجازة
+                                                               {% endif %}
+                                                           </div>
+
+                                                           <div class="col-4">
+                                                               <span class="text-primary tm-spn">14</span>
+                                                           </div>
+                                                       </div>
+                                                    </li>
+                                                    <li style="position-relative;">
+                                                        <div class="row m-0">
+                                                           <div class="col-8">
+                                                               {% if request.session.lang == "EN" %}
+                                                               <i class="fa fa-circle mr-3 blue" aria-hidden="true"></i>
+                                                                No Info
+                                                               {% else %}
+                                                               <i class="fa fa-circle ml-3 blue" aria-hidden="true"></i>
+                                                               لا توجد معلومات
+                                                               {% endif %}
+                                                           </div>
+
+                                                           <div class="col-4">
+                                                               <span class="text-primary tm-spn">12</span>
+                                                           </div>
+                                                       </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--hours-->
+                            <div class="col-lg-6 col-12  p-3  hours">
+                                <div class="row p-3">
+                                    <div class="col-12 p-4 day-cover">
+<!--                                        <div class="days-time p-head">-->
+<!--                                            {% if request.session.lang == "EN" %}-->
+
+<!--                                            {% else %}-->
+
+<!--                                            {% endif %}-->
+<!--                                            <span>310</span></div>-->
+<!--                                        <hr>-->
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="row m-0">
+                                                    <div class="col-6  days-time dtm-2 p-3 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        <i class="fa fa-clock-o mr-2"></i> <b>Hours</b>
+                                                        {% else %}
+                                                        <i class="fa fa-clock-o ml-2"></i><b>ساعات</b>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-6 dtm-2 p-3 text-primary ">
+                                                        {% if request.session.lang == "EN" %}
+                                                        <span><b>310</b></span>
+                                                        {% else %}
+                                                        <span><b>310</b></span>
+                                                        {% endif %}
+                                                    </div>
+                                                    <hr>
+                                                </div>
+                                                <hr>
+                                            </div>
+                                            <div class="col-12">
+                                                <ul class="timesheet-det new-time m-0 p-0">
+                                                    <li style="position:relative;">
+                                                         <div class="row m-0">
+                                                           <div class="col-8">
+                                                               {% if request.session.lang == "EN" %}
+                                                               <i class="fa fa-circle mr-3 green" aria-hidden="true"></i>
+                                                                Actual
+                                                               {% else %}
+                                                               <i class="fa fa-circle ml-3 green" aria-hidden="true"></i>
+                                                               فعلي
+                                                               {% endif %}
+                                                           </div>
+
+                                                           <div class="col-4">
+                                                               <span class="text-primary tm-spn">298</span>
+                                                           </div>
+                                                       </div>
+                                                    </li>
+                                                    <li class="red" style="position:relative;" >
+                                                         <div class="row m-0">
+                                                           <div class="col-8">
+                                                               {% if request.session.lang == "EN" %}
+                                                               <i class="fa fa-circle mr-3 green" aria-hidden="true"></i>
+                                                                Difference
+                                                               {% else %}
+                                                               <i class="fa fa-circle ml-3 green" aria-hidden="true"></i>
+                                                               اختلاف
+                                                               {% endif %}
+                                                           </div>
+
+                                                           <div class="col-4">
+                                                               <span class="text-primary tm-spn red">12</span>
+                                                           </div>
+                                                       </div>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--documents-->
+                    <div id="documents" class="tabcontent">
+                        <h4 class="p-3 p-head"><strong>
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-file-text mr-2" aria-hidden="true"></i>Documents
+                            {% else %}
+                            <i class="fa fa-file-text ml-2" aria-hidden="true"></i>وثائق
+                            {% endif %}
+                        </strong>
+                            <hr>
+                        </h4>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row m-0">
+                                    <div class="col-4 p-3 doc-outer ">
+                                        <div class="doc-icon-circle m-auto">
+                                        <i class="fa fa-file" aria-hidden="true"></i>
+                                    </div>
+                                    </div>
+                                    <div class="col-8 p-3 doct-title" style="position: relative">
+                                        <strong>
+                                                    {% if request.session.lang == "EN" %}
+                                                    Contracts
+                                                    {% else %}
+                                                    انكماش
+                                                    {% endif %}
+                                                </strong> <br><small>
+
+                                                {% if request.session.lang == "EN" %}
+                                                Contract , Contract Amendment
+                                                {% else %}
+                                                عقد ، تعديل العقد
+                                                {% endif %}
+                                            </small>
+                                            <div class="pt-3">
+                                                {% if request.session.lang == "EN" %}
+                                                <span><i class="fa fa-file mr-2" aria-hidden="true"></i> 1</span>
+                                                {% else %}
+                                                 <span><i class="fa fa-file ml-2" aria-hidden="true"></i> 1</span>
+                                                {% endif %}
+                                            </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row m-0">
+                                    <div class="col-4 p-3 doc-outer ">
+                                        <div class="doc-icon-circle m-auto">
+                                        <i class="fa fa-cc-visa" aria-hidden="true"></i>
+                                    </div>
+                                    </div>
+                                    <div class="col-8 p-3 doct-title" style="position: relative">
+                                        <strong>
+                                                   {% if request.session.lang == "EN" %}
+                                                    Visa
+                                                    {% else %}
+                                                    تأشيرة
+                                                    {% endif %}
+                                                </strong> <br><small>
+
+                                                {% if request.session.lang == "EN" %}
+                                                Exit , Reentry, Bussiness visa
+                                                {% else %}
+                                                خروج ، إعادة الدخول ، تأشيرة عمل
+                                                {% endif %}
+                                            </small>
+                                            <div class="pt-3">
+                                                {% if request.session.lang == "EN" %}
+                                                <span><i class="fa fa-file mr-2" aria-hidden="true"></i> 1</span>
+                                                {% else %}
+                                                 <span><i class="fa fa-file ml-2" aria-hidden="true"></i> 1</span>
+                                                {% endif %}
+                                            </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row m-0">
+                                    <div class="col-4 p-3 doc-outer ">
+                                        <div class="doc-icon-circle m-auto">
+                                        <i class="fa fa-id-card" aria-hidden="true"></i>
+                                    </div>
+                                    </div>
+                                    <div class="col-8 p-3 doct-title" style="position: relative">
+                                        <strong>
+                                                   {% if request.session.lang == "EN" %}
+                                                    ID'S
+                                                    {% else %}
+                                                    الهويات
+                                                    {% endif %}
+                                                </strong> <br><small>
+
+                                               {% if request.session.lang == "EN" %}
+                                                National ID , Iqamah, Dependent ID
+                                                {% else %}
+                                                الهوية الوطنية ، الإقامة ، الهوية المعيلة
+                                                {% endif %}
+                                            </small>
+                                            <div class="pt-3">
+                                                {% if request.session.lang == "EN" %}
+                                                <span><i class="fa fa-file mr-2" aria-hidden="true"></i> 1</span>
+                                                {% else %}
+                                                 <span><i class="fa fa-file ml-2" aria-hidden="true"></i> 1</span>
+                                                {% endif %}
+                                            </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+
+                        <div class="row">
+                            <div class="col-12">
+                                 <div class="row m-0">
+                                    <div class="col-4 p-3 doc-outer ">
+                                        <div class="doc-icon-circle m-auto">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                    </div>
+                                    </div>
+                                    <div class="col-8 p-3 doct-title" style="position: relative">
+                                        <strong>
+                                                    {% if request.session.lang == "EN" %}
+                                                    Personal
+                                                    {% else %}
+                                                    الشخصية
+                                                    {% endif %}
+                                                </strong> <br><small>
+
+                                                {% if request.session.lang == "EN" %}
+                                                Personal
+                                                {% else %}
+                                                الشخصية
+                                                {% endif %}
+                                            </small>
+                                            <div class="pt-3">
+                                                {% if request.session.lang == "EN" %}
+                                                <span><i class="fa fa-file mr-2" aria-hidden="true"></i> 1</span>
+                                                {% else %}
+                                                 <span><i class="fa fa-file ml-2" aria-hidden="true"></i> 1</span>
+                                                {% endif %}
+                                            </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                    </div>
+
+
+                    <!--benifits-->
+                    <div id="benifits" class="tabcontent">
+                        <h4 class="p-3 p-head"><strong>
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-star-o mr-2"></i>Benefits
+                            {% else %}
+                            <i class="fa fa-star-o ml-2"></i>فوائد
+                            {% endif %}
+                        </strong>
+                            <hr>
+                        </h4>
+
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-12 p-3  d-flex justify-content-center">
+                                <div class="col-12 p-2  benifit-cards  ">
+
+                                    <div class="doc-icon-circle doc-icon-circle2 m-auto text-center">
+                                        <i class="fa fa-globe" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="small-text doct-title" style="padding-top:17px;"><strong>
+
+                                        {% if request.session.lang == "EN" %}
+                                        Saudi Nationals
+                                        {% else %}
+                                        سعوديون
+                                        {% endif %}
+                                    </strong> <br><small>GOSI</small></div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-12 p-3 ">
+                                <div class="col-12 p-2  benifit-cards  ">
+
+                                    <div class="doc-icon-circle doc-icon-circle2 m-auto text-center">
+                                        <i class="fa fa-medkit" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="small-text doct-title" style="padding-top:17px;"><strong>
+                                        {% if request.session.lang == "EN" %}
+                                        Bupa Gold
+                                        {% else %}
+                                        بوبا جولد
+                                        {% endif %}
+                                    </strong> <br><small>
+                                        {% if request.session.lang == "EN" %}
+                                        health
+                                        {% else %}
+                                        صحة
+                                        {% endif %}
+                                    </small></div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-12 p-3 ">
+                                <div class="col-12 p-2  benifit-cards  ">
+
+                                    <div class="doc-icon-circle doc-icon-circle2 m-auto text-center">
+                                        <i class="fa fa-ticket" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="small-text doct-title" style="padding-top:17px;"><strong>
+
+                                        {% if request.session.lang == "EN" %}
+                                        Flight Tickets
+                                        {% else %}
+                                        تذاكر طيران
+                                        {% endif %}
+                                    </strong> <br><small>
+                                        {% if request.session.lang == "EN" %}
+                                        other
+                                        {% else %}
+                                        أخرى
+                                        {% endif %}
+                                    </small></div>
+
+                                </div>
+                            </div>
+
+                              <div class="col-lg-4 col-md-6 col-12 p-3  d-flex justify-content-center">
+                                <div class="col-12 p-2  benifit-cards  ">
+
+                                    <div class="doc-icon-circle doc-icon-circle2 m-auto text-center">
+                                        <i class="fa fa-home" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="small-text doct-title" style="padding-top:17px;">
+                                        <strong>{% if request.session.lang == "EN" %}
+                                            Personal
+                                            {% else %}
+                                            الشخصية
+                                            {% endif %} </strong> <br><small>{% if request.session.lang == "EN" %}
+                                        Personal
+                                        {% else %}
+                                        الشخصية
+                                        {% endif %}</small></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Assets-->
+                    <div id="assets" class="tabcontent">
+                        <h4 class="p-3 p-head"><strong>
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-tags mr-2"></i>Assets
+                            {% else %}
+                            <i class="fa fa-tags ml-2"></i>أصول
+                            {% endif %}
+                        </strong>
+                            <hr>
+                        </h4>
+
+                        <div class="row">
+                            <div class="col-12 p-3 ">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-bordered" style="font-size:15px !important;">
+                                        <thead class="text-center thead-dark">
+                                        <tr>
+                                            <th scope="col">
+                                                {% if request.session.lang == "EN" %}
+                                                TYPE
+                                                {% else %}
+                                                اكتب
+                                                {% endif %}
+                                            </th>
+                                            <th scope="col">
+                                                {% if request.session.lang == "EN" %}
+                                                NUMBER
+                                                {% else %}
+                                                عدد
+                                                {% endif %}
+                                            </th>
+                                            <th scope="col">
+                                                {% if request.session.lang == "EN" %}
+                                                HANDOVER
+                                                {% else %}
+                                                سلم
+                                                {% endif %}
+                                            </th>
+                                            <th scope="col">
+                                                {% if request.session.lang == "EN" %}
+                                                STATUS
+                                                {% else %}
+                                                الحالة
+                                                {% endif %}
+                                            </th>
+                                            <th scope="col">
+                                                {% if request.session.lang == "EN" %}
+                                                RETURN DATE
+                                                {% else %}
+                                                تاريخ العودة
+                                                {% endif %}
+                                            </th>
+                                            <th scope="col">
+                                                {% if request.session.lang == "EN" %}
+                                                DESCRIPTION
+                                                {% else %}
+                                                الوصف
+                                                {% endif %}
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="text-center">
+                                        {% for d in assets %}
+                                        <tr>
+                                            <th scope="row">
+                                                {{d.type}}
+                                            </th>
+                                            <td>{{d.number}}</td>
+                                            <td>{{d.handover}}</td>
+                                            <td>
+                                                {{d.status}}
+                                            </td>
+                                            <td>{{d.returndate}}</td>
+                                            <td>{{d.description}}</td>
+                                        </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--notes-->
+                    <div id="notes" class="tabcontent">
+                        <h4 class="p-3 p-head"><strong>
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-file-text-o mr-2"></i>Notes
+                            {% else %}
+                            <i class="fa fa-file-text-o ml-2"></i>ملاحظات
+                            {% endif %}
+                        </strong>
+                            <hr>
+                        </h4>
+                        <div class="row">
+                            {% for d in notes %}
+                            <div class="col-12 p-4  notes-cover ">
+
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-12 p-2  benifit-cards benifit2  ">
+                                        <div class=" notes-comment col-2 p-3  float-left d-flex justify-content-center">
+                                            <div class="pic-profile">
+                                                <img src="/static/assets/images/manager.jpg"/>
+                                            </div>
+                                        </div>
+                                        <div class=" col-10 notes-comment p-3  float-left">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="float-left  small-text  tactive">
+                                                        <strong>{{d.addedby}}</strong>
+                                                        <br><small>{{d.date}}</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 comments-section">
+                                            <p class="mt-2">
+                                                {{d.note}}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            {% endfor %}
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/assets/js/custom_sidenav.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<script type="text/javascript" src="/static/assets/js/leavechart.js"></script>
+
+{% endblock %}
+
+

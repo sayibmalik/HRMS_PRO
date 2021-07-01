@@ -1,0 +1,319 @@
+{% extends 'base.html'%}
+{% block content%}
+<div class="main-content">
+    <div class="container-fluid content-top-gap">
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    Home
+                    {% else %}
+                    الصفحة الرئيسية
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                {% if request.session.lang == "EN" %}
+                    Contracts
+                    {% else %}
+                    العقود
+                    {% endif %}</li>
+                <li class="breadcrumb-item active" aria-current="page">
+                {% if request.session.lang == "EN" %}
+                    New
+                    {% else %}
+                    جديد
+                    {% endif %}</li>
+            </ol>
+        </nav>
+        <section class="forms">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="card card_border py-2 mb-4">
+                    <div class="cards__heading">
+                        <div class="row">
+                            <div class="col-9">
+                                <h3><span>
+                                    {% if request.session.lang == "EN" %}
+                    Contracts
+                    {% else %}
+                    العقود
+                    {% endif %}
+                                </span></h3>
+                            </div>
+                            <div class="col-3">
+
+                                <a href="/" class="btn btn-lg btn-outline-primary btn-style border-btn">{% if request.session.lang == "EN" %}
+                                    Cancel
+                                    {% else %}
+                                    العقود
+                                    {% endif %}</a>
+
+                                <button type="submit" class="btn btn-primary btn-style ">
+                                    {% if request.session.lang == "EN" %}
+                                    Save
+                                    {% else %}
+                                    يحفظ
+                                    {% endif %}
+                                </button>
+
+                                <!--                            <div class="row">-->
+                                <!--                                <div class="col-6"></div>-->
+                                <!--                                <div class="col-6">-->
+                                <!--                                     <img src="/static/assets/icons/tile.svg" class="icon"/>-->
+                                <!--                                     <img src="/static/assets/icons/list-text.svg" class="icon"/>-->
+                                <!--                                </div>-->
+                                <!--                            </div>-->
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <h6><strong>
+                                {% if request.session.lang == "EN" %}
+                                    Contract Reference
+                                    {% else %}
+                                    مرجع العقد
+                                    {% endif %}
+                                </strong></h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="text" class="form-control" name="ref" required>
+                            </div>
+                            <div class="col-6"></div>
+                        </div>
+                        <div class=row>
+                            <div class="col-6 mt-3">
+
+                                <div class="row mt-1">
+                                    <div class="col-4">
+                                    {% if request.session.lang == "EN" %}
+                                    Employee
+                                    {% else %}
+                                    الموظف
+                                    {% endif %}
+                                    </div>
+                                    <div class="col-6">
+                                        <select class="form-control input-style" name="Employee" required>
+                                            {% for d in data %}
+                                            <option value="{{d.id}}">{{d.user.first_name}} {{d.user.last_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="col-2"></div>
+                                </div>
+                                <div class="row mt-1">
+                                    <div class="col-4">
+                                    {% if request.session.lang == "EN" %}
+                                    Department
+                                    {% else %}
+                                    قسم
+                                    {% endif %}
+                                    </div>
+                                    <div class="col-6"><select class="form-control input-style" name="Department" required>
+                                        {% for d in department %}
+                                        <option value="{{d.id}}">{{d.title}}</option>
+                                        {% endfor %}
+                                    </select></div>
+                                    <div class="col-2"></div>
+                                </div>
+                                <div class="row mt-1">
+                                    <div class="col-4">
+                                    {% if request.session.lang == "EN" %}
+                                    Job Position
+                                    {% else %}
+                                    الوظيفة الوظيفة
+                                    {% endif %}
+                                    </div>
+                                    <div class="col-6"><select class="form-control input-style" name="Job_Position" required>
+
+                                        {% for d in jobposition %}
+                                        <option value="{{d.id}}">{{d.title}}</option>
+                                        {% endfor %}
+                                    </select></div>
+                                    <div class="col-2"></div>
+                                </div>
+                                <div class="row mt-1">
+                                    <div class="col-4">
+                                    {% if request.session.lang == "EN" %}
+                                    Job Position
+                                    {% else %}
+                                    نوع العقد
+                                    {% endif %}
+                                    </div>
+                                    <div class="col-6">
+                                        <select class="form-control input-style" name="ctype" required>
+                                        <option value="Full Time">
+                                        {% if request.session.lang == "EN" %}
+                                    Full Time
+                                    {% else %}
+                                    وقت كامل
+                                    {% endif %}
+                                        </option>
+                                        <option value="Contract Basis">
+                                        {% if request.session.lang == "EN" %}
+                                    Contract Basis
+                                    {% else %}
+                                    أساس تعاقدي
+                                    {% endif %}
+                                        </option>
+                                    </select>
+                                    </div>
+                                    <div class="col-2"></div>
+                                </div>
+                                <!--                                <div class="row mt-1">-->
+                                <!--                                    <div class="col-4">Company</div>-->
+                                <!--                                    <div class="col-6"><select class="form-control input-style" name="">-->
+                                <!--                                        <option>Gareeb</option>-->
+                                <!--                                    </select></div>-->
+                                <!--                                    <div class="col-2"></div>-->
+                                <!--                                </div>-->
+                            </div>
+                            <div class="col-6 mt-3">
+
+
+                                <!--                                <div class="row mt-1">-->
+                                <!--                                    <div class="col-4">Contract Type</div>-->
+                                <!--                                    <div class="col-6"><select class="form-control input-style" name="Contract_Type">-->
+                                <!--                                        <option>Employee</option>-->
+                                <!--                                    </select></div>-->
+                                <!--                                    <div class="col-2"></div>-->
+                                <!--                                </div>-->
+                                <div class="row mt-1">
+                                    <div class="col-4">Stage</div>
+                                    <div class="col-6"><select class="form-control input-style" name="stage" required>
+                                        <option value="1">New</option>
+                                        <option value="2">Running</option>
+                                        <option value="3">To Renew</option>
+                                        <option value="4">Expired</option>
+                                        <option value="5">Cancelled</option>
+                                    </select></div>
+                                    <div class="col-2"></div>
+                                </div>
+                                <div class="row mt-1">
+                                    <div class="col-4">Date From</div>
+                                    <div class="col-6"><input type="date" class="form-control" name="Date_From" required></div>
+                                    <div class="col-2"></div>
+                                </div>
+                                <div class="row mt-1">
+                                    <div class="col-4">Date To</div>
+                                    <div class="col-6"><input type="date" class="form-control" name="Date_To" required></div>
+                                    <div class="col-2"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="#salaryinfo">Salary Information</a>
+                                        <!--                                    <li><a data-toggle="tab" href="#otherinfo">Other Information</a>-->
+                                        <!--                                    </li>-->
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="tab-content">
+                                    <div id="salaryinfo" class="tab-pane fade in active show">
+                                        <div class=row>
+                                            <div class="col-6">
+                                                <div class="row mt-2">
+                                                    <div class="col-12 mt-2">
+                                                        <div class="row">
+                                                            <div class="col ml-4"><span>Base Salary</span></div>
+                                                            <div class="col"><input type="text" class="form-control"
+                                                                                    name="wage" >
+                                                            </div>
+                                                            <div class="col"><span>per month</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 mt-2">
+                                                        <div class="row">
+                                                            <div class="col ml-4"><span>Housing Allowance</span></div>
+                                                            <div class="col"><input type="text" class="form-control"
+                                                                                    name="HA" >
+                                                            </div>
+                                                            <div class="col"><span>per month</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 mt-2">
+                                                        <div class="row">
+                                                            <div class="col ml-4"><span>Transportation Allowance</span></div>
+                                                            <div class="col"><input type="text" class="form-control"
+                                                                                    name="TA" >
+                                                            </div>
+                                                            <div class="col"><span>per month</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 mt-2">
+                                                        <div class="row">
+                                                            <div class="col ml-4"><span>Gosi Deduction</span></div>
+                                                            <div class="col"><input type="number" max="99" min="1" class="form-control"
+                                                                                    name="GOSI" >
+                                                            </div>
+                                                            <div class="col"><span>%</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="row mt-2">
+                                                    <div class="col-12 mt-3">
+                                                        <div class="row">
+                                                            <div class="col-3 ml-4"><span>Shift Start</span></div>
+                                                            <div class="col-4"><input type="time" class="form-control"
+                                                                                      name="shiftstart">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 mt-3">
+                                                        <div class="row">
+                                                            <div class="col-3 ml-4"><span>Shift End</span></div>
+                                                            <div class="col-4"><input type="time" class="form-control"
+                                                                                      name="shiftend">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 mt-3">
+                                                        <div class="row">
+                                                            <div class="col-3 ml-4"><span>Working Hours</span></div>
+                                                            <div class="col-4"><input type="number"max="12" min="1" class="form-control"
+                                                                                      name="hours" required>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 mt-3">
+                                                        <div class="row">
+                                                            <div class="col-3 ml-4"><span>Break</span></div>
+                                                            <div class="col-4"><input type="number" max="12" min="1" class="form-control"
+                                                                                      name="break">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </section>
+
+
+    </div>
+</div>
+{% endblock%}

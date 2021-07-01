@@ -1,0 +1,469 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+    .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+
+
+    .note-cov
+    {
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        border-radius: 20px;
+    }
+
+    .curve-around input , .curve-around select
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+
+
+
+
+</style>
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item " aria-current="page">{% if request.session.lang == "EN" %}
+                    <h6 class="text-primary"><b>Company</b></h6>
+                    {% else %}
+                    شركة
+                    {% endif %}
+                </li>
+                <li class="breadcrumb-item " aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    <h6 class="text-primary"><b>Templates</b></h6>
+                    {% else %}
+                    القوالب
+                    {% endif %}
+                </li>
+                 <li class="breadcrumb-item " aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    <h6 class="text-primary"><b>Edit Templates</b></h6>
+                    {% else %}
+                    تحرير القوالب
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite">
+                        <h4 class="ml-2 text-primary pt-4">
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-edit mr-2"></i><b>Edit Templates</b>
+                            {% else %}
+                            <i class="fa fa-edit ml-2"></i><b>تحرير القوالب</b>
+                            {% endif %}
+                        </h4>
+                    </div>
+                    <div class="col-lg-12 p-2 backwhite">
+                        <a href="{% url 'templates' %}" class="btn btn-danger btn-style ml-3"
+                           style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Discard
+                            {% else %}
+                            تجاهل
+                            {% endif %}
+                        </a>
+                        <button type="submit" class="btn btn-sm btn-primary btn-style border-btn ml-1 text-white "
+                                style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Save
+                            {% else %}
+                            حفظ
+                            {% endif %}
+                        </button>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-12 backwhite pt-5">
+                        <div class="row m-0 d-flex justify-content-center">
+
+                            {% if request.session.lang == "EN" %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-2"
+                                 style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"
+                                                                           style="padding-top: 10px;"><b>Kindly fill
+                                in the following details</b></h3></div>
+                            {% else %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-3"
+                                 style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b> يرجى ملء
+                                تفاصيل التالية</b></h3></div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite ">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-6 col-md-10 col-12 p-4 note-cov mt-5 mb-5" style="position:relative;">
+                                <div class="col-lg-10 col-12 m-auto curve-around d-flex justify-content-end p-2">
+
+                                </div>
+
+                                    <div class="col-lg-10 col-12 m-auto  p-2">
+                                        {% if request.session.lang == "EN" %}
+                                        <h6><b>English Name</b></h6>
+                                        {% else %}
+                                        <h6 class="mr-4 pt-5"><b>الاسم الانجليزي</b></h6>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                        <input class="form-control input-style" type="text" placeholder="" name="temp-ename"
+                                               value="">
+                                    </div>
+
+                                    <div class="col-lg-10 col-12 m-auto  p-2">
+                                        {% if request.session.lang == "EN" %}
+                                        <h6><b>Arabic Name</b></h6>
+                                        {% else %}
+                                        <h6 class="mr-4 "><b>الاسم العربي</b></h6>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                        <input class="form-control input-style" type="text" placeholder="" name="temp-arname"
+                                               value="{{data.titleAr}}">
+                                    </div>
+
+                                    <div class="col-lg-10 col-12 m-auto  p-2">
+                                        {% if request.session.lang == "EN" %}
+                                        <h6><b>Template Type</b></h6>
+                                        {% else %}
+                                        <h6 class="mr-4 "><b>نوع القالب</b></h6>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                        {% if request.session.lang == "EN" %}
+                                        <input class="form-control input-style" type="text" placeholder="" name="temptype"
+                                               value="Contract" readonly>
+                                        {% else %}
+                                        <input class="form-control input-style" type="text" placeholder="" name="temptype"
+                                               value="العقود" readonly>
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="col-lg-12 col-12 m-auto curve-around p-2">
+                                        <div id="edittemplate">
+                                                <table class="table" style="width: 100%">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col"><h2>Employment Contract</h2></th>
+                                                        <th scope="col"></th>
+                                                        <th scope="col"></th>
+                                                        <th scope="col"></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            This contract has been concluded on %%PRINT_DATE%%
+                                                            Between:
+                                                            %%COMPANY_NAME_ENGLISH%%, Commercial Registration number
+                                                            %%Company.CrNumber%%, And its address is
+                                                            %%Company.Address.AddressLine.English%%
+                                                            %%Company.Address.City.English%%
+                                                            %%Company.Address.PostalCode%%
+                                                            Telephone: %%Company.Contact.Phone%% Email:
+                                                            %%Company.Contact.Email%%
+                                                            Represented by the CEO / %%COMPANY_CEO_NAME_ENGLISH%% and
+                                                            referred to in the contract as (the First Party).
+                                                            And
+                                                            %%FullName.English%% as per %%IdentityCard.Type.English%%
+                                                            Number %%IdentityCard.Number%%, Nationality Country is
+                                                            %%Nationality.Name.English%%, Date of Birth
+                                                            %%EMPLOYEE_BIRTH_DATE_GREGORIAN%%
+                                                            Telephone: %%Employee.Contact.Mobile%% Email address:
+                                                            %%Company.Contact.Email%%
+                                                            and referred to as (the Second Party)
+                                                        </td>
+
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <p class="pt-2"></p>
+                                                            The First Party shall have the right to deliver all notices
+                                                            and notifications to the Second Party during the period of
+                                                            his employment, directly by hand or by sending it to his
+                                                            address indicated in this contract or to his email address
+                                                            or by putting them on the notice board of the First Party's
+                                                            place of business and where the Second Party works. Such
+                                                            delivery shall be considered as acknowledgment of receipt of
+                                                            such notices and notifications on the date stated in the
+                                                            notice, and such notices shall be deemed to be delivered by
+                                                            hand. The Second Party shall notify the First Party in
+                                                            writing if it changes its address or e-mail address
+                                                            indicated in the forefront of this contract.
+                                                            <p class="pt-2"></p>
+                                                        </td>
+
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <p class="pt-1"></p>
+                                                            <strong>Preface:</strong><br>
+                                                            Whereas, the First Party wishes to operate human resources
+                                                            with outstanding qualifications and experience, And the
+                                                            Second Party wishes to work for it with its qualifications
+                                                            that enable it to carry out the functional tasks represented
+                                                            by this contract and under the management and supervision of
+                                                            the First Party. Therefore, the will of both parties to
+                                                            conclude this contract has been met, with their full
+                                                            capacity and in accordance with the following conditions.
+                                                            <p class="pt-1"></p>
+                                                        </td>
+
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td colspan="3">
+<!--                                                            <p class="pt-1"></p>-->
+                                                            <strong>Clause (1):</strong><br>
+                                                            The preface above is an integral part of this contract.
+                                                            <p class="pt-1"></p>
+                                                        </td>
+
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <strong>Clause (2) Duration and nature of the contract:</strong><br>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            1) The Parties agree that the Second Party shall work for
+                                                            the First Party under its management or supervision. The job
+                                                            title %%JobTitle.Name.English%%, And to carry out the work
+                                                            assigned to him in a manner commensurate with his practical,
+                                                            scientific and technical capabilities according to the needs
+                                                            of the work, and without prejudice to the regulations
+                                                            stipulated in Articles (58th, 59th, 60th) of the Labor Law.
+                                                            <br><br>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            2) Duration of this contract is
+                                                            %%Contract.Duration.Text.English%% starting from the date
+                                                            the Second Party begins to work on
+                                                            %%Contract.StratDate.Gregorian%% And ending on
+                                                            %%Contract.EndDate.Gregorian%% It shall be renewed
+                                                            automatically for a similar period, unless the Second Party
+                                                            informs the First Party by an official letter of its
+                                                            unwillingness to renew, two month before the end of his
+                                                            contract. The first party has the right to end the contract
+                                                            one month before contracts end.
+                                                            <br><br>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            3) In the event that the Second Party does not assume work
+                                                            from agreed date for fifteen days, the contract shall be
+                                                            considered void.
+                                                            <br><br>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            3) In the event that the Second Party does not assume work
+                                                            from agreed date for fifteen days, the contract shall be
+                                                            considered void.
+                                                            <br><br>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <strong>Clause (3) The wage:</strong><br>
+                                                            The First Party shall pay the Second Party for the
+                                                            performance of his duties a monthly wage. The wage shall be
+                                                            paid at the end of each calendar month according to the
+                                                            following:
+                                                            <br><br>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <h3><strong>SALARY_BREAK_DOWN_TABLE_MULTILINGUAL</strong></h3><br>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <strong>Clause (4) Working Hours and Overtime:</strong><br>
+                                                            Regular working days is (6) days per week or (48) working
+                                                            hours per week. The First Party shall pay the Second Party
+                                                            an overtime equal to the hourly Basic rate (Basic Salary /
+                                                            208) plus 49.5%. The First Party shall have the right to
+                                                            modify the work schedule according to the needs and
+                                                            requirements of its work. The Second Party shall work
+                                                            according to the schedule specified by the First Party.
+                                                            <br><br>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <strong>Clause (5) Trial Period:</strong><br>
+
+                                                            The Second Party shall be subject to a probationary period
+                                                            of (90) ninety days from the date of commencement of work,
+                                                            and this period shall not include Eid Al-Fitr, Eid Al-Adha,
+                                                            National Day and Sick leave days. The First Party shall have
+                                                            the right during the probationary period to terminate this
+                                                            contract without notice, compensation or reward. The trial
+                                                            period can be extended to another ninety (90) days with a
+                                                            written consent of both parties, provided that the extension
+                                                            shall be during the validity of the first trial period.
+                                                            <br><br>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <strong>Clause (6) Medical Care:</strong><br>
+                                                            The First Party shall provide the Second Party with medical
+                                                            care in accordance with the provisions of the Cooperative
+                                                            Health Insurance Law and the Company's annual medical
+                                                            insurance policy.
+                                                            <br><br>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <strong>Clause (7) Annual Leave:</strong><br>
+
+                                                            The Second Party shall be entitled to a paid annual leave of
+                                                            ............ days in each calendar year. The First Party
+                                                            shall determine its date during the year of entitlement,
+                                                            according to the working conditions, provided that the leave
+                                                            pay is paid in advance when it is due. The First Party shall
+                                                            have the right to postpone the annual leave after the end of
+                                                            its year of maturity for a period not exceeding (90) days,
+                                                            it also shall have the right, with the consent of the Second
+                                                            Party in writing, to postpone it to the end of the year
+                                                            following the year of maturity, as required by the
+                                                            circumstances of the work.
+                                                            <br><br>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <h3><strong>Clause (8) Obligations of the Employer (First Party):</strong></h3><br>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            1) The First Party shall bear the fees of recruiting the
+                                                            Second Party and transferring of its services, residence
+                                                            fees, work permit, renewal, fines resulting from its delay,
+                                                            fees of changing the profession, exit re-entry, and return
+                                                            ticket of the Second Party to his country by the same mean
+                                                            of transportation it came by, after the termination of the
+                                                            relationship between the two parties .
+
+                                                            <br><br>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            2) The First Party is obliged to register the Second Party
+                                                            with the General Organization for Social Insurance and pay
+                                                            the contributions according to its regulations.
+
+                                                            <br><br>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            3) The First Party shall be responsible for the expenses of
+                                                            preparing the body of the Second Party if died during the
+                                                            validity of this employment contract and transferring it to
+                                                            the locality where the contract was concluded or from which
+                                                            it was brought, unless it is buried with the consent of his
+                                                            relatives inside the Kingdom, or the General Organization
+                                                            for Social Insurance is committed to do so.
+
+                                                            <br><br>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+
+
+                                                            <br><br>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-10 col-12 m-auto text-right  p-2">
+                                        <button type="submit"
+                                                class="btn btn-sm btn-success  btn-style  col-lg-4 ml-1 text-white "
+                                                style="height: 40px;font-size: 16px;padding-top: 8px; margin-top: 30px; border-radius: 20px;">
+                                            {% if request.session.lang == "EN" %}
+                                            <i class="fa fa-paper-plane  mr-3"></i>Save
+                                            {% else %}
+                                            يحفظ<i class="fa fa-paper-plane  mr-3"></i>
+                                            {% endif %}
+                                        </button>
+                                    </div>
+
+
+
+                                    <i class="fa fa-handshake-o fa-3x text-success" aria-hidden="true"
+                                       style="position: absolute; top: -17px;left:-12px;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </section>
+    </div>
+</div>
+<!-- //forms  -->
+
+<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'edittemplate' );
+</script>
+
+<!-- //content -->
+
+
+{% endblock%}

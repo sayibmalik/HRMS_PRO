@@ -1,0 +1,164 @@
+{% extends 'base.html'%}
+{% block content%}
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Appraisal</li>
+                <li class="breadcrumb-item active" aria-current="page">New</li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+
+            <div class="card card_border py-2 mb-4">
+                <div class="cards__heading">
+                    <div class="row">
+                        <div class="col-9">
+                            <h3><span>Appraisal</span></h3>
+                        </div>
+                        <div class="col-3">
+
+                            <a href="/" class="btn btn-lg btn-outline-primary btn-style border-btn">Discard</a>
+                            <button type="submit" class="btn btn-primary btn-style ">Save</button>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <form action="#" method="post">
+                        <div class="row">
+                            <div class="col-6 mt-3">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <select class="form-control input-style">
+                                            <option>Employee name</option>
+                                            <option></option>
+                                        </select>
+
+                                    </div>
+                                    <div class="col-6"></div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-6">
+                                        <div>
+                                            <span>Appraisal Deadline</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                      <input type="date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="#plan">Plan</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="tab-content">
+                                    <div id="plan" class="tab-pane fade in active show">
+                                        <div class=row>
+                                            <div class="col-12">
+                                                <div class="row mt-2">
+                                                    <div class="col-3 mt-2"><span>Manager</span></div>
+                                                    <div class="col-1 mt-3"><input type="checkbox"></div>
+                                                    <div class="col-3">
+                                                        <select class="form-control input-style">
+                                                            <option>Select Apprasial Reviewer</option>
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <select class="form-control input-style">
+                                                            <option>User Feedback Form</option>
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-2"></div>
+
+                                                </div>
+
+                                                <div class="row mt-2">
+                                                    <div class="col-3 mt-2"><span>Employee</span></div>
+                                                    <div class="col-1 mt-3"><input type="checkbox"></div>
+                                                    <div class="col-3">
+                                                        <select class="form-control input-style">
+                                                            <option>Select Apprasial Reviewer</option>
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <select class="form-control input-style">
+                                                            <option>User Feedback Form</option>
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-2"></div>
+                                                </div>
+                                                <div class="row mt-2">
+                                                    <div class="col-3 mt-2"><span>Collaborators</span></div>
+                                                    <div class="col-1 mt-3"><input type="checkbox"></div>
+                                                    <div class="col-3">
+                                                        <select class="form-control input-style">
+                                                            <option>Select Apprasial Reviewer</option>
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <select class="form-control input-style">
+                                                            <option>User Feedback Form</option>
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-2"></div>
+                                                </div>
+                                                <div class="row mt-2">
+                                                    <div class="col-3 mt-2"><span>Colleague</span></div>
+                                                    <div class="col-1 mt-3"><input type="checkbox"></div>
+                                                    <div class="col-3">
+                                                        <select class="form-control input-style">
+                                                            <option>Select Apprasial Reviewer</option>
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <select class="form-control input-style">
+                                                            <option>User Feedback Form</option>
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-2"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+                </form>
+            </div>
+    </div>
+
+
+    </section>
+    <!-- //forms  -->
+
+</div>
+<!-- //content -->
+
+</div>
+{% endblock%}

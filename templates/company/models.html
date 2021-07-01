@@ -1,0 +1,210 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+    .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+
+
+    .note-cov
+    {
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        border-radius: 20px;
+    }
+
+    .curve-around input , .curve-around select
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+
+     .cc-tbl
+    {
+        padding-top: 24px !important;
+        font-weight: bold;
+    }
+
+
+
+
+
+</style>
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item " aria-current="page">{% if request.session.lang == "EN" %}
+                    <h6 class="text-primary"><b>Company</b></h6>
+                    {% else %}
+                    شركة
+                    {% endif %}
+                </li>
+                <li class="breadcrumb-item " aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    <h6 class="text-primary"><b>Models</b></h6>
+                    {% else %}
+                    عارضات ازياء
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <div class="row m-0">
+                <div class="col-lg-12 backwhite">
+                    <h4 class="ml-2 text-primary pt-4">
+                        {% if request.session.lang == "EN" %}
+                        <i class="fa fa-mobile mr-2"></i><b>Models</b>
+                        {% else %}
+                        <i class="fa fa-mobile ml-2"></i><b> عارضات ازياء</b>
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="col-lg-6 p-2 backwhite">
+                </div>
+                <div class="col-lg-6 p-2 backwhite text-center">
+                    <a href="{% url 'createmodel' %}" class="btn btn-success btn-style ml-3"
+                       style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                        Add Model
+                        {% else %}
+                        إضافة نماذج
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-12 backwhite pt-5">
+                    <div class="row m-0 d-flex justify-content-center">
+
+                        {% if request.session.lang == "EN" %}
+                        <div class="col-lg-10 col-md-12 col-12 bg-primary p-2"
+                             style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"
+                                                                       style="padding-top: 10px;"><b>Kindly follow
+                            in the following details</b></h3></div>
+                        {% else %}
+                        <div class="col-lg-10 col-md-12 col-12 bg-primary p-3"
+                             style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b> يرجى ملءيرجى
+                            اتباع التفاصيل التالية</b></h3></div>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row m-0">
+                <div class="col-lg-12 backwhite pt-5">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered">
+                            <thead class="thead-dark text-center">
+                            <tr>
+                                <th>{% if request.session.lang == "EN" %}
+                                    Name
+                                    {% else %}
+                                    الاسم
+                                    {% endif %}
+                                </th>
+                                <th>{% if request.session.lang == "EN" %}
+                                    Brand
+                                    {% else %}
+                                    الماركة
+                                    {% endif %}
+                                </th>
+                                <th>{% if request.session.lang == "EN" %}
+                                    Custody Type
+                                    {% else %}
+                                    نوع العهدة
+                                    {% endif %}
+                                </th>
+
+                                <th>{% if request.session.lang == "EN" %}
+                                    Actions
+                                    {% else %}
+                                    الاجراءات
+                                    {% endif %}
+                                </th>
+
+
+                            </tr>
+                            </thead>
+                            <tbody class="text-center">
+                            {% for d in data %}
+                            <tr>
+                                <td class="cc-tbl">
+                                    {% if request.session.lang == "EN" %}
+                                    {{d.enName}}
+                                    {% else %}
+                                    {{d.arName}}
+                                    {% endif %}
+                                </td>
+                                <td class="cc-tbl">
+                                    {% if request.session.lang == "EN" %}
+                                    {{d.brand}}
+                                    {% else %}
+                                    {{d.brand.arName}}
+                                    {% endif %}
+                                </td>
+                                <td class="cc-tbl">
+                                    {% if request.session.lang == "EN" %}
+                                    {{d.custodytype}}
+                                    {% else %}
+                                   {{d.custodytype.arName}}
+                                    {% endif %}
+                                    </td>
+                                <td>
+                                    <div class="row m-0">
+                                        <div class="col">
+                                            <a href="{% url 'editmodel' d.id %}" class="btn btn-danger btn-style ml-3"
+                                               style="height: 35px;font-size: 14px;padding-top: 4px;"><i
+                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                                        </div>
+                                        <div class="col">
+                                            <form action="{% url 'delmodel' %}" method="post">
+                                                {% csrf_token %}
+                                                <button type="submit"
+                                                        class="btn btn-success btn-style ml-3"
+                                                        style="height: 35px;font-size: 14px;padding-top: 4px;"
+                                                        value="{{d.id}}" name="id">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+</div>
+<!-- //forms  -->
+
+
+<!-- //content -->
+
+
+{% endblock%}

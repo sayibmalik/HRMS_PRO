@@ -1,0 +1,89 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Billing Address</li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+
+            <div class="card card_border py-2 mb-4">
+                <div class="cards__heading" style="padding: 15px;">
+                    <div class="row">
+                        <div class="col">
+                            <h3><span>Billing Address</span></h3>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-3">
+                            <a href="{% url 'index' %}" class="btn btn-lg btn-outline-primary btn-style border-btn">Cancel</a>
+                            <a href="{% url 'CreateBillingAddress' %}" class="btn btn-primary btn-style ">Create</a>
+                        </div>
+<!--                        <div class="col-9">-->
+<!--                            <div style="float: right;">-->
+<!--                                <span>1-4/4</span>-->
+<!--                                <a class="btn" style="border: 1px solid lightgray;" href="/">❮ </a>-->
+<!--                                <a class="btn" style="border: 1px solid lightgray;" href="/"> ❯</a>-->
+<!--                                <a class="btn" style="border: 1px solid lightgray;" href="/"> list </a>-->
+<!--                                <a class="btn" style="border: 1px solid lightgray;" href="/"> grid</a>-->
+<!--                                <a class="btn" style="border: 1px solid lightgray;" href="/"> time</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </div>
+                    <div class="card-body">
+                        <form action="#" method="post">
+                            <div class="container-fluid">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+
+                                        <th>User</th>
+                                        <th>Address</th>
+                                        <th>Zip Code</th>
+                                        <th>City</th>
+                                        <th>State</th>
+                                        <th>Country</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for d in data %}
+                                    <tr>
+                                        <td>{{d.user.first_name}} {{d.user.last_name}}</td>
+                                        <td>{{d.address}}</td>
+                                        <td>{{d.zip_code}}</td>
+                                        <td>{{d.City}}</td>
+                                        <td>{{d.State}}</td>
+                                        <td>{{d.Country}}</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

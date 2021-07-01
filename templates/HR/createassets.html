@@ -1,0 +1,408 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+    .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+
+
+    .curve-around input , .curve-around select
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+</style>
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Assets
+                    {% else %}
+                    إنشاء أقسام
+                    {% endif %}</li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+
+              <div class="row m-0">
+                <div class="col-lg-12 backwhite">
+                    <h4 class="ml-2 text-primary pt-5">
+                        {% if request.session.lang == "EN" %}
+                        <i class="fa fa-exclamation-triangle mr-2" aria-hidden="true"></i><b>Create Asset</b>
+                        {% else %}
+                        <i class="fa fa-exclamation-triangle ml-2" aria-hidden="true"></i><b>إنشاء أقسام</b>
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="col-lg-12 p-2 backwhite">
+                    <a href="{% url 'Assets'%}" class="btn btn-danger btn-style ml-3"
+                       style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                    Discard
+                    {% else %}
+                    تجاهل
+                    {% endif %}
+                    </a>
+                    <button type="submit" class="btn btn-sm btn-success btn-style  ml-1 text-white "
+                            style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                    Save
+                    {% else %}
+                    يحفظ
+                    {% endif %}
+
+                    </button>
+
+                </div>
+            </div>
+              <div class="row m-0">
+                  <div class="col-12 backwhite pt-5">
+                        <div class="row m-0 d-flex justify-content-center">
+
+                              {% if request.session.lang == "EN" %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-3" style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b>Kindly fill in the following asset details</b></h3></div>
+                            {% else %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-3" style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b> يرجى ملء تفاصيل الأصول التالية</b></h3></div>
+                            {% endif %}
+                        </div>
+
+                  </div>
+              </div>
+
+              <div class="row m-0">
+                  <div class="col-lg-6 col-md-6 col-12  backwhite">
+                        <div class="row m-0 d-flex justify-content-center" style="border-right:2px solid #eee;">
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Employee</b></h6>
+                                {% else %}
+                                <h6 class="mr-4"><b>الموظف</b></h6>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">
+                                <select class="form-control input-style assets-inp" name="emp" value="{{data.user}}">
+                                             {% for d in data %}
+                                            <option value="{{d.id}}">{{d.user.first_name}} {{d.user.last_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Employee Type</b></h6>
+                                {% else %}
+                                 <h6 class="mr-4"><b>نوع موظف</b></h6>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">
+                                <input type="text" value="{{data2.type}}" name="type" class="form-control assets-inp"
+                                               placeholder="type"/>
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Emp Number</b></h6>
+                                {% else %}
+                                <h6 class="mr-4"><b>رقم الموظف</b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">
+                                <input type="text" value="{{data2.number}}" name="no" class="form-control assets-inp"
+                                               placeholder=""/>
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2  pt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Handover</b></h6>
+                                {% else %}
+                                <h6 class="mr-4"><b>سلم</b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">
+                                <input  type="text" value="{{data2.handover}}" name="handover" class="form-control assets-inp"
+                                               placeholder="" />
+                            </div>
+                        </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12  backwhite">
+                        <div class="row m-0 d-flex justify-content-center" style="border-right:2px solid #eee;">
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Status</b></h6>
+                                {% else %}
+                                <h6 class="mr-4"><b>حالة</b></h6>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">
+                                <select class="form-control input-style assets-inp" name="status" value="{{data2.status}}">
+
+                                            <option value="Return">Return</option>
+                                            <option value="Active">Active</option>
+
+                                        </select>
+                            </div>
+
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Return Date</b></h6>
+                                {% else %}
+                                <h6 class="mr-4"><b>تاريخ العودة</b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">
+                               <input type="date" value="{{data2.returndate|date:'Y-m-d'}}" name="returndate" class="form-control assets-inp"
+                                               placeholder=""/>
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Description</b></h6>
+                                {% else %}
+                                 <h6 class="mr-4"><b>وصف</b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-9 col-md-12 col-12 p-2" style="">
+                                <textarea   name="desc" class="form-control " style="min-height: 125px;max-height: 125px;border: 2px solid #4755AB;"
+                                                    placeholder="">{{data2.description}}</textarea>
+                            </div>
+
+                            <div class="col-lg-10 col-12 m-auto text-right  p-2">
+                                    <button type="submit"
+                                            class="btn btn-sm btn-success  btn-style  col-lg-4 ml-1 text-white "
+                                            style="height: 40px;font-size: 16px;padding-top: 8px; margin-top: 30px; border-radius: 20px;">
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-paper-plane mr-2"></i>Save
+                                        {% else %}
+                                        <i class="fa fa-paper-plane ml-2"></i>يحفظ
+                                        {% endif %}
+                                    </button>
+                                </div>
+
+                        </div>
+                  </div>
+              </div>
+
+
+
+<!--            <div class="card card_border py-2 mb-4">-->
+<!--                <div class="cards__heading">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-9">-->
+<!--                            <h3><span>-->
+<!--                                {% if request.session.lang == "EN" %}-->
+<!--                    Create Asset-->
+<!--                    {% else %}-->
+<!--                    إنشاء أقسام-->
+<!--                    {% endif %}-->
+<!--                            </span></h3>-->
+<!--                        </div>-->
+<!--                       <div class="col-3 ">-->
+<!--                                <button type="submit" class="btn btn-sm btn-outline-primary btn-style border-btn">-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                    Save-->
+<!--                    {% else %}-->
+<!--                    يحفظ-->
+<!--                    {% endif %}-->
+<!--                                </button>-->
+<!--                               <a href="/app/dashboard"> <button type="button" class="btn btn-primary btn-style ">-->
+<!--                                   {% if request.session.lang == "EN" %}-->
+<!--                    Discard-->
+<!--                    {% else %}-->
+<!--                    تجاهل-->
+<!--                    {% endif %}</button> </a>-->
+<!--                            </div>-->
+<!--                    </div>-->
+<!--&lt;!&ndash;                    <div class="col-9"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="col-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                         <ul class="pagination">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <li class="page-item"><a class="page-link" href="#">1</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <li class="page-item"><a class="page-link" href="#">2</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <li class="page-item"><a class="page-link" href="#">3</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <li class="page-item"><a class="page-link" href="#">Next</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--                </div>-->
+<!--               <div class="card-body">-->
+<!--                    <div class="container-fluid border bg-white mt-2px ">-->
+<!--                        <div class="row mt-3">-->
+<!--                            <div class="col-6">-->
+<!--                                <div class="row mt-3 mb-3 d-flex justify-content-center align-items-center">-->
+<!--                                    <div class="col-8">-->
+<!--                                        <span>-->
+<!--                                         {% if request.session.lang == "EN" %}-->
+<!--                                                        Employee-->
+<!--                                                        {% else %}-->
+<!--                                                        لقب-->
+<!--                                                        {% endif %}-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-9" style="border-left: 1px solid lightgray;">-->
+
+<!--                                        <select class="form-control input-style assets-inp" name="emp" id="">-->
+<!--                                             {% for d in data %}-->
+<!--                                            <option value="{{d.id}}">{{ d.user }}</option>-->
+<!--                                            {% endfor %}-->
+<!--                                        </select>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-6">-->
+<!--                                <div class="row mt-3">-->
+<!--                                    <div class="col-2">-->
+<!--                                        <span>-->
+<!--                                        {% if request.session.lang == "EN" %}-->
+<!--                                                        Type-->
+<!--                                                        {% else %}-->
+<!--                                                        الأرض-->
+<!--                                                        {% endif %}-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-4" style="border-left: 1px solid lightgray;">-->
+<!--                                         <input type="text" value="{{data2.type}}" name="type" class="form-control assets-inp"-->
+<!--                                               placeholder=""/>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="row mt-3">-->
+<!--                            <div class="col-6">-->
+<!--                                <div class="row mt-3 mb-3">-->
+<!--                                    <div class="col-2">-->
+<!--                                        <span>-->
+<!--                                         {% if request.session.lang == "EN" %}-->
+<!--                                                       Number-->
+<!--                                                        {% else %}-->
+<!--                                                        لقب-->
+<!--                                                        {% endif %}-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-4" style="border-left: 1px solid lightgray;">-->
+<!--                                        <input type="text" value="{{data2.number}}" name="no" class="form-control assets-inp"-->
+<!--                                               placeholder=""/>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-6">-->
+<!--                                <div class="row mt-3">-->
+<!--                                    <div class="col-2">-->
+<!--                                        <span>-->
+<!--                                        {% if request.session.lang == "EN" %}-->
+<!--                                                        Handover-->
+<!--                                                        {% else %}-->
+<!--                                                        الأرض-->
+<!--                                                        {% endif %}-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-4" style="border-left: 1px solid lightgray;">-->
+<!--                                       <input  type="text" value="{{data2.handover}}" name="handover" class="form-control assets-inp"-->
+<!--                                               placeholder="" />-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="row mt-3">-->
+<!--                            <div class="col-6">-->
+<!--                                <div class="row mt-3 mb-3">-->
+<!--                                    <div class="col-2">-->
+<!--                                        <span>-->
+<!--                                         {% if request.session.lang == "EN" %}-->
+<!--                                                      Status-->
+<!--                                                        {% else %}-->
+<!--                                                        لقب-->
+<!--                                                        {% endif %}-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-4" style="border-left: 1px solid lightgray;">-->
+<!--                                        <select class="form-control input-style assets-inp" name="status" >-->
+
+<!--                                            <option>Return</option>-->
+<!--                                            <option>Active</option>-->
+
+<!--                                        </select>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-6">-->
+<!--                                <div class="row mt-3">-->
+<!--                                    <div class="col-2">-->
+<!--                                        <span>-->
+<!--                                        {% if request.session.lang == "EN" %}-->
+<!--                                                       Return Date-->
+<!--                                                        {% else %}-->
+<!--                                                        الأرض-->
+<!--                                                        {% endif %}-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-4" style="border-left: 1px solid lightgray;">-->
+<!--                                         <input type="date" value="{{data2.returndate}}" name="returndate" class="form-control assets-inp"-->
+<!--                                               placeholder=""/>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="row mt-3">-->
+<!--                            <div class="col-6">-->
+<!--                                <div class="row mt-3 mb-3">-->
+<!--                                    <div class="col-6">-->
+<!--                                        <span>-->
+<!--                                         {% if request.session.lang == "EN" %}-->
+<!--                                                       Description-->
+<!--                                                        {% else %}-->
+<!--                                                        لقب-->
+<!--                                                        {% endif %}-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-12">-->
+<!--                                <div class="row mt-3 mb-3"  >-->
+
+<!--                                    <div class="col-12" >-->
+<!--                                         <textarea   name="desc" class="form-control "-->
+<!--                                                    placeholder="">{{data2.description}}</textarea>-->
+
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+            </form>
+        </section>
+
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

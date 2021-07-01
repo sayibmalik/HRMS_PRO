@@ -1,0 +1,293 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+    .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+
+
+    .note-cov
+    {
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        border-radius: 20px;
+    }
+
+    .curve-around input , .curve-around select
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+
+
+
+</style>
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item " aria-current="page">{% if request.session.lang == "EN" %}
+                    <h6 class="text-primary"><b>Company</b></h6>
+                    {% else %}
+                    شركة
+                    {% endif %}
+                </li>
+                <li class="breadcrumb-item " aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    <h6 class="text-primary"><b> Create Payroll Template</b></h6>
+                    {% else %}
+                    إنشاء نموذج كشوف المرتبات
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <form action="" method="post">
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite">
+                        <h4 class="ml-2 text-primary pt-4">
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-money mr-2"></i><b>Create Payroll Template</b>
+                            {% else %}
+                            <i class="fa fa-money ml-2"></i><b>  إنشاء نموذج كشوف المرتبات</b>
+                            {% endif %}
+                        </h4>
+                    </div>
+                    <div class="col-lg-12 p-2 backwhite">
+                        <a href="{% url 'payrolltemplate' %}" class="btn btn-danger btn-style ml-3"
+                           style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Discard
+                            {% else %}
+                            تجاهل
+                            {% endif %}
+                        </a>
+                        <button type="submit" class="btn btn-sm btn-primary btn-style border-btn ml-1 text-white "
+                                style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Save
+                            {% else %}
+                            حفظ
+                            {% endif %}
+                        </button>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-12 backwhite pt-5">
+                        <div class="row m-0 d-flex justify-content-center">
+
+                            {% if request.session.lang == "EN" %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-2"
+                                 style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"
+                                                                           style="padding-top: 10px;"><b>Kindly fill
+                                in the following details</b></h3></div>
+                            {% else %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-3"
+                                 style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b> يرجى ملء
+                                تفاصيل التالية</b></h3></div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite ">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-6 col-md-10 col-12 p-4 note-cov mt-5 mb-5" style="position:relative;">
+                                <div class="col-lg-10 col-12 m-auto curve-around d-flex justify-content-end p-2">
+
+                                </div>
+                                <form action="" method="post">
+
+                                    <div class="col-lg-10 col-12 m-auto  p-2">
+                                        {% if request.session.lang == "EN" %}
+                                        <h6><b>English Name</b></h6>
+                                        {% else %}
+                                        <h6 class="mr-4 pt-5"><b>الاسم الانجليزي</b></h6>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                        <input class="form-control input-style" type="text" placeholder="" name="en-paytmp"
+                                               value="">
+                                    </div>
+
+                                    <div class="col-lg-10 col-12 m-auto  p-2">
+                                        {% if request.session.lang == "EN" %}
+                                        <h6><b>Arabic Name</b></h6>
+                                        {% else %}
+                                        <h6 class="mr-4 "><b>الاسم العربي</b></h6>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                        <input class="form-control input-style" type="text" placeholder="" name="ar_paytmp"
+                                               value="">
+                                    </div>
+
+                                    <div class="col-lg-10 col-12 m-auto  p-2">
+                                        {% if request.session.lang == "EN" %}
+                                        <h6><b>Template type *</b></h6>
+                                        {% else %}
+                                        <h6 class="mr-4 "><b>نوع النموذج *</b></h6>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                        <select class="form-control input-style" name="tmp-type" id="name" value="">
+                                        <option value="" selected>--select--</option>
+                                        <option value="" >demo</option>
+                                    </select>
+                                    </div>
+
+                                    <div class="col-lg-10 col-12 m-auto  p-2">
+                                        {% if request.session.lang == "EN" %}
+                                        <h6><b>Language *</b></h6>
+                                        {% else %}
+                                        <h6 class="mr-4 "><b>لغة *</b></h6>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                        <select class="form-control input-style" name="tmp-lang" id="name" value="">
+                                        <option value="" selected>--select--</option>
+                                        <option value="" >demo</option>
+                                    </select>
+                                    </div>
+
+
+                                     <div class="col-lg-10 col-12 m-auto  p-2">
+                                        <div class="row">
+                                            <div class="col">
+                                                {% if request.session.lang == "EN" %}
+                                                <h6><b>First Column Number</b></h6>
+                                                {% else %}
+                                                <h6 class="mr-4 "><b>رقم العمود الأول</b></h6>
+                                                {% endif %}
+
+                                                <div class="curve-around p-2">
+                                                    <input class="form-control input-style" type="number" placeholder=""
+                                                           name="temp-fcol"
+                                                           value="">
+                                                </div>
+
+                                            </div>
+                                            <div class="col">
+                                                {% if request.session.lang == "EN" %}
+                                                <h6><b>First Row Number</b></h6>
+                                                {% else %}
+                                                <h6 class="mr-4 "><b>رقم الصف الأول</b></h6>
+                                                {% endif %}
+
+                                                <div class="curve-around p-2">
+                                                    <input class="form-control input-style" type="number" placeholder=""
+                                                           name="temp-frow"
+                                                           value="">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-10 col-12 m-auto  p-2">
+                                        {% if request.session.lang == "EN" %}
+                                        <h6><b>Title Number Of Rows</b></h6>
+                                        {% else %}
+                                        <h6 class="mr-4 "><b>رقم الصف الأولعدد الصفوف العنوان</b></h6>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                        <input class="form-control input-style" type="number" placeholder="" name="temp-nrows"
+                                               value="">
+                                    </div>
+
+
+                                    <div class="col-lg-10 col-12 m-auto  p-2">
+                                        <div class="row">
+                                            <div class="col">
+                                                {% if request.session.lang == "EN" %}
+                                                <h6><b>Table Header Font Color</b></h6>
+                                                {% else %}
+                                                <h6 class="mr-4 "><b>لون خط رأس الجدول</b></h6>
+                                                {% endif %}
+
+                                                <div class="curve-around p-2">
+                                                    <input class="form-control input-style" type="color" placeholder=""
+                                                           name="temp-tfc"
+                                                           value="">
+                                                </div>
+
+                                            </div>
+                                            <div class="col">
+                                                {% if request.session.lang == "EN" %}
+                                                <h6><b>Table Header Background Color</b></h6>
+                                                {% else %}
+                                                <h6 class="mr-4 "><b>لون خلفية رأس الجدول</b></h6>
+                                                {% endif %}
+
+                                                <div class="curve-around p-2">
+                                                    <input class="form-control input-style" type="color" placeholder=""
+                                                           name="temp-tbc"
+                                                           value="">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-10 col-12 m-auto  p-2">
+                                        <input type="checkbox" class="mr-1 " style="zoom: 1.5;"> <strong>Show Title</strong> <br>
+                                        <input type="checkbox" class="mr-1 " style="zoom: 1.5;"> <strong class="">Add empty row before title</strong> <br>
+                                        <input type="checkbox" class="mr-1 " style="zoom: 1.5;"> <strong>Add empty row after title</strong><br>
+                                        <input type="checkbox" class="mr-1 " style="zoom: 1.5;"> <strong>Format table</strong><br>
+                                        <input type="checkbox" class="mr-1 " style="zoom: 1.5;"> <strong>Show titles</strong><br>
+                                        <input type="checkbox" class="mr-1 " style="zoom: 1.5;"> <strong>Multilingual Table Header</strong>
+                                    </div>
+
+
+
+                                    <div class="col-lg-10 col-12 m-auto text-right  p-2">
+                                        <button type="submit"
+                                                class="btn btn-sm btn-success  btn-style  col-lg-4 ml-1 text-white "
+                                                style="height: 40px;font-size: 16px;padding-top: 8px; margin-top: 30px; border-radius: 20px;">
+                                            {% if request.session.lang == "EN" %}
+                                            <i class="fa fa-paper-plane  mr-3"></i>Save
+                                            {% else %}
+                                            يحفظ<i class="fa fa-paper-plane  mr-3"></i>
+                                            {% endif %}
+                                        </button>
+                                    </div>
+
+                                    <i class="fa fa-money fa-3x text-success" aria-hidden="true"
+                                       style="position: absolute; top: -17px;left:-12px;"></i>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+<!-- //forms  -->
+
+
+<!-- //content -->
+
+
+{% endblock%}

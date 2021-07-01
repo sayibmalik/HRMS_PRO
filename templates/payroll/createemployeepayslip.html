@@ -1,0 +1,696 @@
+{% extends 'base.html'%}=
+{% block content%}
+<style>
+    .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+    .new-slip input , .new-slip select
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+    .new-iconslip
+    {
+        height: 40px;
+        width: 40px;
+        border: 1px solid #eee;
+        border-radius: 30px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .newslip-det
+    {
+        background: #F4F6F9 !important;
+    border-radius: 5px;
+    }
+
+</style>
+
+<div class="main-content">
+    <input type="hidden" id="batchid" value="{{data2.id}}">
+    <input type="hidden" id="tearnings_hidden" value="0">
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-2 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                     {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item text-dark"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6 class="text-dark"><b>Employee Payslip</b></h6>
+                    {% else %}
+                    <h6 class="text-dark"><b>قسيمة دفع الموظف</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Create Employee Payslip
+                    {% else %}
+                    إنشاء الموظف قسيمة الدفع
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite">
+                        <h4 class="ml-2 text-primary pt-4">
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-ticket mr-2 fa-1x"></i><b>Create Employee Payslip</b>
+                            {% else %}
+                            <i class="fa fa-ticket ml-2 fa-1x"></i><b>إنشاء الموظف قسيمة الدفع</b>
+                            {% endif %}
+                        </h4>
+                    </div>
+                    <div class="col-lg-12 p-2 backwhite">
+                        <a href="{%url 'PayslipBatch'%}" class="btn btn-danger btn-style ml-3" BatchEmp
+                           style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Discard
+                            {% else %}
+                            تجاهل
+                            {% endif %}
+                        </a>
+                        <button type="submit" class="btn btn-success btn-style ml-3"
+                                style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Save
+                            {% else %}
+                            حفظ
+                            {% endif %}
+                        </button>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-12 backwhite pt-5">
+                        <div class="row m-0 d-flex justify-content-center">
+
+                            {% if request.session.lang == "EN" %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-2"
+                                 style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center pt-2"><b>Kindly
+                                fill
+                                in the following details</b></h3></div>
+                            {% else %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-3"
+                                 style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b> يرجى ملء
+                                تفاصيل التالية</b></h3></div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+                <!--                 <div class="row m-0">-->
+                <!--                  <div class="col-lg-6 col-md-6 col-12  backwhite">-->
+                <!--                        <div class="row m-0 d-flex justify-content-center" style="border-right:2px solid #eee;">-->
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4curve-around">-->
+                <!--                                {% if request.session.lang == "EN" %}-->
+                <!--                                <h6><b>Employee</b></h6>-->
+                <!--                                {% else %}-->
+                <!--                                <h6 class="mr-4"><b>الموظف</b></h6>-->
+                <!--                                {% endif %}-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">-->
+                <!--                                <select id="employee" class="form-control input-style" name="emp">-->
+                <!--                                    {% for d in data %}-->
+                <!--                                    <option value="{{d.id}}">{{d.user.first_name}} {{d.user.last_name}}</option>-->
+                <!--                                    {% endfor %}-->
+                <!--                                </select>-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2  pt-4 curve-around">-->
+                <!--                                {% if request.session.lang == "EN" %}-->
+                <!--                                <h6 class=" pb-2"><b>Payslip Name</b></h6>-->
+                <!--                                {% else %}-->
+                <!--                                <h6 class=" pb-2"><b>اسم قسيمة الدفع</b></h6>-->
+                <!--                                {% endif %}-->
+                <!--                            </div>-->
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2  curve-around">-->
+                <!--                               <input type="text" value="{{data2.PaySlip_Name}}" placeholder=""-->
+                <!--                                               class="form-control" disabled>-->
+                <!--                            </div>-->
+
+                <!--                             <div class="col-lg-9 col-12 m-auto curve-around p-2 pt-4">-->
+                <!--                                 {% if request.session.lang == "EN" %}-->
+                <!--                                 <h6><b>Period</b></h6>-->
+                <!--                                 {% else %}-->
+                <!--                                 <h6 class="mr-4"><b>مدة</b></h6>-->
+                <!--                                 {% endif %}-->
+                <!--                                </div>-->
+
+                <!--                            <div class="col-lg-9 col-12 m-auto  p-2">-->
+                <!--                                    <div class="row m-0">-->
+                <!--                                        <div class="col  curve-around">-->
+                <!--                                            {% if request.session.lang == "EN" %}-->
+                <!--                                            <h6 class="text-center pb-2"><b>From</b></h6>-->
+                <!--                                            {% else %}-->
+                <!--                                            <h6 class="text-center pb-2"><b>من</b></h6>-->
+                <!--                                            {% endif %}-->
+
+                <!--                                            <input type="text" class="form-control " value="{{data2.Period_From}}" disabled>-->
+                <!--                                        </div>-->
+                <!--                                        <div class="col curve-around">-->
+                <!--                                            {% if request.session.lang == "EN" %}-->
+                <!--                                            <h6 class="text-center pb-2"><b>To</b></h6>-->
+                <!--                                            {% else %}-->
+                <!--                                            <h6 class="text-center pb-2"><b>إلى</b></h6>-->
+                <!--                                            {% endif %}-->
+
+                <!--                                             <input type="text" class="form-control " value="{{data2.Period_To}}" disabled>-->
+                <!--                                        </div>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">-->
+                <!--                                {% if request.session.lang == "EN" %}-->
+                <!--                                <h6><b>Other Additions</b></h6>-->
+                <!--                                {% else %}-->
+                <!--                                 <h6 class="mr-4"><b>إضافات أخرى</b></h6>-->
+                <!--                                {% endif %}-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">-->
+                <!--                                <input type="number" min="0" class="form-control" id="addition"-->
+                <!--                                               name="addition" value="0">-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">-->
+                <!--                                {% if request.session.lang == "EN" %}-->
+                <!--                                <h6><b>Total Number Of Working Hours</b></h6>-->
+                <!--                                {% else %}-->
+                <!--                                 <h6 class="mr-4"><b>إجمالي عدد ساعات العمل</b></h6>-->
+                <!--                                {% endif %}-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">-->
+                <!--                                <input type="number" min="0" class="form-control" id="totalhours"-->
+                <!--                                               name="" value="0">-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">-->
+                <!--                                {% if request.session.lang == "EN" %}-->
+                <!--                                <h6><b>Other Deductions</b></h6>-->
+                <!--                                {% else %}-->
+                <!--                                 <h6 class="mr-4"><b>استقطاعات أخرى</b></h6>-->
+                <!--                                {% endif %}-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">-->
+                <!--                                <input type="number" min="0" class="form-control" id="deductions"-->
+                <!--                                               name="" value="0">-->
+                <!--                            </div>-->
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">-->
+                <!--                                {% if request.session.lang == "EN" %}-->
+                <!--                                <h6><b>Earnings as per Working Hours</b></h6>-->
+                <!--                                {% else %}-->
+                <!--                                 <h6 class="mr-4"><b>الأرباح حسب ساعات العمل</b></h6>-->
+                <!--                                {% endif %}-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">-->
+                <!--                                <input type="number" min="0" class="form-control" id="earnings"-->
+                <!--                                               name="" value="0">-->
+                <!--                            </div>-->
+
+
+                <!--                        </div>-->
+                <!--                  </div>-->
+
+                <!--                  <div class="col-lg-6 col-md-6 col-12  backwhite">-->
+                <!--                        <div class="row m-0 d-flex justify-content-center" style="border-right:2px solid #eee;">-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">-->
+                <!--                                {% if request.session.lang == "EN" %}-->
+                <!--                                <h6><b>Total Earnings This Month</b></h6>-->
+                <!--                                {% else %}-->
+                <!--                                 <h6 class="mr-4"><b>إجمالي الأرباح هذا الشهر</b></h6>-->
+                <!--                                {% endif %}-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">-->
+                <!--                                <input type="number" min="0" class="form-control" id="tearnings"-->
+                <!--                                               name="" value="0">-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">-->
+                <!--                                {% if request.session.lang == "EN" %}-->
+                <!--                                <h6><b>Basic Salary</b></h6>-->
+                <!--                                {% else %}-->
+                <!--                                 <h6 class="mr-4"><b> راتب اساسي</b></h6>-->
+                <!--                                {% endif %}-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">-->
+                <!--                                <input type="number" min="0" class="form-control" id="salary"-->
+                <!--                                               name="" value="0">-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">-->
+                <!--                                {% if request.session.lang == "EN" %}-->
+                <!--                                <h6><b>Housing Allowance</b></h6>-->
+                <!--                                {% else %}-->
+                <!--                                 <h6 class="mr-4"><b> بدل سكن</b></h6>-->
+                <!--                                {% endif %}-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">-->
+                <!--                                <input type="number" min="0" class="form-control" id="ha"-->
+                <!--                                               name="" value="0">-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">-->
+                <!--                                {% if request.session.lang == "EN" %}-->
+                <!--                                <h6><b>Transport Allowance</b></h6>-->
+                <!--                                {% else %}-->
+                <!--                                 <h6 class="mr-4"><b> بدل النقل</b></h6>-->
+                <!--                                {% endif %}-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">-->
+                <!--                                <input type="number" min="0" class="form-control" id="ta"-->
+                <!--                                               name="" value="0">-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">-->
+                <!--                                {% if request.session.lang == "EN" %}-->
+                <!--                                <h6><b>Other Allowance</b></h6>-->
+                <!--                                {% else %}-->
+                <!--                                 <h6 class="mr-4"><b>بدلات أخرى</b></h6>-->
+                <!--                                {% endif %}-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">-->
+                <!--                                <input type="number" min="0" class="form-control" id="ot"-->
+                <!--                                               name="" value="0">-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 pt-4 curve-around">-->
+                <!--                                {% if request.session.lang == "EN" %}-->
+                <!--                                <h6><b>GOSI Deduction</b></h6>-->
+                <!--                                {% else %}-->
+                <!--                                 <h6 class="mr-4"><b>استقطاع التأمينات الاجتماعية</b></h6>-->
+                <!--                                {% endif %}-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-9 col-md-12 col-12 p-2 curve-around">-->
+                <!--                                <input type="number" min="0" class="form-control" id="gosi"-->
+                <!--                                               name="" value="0">-->
+                <!--                            </div>-->
+
+                <!--                            <div class="col-lg-10 col-12 m-auto text-right  p-2">-->
+                <!--                                    <button type="submit"-->
+                <!--                                            class="btn btn-sm btn-success  btn-style  col-lg-4 ml-1 text-white "-->
+                <!--                                            style="height: 40px;font-size: 16px;padding-top: 8px; margin-top: 30px; border-radius: 20px;">-->
+                <!--                                        {% if request.session.lang == "EN" %}-->
+                <!--                                        <i class="fa fa-paper-plane mr-2"></i>Save-->
+                <!--                                        {% else %}-->
+                <!--                                        <i class="fa fa-paper-plane ml-2"></i>يحفظ-->
+                <!--                                        {% endif %}-->
+                <!--                                    </button>-->
+                <!--                                </div>-->
+
+                <!--                        </div>-->
+                <!--                  </div>-->
+                <!--              </div>-->
+
+
+                <!--*****OLD CODE******-->
+                <div class="card card_border py-2 mb-4">
+                    <!--                    <div class="cards__heading">-->
+                    <!--                        <div class="row">-->
+                    <!--                            <h3 class="ml-2"><span>-->
+                    <!--                            {% if request.session.lang == "EN" %}-->
+                    <!--                                 Create Employee Payslip-->
+                    <!--                                         {% else %}-->
+                    <!--                                   إنشاء الموظف قسيمة الدفع-->
+                    <!--                                         {% endif %}-->
+                    <!--                        </span></h3>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="row mt-3">-->
+                    <!--                            <a href="/" class="btn btn-sm btn-outline-primary btn-style border-btn ml-1">-->
+                    <!--                                {% if request.session.lang == "EN" %}-->
+                    <!--                                Discard-->
+                    <!--                                {% else %}-->
+                    <!--                                تجاهل-->
+                    <!--                                {% endif %}-->
+                    <!--                            </a>-->
+                    <!--                            <button type="submit" class="btn btn-primary btn-style ml-1 ">-->
+                    <!--                                {% if request.session.lang == "EN" %}-->
+                    <!--                                Save-->
+                    <!--                                {% else %}-->
+                    <!--                                حفظ-->
+                    <!--                                {% endif %}-->
+                    <!--                            </button>-->
+                    <!--                        </div>-->
+
+                    <!--                    </div>-->
+
+                    <div class="card-body container">
+                        <div class="row mt-3">
+                            <div class="col-lg-6 col-md-6 col-12 p-3">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="pb-3">
+                                            {% if request.session.lang == "EN" %}
+                                            <b>Employee</b>
+                                            {% else %}
+                                            <b>الموظف</b>
+                                            {% endif %}
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col  new-slip">
+                                        <select id="employee" class="form-control input-style" name="emp">
+                                            {% for d in data %}
+                                            <option value="{{d.id}}">{{d.user.first_name}} {{d.user.last_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col">
+                                        <h6 class="pb-3">
+                                            {% if request.session.lang == "EN" %}
+                                            <b>Other Additions</b>
+                                            {% else %}
+                                            <b>إضافات أخرى</b>
+                                            {% endif %}
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col new-slip">
+                                        <input type="number" min="0" class="form-control" id="addition"
+                                               name="addition" value="0">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 p-3">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="row m-0">
+                                            <div class="col">
+                                                <h6 class="pb-3">
+                                                    {% if request.session.lang == "EN" %}
+                                                    <b>Period</b>
+                                                    {% else %}
+                                                    <b>مدة</b>
+                                                    {% endif %}
+                                                </h6>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12 new-slip">
+                                        <div class="row m-0">
+                                            <div class="col-lg-6 col-12 pb-3">
+                                                <input type="text" class="form-control " value="{{data2.Period_From}}"
+                                                       disabled>
+                                            </div>
+                                            <div class="col-lg-6 col-12 pb-3">
+                                                <input type="text" class="form-control " value="{{data2.Period_To}}"
+                                                       disabled>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="row m-0">
+                                            <div class="col pt-3">
+                                                <h6 class="pb-3">
+                                                    {% if request.session.lang == "EN" %}
+                                                    <b>Payslip Name</b>
+                                                    {% else %}
+                                                    <b>اسم قسيمة الدفع</b>
+                                                    {% endif %}
+                                                </h6>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12 new-slip">
+                                        <div class="row m-0">
+                                            <div class="col">
+                                                <input type="text" value="{{data2.PaySlip_Name}}" placeholder=""
+                                                       class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--salaries-->
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6  col-12 p-2 mt-4">
+                                <div class="col-12 abt-det">
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-12 col-12 newslip-det p-3">
+                                            <div class="row m-0">
+                                                <div class="col-3 btnn-icon2  new-iconslip text-center">
+                                                    <i class="fa fa-clock-o m-auto fa-2x text-primary pt-1"
+                                                       aria-hidden="true"></i>
+                                                </div>
+                                                <div class="col ml-3 small-text"><span
+                                                    id="totalhours"></span><br><small class="text-primary">
+                                                {% if request.session.lang == "EN" %}
+                                                Total Number Of Working Hours
+                                                {% else %}
+                                                إجمالي عدد ساعات العمل
+                                                {% endif %}
+                                            </small></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 abt-det mt-4">
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-12 col-12 newslip-det p-3">
+                                            <div class="row m-0">
+                                                <div class="col-3 btnn-icon2 new-iconslip text-center">
+                                                    <i class="fa fa-money  m-auto fa-1x text-primary pt-2"
+                                                       aria-hidden="true" style="font-size:22px;"></i>
+                                                </div>
+                                                <div class="col ml-3 small-text">
+                                                <span id="deductions"></span><br>
+                                                <small class="text-primary">
+                                                    {% if request.session.lang == "EN" %}
+                                                    Other Deductions
+                                                    {% else %}
+                                                    استقطاعات أخرى
+                                                    {% endif %}
+                                                </small>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 abt-det mt-4">
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-12 col-12 newslip-det p-3">
+                                            <div class="row m-0">
+                                                <div class="col-3 btnn-icon2 new-iconslip text-center">
+                                                    <i class="fa fa-money  m-auto fa-1x text-primary pt-2"
+                                                       aria-hidden="true" style="font-size:22px;"></i>
+                                                </div>
+
+                                                <div class="col ml-3 small-text">
+                                                    <span id="earnings"></span><br>
+                                                    <small class="text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Earnings as per Working Hours
+                                                        {% else %}
+                                                        الأرباح حسب ساعات العمل
+                                                        {% endif %}
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 abt-det mt-4">
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-12 col-12 newslip-det p-3">
+                                            <div class="row m-0">
+                                                <div class="col-3 btnn-icon2 new-iconslip text-center">
+                                                    <i class="fa fa-money  m-auto fa-1x text-primary pt-2"
+                                                       aria-hidden="true" style="font-size:22px;"></i>
+                                                </div>
+                                                <div class="col ml-3 small-text">
+                                                    <span id="tearnings"></span><br>
+                                                    <small class="text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Total Earnings This Month
+                                                        {% else %}
+                                                        إجمالي الأرباح هذا الشهر
+                                                        {% endif %}
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12  p-2 mt-4 ">
+                                <div class="row m-0 mt-4">
+                                    <div class="col-lg-8 col-md-12 col-12 abt-det abt-2 newslip-det p-3">
+
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <span class="new-iconslip p-1 text-center text-primary"><i
+                                                        class="fa fa-money m-auto" aria-hidden="true"></i></span>
+                                                <span class="text-primary">
+                                                {% if request.session.lang == "EN" %}
+                                                            Basic Salary
+                                                                       {% else %}
+                                                               <b>راتب اساسي</b>
+                                                                       {% endif %}
+                                                </span>
+                                            </div>
+                                            <div class="col-4">
+                                                <b class="text-primary"><span class=" numbr-span"
+                                                                              id="salary"></span></b>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="row m-0 mt-4">
+                                    <div class="col-lg-8 col-md-12 col-12 abt-det abt-2 newslip-det p-3">
+
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <span class="new-iconslip p-1 text-center text-primary"><i
+                                                        class="fa fa-home m-auto" aria-hidden="true"></i></span>
+                                                <span class="text-primary">
+                                                {% if request.session.lang == "EN" %}
+                                                            Housing Allowance
+                                                                       {% else %}
+                                                               <b>بدل سكن</b>
+                                                                       {% endif %}
+                                                </span>
+                                            </div>
+                                            <div class="col-4">
+                                                <b class="text-primary"><span class=" numbr-span" id="ha"></span></b>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row m-0 mt-4">
+                                    <div class="col-lg-8 col-md-12 col-12 abt-det abt-2 newslip-det p-3">
+
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <span class="new-iconslip p-1 text-center text-primary"><i
+                                                        class="fa fa-bus m-auto" aria-hidden="true"></i></span>
+                                                <span class="text-primary">
+                                                {% if request.session.lang == "EN" %}
+                                                            Transport Allowan..
+                                                                       {% else %}
+                                                               <b>بدل النقل</b>
+                                                                       {% endif %}
+                                                </span>
+                                            </div>
+                                            <div class="col-4">
+                                                <b class="text-primary"><span class="numbr-span" id="ta"></span></b>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="row m-0 mt-4">
+                                    <div class="col-lg-8 col-md-12 col-12 abt-det abt-2 newslip-det p-3">
+
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <span class="new-iconslip p-1 text-center text-primary"><i
+                                                        class="fa fa-money m-auto" aria-hidden="true"></i></span>
+                                                <span class="text-primary">
+                                                {% if request.session.lang == "EN" %}
+                                                            Other Allowance
+                                                                       {% else %}
+                                                               <b> بدلات أخرى</b>
+                                                                       {% endif %}
+                                                </span>
+                                            </div>
+                                            <div class="col-4">
+                                                <b class="text-primary"><span class="numbr-span" id="ot"></span></b>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row m-0 mt-4">
+                                    <div class="col-lg-8 col-md-12 col-12 abt-det abt-2 newslip-det p-3">
+
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <span class="new-iconslip p-1 text-center text-primary"><i
+                                                        class="fa fa-exclamation-circle m-auto" aria-hidden="true"></i></span>
+                                                <span class="text-primary">
+                                                {% if request.session.lang == "EN" %}
+                                                            GOSI Deductions
+                                                                       {% else %}
+                                                               <b> استقطاع التأمينات الاجتماعية</b>
+                                                                       {% endif %}
+                                                </span>
+                                            </div>
+                                            <div class="col-4">
+                                                <b class="text-primary text-danger"><span class=" numbr-span" id="gosi"></span></b>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </form>
+
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+
+
+{% endblock%}
+
+{% block scripts%}
+
+<script src="/static/assets/js/payrun.js"></script>
+{% endblock %}

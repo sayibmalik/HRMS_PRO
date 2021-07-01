@@ -1,0 +1,1329 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <!--        <nav aria-label="breadcrumb" class="mb-4">-->
+        <!--            <ol class="breadcrumb my-breadcrumb">-->
+        <!--                <li class="breadcrumb-item"><a href="/">Home</a></li>-->
+        <!--                <li class="breadcrumb-item active" aria-current="page">Contact Titles</li>-->
+        <!--            </ol>-->
+        <!--        </nav>-->
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <div class="card card_border py-2 mb-4">
+                <div class="cards__heading">
+                    <div class="row">
+                        <h3 class="ml-2"><span>Contract  </span></h3>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-9">
+                            <a href="#" class="btn btn-sm btn-outline-primary btn-style border-btn ml-1">Print</a>
+                        </div>
+<!--                        <div class="col-3">-->
+<!--                            <div class="ml-3" style="float: right;">-->
+<!--                                <span>1-5/5</span>-->
+<!--                                <a class="btn" style="border: 1px solid lightgray;" href="/">❮ </a>-->
+<!--                                <a class="btn" style="border: 1px solid lightgray;" href="/"> ❯</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </div>
+                </div>
+                <div class="card-body" style="margin-top: -45px;">
+                    <div class="container p-5">
+                        <div class="row">
+                            <div class="col-lg-12 p-3 ">
+                                <div class="row">
+                                    <div class="col-6  p-1 text-center" style="border: 1px solid #000">
+                                        <h5>EMPLOYMENT CONTRACT</h5>
+                                    </div>
+                                    <div class="col-6  p-1 text-center" style="border: 1px solid #000">
+                                        <h5>عقد عمل</h5>
+                                    </div>
+
+                                    <div class="col-6  p-1 text-center" style="border: 1px solid #000">
+                                        <h5>(Foreign Nationals)</h5>
+                                    </div>
+                                    <div class="col-6  p-1 text-center" style="border: 1px solid #000">
+                                        <h5>(لغير السعوديين)</h5>
+                                    </div>
+
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                        <p>
+                                            this employment Contract ("the contract") Is made on ____________ H
+                                            corresponding
+                                            to____________ by and between:
+
+                                            1) MASTERS LEGACY for HR SERVICES CORPORATION, having Commercial
+                                            Registration Number
+                                            1010569364 whose address is at: PO Box 6114. Riyadh 12215 Saudi Arabia
+                                            (hereinafter
+                                            referred to as the "Employer") and
+
+                                            2) .......... National, resident ID .......... Whose address is at: Riyadh
+
+                                            (hereinafter referred to as the "Employer")
+                                            (Each a party's together'' the Parties'').
+
+                                        </p>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                        <p>
+                                            ابرم هذا العقد في ____________14 هـ الموافق ____________ م بين كل من:
+
+                                            1) مؤسسة بصمة المستشارين لخدمات الموارد البشرية مؤسسة سعودية، سجل تجاري رقم
+                                            1010569364
+                                            وعنوان : ص.ب 6114 الرياض 12215 المملكة العربية السعودية، (ويشار اليها فيما
+                                            بعد بـ "صاحب
+                                            العمل")
+
+                                            2) .......... الجنسية، هوية مقيم رقم .......... ، و عنوانه : الرياض (ويشار
+                                            اليها فيما بعد
+                                            ب "الموظف")
+
+                                            (ويشار الى كل من صاحب العمل و الموظف "بالطرف" و اليهما معاً بـ
+                                            "الطرفين/الطرفان)
+
+
+                                        </p>
+                                    </div>
+
+
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                        <h5>
+                                            THE PARTIES HEREBY AGREE as follows:
+
+                                        </h5>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                        <h5>
+
+                                            اتفق الطرفان على ما يلي
+                                        </h5>
+                                    </div>
+
+
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                        <h5>
+                                            (A) SPECIAL CONDITIONS
+
+                                        </h5>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                        <h5>
+
+                                            (أ) الشروط الخاصة
+                                        </h5>
+                                    </div>
+
+
+                                    <div class="col-6  p-0 text-center" style="border: 1px solid #000">
+                                        <table class="table table-bordered  tt-bl" style="border: 1px solid color:#000">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Description</th>
+                                                <th scope="col">entitled/Eligibility</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td>Position</td>
+                                                <td>{{emp.Job_Position}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td>Contract Start Date</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td>Contract Status</td>
+                                                <td>Running</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                    <div class="col-6  p-0 text-center" style="border: 1px solid #000">
+                                        <table class="table table-bordered" style="border: 1px solid color:#000">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">المستحقات</th>
+                                                <th scope="col">الوصف   </th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+
+                                                <td></td>
+                                                <td>الوظيفة</td>
+                                            </tr>
+                                            <tr>
+
+                                                <td></td>
+                                                <td>تاريخ بداية العقد</td>
+                                            </tr>
+                                            <tr>
+
+                                                <td></td>
+                                                <td>الوضع التعاقدي</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                                        <h5>
+                                            Fixed Components Annual
+
+                                        </h5>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                        <h5>
+
+                                            العناصر الثابته (سنوية)
+                                        </h5>
+                                    </div>
+
+
+                                    <div class="col-6  p-0 text-center" style="border: 1px solid #000">
+                                        <table class="table table-bordered  tt-bl" style="border: 1px solid color:#000">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col" style="color:transparent">entitled/Eligibility</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>Basic salary</td>
+                                                <td>{{contract.base_salary}}</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Housing allowance</td>
+                                                <td>{{contract.Housing_Allowance}}</td>
+
+                                            </tr>
+                                            <tr>
+
+                                                <td>Hardship allowance</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+
+                                                <td>Home trip allowance</td>
+                                                <td></td>
+                                            </tr>
+
+                                            <tr>
+
+                                                <td>Children tuition allowance</td>
+                                                <td></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Transport allowance</td>
+                                                <td>{{contract.Transport_Allowance}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Other allowance</td>
+                                                <td>{{contract.otherallowance}}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+                                    <div class="col-6  p-0 text-center" style="border: 1px solid #000">
+                                        <table class="table table-bordered  tt-bl" style="border: 1px solid color:#000">
+                                            <thead>
+                                            <tr>
+
+                                                <th scope="col" style="color:transparent">entitled/Eligibility</th>
+                                                <th scope="col"></th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td>الاجر الاساس</td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>بدل السكن</td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>بدل طبيعة عمل</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>بدل تذكرة لبلد الأصل</td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td></td>
+                                                <td>بدل تعليم الأطفال</td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td></td>
+                                                <td>بدل المواصلات</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>بدلات أخرى</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+
+                                    <div class="col-12  p-0 text-center" style="border: 1px solid #000">
+                                        <table class="table table-bordered  tt-bl" style="border: 1px solid color:#000">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">xi</th>
+                                                <th scope="col">End of Service Benefit (ESB)</th>
+                                                <th scope="col">End of Service Benefit (ESB)</th>
+                                                <th scope="col">راتب نصف شهر في السنة للخمس سنوات الاولى و بعد ذلك راتب
+                                                    شهر واحد في
+                                                    السنة
+                                                </th>
+                                                <th scope="col">مكافأة نهاية الخدمة</th>
+                                            </tr>
+                                            </thead>
+
+                                        </table>
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                                        <h5>
+                                            Variable Components: (subject to unique job conditions. Company reserves the
+                                            right to
+                                            amend/withdraw below components at any time)
+
+                                        </h5>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                        <h5>
+
+                                            العناصر المتغيرة: (تخضع هذه العناصر لطبيعة الوظيفة و تحتفظ الشركة بحق
+                                            تعديلها او الغائها
+                                            في اي وقت)
+                                        </h5>
+                                    </div>
+
+
+                                    <div class="col-6  p-0 text-center" style="border: 1px solid #000">
+                                        <table class="table table-bordered  tt-bl" style="border: 1px solid color:#000">
+                                            <thead>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <th scope="row">xii</th>
+                                                <td>Mobile Phone Premium</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">xiii</th>
+                                                <td>Food allowance</td>
+                                                <td style="color:transparent">Premium</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">xv</th>
+                                                <td>Incentive Scheme</td>
+                                                <td style="color:transparent">Premium</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th scope="row">xvi</th>
+                                                <td>AUC Seniority Bonus</td>
+                                                <td style="color:transparent">Premium</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th scope="row">xvii</th>
+                                                <td>Overtime Rate</td>
+                                                <td style="color:transparent">Premium</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th scope="row">xvii</th>
+                                                <td>Discretionary Annual Bonus</td>
+                                                <td style="color:transparent">Premium</td>
+                                            </tr>
+
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+
+                                    <div class="col-6  p-0 text-center" style="border: 1px solid #000">
+                                        <table class="table table-bordered  tt-bl" style="border: 1px solid color:#000">
+
+                                            <tbody>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td></td>
+                                                <td>بدل جوال</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td style="color:transparent">Premium</td>
+                                                <td>بدل إعاشة</td>
+
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td style="color:transparent">Premium</td>
+                                                <td>حوافز أخرى</td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td style="color:transparent">Premium</td>
+                                                <td>مكافآة الأقدمية بمركز التطوير</td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td style="color:transparent">Premium</td>
+                                                <td>بدل ساعات عمل إضافية</td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <td style="color:transparent">Premium</td>
+                                                <td>المكافآة السنوية</td>
+
+                                            </tr>
+
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                                        <h5>
+                                            Nate: The above variable components shall not be part of the end of
+                                            Service benefit calculation.
+
+
+                                        </h5>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                        <h5>
+
+                                            لاتشمل مكافاة نهاية الخدمة العناصر المتغيرة المتقدم ذكرها
+                                        </h5>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                                        <h5>
+                                            Medical and Life Benefits
+
+
+                                        </h5>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                        <h5>
+
+                                            مزايا التأمين الطبي و التأمين على الحياة
+                                        </h5>
+                                    </div>
+
+
+                                    <div class="col-12  p-0 text-center" style="border: 1px solid #000">
+                                        <table class="table table-bordered  tt-bl" style="border: 1px solid color:#000">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">xxiv</th>
+                                                <th scope="col">Medical Insurance</th>
+                                                <th scope="col-1"></th>
+                                                <th scope="col-1"></th>
+                                                <th scope="col">مكافأة نهاية الخدمة</th>
+                                            </tr>
+                                            </thead>
+
+                                        </table>
+                                    </div>
+
+                                    <div class="col-12  p-0 text-center" style="border: 1px solid #000">
+                                        <table class="table table-bordered  tt-bl" style="border: 1px solid color:#000">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">xviii</th>
+                                                <th scope="col">Life Insurance</th>
+                                                <th scope="col-1"></th>
+                                                <th scope="col-1"></th>
+                                                <th scope="col">تأمين على الحياة</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                                        <h6>
+                                            (B) GENERAL CONDITIONS
+
+
+                                        </h6>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                        <h6>
+
+                                            (ب) الشروط العامة
+                                        </h6>
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                               1)	The Employee shall be employed by the Employer under this Contract in the position and monthly basic salary which are specified in the Special Conditions hereinabove prescribed by applicable Resolutions Rules and Regulations in the Kingdom.
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                           <span>
+
+                            	1)	يعمل الموظف لدى صاحب العمل بموجب هذا العقد بالوظيفة و بالأجر الشهري الاساسي كما هو موضح في الشروط الخاصة بهذا العقد والتي تقتضي العمل لموجب الانظمة و اللوائح و القرارات السارية بالمملكة.
+    	                        ب) الشروط العامة
+                           </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                               2)	Term & Effective Date
+This contract is for a period of (1) years, effective as of the date on which the Employee begins to perform the work for the Employer (“Effective Date”), and is renewable upon mutual agreement of the parties, unless either party gives the other party hereto (1) months prior written notice to terminate the contract before the expiration of this contract or the renewed term of this Contract.
+.
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                             <strong>مدة العقد وتاريخ سريانه 2)</strong>
+
+
+مدة هذا العقد (1) سنة/سنوات ، ويبدا العمل بهذا العقد من تاريخ مباشرة الموظف لعملة لدى صاحب العمل ("تاريخ سريان العقد") ويمكن تجديد هذا العقد باتفاق الطرفين ، مالم يوجه احد الطرفين اشعاراً خطياً للطرف الاخر لانهاء هذا العقد قبل (60) يوماً من تاريخ نهاية مدته او مدة تجديدهب) الشروط العامة
+                           </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                               3)	Probationary Period
+                                    The Employee shall be subject to (90) days probationary period commencing from the effective date of this contract. The employee should complete such period in a manner latter has the right to terminate this contract without notice or stating any reasons or compensation.
+
+                                    The Employee may terminate this contract during the probationary Period by giving a written notice of seven days to the Employer or by payment of notice period basic salary in lieu of notice.
+
+.
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                                 <strong> فترة التجربة (3</strong>
+
+
+                                يخضع الموظف لفترة تجربة مدتها تسعون (90) يوماً تبدا من تاريخ سريان هذا العقد ، و يجب على الموظف اكمال تلك الفترة بصورة يرضى عنها صاحب العمل ، و يحق لصاحب العمل انهاء هذا العقد خلال فترةالتجربة دون اخطار او ابداء اية اسباب او تعويض.
+
+                                يجوز للموظف انهاء هذا العقد خلال فترة التجربة بموجب اشعار كتابي مدته سبعة ايام يوجهه الى صاحب العمل او ان يدفع لصاحب العمل بدل اشعار يعادل الاجر الاساسي عن مدة الاشعار.
+                             </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                               <strong>4)	Working Hours</strong>
+                                    a)	The Employee shall work 48 hours per week as per the work schedule determined by the Employer.
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                              <strong> 4)ساعات العمل</strong>
+
+                                    أ‌)	يعمل الموظف ثمانية و اربعين 48 ساعة في الاسبوع، وفقاً لجدول العمل المحدد من قبل صاحب العمل
+
+
+                             </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+
+                                    b)	The Employer will specify the daily working hours as well as the weekly working days including work schedule, overtime, rest time in consistence with the labor law and the Employer’s Work Regulations and Policies.
+
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                              ب‌)	يحدد صاحب العمل ساعات العمل اليومية بالاضافة الى ايام العمل الاسبوعية ويشمل ذلك جدول العمل، و ساعات العمل الاضافية ، و فترات الراحة ، بما يتوافق مع نظام العمل و لائحة تنظيم العمل و سياسات صاحب العمل.
+
+                             </span>
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                            c)	The Employee agrees to work overtime hours if requested by the Employer to meet operational needs or business requirements. Notwithstanding, the Employee shall not claim overtime payment, unless such overtime assignment is approved by a prior written consent of the Employer.
+
+
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                              ج‌)	يوافق الموظف بان يعمل  ساعات عمل اضافية اذا طلب منه صاحب العمل ذلك لمقابلة الاحتياجات التشغيلية او متطلبات العمل، و مع ذلك لا يحق للموظف أن يطالب بمقابل اي  ساعات عمل اضافية الا بموجب تكليف كتابي مسبق من صاحب العمل.
+
+                             </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                            d)	The salary is inclusive of an additional amount compensating for the service which the Employee may be expected to perform in view of the responsibilities of the position, the duties assigned and the nature of the Employer’s business.
+
+
+
+
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                              د‌)	يكون الاجر شاملاً بحيث يغطي اي مبلغ اضافي يخصص لتعويض الاعمال التي يتوقع ان يؤديها الموظف بالنظر الى مسئوليات الوظيفة و الواجبات المكلف بها و طبيعة عمل صاحب العمل.
+
+                             </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                            e)	The Employee agrees to abide by the instructions of the Employer through its competent authority and to devote full time and efforts exclusively for the Employer, and shall not be engaged in any other business, trade or occupation, directly or indirectly with or without remuneration during the term of this Contract, and shall perform his duties faithfully and efficiently subject to the direction of the Employer.
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                              ه‌)	يلتزم الموظف بإتباع تعليمات صاحب العمل، و بتكريس ساعات العمل لخدمة صاحب العمل، و بذل كامل جهده لخدمة صاحب العمل، و باداء واجباته باخلاص و كفاءة وفقاً لتعليمات صاحب العمل ، كما يلتزم بالا يعمل لدى الغير باي صورة كانت سواء باجر او بدون اجر، اثناء فترة العقد.
+
+                             </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                            <strong>5)	Work Location</strong>
+                            The Primary work location for the Employee shall be Riyadh Saudi Arabia. The work location may vary from time to time according to business needs. It may also change according to the ongoing development and progression of the Employee’s career with the Employer. The Employee agrees be transferred to any subsidiary or branch of the Employer inside or outside Saudi Arabia. The Employee further agrees to be appointed in any other position, or assign to him any other duties.
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                           5)	مكان العمل
+                            يعمل الموظف في مدينة الرياض بالمملكة العربية السعودية، وهو مكان العمل الرئيسي، و يجوز تغيير مكان العمل من وقت لاخر حسب متطلبات العمل، و ايضا حسب التدرج و التطور الوظيفي للموظف ، ويوافق الموظف على نقله لاي فرع او شركة تابعة لصاحب العمل داخل المملكة او خارجها، كما يوافق الموظف على تعيينه في أية وظيفة اخرى، او تكليفه باداء أية مهام او مسئوليات اخرى.
+                          </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                            <strong>6)	 Conditional Appointment</strong>
+
+                            This contract with the employer is conditional upon the employee passing a medical examination in as per the employers polices.
+
+
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                                                       6)	شروط التعيين
+                            يعتبر هذا العقد مشروطاً على اجتياز الموظف للكشف الطبي بالمملكة العربية السعودية وفقاً لسياسات صاحب العمل                .
+
+                          </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                            <strong>7)	Uniforms</strong>
+
+
+                            The Employer, at his option, may provide suitable uniforms for designated Employees.  Footgear will not be provided unless the Employer determines that special footgear is necessary for safety reasons. Loss or deliberate destruction of Employer issued uniform, tools and equipment will result in the employee being charged for the item or items.
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                           <span>7)	الــــزى الرســـــمي
+                            قد يزود صاحب العمل بمحض إرادته الموظفين بزى موحد بما يتناسب مع طبيعة العمل ولن تؤمن الاحذية مالم يقرر صاحب العمل ضرورة تأمين أحذية خاصة لدواعي السلامة. ان الفقدان او الاتلاف المتعمد للبدل او العدد او المعدات التي يتم صرفها من قبل صاحب العمل سوف ينتج عنه مطالبة الموظف بدفع قيمة البند او البنود المفقودة او التي تم إتلافها.
+
+                          </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                            <strong> 8)	Employer Property</strong>
+
+                            The Employee shall be responsible for all tools or other property or clothing furnished to him by or on behalf of the Employer for use in the Employment hereunder, and he shall satisfactorily account for all such property prior to departure from the jobsite.
+
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                   <span>امـتـلـكات صاحب العمل8
+                        يعتبر الموظف مسئولا عن كافة الأدوات أو الممتلكات الأخرى أو الملابس التى وفرها له صاحب العمل نفسه أو من يمثله لاستخدامها فى أداء العمل المحدد بالعقد وأن يقوم طواعية بالتأكد من تواجد تلك الممتلكات قبيل مغادرته موقع العمل.
+
+                          </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                            <strong> 9)	Leave Entitlement</strong>
+
+                                The employee shall be entitled to an annual leave with full pay, calculated on the basis of (22) days upon completion of 3 months of Continuous service with the employer. The leave date shall be subject to the approval of the employer and the work requirements
+
+
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                                           <span>10)	الاجازات
+                        يستحق الموظف اجازة سنوية مقدارها (22) يوماً باجر كامل بعد اتمام 3 أشهر من الخدمة المتصلة، ويخضع توقيتها لموافقة صاحب العمل بما يتناسب مع مقتضيات العمل.
+                                                  </span>
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                            <strong> 11)Statutory Holidays Entitlement</strong>
+
+                                The employee shall be entitled to statutory holidays with full pay as set out in the implementing regulations of labor law. Therefore, the statutory holidays are subject to any amendment in the implementing regulations of the labor law.
+
+
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                                                                          11)	اجازة الاعياد و المناسبات
+يستحق الموظف اجازة بأجر كامل في الاعياد و المناسبات التي تحددها اللائحة التنفيذية لنظام العمل، و تخضع مدة اجازة الاعياد و المناسبات لاية تعديلات تطرا لى اللائحة التنفيذية لنظام العمل.
+
+                              </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                            <strong> 12)Work Regulations</strong>
+
+                                The Employee acknowledges, understands and agrees to abide by the Work Regulations of the Employer and other Employer’s policies issued In accordance with the labor law. The Employee agrees that failure to comply with the terms and conditions as set out in such documents or other directives issued by the Employer from time to time shall result in disciplinary action that may lead to the termination of this contract
+
+
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>لائحة تنظيم العمل
+                            يقر الموظف و يوافق على التزامة بلائحة تنظيم العمل الخاصة بصاحب العمل الى جانب السياسات الاخرى لصاحب العمل الصادرة وفقاً لنظام العمل، و يوافق الموظف على ان عدم التزامه بالاحكام و الشروط المنصوص عليها في تلك الوثائق او في التوجيهات الصادرة من قبل صاحب العمل من وقت لاخر ستجعله عرضة لاجراءات تأديبية قد تودي الى أنهاء هذا العقد.
+
+                              </span>
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+                            <strong> 13)Contributions to Organization for Social Insurance (GOSI)</strong>
+
+                                The Employee acknowledges, understands and agrees to abide by the Work Regulations of the Employer and other Employer’s policies issued In accordance with the labor law. The Employee agrees that failure to comply with the terms and conditions as set out in such documents or other directives issued by the Employer from time to time shall result in disciplinary action that may lead to the termination of this contract
+
+
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+                                                       13)	اشتراكات المؤسسة العامة للتأمينات الاجتماعية
+وفقاً لنظام المؤسسة العامة للتامينات الاجتماعية ، يدفع صاحب العمل الى المؤسسة العامة للتأمينات الاجتماعية كامل مبلغ الاشتراكات المستحقة عليه و على الموظف المشترك ، و يقتطع صاحب العمل من اجر الموظف قيمة الاشتراك المستحق على الموظف من كشف الاجور، و تكون الاستقطاعات وفقاً لنظام المؤسسة العامة للتأمينات الاجتماعية و لوائحها التنفيذية.
+
+
+                              </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                            <strong> 14 Termination of the Contract</strong>
+                                <h6>1.	Termination of this Contract without compensation or End or Service Benefit.</h6>
+
+                                The Employer shall have the right to terminate this contract at any time without prior notice, payment in lieu of notice, compensation or end of service benefit, if the employee has committed any of the following:
+
+
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+                                                       14)	انهاء العقد
+1.	انهاء هذا العقد دون تعويض او مكافاة نهاية الخدمة.
+لصاحب العمل الحق في انهاء هذا العقد في اي وقت دون اشعار او مكافأة نهاية خدمة او تعويض ، وبشرط ان يتيح للموظف الفرصة لابداء اسباب معارضته للانهاء ، و ذلك في الحالات التالية:
+
+
+                              </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+
+                               a)	If, during or by reasons of the work, the Employee has committed an assault, whether by word or act, against the Employer, the manager in-charge, or his supervisor/line manager.
+
+
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+                                                       أ‌)	اذا وقع من الموظف اعتداء على صاحب العمل او المدير المسئول او مديره المباشر ، سواء كان هذا الاعتداء بالقول او بالفعل.
+
+
+                              </span>
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+
+                                b)	If the Employee fails to perform his essential obligations arising from this Contract, or fails to obey legitimate orders including instructions related to the safety of work.
+
+
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+                                                      ب‌)	اذا لم يؤد الموظف التزاماته الجوهرية المترتبة على هذا العقد، او لم يطع الاوامر المشروعة بما في ذلك التعليمات الخاصة بسلامة العمل
+
+                              </span>
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+
+                                c)	If the Employee has committed a misconduct or an act infringing on honesty or integrity.
+
+
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+                                                      ج‌)	اذا ثبت اتباع الموظف سلوكاً سيئاً او ارتكابه عملا مخلا بالشرف او الامانة.
+
+                              </span>
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+
+
+d)	If the Employee deliberately commits any act or default with the intent to cause material loss to the Employer.
+
+
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+
+	د‌)	اذا وقع من الموظف عمدا اي فعل أو تقصير يقصد به الحاق خسارة مادية بصاحب العمل.
+                              </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+
+
+                            e)	If the Employee has committed forgery with respect to documents or information whereby he obtained the job the subject matter of this contract.
+
+
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+                                                              ه‌)	اذا ثبت ان الموظف لجأ الى تزوير المستندات او المعلومات التي حصل بموجبها على الوظيفة موضوع هذا العقد.
+                           </span>
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+
+
+                            f)	If the Employee is still under the probation period.
+
+
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+
+                        	و‌)	اذا كان الموظف معينا تحت الاختبار.
+                           </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+
+                            g)	 if the Employee absents without valid reason. For more than twenty days in one year, or for more than ten consecutive days.
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                             <span>
+
+                        	ز‌)	اذا تغيب الموظف دون سبب مشروع اكثر من ثلاثون يوما خلال السنه الواحدة ، او خمسة عشرة يوم متتالية.
+                           </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+
+                            h)	If the Employee unlawfully takes advantage of his position for personal gain.
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                             <span>
+
+                        ح‌)	اذا ثبت ان الموظف استغل مركزه الوظيفي بطريقة غير مشروعة للحصول على نتائج و مكاسب شخصية.
+
+                           </span>
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span>
+
+                            i)	If the Employee discloses confidential information related to the work.
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                             <span>
+
+                       	ط)	اذا ثبت ان الموظف افشى الاسرار الصناعية او التجارية الخاصة بالعمل الذي يعمل فيه.
+                           </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                            <strong>  2.	Termination of this Contract with compensation or End of Service Benefit. </strong>
+                                <p> 1.	Termination of this Contract with compensation or End of Service Benefit.
+                                    The Employer may at any time terminate this Contract by giving the Employee the required termination notice of (1) month(s) or by payment of notice period basic salary in lieu of termination notice.</p>
+
+                                The Employer shall have the right to terminate this contract at any time without prior notice, payment in lieu of notice, compensation or end of service benefit, if the employee has committed any of the following:
+
+                                <p>
+                                    The employee may terminate this contract at any time by giving a written notice of (1) month(s) to the Employer or by payment of notice period basic salary in lieu of termination notice.
+                                </p>
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+                                                       14)	2.	انهاء هذا العقد مع التعويض و مكافاة نهاية الخدمة:
+يجوز لصاحب العمل انهاء هذا العقد في اي وقت بموجب اشعار كتابي مدته (2) شهر/اشهر او ان يدفع للموظف بدل اشعار يعادل الاجر الاساسي مدة الاشعار.
+
+يجوز للموظف انهاء هذا العقد في اي وقت بموجب اشعار كتابي مدته (2) شهر/اشهر يوجهه الى صاحب العمل او ان يدفع لصاحب العمل بدل اشعار يعادل الاجر الاساسي عن مدة الاشعار.
+
+
+                              </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                            <strong> 15)	Confidentiality  </strong>
+                                <p>The Employee shall, at all times during the term of this contract and for ten years after the termination of his employment with the Employer, hold in strictest confidence, and shall NOT disclose, use or publish any of the Employer’s Proprietary and Confidential Information, save and except with the Employer’s prior written consent. Proprietary and Confidential Information includes but not limited to inventions, trade secrets, industrial, administrative and technical secrets, ideas, processes, formulas, source and object codes, data, programs, other works of authorship, know-how, improvements, developments, designs, techniques, new products, regulatory matters, marketing and selling, business plans, budgets and unpublished financial statements, licenses, prices and costs, suppliers and customers; and information regarding the skills and compensation of other employees of the Employer, save and except with the prior written authorization of the employer.
+                                </p>
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+
+	15)	سرية المعلومات
+يحافظ الموظف بشكل تام على سرية اية معلومات خاصة بصاحب العمل، و يلتزم بعدم افشائها للغير او استخدامها او نشرها، الا بموجب موافقة خطية مسبقة من صاحب العمل، و يسري هذا الالتزام على الموظف خلال عمله مع صاحب العلمل و لمدة عشر سنوات بعد انتهاء عمله مع صاحب العمل، و تشمل المعلومات الخاصة بصاحب العمل على سبيل المثال ولي الحصر الاختراعات و الاسرار التجارية و الصناعية و الادارية و الفنية ، و الافكار و طرق التصنيع و الصيغ الصناعية و رموز المصدر ، و البيانات و البرامج و اعمال التاليف الاخرى ، و المعرفة الفنية، و التحسينات و التطويرات و التصميمات و التقنيات و المنتجات الجديدة و الامور التنظيمية و التسويق و البيع و خطط العمل و الميزانيات و التقارير المالية غير المنشورة و بيانات التراخيص و الاسعار و التكاليف و اسماء الموردين و العملاء و الزبائن، و المعلومات الخاصة بموظفي صاحب العمل و المتعلقة بتعويصاتهم و مهاراتهم.
+
+                              </span>
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                            <strong> 16)	Invention & Intellectual Property Rights</strong>
+                                <p>
+                                    a)	The Employee hereby agrees to promptly disclose to the Employer all inventions, product development, industrial designs and all related intellectual property rights which Employee may make in the course of performing the work under this Contract or as a result of exposure to Employer’s confidential information.
+                                </p>
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+
+
+                                16)	الاختراعات و حقوق الملكية الفكرية
+                            أ)	يوافق الموظف على ان يكشف لصاحب العمل على الفور عن جميع الاختراعا ت و التحسينات التي تتم على المنتجات و التصميمات الصناعية و جميع الحقوق المتصلة بالملكية الفكرية التي يتوصل اليها الموظف اثناء انجازه للعمل بموجب هذا العقد او نتيجة لاطلاعه على المعلومات السرية لاحب العمل
+
+
+                              </span>
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                                <p>
+
+                       b)	The Employer shall own all rights, title and interest in and to any invention or all related intellectual property rights which embody, in whole or in part, any Proprietary Information of Employer, or which have been made as a result of Employee’s exposure to Employer’s Proprietary Information or which have been made in the course of performing the work under this Contract.
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+
+	                    	أ)	و يكون لصاحب العمل جميع الحقوق و حقوق الملكية و المصالح بالنسبة لاية اختراعات او جميع الحقوق المتصلة بالملكية الفكرية تتضمن جزئياً او كليا ايا من المعلومات السرية الخاصة بصاحب العمل، او تلك التي تم التوصل اليها نتيجة لاصلاع الموظف على المعلومات السرية الخاصة بصاحب العمل ، او تلك التي تمت اثناء انجاز الموظف للعمل بموجب هذا العقد.
+
+
+                              </span>
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                                <p>
+
+                       c)	The Employee further agrees to execute, or cause to be executed, all documents and to perform, or cause to be performed, all other lawful acts which the Employer may deem desirable or necessary to satisfy the requirements of its title to such inventions or intellectual property rights and to obtain patent and intellectual property right coverage thereon throughout the world. The Employee may, in consideration of his compliance with any such request, stipulate that the Employer shall agree to reimburse the Employee for all reasonable expenses incurred In connection with the afore-mentioned matters.
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+                                         	ج)	كما يوافق الموظف على توقيع جميع المستندات او العمل على توقيعها، او القيام بجميع التصرفات القانونية الاخرى التي يرى صاحب العمل انها ضرورية او لازمة لاستيفاء متطلبات و شروط ملكية تلك الاختراعات او حقوق الملكية الفكرية او العمل على القيام بها، وللحصول على الحماية القانونية لبراءات الاختراع و حقوق الملكية الفكرية في جميع انحاء العالم، على انه يجو للموظف مقابل التزامه بأي طلب من هذا القبيل ان يشترط موافقة صاحب العمل على تعويضه عن كل المصاريف و النفقات المعقولة التي يتكبدها فيما يتعلق بالامور المتقدم ذكرها.
+
+
+
+                              </span>
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                                <p>
+
+                       d)	The Employee further agrees to grant and hereby grants to the Employer an irrevocable, royalty free, worldwide, non-exclusive license to use all patents and intellectual property rights, now or thereafter owned or controlled by Employee in all activities of the Employer’s business,
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+                       	د)	يوافق الموظف على ان يمنح صاحب العمل و بموجبه يمنح صاحب العمل ترخيصاً غير حصري وعلى نطاق عالمي و غير قابل للالغاء و دون تقاضي اي رسوم، لاستخدام جميع براءت الاختراع و جميع حقوق الملكية الفكرية التي يمتلكه او يسيطر عليها صاحب العمل حاليا او فيما بعد، في جميع نشاطات صاحب العمل.
+
+
+
+                              </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                            <strong> 17)	Amendments</strong>
+                                <p>
+
+The Employer shall have the right to review and amend the terms & conditions hereof according to its work interest, provided that the same shall not affect the Employee’s rights acquired under this Contract or under the Labor Law, except by and upon Employee’s prior written consent.
+                                </p>
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+
+
+                                17)	التعديلات
+يحق لصاحب العمل مراجعة و تعديل احكام وشروط هذا العقد وفقاً لمقتضيات العمل ، بشرطالا يؤثر ذلك على الحقوق التي اكتسبها الموظف بموجب هذا العقد او بموجب نظام العمل ، الا اذا كان ذلك بموجب موافقة كتابية مسبقة من الموظف.
+
+                              </span>
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                            <strong> 18)	Non-Compete</strong>
+                                <p>
+
+
+The Employee shall not, either during the term of this Contract or for a period of two (2) years following the termination of this Contract for any reason including resignation, without the prior written consent of the Employer, carry on, or be engaged in, or be concerned with, or interested in, or employed by, any person engaged in or concerned with or interested in a business which is the same as, or substantially similar to, or in competition with, the Employer’s business at the time of any such termination within the Kingdom of Saudi Arabia.
+                                </p>
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+
+
+
+                     	18)	عدم المنافسة
+يلتزم الموظف خلال مدة هذا العقد ولمدة سنتين بعد انتهائه لاي سبب كان بما في ذلك الاستقالة، بأن لا يقوم بعمل مماثل لصاحب العمل داخل المملكة العربية السعودية او مشابه له بصورة اساسية او يكون منافساً له، او يرتبط به او تكون له مصلحة فيه او يتم توظيفة فيه ، الا بموافقة كتابية مسبقة من صاحب العمل.
+
+
+                              </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                            <strong> 19)	Conduct & Compliance with Laws and Regulations</strong>
+                                <p>
+
+
+
+The Employee shall comply with the laws and regulations of the Kingdom of Saudi Arabia as well as with the regulations, rules, policies and procedures adopted by the Employer. The Employee and his family members residing with him in the Kingdom must also pay due respect to the religious values, customs and traditions prevailing in the Kingdom of Saudi Arabia.
+                                </p>
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+
+
+
+
+ 	19)	السلوك و الالتزام بالانظمة و اللوائح
+يلتزم الموظف باتباع انظمة و لوائح المملكة العربية السعودية و سياسات و لوائح و اجراءات و قواعد صاحب العمل ، كما يلتزم الموظف و افراد عائلته المقيمين معه في المملكة باحترام و مراعاة القيم الدينية والعادات و التقاليد الساندة في المملكة العربية السعودية.
+
+
+                              </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                            <strong> 20)	Force Majeure</strong>
+                                <p>
+
+Neither party to this Contract shall be liable to the other party for failure of or delay in the performance of his obligations hereunder due to any cause or circumstance which is beyond his reasonable control including, but without limitation, any such failure or delay resulting from shut-down of plants or facilities, not signing a new contract with the customer upon expiration of existing contract, fire, explosion, ship-wrecks, acts of God, the public enemy, wars. Interference by governmental authorities or compliance with the laws of the Kingdom or the orders of the relevant Government authorities. If any of the above occurs, the Employer shall have the right to terminate this Contract.
+                                </p>
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+
+
+
+  20)	القوة القاهرة
+لا يعتبر اي من الطرفين مسئولا تجاه الطرف الاخر عن العجز او التاخير في تنفيذ التزاماته المترتبة عن هذا العقد، اذا كان ذلك عائدا الى اسباب او ظروف خارجية عن ارادته المعقولة بم في ذلك على سبيل المثال لا الحصر عدم تجديد العقد مع العميل، اي عجز او تاخير ناجم عن توقف او اغلاق المصانع او المرافق او الحرائق او الانفجارات او تحطم البواخر او القضاء و القدر او العدو او الحروب او التدخل من السلطات الحكومية ، او التقيد بقوانين المملكة او باوامر اية جهة حكومية مختصة وفي حالة حدوث اي سبب من الاسباب المتقدم ذكرها ، يحق لصاحب العمل انهاء هذا العقد.
+
+
+
+                              </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                            <strong> 21)	Calendar</strong>
+                                <p>
+
+All references to dates and time-periods hereunder shall be calculated as per the Gregorian Calendar.
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                                                       <span>
+	21)	التقويم الميلادي
+كل التواريخ و المدد الزمنية المشار اليها هذا العقد تكون وفقاً للتقويم الميلادي
+
+
+
+
+                              </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                            <strong> 22)	Contract Complementary Documents</strong>
+                                <p>
+
+
+The Employer’s Work Regulations and Policies, and the Labor law and the Social Insurance Law shall be deemed as complementary to provisions of this Contract and shall constitute an integral part thereof, in respect to all matters not explicitly covered by the terms and conditions set out in this Contract, It should be noted that the Employer’s Policies shall be subject to change as per business requirements.
+
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                        <span>
+                      	22)	مكملات العقد
+تعتبر لائحة تنظيم العمل و دليل السياسات لصاحب العمل ، و نظام العمل، و نظام التامينات الاجتماعية، مكملة لنصوص هذا العقد و تعتبر جزءاً لا يتجزا منه فيما لم يرد به نص او شرط خاص في هذا العقد ، مع العلم ان دليل السياسات لصاحب العمل سوف يخضع للتغيير من وقت لاخر وفقاً لمقتضيات العمل.
+
+
+
+
+                              </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                            <strong>23)	Entire Contract</strong>
+                                <p>
+This Contract constitutes the entire agreement between the Parties with respect to the subject matter hereof, and supersedes any prior agreements, or understandings either in written or oral form.
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                        <span>
+                      	22)	23)	شمولية العقد
+يشكل هذا العقد كل ماتم الاتفاق عليه بين الطرفين فيما يتعلق بموضوعه، و يحل محل جميع ماسبقه من اتفاقات او مفاهمات سواء كانت كتابي ام شفاهية.
+
+                              </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                            <strong>24)	Counterparts</strong>
+                                <p>
+This Contract is executed in two original counterparts duly signed by the parties hereto, with each party retaining one counterpart to act accordingly.
+
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-center" style="border: 1px solid #000">
+                        <span>
+                      	24)	نسخ العقد
+حرر هذا العقد من نسختين اصليتين قام الطرفان بالتوقيع عليهما، واستلم كل طرف نسخة للعمل بموجبها.
+
+                              </span>
+                                    </div>
+
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                            <strong>Employer</strong>
+
+                                <p>(Authorized Signatory) </p>
+
+                                <p>Signature:</p>
+                                <p>Date:</p>
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-right" style="border: 1px solid #000">
+                        <span>
+
+                                <p>صاحب العمل</p>
+                     <p>اسم المفوض بالتوقيع:</p>
+                     <p>التوقيع:</p>
+                              <p>التاريخ:</p>
+
+                              </span>
+                                    </div>
+
+                                    <div class="col-6 p-2 text-center" style="border: 1px solid #000">
+                           <span class="text-left">
+                            <strong>Employer</strong>
+                                <p>(Authorized Signatory) </p>
+
+                                <p>Signature:</p>
+                                <p>Date:</p>
+                           </span>
+                                    </div>
+                                    <div class="col-6  p-2 text-right" style="border: 1px solid #000">
+                        <span>
+
+                                <p>صاحب العمل</p>
+                     <p>اسم المفوض بالتوقيع:</p>
+                     <p>التوقيع:</p>
+                              <p>التاريخ:</p>
+
+                              </span>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock %}

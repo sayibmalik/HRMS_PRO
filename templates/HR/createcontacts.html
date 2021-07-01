@@ -1,0 +1,646 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+    .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+
+    .curve-around
+    {
+        background: #fff;
+    }
+
+    .curve-around input , .curve-around select
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+
+
+</style>
+<!--*********OLD CODE**********-->
+<div class="main-content">
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <!-- content -->
+        <div class="container-fluid content-top-gap">
+
+            <!-- breadcrumbs -->
+            <nav aria-label="breadcrumb" class="mb-2 backwhite" >
+                <ol class="breadcrumb my-breadcrumb pt-3">
+                    <li class="breadcrumb-item"><a href="/">
+                        {% if request.session.lang == "EN" %}
+                        <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                        {% else %}
+                        <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                        {% endif %}
+                    </a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {% if request.session.lang == "EN" %}
+                        Contacts
+                        {% else %}
+                        جهات الاتصال
+                        {% endif %}
+                    </li>
+                </ol>
+            </nav>
+            <!-- //breadcrumbs -->
+            <!-- forms -->
+            <section class="forms">
+                <!--*******New Code*********-->
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite">
+                        <h4 class="ml-2 text-primary pt-4">
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-address-book-o mr-2" aria-hidden="true"></i><b>Contacts Details</b>
+                            {% else %}
+                            <i class="fa fa-address-book-o ml-2" aria-hidden="true"></i><b>تفاصيل جهات الاتصال</b>
+                            {% endif %}
+                        </h4>
+                    </div>
+                    <div class="col-lg-12 p-2 backwhite">
+                        <a href="/app/dashboard" class="btn btn-danger btn-style ml-3" style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Discard
+                            {% else %}
+                            تجاهل
+                            {% endif %}
+                        </a>
+                        <button type="submit" class="btn btn-sm btn-primary btn-style border-btn ml-1 text-white " style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Save
+                            {% else %}
+                            حفظ
+                            {% endif %}
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row m-0">
+                    <div class="col-lg-6 col-md-6 col-12 p-3 pb-5" style="border-right: 1px solid #eee; background: #fff;">
+                        <div class="row d-flex justify-content-center ">
+                            <div class="col-lg-10 col-md-12 col-12 p-3 d-flex justify-content-center align-items-center">
+                                <div class="con-img m-auto" style="width: 120px; height: 120px;border: 3px solid grey;overflow:hidden;border-radius: 15px 0 15px 0;box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                                    <img src="/static/assets/images/profileimg.jpg"
+                                         style="width: 100%;height: 100% ;"/>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-12 col-12 pt-3 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><strong>Name</strong></h6>
+                                {% else %}
+                                <h6 class="mr-3 pb-2"><strong>الاسم بالكامل</strong></h6>
+                                {% endif %}
+                                <input class="form-control mt-2" value="{{data.name}}" name="employeename"
+                                       placeholder="Name"/>
+                            </div>
+                            <div class="col-lg-8 col-md-12 col-12 mt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><strong>Address</strong></h6>
+                                {% else %}
+                                <h6 class="mr-3 pb-2"><strong>تبوك</strong></h6>
+                                {% endif %}
+                                <input type="text" name="address1" value="{{data.address1}}" class="form-control mt-1"
+                                       placeholder="Address1"/>
+                            </div>
+                            <div class="col-lg-8 col-md-12 col-12 mt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><strong>Address2</strong></h6>
+                                {% else %}
+                                <h6 class="mr-3 pb-2"><strong>العنوان الثاني</strong></h6>
+                                {% endif %}
+                                <input type="text" name="address2" value="{{data.address2}}" class="form-control mt-1"
+                                       placeholder="Address2"/>
+                            </div>
+                            <div class="col-lg-8 col-md-12 col-12 mt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><strong>Pincode</strong></h6>
+                                {% else %}
+                                 <h6 class="mr-3 pb-2"><strong>الرمز السري</strong></h6>
+                                {% endif %}
+                                <input type="number" name="pincode" value="{{data.pincode}}" class="form-control mt-1"
+                                       placeholder="Pincode"/>
+                            </div>
+                            <div class="col-lg-8 col-md-12 col-12 mt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6><strong>Country</strong></h6>
+                                {% else %}
+                                <h6 class="mr-3 pb-2"><strong>بلد</strong></h6>
+                                {% endif %}
+                                <input type="text" name="country" value="{{data.country}}" class="form-control mt-1"
+                                       placeholder="Country"/>
+                            </div>
+                            <div class="col-lg-8 col-md-12 col-12 mt-4 curve-around">
+
+                                {% if request.session.lang == "EN" %}
+                                <h6><strong>Tin Number</strong></h6>
+                                {% else %}
+                                <h6 class="mr-3 pb-2"><strong>تبوك</strong></h6>
+                                {% endif %}
+                                <input type="number" name="tin" value="{{data.tin}}" class="form-control mt-1"
+                                       placeholder="Tin"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12 p-3 pb-5" style="background: #fff;">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-8 col-md-12 col-12 pt-3 curve-around">
+
+                                {% if request.session.lang == "EN" %}
+                                <h6 class="pb-2"><strong>Job position</strong></h6>
+                                {% else %}
+                                <h6 class="mr-3 pb-2"><strong>المنصب الوظيفي</strong></h6>
+                                {% endif %}
+                                <input type="text" name="jobposition" value="{{data.jobPosition}}" class="form-control"
+                                       placeholder="e.g. Sales Director"
+                                       id="jobposition">
+                            </div>
+                            <div class="col-lg-8 col-md-12 col-12 mt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6 class="pb-2"><strong>Phone</strong></h6>
+                                {% else %}
+                                <h6 class="mr-3 pb-2"><strong>رقم التليفون</strong></h6>
+                                {% endif %}
+                                <input type="text" name="phone" value="{{data.phone}}" class="form-control"
+                                       placeholder="01942420726"
+                                       id="phone">
+                            </div>
+                            <div class="col-lg-8 col-md-12 col-12 mt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6 class="pb-2"><strong>Mobile</strong></h6>
+                                {% else %}
+                                 <h6 class="mr-3 pb-2"><strong>رقم الهاتف المحمول</strong></h6>
+                                {% endif %}
+                                <input type="text" name="mobile" value="{{data.mobile}}" class="form-control"
+                                       placeholder="9906123456"
+                                       id="mobile">
+                            </div>
+                            <div class="col-lg-8 col-md-12 col-12 mt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6 class="pb-2"><strong>Email</strong></h6>
+                                {% else %}
+                                <h6 class="mr-3 pb-2"><strong>البريد الإلكتروني</strong></h6>
+                                {% endif %}
+                                <input type="email" name="email" value="{{data.email}}" class="form-control"
+                                       placeholder="xxx@xmail.com"
+                                       id="email">
+                            </div>
+                            <div class="col-lg-8 col-md-12 col-12 mt-4 curve-around">
+                                {% if request.session.lang == "EN" %}
+                                <h6 class="pb-2"><strong>Website</strong></h6>
+                                {% else %}
+                                <h6 class="mr-3 pb-2"><strong>موقع الكتروني</strong></h6>
+                                {% endif %}
+
+                                <input type="url" name="website" value="{{data.website}}" class="form-control"
+                                       placeholder="www.website.com"
+                                       id="website">
+                            </div>
+                            <div class="col-lg-8 col-md-12 col-12 mt-4 curve-around">
+
+                                {% if request.session.lang == "EN" %}
+                                <h6 class="pb-2"><strong>Title</strong></h6>
+                                {% else %}
+                                <h6 class="mr-3 pb-2"><strong>لقب</strong></h6>
+                                {% endif %}
+                                <select id="title" name="title" class="form-control input-style add-inptsel">
+
+                                    <option>
+                                        {% if request.session.lang == "EN" %}
+                                        Mr.
+                                        {% else %}
+                                        سيد
+                                        {% endif %}
+                                    </option>
+                                    <option>
+                                        {% if request.session.lang == "EN" %}
+                                        Mrs.
+                                        {% else %}
+                                        مدام
+                                        {% endif %}
+                                    </option>
+                                    <option>
+                                        {% if request.session.lang == "EN" %}
+                                        Ms.
+                                        {% else %}
+                                        السيدة
+                                        {% endif %}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-lg-8 col-md-12 col-12 mt-4 curve-around">
+
+                                {% if request.session.lang == "EN" %}
+                                <h6 class="pb-2"><strong>Language</strong></h6>
+                                {% else %}
+                                  <h6 class="mr-3 pb-2"><strong>لغة</strong></h6>
+                                {% endif %}
+                                <select id="language" name="language" class="form-control input-style add-inptsel">
+                                    <option selected>
+                                        {% if request.session.lang == "EN" %}
+                                        English
+                                        {% else %}
+                                        الإنجليزية
+                                        {% endif %}
+                                    </option>
+                                    <option>
+                                        {% if request.session.lang == "EN" %}
+                                        Urdu
+                                        {% else %}
+                                        الأردية
+                                        {% endif %}
+                                    </option>
+                                    <option>
+                                        {% if request.session.lang == "EN" %}
+                                        Urdu
+                                        {% else %}
+                                        هندي
+                                        {% endif %}
+                                    </option>
+                                    <option>
+                                        {% if request.session.lang == "EN" %}
+                                        Urdu
+                                        {% else %}
+                                        عربي
+                                        {% endif %}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-lg-8 col-12 m-auto text-right  p-2">
+                                    <button type="submit"
+                                            class="btn btn-sm btn-success  btn-style  col-lg-4 ml-1 text-white "
+                                            style="height: 40px;font-size: 16px;padding-top: 8px; margin-top: 30px; border-radius: 20px;">
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-paper-plane mr-2"></i>Save
+                                        {% else %}
+                                        <i class="fa fa-paper-plane ml-2"></i>يحفظ
+                                        {% endif %}
+                                    </button>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--*******New Code ends *********-->
+
+
+                <!--old code-->
+                <!--                <div class="card card_border py-2 mb-4">-->
+                <!--                    <div class="cards__heading">-->
+                <!--                        <div class="row">-->
+
+                <!--                            <h4 class="ml-2">-->
+                <!--                                {% if request.session.lang == "EN" %}-->
+                <!--                                Contacts Details-->
+                <!--                                {% else %}-->
+                <!--                                جهات الاتصال-->
+                <!--                                {% endif %}-->
+                <!--                            </h4>-->
+                <!--                        </div>-->
+                <!--                        <div class="row mt-3">-->
+                <!--                            <a href="/" class="btn btn-primary btn-style ml-1">-->
+                <!--                                {% if request.session.lang == "EN" %}-->
+                <!--                                Discard-->
+                <!--                                {% else %}-->
+                <!--                                تجاهل-->
+                <!--                                {% endif %}-->
+                <!--                            </a>-->
+                <!--                            <button type="submit" class="btn btn-sm btn-outline-primary btn-style border-btn ml-1 ">-->
+                <!--                                {% if request.session.lang == "EN" %}-->
+                <!--                                Save-->
+                <!--                                {% else %}-->
+                <!--                                حفظ-->
+                <!--                                {% endif %}-->
+                <!--                            </button>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                    <div class="card-body">-->
+                <!--                        <div class="row">-->
+                <!--                            <div class="col-6">-->
+                <!--                                <div class="row">-->
+                <!--                                    <div class="col-4 d-flex justify-content-center">-->
+                <!--                                        <img src="/static/assets/images/profileimg.jpg"-->
+                <!--                                             style="width: 80px; margin-top:36px;" class="rounded-circle"/>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="col-8">-->
+                <!--                                        &lt;!&ndash;                                            <div class="row">&ndash;&gt;-->
+                <!--                                        &lt;!&ndash;                                                <div class="col-6 float-left mt-1">&ndash;&gt;-->
+                <!--                                        &lt;!&ndash;                                                    <input type="radio" id="individual" name="radio"&ndash;&gt;-->
+                <!--                                        &lt;!&ndash;                                                           value="individual">&ndash;&gt;-->
+                <!--                                        &lt;!&ndash;                                                    <label for="individual">Individual </label>&ndash;&gt;-->
+                <!--                                        &lt;!&ndash;                                                </div>&ndash;&gt;-->
+                <!--                                        &lt;!&ndash;                                                <div class="col-6 float-left">&ndash;&gt;-->
+                <!--                                        &lt;!&ndash;                                                    <input type="radio" id="Company" name="radio" value="Company">&ndash;&gt;-->
+                <!--                                        &lt;!&ndash;                                                    <label for="Company">Company</label>&ndash;&gt;-->
+                <!--                                        &lt;!&ndash;                                                </div>&ndash;&gt;-->
+                <!--                                        &lt;!&ndash;                                            </div>&ndash;&gt;-->
+                <!--                                        <div class="row">-->
+                <!--                                            <div class="col-12 add-inpt">-->
+                <!--                                                <input class="form-control mt-5" value="{{data.name}}"-->
+                <!--                                                       name="employeename" placeholder="Name"/>-->
+                <!--                                            </div>-->
+                <!--                                        </div>-->
+                <!--                                        <div class="row mt-1">-->
+
+                <!--                                        </div>-->
+
+
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                            &lt;!&ndash;                                <div class="col-6 ">&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                                    <div class="row mr-2 bor">&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                                        <div class="col">&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                                        </div>&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                                        <div class="col-4 border">&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                                            <div class="row">&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                                                <div class="col-3">&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                                                    <img src="/static/assets/icons/active.svg" class="icon"/>&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                                                </div>&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                                                <div class="col-9">&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                                                    <span>0</span><br>&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                                                    <span>Active</span>&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                                                </div>&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                                            </div>&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                                        </div>&ndash;&gt;-->
+                <!--                            &lt;!&ndash;&lt;!&ndash;                                        <div class="col-4 border">&ndash;&gt;&ndash;&gt;-->
+                <!--                            &lt;!&ndash;&lt;!&ndash;                                            <div class="row">&ndash;&gt;&ndash;&gt;-->
+                <!--                            &lt;!&ndash;&lt;!&ndash;                                                <div class="col-3">&ndash;&gt;&ndash;&gt;-->
+                <!--                            &lt;!&ndash;&lt;!&ndash;                                                    <img src="/static/assets/icons/invoicing.svg" class="icon"/>&ndash;&gt;&ndash;&gt;-->
+                <!--                            &lt;!&ndash;&lt;!&ndash;                                                </div>&ndash;&gt;&ndash;&gt;-->
+                <!--                            &lt;!&ndash;&lt;!&ndash;                                                <div class="col-9">&ndash;&gt;&ndash;&gt;-->
+                <!--                            &lt;!&ndash;&lt;!&ndash;                                                    <span>$0.00</span><br>&ndash;&gt;&ndash;&gt;-->
+                <!--                            &lt;!&ndash;&lt;!&ndash;                                                    <span>Invoiced</span>&ndash;&gt;&ndash;&gt;-->
+                <!--                            &lt;!&ndash;&lt;!&ndash;                                                </div>&ndash;&gt;&ndash;&gt;-->
+                <!--                            &lt;!&ndash;&lt;!&ndash;                                            </div>&ndash;&gt;&ndash;&gt;-->
+                <!--                            &lt;!&ndash;&lt;!&ndash;                                        </div>&ndash;&gt;&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                                    </div>&ndash;&gt;-->
+                <!--                            &lt;!&ndash;                                </div>&ndash;&gt;-->
+                <!--                        </div>-->
+                <!--                        <div class="row mt-5">-->
+                <!--                            <div class="col-6">-->
+                <!--                                <div class="row">-->
+                <!--                                    <div class="col-lg-4 mt-3 d-flex justify-content-center">-->
+                <!--                                        <h6 class="font-weight-bold text-primary"><i-->
+                <!--                                                class="fa fa-address-card mr-2 fa-2x"></i>-->
+                <!--                                            {% if request.session.lang == "EN" %}-->
+                <!--                                            Address-->
+                <!--                                            {% else %}-->
+                <!--                                            تبوك-->
+                <!--                                            {% endif %}-->
+                <!--                                        </h6>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="col-lg-8 add-inpt">-->
+                <!--                                        <input type="text" name="address1" value="{{data.address1}}"-->
+                <!--                                               class="form-control mt-1" placeholder="Address1"/>-->
+                <!--                                        <input type="text" name="address2" value="{{data.address2}}"-->
+                <!--                                               class="form-control mt-1" placeholder="Address2"/>-->
+                <!--                                        <input type="number" name="pincode" value="{{data.pincode}}"-->
+                <!--                                               class="form-control mt-1" placeholder="Pincode"/>-->
+                <!--                                        <input type="text" name="country" value="{{data.country}}"-->
+                <!--                                               class="form-control mt-1" placeholder="Country"/>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                                <div class="row">-->
+                <!--                                    <div class="col-lg-4 mt-3">-->
+                <!--                                        <h6 class="text-center font-weight-bold text-primary"><i-->
+                <!--                                                class="fa fa-slack fa-1x mr-2"></i>-->
+                <!--                                            {% if request.session.lang == "EN" %}-->
+                <!--                                            Tin-->
+                <!--                                            {% else %}-->
+                <!--                                            تبوك-->
+                <!--                                            {% endif %}-->
+                <!--                                        </h6>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="col-lg-8 add-inpt">-->
+                <!--                                        <input type="number" name="tin" value="{{data.tin}}" class="form-control mt-1"-->
+                <!--                                               placeholder="Tin"/>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                                &lt;!&ndash;                                    <div class="row  mt-3">&ndash;&gt;-->
+                <!--                                &lt;!&ndash;                                        <div class="col-6">&ndash;&gt;-->
+                <!--                                &lt;!&ndash;                                            <h6>Tags</h6>&ndash;&gt;-->
+                <!--                                &lt;!&ndash;                                        </div>&ndash;&gt;-->
+                <!--                                &lt;!&ndash;                                        <div class="col-6" style="border-left: 1px solid gray;">&ndash;&gt;-->
+                <!--                                &lt;!&ndash;                                            <select id="Tags" name="tags" class="form-control input-style">&ndash;&gt;-->
+                <!--                                &lt;!&ndash;                                                <option selected>Tags...</option>&ndash;&gt;-->
+                <!--                                &lt;!&ndash;                                            </select>&ndash;&gt;-->
+                <!--                                &lt;!&ndash;                                        </div>&ndash;&gt;-->
+                <!--                                &lt;!&ndash;                                    </div>&ndash;&gt;-->
+                <!--                            </div>-->
+                <!--                            <div class="col-6">-->
+                <!--                                <div class="row ">-->
+                <!--                                    <div class="col-lg-4 mt-2">-->
+                <!--                                        <h6 class="text-primary  font-weight-bold">-->
+                <!--                                            <i class="fa fa-user"></i>-->
+                <!--                                            {% if request.session.lang == "EN" %}-->
+                <!--                                            Job position-->
+                <!--                                            {% else %}-->
+                <!--                                            المنصب الوظيفي-->
+                <!--                                            {% endif %}-->
+                <!--                                        </h6>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="col-8 add-inpt" style="border-left: 1px solid gray;">-->
+                <!--                                        <input type="text" name="jobposition" value="{{data.jobPosition}}"-->
+                <!--                                               class="form-control" placeholder="e.g. Sales Director"-->
+                <!--                                               id="jobposition">-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                                <div class="row mt-2">-->
+                <!--                                    <div class="col-lg-4 mt-2">-->
+                <!--                                        <h6 class="text-primary font-weight-bold">-->
+                <!--                                            <i class="fa fa-phone"></i>-->
+                <!--                                            {% if request.session.lang == "EN" %}-->
+                <!--                                            Phone-->
+                <!--                                            {% else %}-->
+                <!--                                            رقم التليفون-->
+                <!--                                            {% endif %}-->
+
+
+                <!--                                        </h6>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="col-8 add-inpt" style="border-left: 1px solid gray;">-->
+                <!--                                        <input type="text" name="phone" value="{{data.phone}}" class="form-control"-->
+                <!--                                               placeholder="01942420726"-->
+                <!--                                               id="phone">-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                                <div class="row">-->
+                <!--                                    <div class="col-lg-4 mt-2">-->
+                <!--                                        <h6 class="text-primary font-weight-bold">-->
+                <!--                                            <i class="fa fa-mobile"></i>-->
+                <!--                                            {% if request.session.lang == "EN" %}-->
+                <!--                                            Mobile-->
+                <!--                                            {% else %}-->
+                <!--                                            رقم الهاتف المحمول-->
+                <!--                                            {% endif %}-->
+                <!--                                        </h6>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="col-8 mt-1 add-inpt" style="border-left: 1px solid gray;">-->
+                <!--                                        <input type="text" name="mobile" value="{{data.mobile}}" class="form-control"-->
+                <!--                                               placeholder="9906123456"-->
+                <!--                                               id="mobile">-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                                <div class="row">-->
+                <!--                                    <div class="col-lg-4 mt-2">-->
+                <!--                                        <h6 class="text-primary font-weight-bold">-->
+                <!--                                            <i class="fa fa-envelope"></i>-->
+                <!--                                            {% if request.session.lang == "EN" %}-->
+                <!--                                            Email-->
+                <!--                                            {% else %}-->
+                <!--                                            البريد الإلكتروني-->
+                <!--                                            {% endif %}-->
+                <!--                                        </h6>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="col-8 mt-1 add-inpt" style="border-left: 1px solid gray;">-->
+                <!--                                        <input type="email" name="email" value="{{data.email}}" class="form-control"-->
+                <!--                                               placeholder="xxx@xmail.com"-->
+                <!--                                               id="email">-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                                <div class="row ">-->
+                <!--                                    <div class="col-lg-4 mt-2">-->
+                <!--                                        <h6 class="text-primary font-weight-bold">-->
+                <!--                                            <i class="fa fa-globe"></i>-->
+                <!--                                            {% if request.session.lang == "EN" %}-->
+                <!--                                            Website-->
+                <!--                                            {% else %}-->
+                <!--                                            موقع الكتروني-->
+                <!--                                            {% endif %}-->
+                <!--                                        </h6>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="col-8 mt-1 add-inpt" style="border-left: 1px solid gray;">-->
+                <!--                                        <input type="url" name="website" value="{{data.website}}" class="form-control"-->
+                <!--                                               placeholder="www.website.com"-->
+                <!--                                               id="website">-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                                <div class="row">-->
+                <!--                                    <div class="col-lg-4 mt-2">-->
+                <!--                                        <h6 class="text-primary font-weight-bold">-->
+                <!--                                            <i class="fa fa-user-o"></i>-->
+                <!--                                            {% if request.session.lang == "EN" %}-->
+                <!--                                            Title-->
+                <!--                                            {% else %}-->
+                <!--                                            لقب-->
+                <!--                                            {% endif %}-->
+                <!--                                        </h6>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="col-8 mt-1 add-inpt" style="border-left: 1px solid gray;">-->
+                <!--                                        <select id="title" name="title" class="form-control input-style add-inptsel">-->
+
+                <!--                                            <option>-->
+                <!--                                                {% if request.session.lang == "EN" %}-->
+                <!--                                                Mr.-->
+                <!--                                                {% else %}-->
+                <!--                                                سيد-->
+                <!--                                                {% endif %}-->
+                <!--                                            </option>-->
+                <!--                                            <option>-->
+                <!--                                                {% if request.session.lang == "EN" %}-->
+                <!--                                                Mrs.-->
+                <!--                                                {% else %}-->
+                <!--                                                مدام-->
+                <!--                                                {% endif %}-->
+                <!--                                            </option>-->
+                <!--                                            <option>-->
+                <!--                                                {% if request.session.lang == "EN" %}-->
+                <!--                                                Ms.-->
+                <!--                                                {% else %}-->
+                <!--                                                السيدة-->
+                <!--                                                {% endif %}-->
+                <!--                                            </option>-->
+                <!--                                        </select>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                                <div class="row ">-->
+                <!--                                    <div class="col-lg-4 mt-2">-->
+                <!--                                        <h6 class="text-primary font-weight-bold">-->
+                <!--                                            <i class="fa fa-language"></i>-->
+                <!--                                            {% if request.session.lang == "EN" %}-->
+                <!--                                            Language-->
+                <!--                                            {% else %}-->
+                <!--                                            لغة-->
+                <!--                                            {% endif %}-->
+                <!--                                        </h6>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="col-8 mt-1 " style="border-left: 1px solid gray;">-->
+                <!--                                        <select id="language" name="language"-->
+                <!--                                                class="form-control input-style add-inptsel">-->
+                <!--                                            <option selected>-->
+                <!--                                                {% if request.session.lang == "EN" %}-->
+                <!--                                                English-->
+                <!--                                                {% else %}-->
+                <!--                                                الإنجليزية-->
+                <!--                                                {% endif %}-->
+                <!--                                            </option>-->
+                <!--                                            <option>-->
+                <!--                                                {% if request.session.lang == "EN" %}-->
+                <!--                                                Urdu-->
+                <!--                                                {% else %}-->
+                <!--                                                الأردية-->
+                <!--                                                {% endif %}-->
+                <!--                                            </option>-->
+                <!--                                            <option>-->
+                <!--                                                {% if request.session.lang == "EN" %}-->
+                <!--                                                Urdu-->
+                <!--                                                {% else %}-->
+                <!--                                                هندي-->
+                <!--                                                {% endif %}-->
+                <!--                                            </option>-->
+                <!--                                            <option>-->
+                <!--                                                {% if request.session.lang == "EN" %}-->
+                <!--                                                Urdu-->
+                <!--                                                {% else %}-->
+                <!--                                                عربي-->
+                <!--                                                {% endif %}-->
+                <!--                                            </option>-->
+                <!--                                        </select>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                        &lt;!&ndash;                            <div class="container-fluid">&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                <ul class="nav nav-tabs">&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                    <li class="active"><a data-toggle="tab" href="#contacts">Contacts &amp Addresses</a>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                    </li>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                    <li><a data-toggle="tab" href="#internalnotes">Internal Notes</a></li>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                    <li><a data-toggle="tab" href="#salespurchasing">Sales &amp Purchasing</a></li>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                    <li><a data-toggle="tab" href="#invoicing">Invoicing</a></li>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                </ul>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                <div class="tab-content">&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                    <div id="contacts" class="tab-pane fade in active">&ndash;&gt;-->
+
+                <!--                        &lt;!&ndash;                                    </div>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                    <div id="internalnotes" class="tab-pane fade">&ndash;&gt;-->
+
+                <!--                        &lt;!&ndash;                                    </div>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                    <div id="salespurchasing" class="tab-pane fade">&ndash;&gt;-->
+
+                <!--                        &lt;!&ndash;                                    </div>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                    <div id="invoicing" class="tab-pane fade">&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                    </div>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                </div>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            </div>&ndash;&gt;-->
+                <!--                    </div>-->
+                <!--                </div>-->
+
+            </section>
+            <!-- //forms  -->
+
+        </div>
+        <!-- //content -->
+    </form>
+</div>
+
+<!--***************NEW CODE***************-->
+
+
+{% endblock%}

@@ -1,0 +1,208 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+     .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+    .curve-around input , .curve-around select
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+<div class="main-content" xmlns:display="http://www.w3.org/1999/xhtml" xmlns:flex="http://www.w3.org/1999/xhtml">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Support Ticket
+                    {% else %}
+                    بطاقة الدعم
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <div class="row m-0 backwhite">
+                <div class="col-lg-2">
+
+                </div>
+                <div class="col-lg-8 col-md-6 col-12 backwhite d-flex justify-content-center">
+                    <div class="card text-center" style="width:720px; height:600px;">
+                        <div class="card-header">
+                            <i class="fa fa-ticket mr-2"></i><b>
+                            {% if request.session.lang == "EN" %}
+                            Details
+                            {% else %}
+                            تفاصيل
+                            {% endif %}
+                        </b>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mt-5">
+                                <div class="col-md-6">
+                                    <h6 style="font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        Ticket Number
+                                        {% else %}
+                                        رقم التذكرة
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+                                        {{data.ticketNumber}}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 style="    font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        Subject
+                                        {% else %}
+                                        موضوع
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+                                        {{data.subject}}</p>
+                                </div>
+
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-md-6">
+                                    <h6 style="    font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        Status
+                                        {% else %}
+                                        حالة
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+                                        {% now "Y-m-d" as todays_date %}
+                                        {% if todays_date >= data.status|date:"Y-m-d" %}
+                                        {% if request.session.lang == "EN" %}
+                                        New
+                                        {% else %}
+                                        جديد
+                                        {% endif %}
+                                        {% else %}
+                                        {% if request.session.lang == "EN" %}
+                                        Few Days Old
+                                        {% else %}
+                                        قبل أيام قليلة
+                                        {% endif %}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 style="    font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        Priority
+                                        {% else %}
+                                        أفضلية
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+                                        {{data.priority}}</p>
+                                </div>
+
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-md-6">
+                                    <h6 style="    font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        Create Date
+                                        {% else %}
+                                        تاريخ الإنشاء
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+                                        {{data.createdDate}}</p>
+                                </div>
+                                <div class="col-md-6">
+
+                                </div>
+
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-md-6">
+                                    <h6 style="    font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        Modified Date
+                                        {% else %}
+                                        تاريخ معدل
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+                                        {{data.modifiedDate}}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 style="    font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        Description
+                                        {% else %}
+                                        وصف
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+                                        {{data.description}}</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-footer text-muted">
+
+
+                            <a href="{% url 'supportTickets' %}" class="btn btn-success btn-style ml-3"
+                               style="height: 35px;font-size: 14px;padding-top: 4px;">
+                                {% if request.session.lang == "EN" %}
+                                <i class="fa fa-ban mr-2"></i> Close
+                                {% else %}
+                                يغلق
+                                {% endif %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+
+            </div>
+
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

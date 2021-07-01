@@ -1,0 +1,896 @@
+{% extends 'base.html'%}
+{% block content%}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Roboto&display=swap');
+
+    .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+
+    .gen-text span
+    {
+        font-weight: bold;
+        font-family: 'Roboto',san-serif;
+        font-size: 15px !important;
+        text-transform: capitalize !important;
+    }
+
+    .emp-nm h4
+    {
+        font-family: 'Roboto',san-serif;
+    }
+
+</style>
+<div class="main-content">
+
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-2 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item text-dark"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6 class="text-dark"><b>Employee Payslip</b></h6>
+                    {% else %}
+                    <h6 class="text-dark"><b>قسيمة دفع الموظف</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Payslip
+                    {% else %}
+                    قسيمة الراتب
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+
+
+        <section class="forms" style="background: #fff;">
+
+            <div class="row m-0">
+                <div class="col-lg-12 backwhite">
+                    <h4 class="ml-2 text-primary pt-4">
+                        {% if request.session.lang == "EN" %}
+                        <i class="fa fa-ticket mr-2 fa-1x"></i><b> Payslip</b>
+                        {% else %}
+                        <i class="fa fa-ticket ml-2 fa-1x"></i><b> قسيمة الراتب</b>
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="col-lg-12 p-2 backwhite">
+                    <a href="/app/dashboard" class="btn btn-danger btn-style ml-3"
+                       style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                        Discard
+                        {% else %}
+                        تجاهل
+                        {% endif %}
+                    </a>
+                    <a class="btn btn-success btn-style ml-3 text-white"
+                       style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                        Print
+                        {% else %}
+                        طباعة
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+
+<!--            <div class="card card_border py-2 mb-4">-->
+<!--                <div class="cards__heading">-->
+<!--                    <div class="row">-->
+<!--                        <h3 class="ml-2"><span>-->
+<!--                        {% if request.session.lang == "EN" %}-->
+<!--                                         PAYSLIP-->
+<!--                                         {% else %}-->
+<!--                                         قسيمة الراتب-->
+<!--                                         {% endif %}-->
+<!--                        </span></h3>-->
+<!--                    </div>-->
+<!--                    <div class="row mt-3">-->
+<!--                        <div class="col-9">-->
+<!--                            <a href="#" class="btn btn-sm btn-outline-primary btn-style border-btn ml-1">-->
+<!--                                {% if request.session.lang == "EN" %}-->
+<!--                                Print-->
+<!--                                {% else %}-->
+<!--                                طباعة-->
+<!--                                {% endif %}</a>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash;                        <div class="col-3">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            <div class="ml-3" style="float: right;">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                <span>1-5/5</span>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                <a class="btn" style="border: 1px solid lightgray;" href="/">❮ </a>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                <a class="btn" style="border: 1px solid lightgray;" href="/"> ❯</a>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="card-body" style="margin-top: -45px;">-->
+<!--                    &lt;!&ndash; //content &ndash;&gt;-->
+
+
+<!--                </div>-->
+<!--            </div>-->
+
+            <!--new code-->
+            <div class="container mt-5 pb-5">
+                <div id="cover-slip p-3" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+                    <div class="row m-0">
+                        <div class="col-lg-12 p-4 backwhite">
+                            <div class="row">
+                                <div class="col-lg-8 gen-text ">
+                                    <h3 class="text-primary font-weight-bold" style="font-family: 'Krona One', sans-serif;">
+                                        {{employee.company}}
+                                    </h3>
+                                    <span>{{employee.company.Address1}}, {{employee.company.Address2}}</span><br>
+                                    <span>
+                                            {% if request.session.lang == "EN" %}
+                                             Phone
+                                             {% else %}
+                                             رقم التليفون
+                                             {% endif %} : {{employee.company.Phone}}
+                                    </span><br>
+                                    <span>
+                                        {% if request.session.lang == "EN" %}
+                                                     Email
+                                                     {% else %}
+                                                     بريد الالكتروني
+                                                     {% endif %} : {{employee.company.Email}}
+                                    </span>
+                                </div>
+                                <div class="col-lg-4  text-left emp-nm">
+                                    <h4 class="text-capitalize font-weight-bold pt-4 text-primary">{{data.PaySlip_Name}}</h4>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row m-0">
+                                <div class="col-lg-6  p-3 ">
+                                    <div class="emp-infor  gen-text">
+                                        <span>{% if request.session.lang == "EN" %}
+                                         Employee Information
+                                         {% else %}
+                                         معلومات الموظف
+                                         {% endif %}</span><br>
+                                        <span class="text-primary">{{employee.user.first_name}} {{employee.user.last_name}}</span><br>
+                                        <span>{{employee.Work_Location}}</span><br>
+                                        <span>{% if request.session.lang == "EN" %}
+                                         Phone
+                                         {% else %}
+                                         رقم التليفون
+                                         {% endif %} : {{employee.Work_Mobile}}</span><br>
+                                        <span>{% if request.session.lang == "EN" %}
+                                         Email
+                                         {% else %}
+                                         بريد الالكتروني
+                                         {% endif %} : {{employee.Work_Email}}</span><br>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6  p-3">
+                                    <div class="row">
+                                        <div class="col-4 p-2 gen-text">
+                       <span>
+                       {% if request.session.lang == "EN" %}
+                                        Period From
+                                         {% else %}
+                                         الفترة من
+                                         {% endif %}
+                       </span>
+                                        </div>
+                                        <div class="col-4 p-2 gen-text">
+                       <span>
+                           {% if request.session.lang == "EN" %}
+                                        Period To
+                                         {% else %}
+                                         الفترة إلى
+                                         {% endif %}
+                       </span>
+                                        </div>
+                                        <div class="col-4 p-2 gen-text">
+                       <span>
+                       {% if request.session.lang == "EN" %}
+                                        Pay Type
+                                         {% else %}
+                                         نوع الدفع
+                                         {% endif %}
+                       </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 p-2 gen-text">
+                                            <span class="text-primary">{{data.PaySlip_Name.Period_From|date:"d-M-Y"}}</span>
+                                        </div>
+                                        <div class="col-4 p-2 gen-text">
+                                            <span class="text-primary">{{data.PaySlip_Name.Period_To|date:"d-M-Y"}}</span>
+                                        </div>
+                                        <div class="col-4 p-2 gen-text">
+                       <span class="text-primary">
+                           {% if request.session.lang == "EN" %}
+                                        Monthly
+                                         {% else %}
+                                        شهريا
+                                         {% endif %}
+                       </span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="row m-0">
+                                <div class="col-lg-12  mt-4 p-3">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-bordered">
+                                            <thead class="text-center thead-dark">
+                                            <tr>
+                                                <th scope="col">
+                                                    {% if request.session.lang == "EN" %}
+                                                    Salary Package
+                                                    {% else %}
+                                                    حزمة الراتب
+                                                    {% endif %}
+                                                </th>
+                                                <th scope="col">
+                                                    {% if request.session.lang == "EN" %}
+                                                    Daily Hours
+                                                    {% else %}
+                                                    ساعات العمل اليومية
+                                                    {% endif %}
+                                                </th>
+                                                <th scope="col">
+                                                    {% if request.session.lang == "EN" %}
+                                                    Amount
+                                                    {% else %}
+                                                    مقدار
+                                                    {% endif %}
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="text-center font-weight-bold">
+                                            <tr>
+                                                <td>
+                                                    {% if request.session.lang == "EN" %}
+                                                    Basic Pay
+                                                    {% else %}
+                                                    الراتب الأساسي
+                                                    {% endif %}
+                                                </td>
+                                                <td>{{contract.workinghours}}</td>
+
+                                                <td >{{contract.base_salary}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    {% if request.session.lang == "EN" %}
+                                                    Housing Allowance
+                                                    {% else %}
+                                                    بدل سكن
+                                                    {% endif %}
+                                                </td>
+                                                <td></td>
+
+                                                <td>{{contract.Housing_Allowance}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    {% if request.session.lang == "EN" %}
+                                                    Travel Allowance
+                                                    {% else %}
+                                                    بدل السفر
+                                                    {% endif %}
+                                                </td>
+                                                <td></td>
+
+                                                <td>{{contract.Transport_Allowance}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+
+                                                    {% if request.session.lang == "EN" %}
+                                                    Other Allowance
+                                                    {% else %}
+                                                    بدلات أخرى
+                                                    {% endif %}
+                                                </td>
+                                                <td></td>
+
+                                                <td>{{contract.otherallowance}}</td>
+                                            </tr>
+                                            <tr style="background-color: #eee">
+
+                                                <th colspan="2">
+                                                    {% if request.session.lang == "EN" %}
+                                                    Total Salary
+                                                    {% else %}
+                                                    مجموع الراتب
+                                                    {% endif %}
+                                                </th>
+
+                                                <td style="background-color:#343A40;" class="text-white"><b>{{salarypackage}}</b></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table class="table table-hover table-bordered mt-5">
+                                            <thead class="text-center thead-light">
+                                            <tr>
+                                                <th scope="col">
+                                                    {% if request.session.lang == "EN" %}
+                                                    ADDITIONS
+                                                    {% else %}
+                                                    الاضافات
+                                                    {% endif %}
+                                                </th>
+                                                <th scope="col">
+                                                    {% if request.session.lang == "EN" %}
+                                                    Working Hours
+                                                    {% else %}
+                                                    ساعات العمل
+                                                    {% endif %}
+                                                </th>
+
+                                                <th scope="col">
+                                                    {% if request.session.lang == "EN" %}
+                                                    Amount
+                                                    {% else %}
+                                                    مقدار
+                                                    {% endif %}
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="text-center font-weight-bold">
+                                            <tr>
+                                                <td>
+                                                    {% if request.session.lang == "EN" %}
+                                                    Monthly Earnings
+                                                    {% else %}
+                                                    الأرباح الشهرية
+                                                    {% endif %}
+                                                </td>
+                                                <td>{{data.no_of_working_hours }}</td>
+
+                                                <td>
+                                                    {{data.earnings_as_per_workinghours|floatformat:3}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    {% if request.session.lang == "EN" %}
+                                                    Overtime
+                                                    {% else %}
+                                                    العمل الإضافي
+                                                    {% endif %}
+                                                </td>
+                                                <td></td>
+
+                                                <td>{{data.addition}}</td>
+                                            </tr>
+                                            <tr >
+                                                <td>{% if request.session.lang == "EN" %}
+                                                    Other Additions
+                                                    {% else %}
+                                                    إضافات أخرى
+                                                    {% endif %}
+                                                </td>
+                                                <td></td>
+
+                                                <td >{{data.addition}}</td>
+                                            </tr>
+
+
+                                            <!--                            <tr style="background-color: #eee">-->
+                                            <!--                              <td></td>-->
+                                            <!--                              <th>GROSS PAY</th>-->
+
+                                            <!--                              <th style="background-color:#B0B0B0;">123</th>-->
+                                            <!--                            </tr>-->
+                                            </tbody>
+
+
+                                        </table>
+                                        <table class="table table-hover table-bordered mt-5">
+                                            <thead class="text-center thead-light">
+                                            <tr>
+                                                <th scope="col">
+                                                    {% if request.session.lang == "EN" %}
+                                                    DEDUCTIONS
+                                                    {% else %}
+                                                    الاستنباط
+                                                    {% endif %}
+                                                </th>
+                                                <th scope="col">
+                                                    {% if request.session.lang == "EN" %}
+                                                    Percentage
+                                                    {% else %}
+                                                    النسبة المئوية
+                                                    {% endif %}(%)
+                                                </th>
+
+                                                <th scope="col">
+                                                    {% if request.session.lang == "EN" %}
+                                                    Amount
+                                                    {% else %}
+                                                    مقدار
+                                                    {% endif %}
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="text-center font-weight-bold">
+                                            <tr>
+                                                <td>
+                                                    GOSI {% if request.session.lang == "EN" %}
+                                                    Deductions
+                                                    {% else %}
+                                                    الاستنباط
+                                                    {% endif %}
+                                                </td>
+                                                <td >{{contract.GOSI}}</td>
+
+                                                <td class="text-danger">
+                                                    {{data.tax|floatformat:3}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    {% if request.session.lang == "EN" %}
+                                                    Other Deductions
+                                                    {% else %}
+                                                    حسومات أخرى
+                                                    {% endif %}
+                                                </td>
+                                                <td></td>
+
+                                                <td class="text-danger">{{data.other_deductions|floatformat:3}}</td>
+                                            </tr>
+                                             <tr style="background-color: #eee">
+
+                                                <th colspan="2">
+                                                    {% if request.session.lang == "EN" %}
+                                                    NET PAY
+                                                    {% else %}
+                                                    صافي الأجر
+                                                    {% endif %}
+                                                </th>
+
+                                                <td class=" bg-dark text-white"><b>{{data.total_earnings|floatformat:3}}</b></td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--header portion old code -->
+<!--       <div id="header-portion" style="border: 1px solid #fff;padding: 20px;">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-6  p-3 ">-->
+<!--                <h2>{{employee.Company}}</h2>-->
+<!--                <span>{{employee.Company.Address1}}, {{employee.Company.Address2}}</span><br>-->
+<!--                <span>-->
+<!--                   {% if request.session.lang == "EN" %}-->
+<!--                                         Phone-->
+<!--                                         {% else %}-->
+<!--                                         رقم التليفون-->
+<!--                                         {% endif %} : {{employee.Company.Phone}}</span><br>-->
+<!--                <span>{% if request.session.lang == "EN" %}-->
+<!--                                         Email-->
+<!--                                         {% else %}-->
+<!--                                         بريد الالكتروني-->
+<!--                                         {% endif %} : {{employee.Company.Email}}</span>-->
+<!--            </div>-->
+<!--            <div class="col-lg-6  p-2 text-right">-->
+<!--                <h2>{{data.PaySlip_Name}}</h2>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="row">-->
+<!--            <div class="col-lg-6  p-2 ">-->
+<!--                <div class="emp-infor p-2">-->
+<!--                    <span>{% if request.session.lang == "EN" %}-->
+<!--                                         Employee Information-->
+<!--                                         {% else %}-->
+<!--                                         معلومات الموظف-->
+<!--                                         {% endif %}</span><br>-->
+<!--                    <span>{{employee.user.first_name}} {{employee.user.last_name}}</span><br>-->
+<!--                    <span>{{employee.Work_Location}}</span><br>-->
+<!--                    <span>{% if request.session.lang == "EN" %}-->
+<!--                                         Phone-->
+<!--                                         {% else %}-->
+<!--                                         رقم التليفون-->
+<!--                                         {% endif %} : {{employee.Work_Mobile}}</span><br>-->
+<!--                    <span>{% if request.session.lang == "EN" %}-->
+<!--                                         Email-->
+<!--                                         {% else %}-->
+<!--                                         بريد الالكتروني-->
+<!--                                         {% endif %} : {{employee.Work_Email}}</span><br>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-6  p-3">-->
+<!--               <div class="row">-->
+<!--                   <div class="col-4 p-2 ">-->
+<!--                       <span>-->
+<!--                       {% if request.session.lang == "EN" %}-->
+<!--                                        Period From-->
+<!--                                         {% else %}-->
+<!--                                         الفترة من-->
+<!--                                         {% endif %}-->
+<!--                       </span>-->
+<!--                   </div>-->
+<!--                   <div class="col-4 p-2">-->
+<!--                       <span>-->
+<!--                           {% if request.session.lang == "EN" %}-->
+<!--                                        Period To-->
+<!--                                         {% else %}-->
+<!--                                         الفترة إلى-->
+<!--                                         {% endif %}-->
+<!--                       </span>-->
+<!--                   </div>-->
+<!--                   <div class="col-4 p-2 ">-->
+<!--                       <span>-->
+<!--                       {% if request.session.lang == "EN" %}-->
+<!--                                        Pay Type-->
+<!--                                         {% else %}-->
+<!--                                         نوع الدفع-->
+<!--                                         {% endif %}-->
+<!--                       </span>-->
+<!--                   </div>-->
+<!--               </div>-->
+<!--               <div class="row">-->
+<!--                   <div class="col-4 p-2">-->
+<!--                       <span>{{data.PaySlip_Name.Period_From|date:"d-M-Y"}}</span>-->
+<!--                   </div>-->
+<!--                   <div class="col-4 p-2 ">-->
+<!--                       <span>{{data.PaySlip_Name.Period_To|date:"d-M-Y"}}</span>-->
+<!--                   </div>-->
+<!--                   <div class="col-4 p-2 ">-->
+<!--                       <span>-->
+<!--                           {% if request.session.lang == "EN" %}-->
+<!--                                        Monthly-->
+<!--                                         {% else %}-->
+<!--                                        شهريا-->
+<!--                                         {% endif %}-->
+<!--                       </span>-->
+<!--                   </div>-->
+<!--               </div>-->
+
+
+
+<!--            </div>-->
+<!--           </div>-->
+
+
+<!--           <div id="middele-sect">-->
+<!--               &lt;!&ndash;middle portion&ndash;&gt;-->
+<!--               <div class="row">-->
+<!--                   <div class="col-12 p-2 ">-->
+<!--                      <table class="table">-->
+<!--                          <thead>-->
+<!--                            <tr>-->
+<!--                              <th scope="col">-->
+<!--                              {% if request.session.lang == "EN" %}-->
+<!--                                       Salary Package-->
+<!--                                         {% else %}-->
+<!--                                       حزمة الراتب-->
+<!--                                         {% endif %}-->
+<!--                              </th>-->
+<!--                              <th scope="col">-->
+<!--                              {% if request.session.lang == "EN" %}-->
+<!--                                       Daily Hours-->
+<!--                                         {% else %}-->
+<!--                                       ساعات العمل اليومية-->
+<!--                                         {% endif %}-->
+<!--                              </th>-->
+
+<!--                              <th scope="col" style="background-color: #eee">-->
+<!--                              {% if request.session.lang == "EN" %}-->
+<!--                                        Amount-->
+<!--                                         {% else %}-->
+<!--                                       مقدار-->
+<!--                                         {% endif %}-->
+<!--                              </th>-->
+<!--                            </tr>-->
+<!--                          </thead>-->
+<!--                          <tbody>-->
+<!--                            <tr>-->
+<!--                              <td>-->
+<!--                              {% if request.session.lang == "EN" %}-->
+<!--                                       Basic Pay-->
+<!--                                         {% else %}-->
+<!--                                      الراتب الأساسي-->
+<!--                                         {% endif %}-->
+<!--                              </td>-->
+<!--                              <td>{{contract.workinghours}}</td>-->
+
+<!--                              <td style="background-color: #eee">{{contract.base_salary}}</td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                              <td>-->
+<!--                              {% if request.session.lang == "EN" %}-->
+<!--                                      Housing Allowance-->
+<!--                                         {% else %}-->
+<!--                                      بدل سكن-->
+<!--                                         {% endif %}-->
+<!--                              </td>-->
+<!--                              <td></td>-->
+
+<!--                              <td style="background-color: #eee">{{contract.Housing_Allowance}}</td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                              <td>-->
+<!--                                  {% if request.session.lang == "EN" %}-->
+<!--                                      Travel Allowance-->
+<!--                                         {% else %}-->
+<!--                                     بدل السفر-->
+<!--                                         {% endif %}-->
+<!--                              </td>-->
+<!--                              <td></td>-->
+
+<!--                              <td style="background-color: #eee">{{contract.Transport_Allowance}}</td>-->
+<!--                            </tr>-->
+
+<!--                            <tr>-->
+<!--                              <td>-->
+
+<!--                                  {% if request.session.lang == "EN" %}-->
+<!--                                      Other Allowance-->
+<!--                                         {% else %}-->
+<!--                                     بدلات أخرى-->
+<!--                                         {% endif %}-->
+<!--                              </td>-->
+<!--                              <td></td>-->
+
+<!--                              <td style="background-color: #eee">{{contract.otherallowance}}</td>-->
+<!--                            </tr>-->
+
+
+<!--                            <tr style="background-color: #eee">-->
+<!--                              <td></td>-->
+<!--                              <th>-->
+<!--                                  {% if request.session.lang == "EN" %}-->
+<!--                                     Total Salary-->
+<!--                                         {% else %}-->
+<!--                                     مجموع الراتب-->
+<!--                                         {% endif %}-->
+<!--                              </th>-->
+
+<!--                              <th style="background-color:#B0B0B0;">{{salarypackage}}</th>-->
+<!--                            </tr>-->
+<!--                          </tbody>-->
+
+
+
+<!--                        </table>-->
+
+<!--                   </div>-->
+<!--               </div>-->
+<!--               <div class="row">-->
+<!--                   <div class="col-12 p-2 ">-->
+<!--                      <table class="table">-->
+<!--                          <thead>-->
+<!--                            <tr>-->
+<!--                              <th scope="col">-->
+<!--                              {% if request.session.lang == "EN" %}-->
+<!--                                     ADDITIONS-->
+<!--                                         {% else %}-->
+<!--                                     الاضافات-->
+<!--                                         {% endif %}-->
+<!--                              </th>-->
+<!--                              <th scope="col">-->
+<!--                                  {% if request.session.lang == "EN" %}-->
+<!--                                     Working Hours-->
+<!--                                         {% else %}-->
+<!--                                    ساعات العمل-->
+<!--                                         {% endif %}-->
+<!--                              </th>-->
+
+<!--                              <th scope="col" style="background-color: #eee">-->
+<!--                                  {% if request.session.lang == "EN" %}-->
+<!--                                     Amount-->
+<!--                                         {% else %}-->
+<!--                                   مقدار-->
+<!--                                         {% endif %}-->
+<!--                              </th>-->
+<!--                            </tr>-->
+<!--                          </thead>-->
+<!--                          <tbody>-->
+<!--                            <tr>-->
+<!--                              <td>-->
+<!--                              {% if request.session.lang == "EN" %}-->
+<!--                                     Monthly Earnings-->
+<!--                                         {% else %}-->
+<!--                                   الأرباح الشهرية-->
+<!--                                         {% endif %}-->
+<!--                              </td>-->
+<!--                              <td>{{data.no_of_working_hours }}</td>-->
+
+<!--                              <td style="background-color: #eee">{{data.earnings_as_per_workinghours|floatformat:3}}</td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                              <td>-->
+<!--                              {% if request.session.lang == "EN" %}-->
+<!--                                     Overtime-->
+<!--                                         {% else %}-->
+<!--                                   العمل الإضافي-->
+<!--                                         {% endif %}-->
+<!--                              </td>-->
+<!--                              <td></td>-->
+
+<!--                              <td style="background-color: #eee">{{data.addition}}</td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                              <td>{% if request.session.lang == "EN" %}-->
+<!--                                     Other Additions-->
+<!--                                         {% else %}-->
+<!--                                         إضافات أخرى-->
+<!--                                         {% endif %}</td>-->
+<!--                              <td></td>-->
+
+<!--                              <td style="background-color: #eee">{{data.addition}}</td>-->
+<!--                            </tr>-->
+
+
+
+<!--&lt;!&ndash;                            <tr style="background-color: #eee">&ndash;&gt;-->
+<!--&lt;!&ndash;                              <td></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <th>GROSS PAY</th>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                              <th style="background-color:#B0B0B0;">123</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </tr>&ndash;&gt;-->
+<!--                          </tbody>-->
+
+
+
+<!--                        </table>-->
+
+<!--                   </div>-->
+<!--               </div>-->
+<!--           </div>-->
+
+<!--            <div id="footer-sect">-->
+<!--               &lt;!&ndash;middle portion&ndash;&gt;-->
+<!--               <div class="row mt-4">-->
+<!--                   <div class="col-12 p-2 ">-->
+<!--                      <table class="table">-->
+<!--                          <thead>-->
+<!--                            <tr>-->
+<!--                              <th scope="col">-->
+<!--                              {% if request.session.lang == "EN" %}-->
+<!--                                    DEDUCTIONS-->
+<!--                                         {% else %}-->
+<!--                                        الاستنباط-->
+<!--                                         {% endif %}-->
+<!--                              </th>-->
+<!--                              <th scope="col">-->
+<!--                                  {% if request.session.lang == "EN" %}-->
+<!--                                    Percentage-->
+<!--                                         {% else %}-->
+<!--                                     النسبة المئوية-->
+<!--                                         {% endif %}(%)</th>-->
+<!--                              <th scope="col"></th>-->
+
+<!--                              <th scope="col" style="background-color: #eee">Amount</th>-->
+<!--                            </tr>-->
+<!--                          </thead>-->
+<!--                          <tbody>-->
+<!--                            <tr>-->
+<!--                              <td>GOSI {% if request.session.lang == "EN" %}-->
+<!--                                    Deductions-->
+<!--                                         {% else %}-->
+<!--                                     الاستنباط-->
+<!--                                         {% endif %}</td>-->
+<!--                              <td>{{contract.GOSI}}</td>-->
+<!--                              <td></td>-->
+
+<!--                              <td style="background-color: #eee">{{data.tax|floatformat:3}}</td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                              <td>-->
+<!--                                  {% if request.session.lang == "EN" %}-->
+<!--                                 Other Deductions-->
+<!--                                         {% else %}-->
+<!--                                    حسومات أخرى-->
+<!--                                         {% endif %}-->
+<!--                              </td>-->
+<!--                              <td></td>-->
+<!--                              <td></td>-->
+
+<!--                              <td style="background-color: #eee">{{data.other_deductions|floatformat:3}}</td>-->
+<!--                            </tr>-->
+
+<!--&lt;!&ndash;                            <tr style="background-color: #eee">&ndash;&gt;-->
+<!--&lt;!&ndash;                              <td></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <td></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <th>TOTAL DEDUCTIONS</th>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                              <th style="background-color: #B0B0B0;">234.00</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </tr>&ndash;&gt;-->
+<!--                          </tbody>-->
+
+
+
+<!--                        </table>-->
+
+<!--                   </div>-->
+<!--               </div>-->
+<!--           </div>-->
+
+<!--               <div class="row">-->
+<!--                   <div class="col-6 p-3 "></div>-->
+<!--                   <div class="col-6 p-3 ">-->
+<!--                       <table class="table">-->
+<!--                           <tbody>-->
+<!--                              <tr style="background-color: #eee">-->
+<!--                                  <td><strong>-->
+<!--                                  {% if request.session.lang == "EN" %}-->
+<!--                                         NET PAY-->
+<!--                                         {% else %}-->
+<!--                                          صافي الأجر-->
+<!--                                         {% endif %}-->
+<!--                                  </strong></td>-->
+
+<!--                                  <td style="background-color: #B0B0B0;"><strong>{{data.total_earnings|floatformat:3}}</strong></td>-->
+<!--                              </tr>-->
+<!--                           </tbody>-->
+<!--                       </table>-->
+<!--                   </div>-->
+<!--               </div>-->
+
+<!--               <div class="row">-->
+<!--&lt;!&ndash;                   <div class="col-12 p-3 text-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                       <h6>If you have any question regarding payslip, please contact <br/>&ndash;&gt;-->
+<!--&lt;!&ndash;                       [name,phone,emailaddress.com]</h6>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                   </div>&ndash;&gt;-->
+<!--               </div>-->
+
+
+<!--        </div>-->
+            </div>
+
+
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+
+
+{% endblock%}

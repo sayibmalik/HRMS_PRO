@@ -1,0 +1,222 @@
+{% extends 'base.html'%}
+{% block content%}
+<style>
+    .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+
+    .user-empp
+    {
+        width:100px;
+        height:100px;
+        border-radius: 20px 0;
+        overflow: hidden;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+
+    .user-empp img
+    {
+        width: 100%;
+        height: 100%;
+    }
+
+
+</style>
+<div class="main-content" xmlns:display="http://www.w3.org/1999/xhtml" xmlns:flex="http://www.w3.org/1999/xhtml">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    <b>Employees</b>
+                    {% else %}
+                    <b>الموظفين</b>
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <div class="row m-0">
+                <div class="col-lg-12 backwhite">
+                    <h4 class="ml-2 text-primary pt-5">
+                        {% if request.session.lang == "EN" %}
+                        <i class="fa fa-users   mr-3"></i><b>Employees</b>
+                        {% else %}
+                        <i class="fa fa-users   ml-3"></i><b>الموظفين</b>
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="col-lg-12 p-2 backwhite">
+                    <a href="/app/dashboard" class="btn btn-danger btn-style ml-3"
+                       style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                        Cancel
+                        {% else %}
+                        تجاهل
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-12 backwhite pt-5">
+                    <div class="row m-0 d-flex justify-content-center">
+
+                        {% if request.session.lang == "EN" %}
+                        <div class="col-lg-10 col-md-12 col-12 bg-primary p-2"
+                             style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center pt-2"><b>Kindly
+                            follow the following details</b></h3></div>
+                        {% else %}
+                        <div class="col-lg-10 col-md-12 col-12 bg-primary p-3"
+                             style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b>يرجى اتباع
+                            التفاصيل التالية</b></h3></div>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-lg-12 backwhite pt-5">
+                    <form action="" method="post">
+                    <div class="row m-0">
+                        {% for d in data %}
+                        <div class="col-lg-4  col-md-4 mt-3 col-12 d-flex justify-content-center">
+                            <div class="card"
+                                 style="width: 20rem;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <div class="p-2 user-empp" style="">
+                                                <img src="/static/assets/images/profileimg-big.jpg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4 class="card-title text-center text-success pt-3 text-capitalize"><a href=""><b>{{d.user.first_name}}</b></a></h4>
+                                    <h6 class="card-subtitle text-center pt-1 text-primary"><b>{{d.Job_position.title}}</b></h6>
+                                    <h6 class="pt-1 pb-1 mt-3 mb-2 bg-success text-white text-center"><b>Working
+                                        Address</b></h6>
+                                    <small class="text-center" style="font-size:16px;"><b>{{d.Working_Address}}</b></small>
+                                    <h6 class="pt-1 pb-1 mt-3 mb-2 bg-success text-white text-center"><b>Working
+                                        Email</b></h6>
+                                    <small class="text-center"
+                                           style="font-size:16px;"><b>{{d.user.Work_Email}}</b></small>
+                                    <h6 class="pt-1 pb-1 mt-3 mb-2 bg-success text-white text-center"><b>Contact</b>
+                                    </h6>
+                                    <small class="text-center" style="font-size:16px;"><b><i
+                                            class="fa fa-mobile mr-3"></i>{{d.user.Work_Mobile}}</b></small><br>
+                                    <small class="text-center" style="font-size:16px;"><b><i
+                                            class="fa fa-phone mr-3"></i>{{d.user.Work_Phone}}</b></small>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                   </form>
+                </div>
+            </div>
+
+            <!--OLDCODE-->
+<!--            <div class="card card_border py-2 mb-4">-->
+<!--                <div class="cards__heading">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col">-->
+<!--                            <h3> Employees</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--                <div class="card-body">-->
+<!--                    <form action="" method="post">-->
+<!--                        <div class="container-fluid">-->
+<!--                            <div class="row m-0">-->
+<!--                                {% for d in data %}-->
+<!--                                <div class="col-lg-4  col-md-4 mt-2 col-12 d-flex justify-content-center">-->
+<!--                                    <div class="card"-->
+<!--                                         style="width: 20rem; border:none;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">-->
+<!--                                        <div class="card-body">-->
+<!--                                            <div class="row">-->
+<!--                                                <div class="col-12 d-flex justify-content-center">-->
+<!--                                                    <div class="p-2 user-empp" style="">-->
+<!--                                                        <img src="/static/assets/images/profileimg-big.jpg">-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <h4 class="card-title text-center text-success pt-3 text-capitalize"><a-->
+<!--                                                    href=""><b>{{d.user.first_name}}</b></a></h4>-->
+<!--                                            <h6 class="card-subtitle text-center pt-1 text-primary"><b>{{d.Job_position.title}}</b>-->
+<!--                                            </h6>-->
+<!--                                            <h6 class="pt-1 pb-1 mt-3 mb-2 bg-success text-white text-center"><b>Working-->
+<!--                                                Address</b></h6>-->
+<!--                                            <small class="text-center"-->
+<!--                                                   style="font-size:16px;"><b>{{d.Working_Address}}</b></small>-->
+<!--                                            <h6 class="pt-1 pb-1 mt-3 mb-2 bg-success text-white text-center"><b>Working-->
+<!--                                                Email</b></h6>-->
+<!--                                            <small class="text-center"-->
+<!--                                                   style="font-size:16px;"><b>{{d.user.Work_Email}}</b></small>-->
+<!--                                            <h6 class="pt-1 pb-1 mt-3 mb-2 bg-success text-white text-center">-->
+<!--                                                <b>Contact</b></h6>-->
+<!--                                            <small class="text-center" style="font-size:16px;"><b><i-->
+<!--                                                    class="fa fa-mobile mr-3"></i>{{d.user.Work_Mobile}}</b></small><br>-->
+<!--                                            <small class="text-center" style="font-size:16px;"><b><i-->
+<!--                                                    class="fa fa-phone mr-3"></i>{{d.user.Work_Phone}}</b></small>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+
+<!--                                &lt;!&ndash;                                <div class="col-4 mt-2">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                    <div class="card">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                        <div class="card-body">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                            <div class="row">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                <div class="col-4">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                    <div>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                        <img src="/static/assets/images/profileimg.jpg"&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                             class="mt-4">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                    </div>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                </div>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                <div class="col-8">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                    <div class="mt-2">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                        <h5><a href="#">{{d.user.first_name}}</a></h5>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                        <p>{{d.Job_position.title}}</p>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                        <p>{{d.Working_Address}}</p>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                        <p style="font-size:12px;">{{d.user.Work_Email}}</p>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                        <p>{{d.user.Work_Mobile}}</p>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                        <p>{{d.user.Work_Phone}}</p>&ndash;&gt;-->
+<!--                                &lt;!&ndash;&lt;!&ndash;                                                        <a href="{% url 'employees' d.id %}" class="btn btn-primary btn-style ">View</a>&ndash;&gt;&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                    </div>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                                </div>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--                                {% endfor %}-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+
+
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

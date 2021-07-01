@@ -1,0 +1,95 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">My Reports</li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+
+            <div class="card card_border py-2 mb-4">
+                <div class="cards__heading">
+                    <div class="row">
+                        <div class="col-9">
+                            <h3><span>My Reports</span></h3>
+                        </div>
+                        <div class="col-3">
+
+                            <a href="/" class="btn btn-lg btn-outline-primary btn-style border-btn">Create</a>
+                            <button type="submit" class="btn btn-primary btn-style ">Import</button>
+
+
+                        </div>
+
+                    </div>
+                    <div class="col-9"></div>
+                    <div class="col-3">
+                         <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <form action="#" method="post">
+
+                        <div class="container-fluid">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th><input type="checkbox"></th>
+                                    <th>Code No.:</th>
+                                    <th>Title</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th><input type="checkbox"></th>
+                                    <td>GA 001</td>
+                                    <td>Onam Celebration</td>
+                                    <td>Approved</td>
+                                </tr>
+                                <tr>
+                                    <th><input type="checkbox"></th>
+                                    <td></td>
+                                    <td>Harthal</td>
+                                    <td>Waiting for Approval</td>
+                                </tr>
+                                <tr>
+                                    <th><input type="checkbox"></th>
+                                    <td>GA 002</td>
+                                    <td>Seminar</td>
+                                    <td>Done</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

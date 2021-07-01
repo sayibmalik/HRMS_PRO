@@ -1,0 +1,271 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+       .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+
+    .note-cov
+    {
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        border-radius: 20px;
+    }
+
+    .curve-around input , .curve-around select
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+
+
+
+
+
+
+
+
+</style>
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Leave Request
+                    {% else %}
+                    طلب ترك
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <section class="forms">
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite">
+                        <h4 class="ml-2 text-primary pt-4">
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-medkit  fa-1x mr-3"></i><b>Create Leave Summary</b>
+                            {% else %}
+                           <i class="fa fa-medkit  fa-1x mr-3"></i><b> إنشاء ملخص الإجازة</b>
+                            {% endif %}
+                        </h4>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-12 p-2 backwhite ">
+                        <a href="{% url 'AllLeaves' %}" class="btn btn-danger btn-style ml-3"
+                           style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Discard
+                            {% else %}
+                            تجاهل
+                            {% endif %}
+                        </a>
+                        <button type="submit" class="btn btn-success btn-style ml-3"
+                                style="height: 35px;font-size: 14px;padding-top: 4px;">
+                            {% if request.session.lang == "EN" %}
+                            Save
+                            {% else %}
+                            حفظ
+                            {% endif %}
+                        </button>
+                        <hr>
+
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 col-12 p-2 backwhite text-center">
+                        {% if request.session.lang == "EN" %}
+                        <span for="Pending "><b>Pending</b></span>
+                        {% else %}
+                        <span for="Pending"><b>قيد الانتظار</b></span>
+                        {% endif %}
+                        <input type="radio" name="status" class="pr-3" id="Pending" value="Pending" checked>
+                        {% if request.session.ishr %}
+                        {% if request.session.lang == "EN" %}
+                        <span for="Approved"><b>Approved</b></span>
+                        {% else %}
+                        <span for="Approved"><b>وافق</b></span>
+                        {% endif %}
+                        <input type="radio" name="status" id="Approved" value="Approved">
+                        {% if request.session.lang == "EN" %}
+                        <span for="Rejected"><b>Rejected</b></span>
+                        {% else %}
+                        <span for="Rejected"><b>مرفوض</b></span>
+                        {% endif %}
+                        <input type="radio" name="status" id="Rejected" value="Rejected">
+                        {% endif %}
+
+                    </div>
+
+                    <hr>
+                </div>
+                <div class="row m-0">
+                    <div class="col-12 backwhite pt-5">
+                        <div class="row m-0 d-flex justify-content-center">
+
+                            {% if request.session.lang == "EN" %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-2"
+                                 style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"
+                                                                           style="padding-top: 10px;"><b>Kindly fill
+                                in the following details</b></h3></div>
+                            {% else %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-3"
+                                 style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b> يرجى ملء
+                                تفاصيل التالية</b></h3></div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite ">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-6 col-md-10 col-12 p-4 note-cov mt-5 mb-5" style="position:relative;">
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h6 class="pt-5"><b>Leave Type</b></h6>
+                                    {% else %}
+                                     <h6 class="pt-5 mr-4"><b>إجازة نوع</b></h6>
+                                    {% endif %}
+                                </div>
+                                {% if request.session.lang == "EN" %}
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    <select name="leavetype" id="leavetype"
+                                            class="form-control input-style">
+                                        {% for d in data1 %}
+                                        <option disabled selected hidden>{{data.Leave_Type}}</option>
+                                        <option value="{{d.id}}">{{d.Title}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                {% else %}
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    <select name="leavetype" value="{{data1.Leave_Type}}" id="leavetype"
+                                            class="form-control input-style">
+                                        {% for d in data1 %}
+                                        <option value="{{d.id}}">{{d.ArTitle}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                {% endif %}
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h6><b>Description</b></h6>
+                                    {% else %}
+                                    <h6 class="mr-4"><b>وصف</b></h6>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    <textarea maxlength="249" name="desc" class="form-control"
+                                              style="min-height: 120px;max-height: 120px; border: 2px solid #4755AB;">{{data.Description}}</textarea>
+                                </div>
+
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h6 class="pt-3"><b>Duration Date</b></h6>
+                                    {% else %}
+                                    <h6 class="mr-4"><b>تاريخ المدة</b></h6>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                    <div class="row m-0">
+                                        <div class="col  curve-around">
+                                            {% if request.session.lang == "EN" %}
+                                            <h6 class="text-center pb-2"><b>From</b></h6>
+                                            {% else %}
+                                            <h6 class="mr-5 pb-3"><b>من</b></h6>
+                                            {% endif %}
+
+                                            <input type="date" value="{{data.Duration_From|date:'Y-m-d'}}"
+                                                   name="leavefrom"
+                                                   class="form-control input-style">
+                                        </div>
+                                        <div class="col curve-around">
+                                            {% if request.session.lang == "EN" %}
+                                            <h6 class="text-center pb-2"><b>To</b></h6>
+                                            {% else %}
+                                             <h6 class="mr-5 pb-3"><b>إلى</b></h6>
+                                            {% endif %}
+
+                                            <input type="date" value="{{data.Duration_To|date:'Y-m-d'}}" name="leaveto"
+                                                   id="leaveto"
+                                                   class="form-control input-style">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h6 class="pt-3"><b>No. Duration Days</b></h6>
+                                    {% else %}
+                                    <h6 class="mr-4 "><b>عدد الأيام المدة</b></h6>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    <input type="text" name="durationdays" value="{{data.Duration_Days}}"
+                                           class="form-control input-style">
+                                </div>
+
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h6 class="pt-3"><b>Comment by Manager</b></h6>
+                                    {% else %}
+                                    <h6 class="mr-4 "><b>تعليق من قبل مدير</b></h6>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                    {% if request.session.ishr %}
+                                    <textarea maxlength="4999" name="commentbymanager" class="form-control input-style"
+                                              style="min-height: 120px;max-height: 120px; border: 2px solid #4755AB;">{{data.CommentbyManager}}</textarea>
+                                    {% else %}
+                                    <textarea readonly name="commentbymanager" class="form-control input-style"
+                                              style="min-height: 120px;max-height: 120px; border: 2px solid #4755AB;">{{data.CommentbyManager}}</textarea>
+                                    {% endif %}
+                                </div>
+
+
+                                <div class="col-lg-10 col-12 m-auto text-right  p-2">
+                                    <button type="submit"
+                                            class="btn btn-sm btn-success  btn-style  col-lg-4 ml-1 text-white "
+                                            style="height: 40px;font-size: 16px;padding-top: 8px; margin-top: 30px; border-radius: 20px;">
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-paper-plane mr-3"></i>Save
+                                        {% else %}
+                                        يحفظ  <i class="fa fa-paper-plane mr-3"></i>
+                                        {% endif %}
+                                    </button>
+                                </div>
+
+                                <i class="fa fa-medkit fa-3x text-success" aria-hidden="true"
+                                   style="position: absolute; top: -17px;left:-12px;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <!-- //forms  -->
+        </form>
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

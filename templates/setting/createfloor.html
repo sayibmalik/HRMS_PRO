@@ -1,0 +1,86 @@
+{% extends 'base.html'%}
+
+{% block content%}
+
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item" aria-current="page">Floors</li>
+                <li class="breadcrumb-item active" aria-current="page">New</li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="card card_border py-2 mb-4">
+                    <div class="cards__heading">
+
+                        <div class="row">
+                            <div class="col-9">
+                                <h3><span>Floors</span></h3>
+
+                            </div>
+
+                            <div class="col-3 ">
+
+                                <button type="submit" class="btn btn-sm btn-outline-primary btn-style border-btn">Save
+                                </button>
+                                <button type="button" class="btn btn-primary btn-style ">Discard</button>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <div class="container-fluid border bg-white mt-2px">
+                        <div class="row mt-3 mb-4">
+                            <div class="col-6">
+                                <div class="row mt-3">
+                                    <div class="col-2">
+                                        <span>Title </span>
+                                    </div>
+                                    <div class="col-4" style="border-left: 1px solid lightgray;">
+                                        <input type="text" name="title" class="form-control " value="{{data.title}}"
+                                               placeholder=""/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="row mt-3">
+                                    <div class="col-2">
+                                        <span>Building </span>
+                                    </div>
+                                    <div class="col-4" style="border-left: 1px solid lightgray;">
+                                        <select class="form-control input-style" name="building" id="building">
+                                             {% for d in data %}
+                                            <option value="name">{{ d.buildingName }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+    </div>
+    </form>
+    </section>
+    <!-- //forms  -->
+
+</div>
+{% endblock%}

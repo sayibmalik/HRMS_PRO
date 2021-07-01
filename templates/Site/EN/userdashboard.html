@@ -1,0 +1,620 @@
+{% extends 'base2.html'%}
+{% block content%}
+<style>
+    .img-dashcover
+    {
+        height: 100px;
+        width: 140px;
+    }
+
+    .img-dashcover img
+    {
+        height: 100% !important;
+        width:  100% !important;
+    }
+
+    .imgdash2
+    {
+        height: 280px !important;
+        width: 100% !important;
+    }
+
+    .new-dash-tabs .card
+    {
+        border: none;
+        background: #f4f6f9;
+<!--        border-radius: 30px 0;-->
+        -moz-transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+	    -o-transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+	    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .new-dash-tabs .card:hover
+    {
+        -webkit-transform: translate(0, -8px);
+        -moz-transform: translate(0, -8px);
+        -ms-transform: translate(0, -8px);
+        -o-transform: translate(0, -8px);
+        transform: translate(0, -8px);
+        box-shadow: 0 40px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .new-subs h6
+    {
+        color:#5777ba !important;
+    }
+
+    .newsubs-det
+    {
+         word-wrap: break-word;
+    }
+    .newsubs-det span
+    {
+        font-size: 14px !important;
+
+    }
+
+    @media (max-width: 766px)
+    {
+        .newsubs-det
+        {
+            text-align: left !important;
+            padding-left: 28px !important;
+        }
+    }
+
+</style>
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1"
+                 data-aos="fade-up">
+                <div>
+<!--                    <h1>-->
+<!--                        {% if request.session.lang == "EN" %}-->
+<!--                        Home-->
+<!--                        {% else %}-->
+<!--                        الصفحة الرئيسية-->
+<!--                        {% endif %}-->
+<!--                    </h1>-->
+
+                    <div class="img-dashcover  imgdash2">
+                        <img src="/static/assets/img/newdasht.gif" class="img-fluid" alt="">
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img"
+                 data-aos="fade-up">
+<!--                <h1>-->
+<!--                    {% if request.session.lang == "EN" %}-->
+<!--                    Home-->
+<!--                    {% else %}-->
+<!--                    الصفحة الرئيسية-->
+<!--                    {% endif %}-->
+<!--                </h1>-->
+                <img src="/static/assets/img/Logo.png" class="img-fluid" alt="">
+            </div>
+        </div>
+    </div>
+
+</section><!-- End Hero -->
+
+<section id="top-tabs">
+    <div class="container">
+        <div class="row m-0 mt-5">
+            <div class="col-12 p-3 mt-5 pt-5 pb-5" style="border: none;box-shadow: 3px 3px 10px #d9dbe0;">
+                <div class="row m-0">
+                    <div class="col-12 mt-3 mb-5">
+                        {% if request.session.lang == "EN" %}
+                        <h2 class="p-3 text-center text-white" style="background:#4755AB; border-radius: 15px 0;"><b>Ways Of Access</b></h2>
+                        {% else %}
+                        <h2 class="p-3 text-center text-white" style="background:#4755AB; border-radius: 15px 0;"><b>طرق الوصول</b></h2>
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-6 pt-3 pb-3 col-md-6 col-12 new-dash-tabs">
+                        <a href="{% url 'index' %}">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-5 p-3" style="background: #DD4D38;">
+                                            <div class="img-dashcover m-auto text-center">
+<!--                                                <img src="/static/assets/img/worldwide.svg" class="card-img-top"-->
+<!--                                                     alt="..."-->
+<!--                                                     style="">-->
+                                                    <i class="fa fa-globe fa-5x pt-1 text-white" aria-hidden="true" style="font-size: 100px;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-7  p-3" style="background: #C64233;">
+                                            <h3 class="card-title text-center mt-4 text-white">
+                                                {% if request.session.lang == "EN" %}
+                                                <b class="pt-4">Access to Gareeb</b><br>
+                                                <small>Dashboard</small>
+                                                {% else %}
+                                                <b> الوصول إلى غريب</b><br>
+                                                <small>لوحة القيادة</small>
+                                                {% endif %}
+                                            </h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-6 pt-3 pb-3 col-md-6 col-12 new-dash-tabs">
+                        <a href="{% url 'mysubscription'%}">
+                             <div class="card">
+                                 <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-5 p-3" style="background: #00A7B9;">
+                                            <div class="img-dashcover m-auto text-center">
+<!--                                                <img src="/static/assets/img/worldwide.svg" class="card-img-top"-->
+<!--                                                     alt="..."-->
+<!--                                                     style="">-->
+                                                    <i class="fa fa-th fa-5x pt-2 text-white" aria-hidden="true" style="font-size: 85px;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-7  p-3" style="background: #00BED3;">
+                                            <h3 class="card-title text-center mt-4 text-white">
+                                                {% if request.session.lang == "EN" %}
+                                                <b>My Subscription</b><br>
+                                                <small>Subscribe</small>
+                                                {% else %}
+                                                <b>اشتراكاتي</b><br>
+                                                <small>الإشتراك</small>
+                                                {% endif %}
+                                            </h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-6 pt-3 pb-3 col-md-6 col-12 mt-4 new-dash-tabs">
+                        <a href="{% url 'upgradeplan' %}">
+                            <div class="card">
+                                 <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-5 p-3" style="background: #7CAB4C;">
+                                            <div class="img-dashcover m-auto text-center">
+<!--                                                <img src="/static/assets/img/worldwide.svg" class="card-img-top"-->
+<!--                                                     alt="..."-->
+<!--                                                     style="">-->
+                                                    <i class="fa fa-credit-card fa-5x pt-2 text-white" aria-hidden="true" style="font-size: 85px;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-7  p-3" style="background: #8DC357;">
+                                            <h3 class="card-title text-center mt-4 text-white">
+                                                {% if request.session.lang == "EN" %}
+                                                <b>Upgrade Plan</b><br>
+                                                <small>Check Plans </small>
+                                                {% else %}
+                                                <b>خطة الترقية</b><br>
+                                                <small>تحقق من الخطط</small>
+                                                {% endif %}
+                                            </h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-6 pt-3 pb-3 col-md-6 col-12 mt-4 new-dash-tabs">
+                        <a href="{% url 'Bills'%}">
+                            <div class="card">
+                                 <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-5 p-3" style="background: #D98628;">
+                                            <div class="img-dashcover m-auto text-center">
+<!--                                                <img src="/static/assets/img/worldwide.svg" class="card-img-top"-->
+<!--                                                     alt="..."-->
+<!--                                                     style="">-->
+                                                    <i class="fa fa-list-alt fa-5x pt-2 text-white" aria-hidden="true" style="font-size: 85px;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-7  p-3" style="background: #F7992D;">
+                                            <h3 class="card-title text-center mt-4 text-white">
+                                                {% if request.session.lang == "EN" %}
+                                                <b>Billings</b><br>
+                                                <small>Check Bills</small>
+                                                {% else %}
+                                                <b>الفواتير</b><br>
+                                                <small>تحقق من الفواتير</small>
+                                                {% endif %}
+                                            </h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+<!--                             <div class="card pt-3">-->
+<!--                                <div class="img-dashcover m-auto">-->
+<!--                                    <img src="/static/assets/img/document.svg" class="card-img-top" alt="...">-->
+<!--                                </div>-->
+
+<!--                                <div class="card-body">-->
+<!--                                    <h5 class="card-title text-center" style="font-size: 16px;">-->
+
+<!--                                    </h5>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="subscription-det">
+     <div class="container">
+          <div class="row m-0">
+<!--              <div class="col-12 p-3 " >-->
+<!--                  {% if request.session.lang == "EN" %}-->
+<!--                  <h4 class="p-3 text-white font-weight-bold text-center" style="background: #5777ba; border-radius: 20px 0;">SUBSCRIPTION & PROFILE DETAILS BELOW</h4>-->
+<!--                  {% else %}-->
+<!--                  <h4 class="p-3 text-white font-weight-bold text-center" style="background: #5777ba; border-radius: 20px 0;">تفاصيل الاشتراك والملف الشخصي أدناه</h4>-->
+<!--                  {% endif %}-->
+<!--              </div>-->
+              <div class="col-12 p-3 mt-5">
+                  <div class="row m-0">
+                      <div class="col-lg-6 pt-3 pb-3 col-md-6 col-12" style="">
+                          <div class="row m-0">
+                              <div class="col-12 p-3" style="color:#5777ba; background: #5777ba;">
+                                  <h5 class="font-weight-bold text-center text-white">
+                                      {% if request.session.lang == "EN" %}
+                                      <i class="fa fa-th-large mr-2" aria-hidden="true"></i>Subscription
+                                      {% else %}
+                                      <i class="fa fa-th-large ml-2" aria-hidden="true"></i>الاشتراك
+                                      {% endif %}
+                                  </h5>
+                              </div>
+                          </div>
+
+                          <div class="row m-0 mt-5 ">
+                              <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                  <h6 class="p-3 text-primary">
+                                      {% if request.session.lang == "EN" %}
+                                      <b>STATUS</b>
+                                      {% else %}
+                                      <b>حالة</b>
+                                      {% endif %}
+                                  </h6>
+                              </div>
+                              <div class="col-lg-6 col-12 newsubs-det text-center p-3" style="background: #f4f6f9;">
+                                  {% if request.session.lang == "EN" %}
+                                  <button type="button" class="btn btn-danger" style="border-radius:20px;"><i
+                                          class="fa fa-times-circle mr-2" aria-hidden="true"></i>Expired
+                                  </button>
+                                  {% else %}
+                                  <button type="button" class="btn btn-danger" style="border-radius:20px;"><i
+                                          class="fa fa-times-circle ml-2" aria-hidden="true"></i>منتهية الصلاحية
+                                  </button>
+                                  {% endif %}
+                              </div>
+                          </div>
+                          <div class="row m-0 mt-4 ">
+                              <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                  <h6 class="p-3 text-primary">
+                                      {% if request.session.lang == "EN" %}
+                                      <b>PLAN</b>
+                                      {% else %}
+                                      <b>خطة</b>
+                                      {% endif %}
+                                  </h6>
+                              </div>
+                              <div class="col-lg-6 col-12 newsubs-det p-3 text-center" style="background: #f4f6f9;">
+                                  <span class="text-success font-weight-bold">{{data.plan}}</span>
+                              </div>
+                          </div>
+                          <div class="row m-0 mt-4 ">
+                              <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                  <h6 class="p-3 text-primary">
+                                      {% if request.session.lang == "EN" %}
+                                      <b>No. of Employees</b>
+                                      {% else %}
+                                      <b>عدد الموظفين</b>
+                                      {% endif %}
+                                  </h6>
+                              </div>
+                              <div class="col-lg-6 col-12 newsubs-det p-3 text-center" style="background: #f4f6f9;">
+                                  <span class="text-success font-weight-bold">{{data.plan.limit}}</span>
+                              </div>
+                          </div>
+                          <div class="row m-0 mt-4 ">
+                              <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                  <h6 class="p-3 text-primary">
+                                      {% if request.session.lang == "EN" %}
+                                      <b>Expire Date</b>
+                                      {% else %}
+                                      <b>تاريخ انتهاء الصلاحية عدد الموظفين</b>
+                                      {% endif %}
+                                  </h6>
+                              </div>
+                              <div class="col-lg-6 col-12 newsubs-det p-3 text-center" style="background: #f4f6f9;">
+                                  <span class="text-success font-weight-bold">{{data.expirydate}}</span>
+                              </div>
+                          </div>
+
+                      </div>
+
+
+                      <div class="col-lg-6 pt-3 pb-3 col-md-6 col-12" style="">
+                          <div class="row m-0">
+                              <div class="col-12 p-3" style="color:#5777ba; background: #5777ba;">
+                                  <h5 class="font-weight-bold text-center text-white">
+                                      {% if request.session.lang == "EN" %}
+                                      <i class="fa fa-user-circle-o mr-2" aria-hidden="true"></i>Profile
+                                      {% else %}
+                                      <i class="fa fa-user-circle-o ml-2" aria-hidden="true"></i>مظهر جانبي
+                                      {% endif %}
+                                  </h5>
+                              </div>
+                          </div>
+
+                          <div class="row m-0 mt-5 ">
+                              <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                  <h6 class="p-3 text-primary">
+                                      {% if request.session.lang == "EN" %}
+                                      <b>NAME</b>
+                                      {% else %}
+                                      <b>اسم</b>
+                                      {% endif %}
+                                  </h6>
+                              </div>
+                              <div class="col-lg-6 col-12  text-center newsubs-det p-3" style="background: #f4f6f9;">
+                                   {% if request.session.lang == "EN" %}
+                                  <span class="text-success font-weight-bold">{{data.user.first_name}} {{data.user.last_name}}</span>
+                                   {% else %}
+                                  <span class="text-success font-weight-bold text-right">{{data.user.first_name}} {{data.user.last_name}}</span>
+                                   {% endif %}
+                              </div>
+                          </div>
+
+
+                          <div class="row m-0 mt-4 ">
+                              <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                  <h6 class="p-3 text-primary">
+                                      {% if request.session.lang == "EN" %}
+                                      <b>Company Name</b>
+                                      {% else %}
+                                      <b>اسم الشركة</b>
+                                      {% endif %}
+                                  </h6>
+                              </div>
+                              <div class="col-lg-6 col-12 newsubs-det p-3 text-center" style="background: #f4f6f9;">
+                                  <span class="text-success font-weight-bold">{{data1.Company_Name}}</span>
+                              </div>
+                          </div>
+                          <div class="row m-0 mt-4 ">
+                              <div class="col-lg-6 col-12 new-subs" style="background: #f4f6f9;">
+                                  <h6 class="p-3 text-primary">
+                                      {% if request.session.lang == "EN" %}
+                                      <b>Admin Email</b>
+                                      {% else %}
+                                      <b>البريد الإلكتروني للمسؤول</b>
+                                      {% endif %}
+                                  </h6>
+                              </div>
+                              <div class="col-lg-6 col-12 newsubs-det  p-3 text-center" style="background: #f4f6f9;">
+                                  <span class="text-success font-weight-bold"> {{data.user}}</span>
+                              </div>
+                          </div>
+
+                      </div>
+
+                      </div>
+                  </div>
+              </div>
+        </div>
+     </div>
+</section>
+
+<!--OLD CODE start **************************-->
+<!-- ======= App Features Section ======= -->
+<!--<main id="main">-->
+<!--    <div class="container">-->
+<!--        <div class="section-title">-->
+<!--            <div class="mb-3">-->
+<!--                <div class="card-body">-->
+<!--                    <div class="row m-0">-->
+<!--                        <div class="col">-->
+<!--                            <a href="{% url 'index' %}">-->
+<!--                                <div class="card">-->
+<!--                                    <img src="/static/assets/img/worldwide.svg" class="card-img-top" alt="..."-->
+<!--                                         style="padding : 10px 60px ;">-->
+<!--                                    <div class="card-body">-->
+<!--                                        <h5 class="card-title">-->
+<!--                                            {% if request.session.lang == "EN" %}-->
+<!--                                            Access to Gareeb-->
+<!--                                            {% else %}-->
+<!--                                            الوصول إلى غريب-->
+<!--                                            {% endif %}-->
+<!--                                        </h5>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="col">-->
+<!--                            <a href="{% url 'mysubscription'%}">-->
+<!--                                <div class="card">-->
+<!--                                    <img src="/static/assets/img/grid.svg" class="card-img-top" alt="..."-->
+<!--                                         style="padding : 10px 60px ;">-->
+<!--                                    <div class="card-body">-->
+<!--                                        <h5 class="card-title">-->
+<!--                                            {% if request.session.lang == "EN" %}-->
+<!--                                            My Subscription-->
+<!--                                            {% else %}-->
+<!--                                            اشتراكاتي-->
+<!--                                            {% endif %}-->
+<!--                                        </h5>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="col">-->
+<!--                            <a href="{% url 'upgradeplan' %}">-->
+<!--                                <div class="card">-->
+<!--                                    <img src="/static/assets/img/add.svg" class="card-img-top" alt="..."-->
+<!--                                         style="padding : 10px 60px ;">-->
+<!--                                    <div class="card-body">-->
+<!--                                        <h5 class="card-title">-->
+<!--                                            {% if request.session.lang == "EN" %}-->
+<!--                                            Upgrade Plan-->
+<!--                                            {% else %}-->
+<!--                                            خطة الترقية-->
+<!--                                            {% endif %}-->
+<!--                                        </h5>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="col">-->
+<!--                            <a href="{% url 'Bills'%}">-->
+<!--                                <div class="card">-->
+<!--                                    <img src="/static/assets/img/document.svg" class="card-img-top" alt="..."-->
+<!--                                         style="padding : 10px 60px ;">-->
+<!--                                    <div class="card-body">-->
+<!--                                        <h5 class="card-title">-->
+<!--                                            {% if request.session.lang == "EN" %}-->
+<!--                                            Billing-->
+<!--                                            {% else %}-->
+<!--                                            الفواتير-->
+<!--                                            {% endif %}-->
+<!--                                        </h5>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div class="container">-->
+<!--        <div class="section-title">-->
+<!--            <div class="card card_border mb-2">-->
+<!--                <div class="card-body">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-6 border-right">-->
+<!--                            <h5 class="card-title border-bottom">-->
+
+<!--                                {% if request.session.lang == "EN" %}-->
+<!--                                Subscription-->
+<!--                                {% else %}-->
+<!--                                الاشتراك-->
+<!--                                {% endif %}-->
+<!--                            </h5>-->
+<!--                            <div class="row mb-5 mt-5">-->
+<!--                                <div class="col-6" style="text-align:right;">-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Status-->
+<!--                                    {% else %}-->
+<!--                                    حالة-->
+<!--                                    {% endif %} :-->
+<!--                                </div>-->
+<!--                                <button type="button" class="btn btn-primary btn-bold btn-sm">Expired</button>-->
+<!--                            </div>-->
+<!--                            <div class="row mb-5">-->
+<!--                                <div class="col-6" style="text-align:right;">-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Plan-->
+<!--                                    {% else %}-->
+<!--                                    خطة-->
+<!--                                    {% endif %} :-->
+<!--                                </div>-->
+<!--                                <div class="col-6" style="text-align:left; font-weight: bold;">{{data.plan}}</div>-->
+<!--                            </div>-->
+<!--                            <div class="row mb-5">-->
+<!--                                <div class="col-6" style="text-align:right;">-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    No of Employees-->
+<!--                                    {% else %}-->
+<!--                                    عدد الموظفين-->
+<!--                                    {% endif %} :-->
+<!--                                </div>-->
+<!--                                <div class="col-6" style="text-align:left; font-weight: bold;">{{data.plan.limit}}</div>-->
+<!--                            </div>-->
+<!--                            <div class="row mb-5">-->
+<!--                                <div class="col-6" style="text-align:right;">-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Expire Date-->
+<!--                                    {% else %}-->
+<!--                                    تاريخ انتهاء الصلاحية-->
+<!--                                    {% endif %} :-->
+<!--                                </div>-->
+<!--                                <div class="col-6" style="text-align:left;">{{data.expirydate}}</div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-6">-->
+<!--                            <h5 class="card-title border-bottom" style="padding-bottom : 18px ; color: #5777ba;">-->
+<!--                                {% if request.session.lang == "EN" %}-->
+<!--                                Profile-->
+<!--                                {% else %}-->
+<!--                                مظهر جانبي-->
+<!--                                {% endif %}</h5>-->
+<!--                            <div class="row mt-5">-->
+<!--                                <div class="col" style="text-align:left; font-weight: bold;">-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Name-->
+<!--                                    {% else %}-->
+<!--                                    اسم-->
+<!--                                    {% endif %}-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="row mt-2">-->
+<!--                                <a href="">-->
+<!--                                    <div class="col" style="text-align:left; font-size: 20px;">-->
+<!--                                        {{data.user.first_name}} {{data.user.last_name}}-->
+<!--                                    </div>-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                            <div class="row mt-5">-->
+<!--                                <div class="col" style="text-align:left; font-weight: bold;">-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Company Name-->
+<!--                                    {% else %}-->
+<!--                                    اسم الشركة-->
+<!--                                    {% endif %}-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="row mt-2">-->
+<!--                                <div class="col" style="text-align:left;  font-size: 20px; ">{{data1.Company_Name}}-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="row mt-5">-->
+<!--                                <div class="col" style="text-align:left; font-weight: bold;">-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Admin Email-->
+<!--                                    {% else %}-->
+<!--                                    البريد الإلكتروني للمسؤول-->
+<!--                                    {% endif %}-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="row mb-5 mt-2">-->
+<!--                                <div class="col" style="text-align:left; font-size: 20px;">-->
+<!--                                    {{data.user}}-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</main>-->
+<!-- End #main -->
+
+{% endblock %}
+

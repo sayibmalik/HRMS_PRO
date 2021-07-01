@@ -1,0 +1,148 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-2">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Create Salary Structure</li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+
+            <div class="card card_border py-2 mb-4">
+                <div class="cards__heading">
+                    <div class="row">
+
+                        <h3 class="ml-2"><span>New Salary Structure</span></h3>
+                    </div>
+                    <div class="row mt-3">
+                        <a href="/" class="btn btn-sm btn-outline-primary btn-style border-btn ml-1">Save</a>
+                        <button type="submit" class="btn btn-primary btn-style ml-1 ">Discard</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form action="#" method="post">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row mt-2">
+                                    <div class="col-2">
+                                        <span>Name</span>
+                                    </div>
+                                    <div class="col" style="border-left: 1px solid gray;">
+                                        <input class="form-control" placeholder="Name"/>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-2">
+                                        <span>Parent</span>
+                                    </div>
+                                    <div class="col" style="border-left: 1px solid gray;">
+                                        <select id="parent" class="form-control input-style">
+                                            <option selected>Base for new structures</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-2">
+                                        <span>Salary Advance-After days</span>
+                                    </div>
+                                    <div class="col" style="border-left: 1px solid gray;">
+                                        <input class="form-control" placeholder=""/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="row mt-2">
+                                    <div class="col-4">
+                                        <span>Reference</span>
+                                    </div>
+                                    <div class="col" style="border-left: 1px solid gray;">
+                                        <input class="form-control" placeholder=""/>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-4">
+                                        <span>Max.Salary Advance Percentage</span>
+                                    </div>
+                                    <div class="col" style="border-left: 1px solid gray;">
+                                        <input class="form-control" placeholder=""/>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+                <div class="container-fluid">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#salaryrules">Salary Rules</a>
+                        </li>
+                    </ul>
+
+
+                    <div class="tab-content">
+                        <div id="salaryrules" class="tab-pane fade in active show mt-3 ">
+                            <div class="container-fluid">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr class="text-primary">
+
+                                        <th>Name</th>
+                                        <th>Code</th>
+                                        <th>Category</th>
+                                        <th>Contribution Register</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+
+                                        <td><a href="#">Add an item</a></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <!-- //forms  -->
+
+</div>
+<!-- //content -->
+
+</div>
+{% endblock%}

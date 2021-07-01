@@ -1,0 +1,139 @@
+{% extends 'base.html'%}
+
+{% block content%}
+
+
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item" aria-current="page">Bill</li>
+                <li class="breadcrumb-item active" aria-current="page">New</li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="card card_border py-2 mb-4">
+                    <div class="cards__heading">
+                        <div class="row">
+                            <div class="col-9">
+                                <h3><span>Create Bill</span></h3>
+                            </div>
+                            <div class="col-3 ">
+                                <a href="/Setting/buildings">
+                                    <button type="submit" class="btn btn-sm btn-outline-primary btn-style border-btn">
+                                        Save
+                                    </button>
+                                </a>
+                                <a href="/Setting/buildings">
+                                    <button type="button" class="btn btn-primary btn-style ">Discard</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container-fluid border bg-white mt-2px ">
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <div class="row mt-3">
+                                    <div class="col-2">
+                                        <span>User </span>
+                                    </div>
+                                    <div class="col-8" style="border-left: 1px solid lightgray;">
+                                        <select id="user" name="user"
+                                                class="form-control input-style">
+                                            {% for h in data %}
+                                            <option value="{{h.id}}">{{h.first_name}} {{h.last_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row mt-3">
+                                    <div class="col-2">
+                                        <span>Code </span>
+                                    </div>
+                                    <div class="col-8" style="border-left: 1px solid lightgray;">
+                                        <input type="text" name="code" class="form-control "
+                                               value="{{data.buildingName}}"
+                                               placeholder="code"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3 mb-4">
+                            <div class="col-12">
+                                <div class="row mt-3">
+                                    <div class="col-2">
+                                        <span>Date </span>
+                                    </div>
+                                    <div class="col-8" style="border-left: 1px solid lightgray;">
+                                        <input type="number" name="date" class="form-control " placeholder="Date" value="{{data.Address}}"
+                                        />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3 mb-4">
+                            <div class="col-12">
+                                <div class="row mt-3">
+                                    <div class="col-2">
+                                        <span>Amount </span>
+                                    </div>
+                                    <div class="col-8" style="border-left: 1px solid lightgray;">
+                                        <input type="number" name="amount" class="form-control " placeholder="Amount" value="{{data.Address}}"
+                                        />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3 mb-4">
+                            <div class="col-12">
+                                <div class="row mt-3">
+                                    <div class="col-2">
+                                        <span>Particular </span>
+                                    </div>
+                                    <div class="col-8" style="border-left: 1px solid lightgray;">
+                                        <input type="text" name="particular" placeholder="Particular" class="form-control " value="{{data.Address}}"
+                                        />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                         <div class="row mt-3 mb-4">
+                            <div class="col-12">
+                                <div class="row mt-3">
+                                    <div class="col-2">
+                                        <span>Paid Status </span>
+                                    </div>
+                                    <div class="col-8" style="border-left: 1px solid lightgray;">
+                                        <input type="checkbox" name="paidstatus" placeholder="" class=" " value="{{data.Address}}"
+                                        />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+
+{% endblock%}

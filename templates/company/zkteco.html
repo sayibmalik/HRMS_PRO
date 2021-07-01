@@ -1,0 +1,442 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+    .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+
+
+    .note-cov
+    {
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        border-radius: 20px;
+    }
+
+    .curve-around input , .curve-around select
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+
+    .set-opt ul li ,.newordered li{
+    display: inline-block !important;
+    width: 100%;
+
+  }
+
+
+<!--    .new-li {-->
+<!--        font-weight: 600 !important;-->
+<!--    }-->
+
+<!--switch toggle-->
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 5px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #425abc;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #425abc;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+@media (max-width: 500px){
+    .round{
+    margin-top: 10px !important;
+    width: 47px !important;
+    height: 29px !important;
+}
+
+}
+
+
+
+
+</style>
+<div class="main-content">
+    <form action="" method="post">
+        {% csrf_token %}
+        <section class="forms">
+
+            <!-- content -->
+            <div class="container-fluid content-top-gap">
+
+                <!-- breadcrumbs -->
+                <nav aria-label="breadcrumb" class="mb-4 backwhite">
+                    <ol class="breadcrumb my-breadcrumb pt-3">
+                        <li class="breadcrumb-item"><a href="/">
+                            {% if request.session.lang == "EN" %}
+                            <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                            {% else %}
+                            <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                            {% endif %}
+                        </a></li>
+                        <li class="breadcrumb-item " aria-current="page">{% if request.session.lang == "EN" %}
+                            <h6 class="text-primary"><b>Company</b></h6>
+                            {% else %}
+                            شركة
+                            {% endif %}
+                        </li>
+
+                        <li class="breadcrumb-item " aria-current="page">
+                            {% if request.session.lang == "EN" %}
+                            <h6 class="text-primary"><b>Zkteco Integration</b></h6>
+                            {% else %}
+                            الربط مع Zkteco
+                            {% endif %}
+                        </li>
+                    </ol>
+                </nav>
+                <!-- //breadcrumbs -->
+                <!-- forms -->
+
+
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite">
+                        <h4 class="ml-2 text-primary pt-4">
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-500px mr-2"></i><b>Zkteco Integration</b>
+                            {% else %}
+                            <i class="fa fa-500px ml-2"></i><b>الربط مع Zkteco</b>
+                            {% endif %}
+                        </h4>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-12 backwhite pt-5">
+                        <div class="row m-0 d-flex justify-content-center">
+
+                            {% if request.session.lang == "EN" %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-2"
+                                 style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"
+                                                                           style="padding-top: 10px;"><b>Kindly fill
+                                in the following details</b></h3></div>
+                            {% else %}
+                            <div class="col-lg-10 col-md-12 col-12 bg-primary p-3"
+                                 style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b> يرجى ملء
+                                تفاصيل التالية</b></h3></div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row m-0">
+                    <div class="col-lg-12 backwhite ">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-6 col-md-10 col-12 p-4 note-cov mt-5 mb-5" style="position:relative;">
+
+
+                                <div class="col-lg-10 col-12 m-auto  p-3">
+
+                                    {% if request.session.lang == "EN" %}
+                                    <div class="row mb-2">
+                                        <div class="col-2 p-2"><label class="switch">
+                                            <input type="checkbox" name="qoyd" checked>
+                                            <span class="slider round" style="width: 58px;height:33px;"></span>
+
+                                        </label>
+                                        </div>
+
+                                        <div class="col-10 p-2">
+                                            <h6 class="text-dark"><b>Enable</b></h6>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="row mb-2">
+                                        <div class="col-2 p-2"><label class="switch">
+                                            <input type="checkbox" name="qoyd" checked>
+                                            <span class="slider round" style="width: 58px;height:33px;"></span>
+
+                                        </label>
+                                        </div>
+
+                                        <div class="col-10 p-2">
+                                            <h6 class="text-dark"><b>ممكن</b></h6>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="col-lg-10 col-12 m-auto  p-3">
+
+                                    {% if request.session.lang == "EN" %}
+                                    <div class="row mb-2">
+                                        <div class="col-2 p-2"><label class="switch">
+                                            <input type="checkbox" name="zkteco" checked>
+                                            <span class="slider round" style="width: 58px;height:33px;"></span>
+
+                                        </label>
+                                        </div>
+
+                                        <div class="col-10 p-2">
+                                            <h6 class="text-dark"><b>FTP Mode (Recommended)</b></h6>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="row mb-2">
+                                        <div class="col-2 p-2"><label class="switch">
+                                            <input type="checkbox" name="zkteco" checked>
+                                            <span class="slider round" style="width: 58px;height:33px;"></span>
+
+                                        </label>
+                                        </div>
+
+                                        <div class="col-10 p-2">
+                                            <h6 class="text-dark"><b>الربط بواسطة FTP (مستحسن)</b></h6>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="col-lg-10 col-12 text-center">
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <a href="{% url 'zkteco' %}" class="btn btn-danger btn-style ml-3" style="height: 40px;font-size: 16px;padding-top: 8px; margin-top: 30px; border-radius: 20px;">
+                                                {% if request.session.lang == "EN" %}
+                                                Discard
+                                                {% else %}
+                                                تجاهل
+                                                {% endif %}
+                                            </a>
+                                            <button type="submit"
+                                                    class="btn btn-sm  btn-style btn-success  ml-1 text-white "
+                                                    style="height: 40px;font-size: 16px;padding-top: 8px; margin-top: 30px; border-radius: 20px;">
+                                                {% if request.session.lang == "EN" %}
+                                                <i class="fa fa-paper-plane  mr-3"></i>Save
+                                                {% else %}
+                                                يحفظ<i class="fa fa-paper-plane  mr-3"></i>
+                                                {% endif %}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                    {% if request.session.lang == "EN" %}
+                                    <h4 class="p-3 text-white" style="background: #425ABC;"><i class="fa fa-info-circle mr-3"></i><b>Integration Instructions</b></h4>
+                                    {% else %}
+                                    <h4 class="mr-4 p-3 text-white" style="background: #425ABC;"><i class="fa fa-info-circle ml-3"></i><b> تعليمات الربط</b>
+                                    </h4>
+                                    {% endif %}
+                                </div>
+
+                                {% if request.session.lang == "EN" %}
+                                <div class="col-lg-10 col-12 m-auto  p-2">
+                                    <h6 class="mb-3"><b>Step One: BioTime FTP settings</b></h6>
+                                    <ol class="newordered">
+                                        <li class="new-li">In BioTime, go to System → Configuration → FTP Setting</li>
+                                        <li class="new-li">Click Add</li>
+                                        <li class="new-li">
+                                            Enter the following info
+                                            <ul style="list-style-type: circle !important;">
+                                                <li>Host Address: 13.69.49.78</li>
+                                                <li>Port Number: 21</li>
+                                                <li>Authentic Method: Password</li>
+                                                <li>Username: gareeb.com</li>
+                                                <li>Password: admin</li>
+                                            </ul>
+                                        </li>
+                                        <li class="new-li">Click Confirm</li>
+                                    </ol>
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto p-2">
+                                    <h6 class="mb-3">
+                                        <b class="pt-3">Step Two: BioTime Auto Export settings</b>
+                                    </h6>
+                                    <ol class="newordered">
+                                        <li class="new-li">In BioTime, go to System → Integration → Auto Export</li>
+                                        <li class="new-li">Click Add</li>
+                                        <li class="new-li">
+                                            Enter the following info
+                                            <ul style="list-style-type: circle !important;">
+                                                <li>Code: Malachite</li>
+                                                <li>Name: Malachite</li>
+                                                <li>File Name: Malachite</li>
+                                                <li>File Name Date Format: yyyy-MM-DD</li>
+                                                <li>File Name Hour Format: HHmmss</li>
+                                                <li>Data Template: <br>
+                                                    <span class="p-3 " style="width:100%;word-wrap:break-word;display:block;border: 1px solid #eee;">
+                                                        <a href="">{emp_code}\t{first_name}\t{last_name}\t{dept_code}\t{dept_name}\t{date}\t{time}\t{verify_type}\t{punch_state}\t{work_code}\t{card_number}\t{area_name}\t{terminal_alias}\t{terminal_sn}\r\n</a>
+                                                    </span>
+                                                </li>
+                                                <li> Short Date Format: yyyy-MM-DD</li>
+                                                <li> Short Time Format: HH:mm:ss</li>
+                                                <li> ID Digits: 0</li>
+                                                <li> File Format: Csv</li>
+                                            </ul>
+                                        </li>
+                                        <li class="new-li">
+                                            Go to 'Export Time Settings' Tab
+                                            <ul style="list-style-type: circle !important;">
+                                                <li>Interval: 5</li>
+                                                <li>Frequency: Daily</li>
+                                                <li>Day: 1</li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="new-li">
+                                            Go to 'Export Path Setting' Tab
+                                            <ul style="list-style-type: circle !important;">
+                                                <li>Export Path: AutoExport</li>
+                                                <li>FTP Server:host(13.69.49.78</li>
+                                            </ul>
+                                        </li>
+                                        <li class="new-li">Click Confirm</li>
+                                    </ol>
+                                </div>
+
+                                {% else %}
+                                         <div class="col-lg-10 col-12 m-auto  p-2">
+                                    <h6 class="mb-3"><b>تعليمات الربط بواسطة FTP</b></h6>
+                                    <ol class="newordered">
+                                        <li class="new-li">في نظام BioTime, اذهب إلى <br>النظام ← إعدادات ← إعداداتFTP
+                                        </li>
+                                        <li class="new-li">اضغط أضف</li>
+                                        <li class="new-li">
+                                            أدخل المعلومات التالية
+                                            <ul style="list-style-type: circle !important;">
+                                                <li>عنوان المستضيف: 13.69.49.78</li>
+                                                <li>رقم المنفذ: 21</li>
+                                                <li>طريقة التوثيق: Password</li>
+                                                <li>اسم المستخدم:gareeb.co</li>
+                                                <li>كلمة المرور: uL7CoUgc$@FsYlercgZ1</li>
+                                            </ul>
+                                        </li>
+                                        <li class="new-li">اضغط موافقة</li>
+                                    </ol>
+                                </div>
+                                <div class="col-lg-10 col-12 m-auto p-2">
+                                    <h6 class="mb-3">
+                                        <b class="pt-3">الخطوة الثانية: اعدادت التصدير التلقائي</b>
+                                    </h6>
+                                    <ol class="newordered">
+                                        <li class="new-li">في نظام BioTime, اذهب إلى
+                                            النظام ← تكامل ← تصدير تلقائي
+                                        </li>
+                                        <li class="new-li">اضغط أضف</li>
+                                        <li class="new-li">
+                                            أدخل المعلومات التالية
+                                            <ul style="list-style-type: circle !important;">
+
+
+
+
+                                                : HHmmss
+                                                <li> الرمز: Malachite</li>
+                                                <li>الإسم: Malachite</li>
+                                                <li>اسم الملف: Malachite</li>
+                                                <li>التاريخ: yyyy-MM-DD</li>
+                                                <li>HHmmss:الوقت</li>
+                                                <li>قالب البيانات<br>
+                                                    <span class="p-3 " style="width:100%;word-wrap:break-word;display:block;border: 1px solid #eee;">
+                                                        <a href="">{emp_code}\t{first_name}\t{last_name}\t{dept_code}\t{dept_name}\t{date}\t{time}\t{verify_type}\t{punch_state}\t{work_code}\t{card_number}\t{area_name}\t{terminal_alias}\t{terminal_sn}\r\n</a>
+                                                    </span>
+                                                </li>
+                                                <li>تاريخ بصيغة قصيرة: yyyy-MM-DD</li>
+                                                <li>وقت بصيغة قصيرة: HH:mm:ss</li>
+                                                <li>الرقم الشخصي: 0</li>
+                                                <li>الشكل: Csv</li>
+                                            </ul>
+                                        </li>
+                                        <li class="new-li">
+                                            اذهب إلى تبويبة 'تصدير إعدادات الوقت' Tab
+                                            <ul style="list-style-type: circle !important;">
+                                                <li>فترة زمنية: 5</li>
+                                                <li>التردد: يومي</li>
+                                                <li>اليوم: 1</li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="new-li">
+                                            إذهب إلى 'إعدادات مسار التصدير' Tab
+                                            <ul style="list-style-type: circle !important;">
+                                                <li>مسار التصدير: AutoExport</li>
+                                                <li>خادم FTP : <br>host(13.69.49.78)</li>
+                                            </ul>
+                                        </li>
+                                        <li class="new-li">اضغط موافقة</li>
+                                    </ol>
+                                </div>
+
+                                {% endif %}
+
+                                <i class="fa fa-500px fa-3x text-success" aria-hidden="true"
+                                   style="position: absolute; top: -17px;left:-12px;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+    </form>
+
+</div>
+<!-- //forms  -->
+<!-- //content -->
+
+{% endblock%}

@@ -1,0 +1,127 @@
+{% extends 'base.html'%}
+{% block content%}
+<div class="main-content">
+    <div class="container-fluid content-top-gap">
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Appraisals</li>
+            </ol>
+        </nav>
+        <section class="forms">
+            <div class="card card_border py-2 mb-4">
+                <div class="cards__heading">
+                    <div class="row">
+                        <div class="col-9">
+                            <h3><span>Appraisals</span></h3>
+                        </div>
+                        <div class="col-3">
+
+<!--                            <a href="/" class="btn btn-lg btn-outline-primary btn-style border-btn">Import</a>-->
+                         <a href="/HR/createappraisals"> <button type="submit" class="btn btn-primary btn-style ">Create</button></a>
+                            <!--                            <div class="row">-->
+                            <!--                                <div class="col-6"></div>-->
+                            <!--                                <div class="col-6">-->
+                            <!--                                     <img src="/static/assets/icons/tile.svg" class="icon"/>-->
+                            <!--                                     <img src="/static/assets/icons/list-text.svg" class="icon"/>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <form action="#" method="post">
+                        <div class="row">
+                            <div class="col-3">
+                                <h5 style="text-align: center;">To Start</h5>
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <div class="card">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text  mb-4">This is another card with title and
+                                                    supporting text below. This card has
+                                                    some
+                                                    additional content to make it slightly taller overall.</p>
+                                                <p class="card-text"><small class="text-muted">Last updated 3 mins
+                                                    ago</small></p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-12">
+                                        <div class="card ">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text  mb-4">This is another card with title and
+                                                    supporting text below. This card has
+                                                    some
+                                                    additional content to make it slightly taller overall.</p>
+                                                <p class="card-text"><small class="text-muted">Last updated 3 mins
+                                                    ago</small></p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <h5 style="text-align: center;">Sent Mail</h5>
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <div class="card ">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text  mb-4">This is another card with title and
+                                                    supporting text below. This card has
+                                                    some
+                                                    additional content to make it slightly taller overall.</p>
+                                                <p class="card-text"><small class="text-muted">Last updated 3 mins
+                                                    ago</small></p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <h5 style="text-align: center;">Done</h5>
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <div class="card bg-primary text-white text-center p-3">
+
+                                            <blockquote class="blockquote mb-0">
+                                                <p class="text-white mb-4">Lorem ipsum dolor sit amet, consectetur
+                                                    adipiscing elit. Integer posuere
+                                                    erat.
+                                                </p>
+                                                <footer class="blockquote-footer text-white">
+                                                    <small>
+                                                        Someone famous in <cite title="Source Title">Source Title</cite>
+                                                    </small>
+                                                </footer>
+                                            </blockquote>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <h5 style="text-align: center;">Cancel</h5>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+</div>
+{% endblock%}

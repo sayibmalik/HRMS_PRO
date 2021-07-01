@@ -1,0 +1,295 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+    .backwhite
+    {
+        padding: 23px;
+        background: #fff;
+    }
+
+</style>
+<div class="main-content" xmlns:display="http://www.w3.org/1999/xhtml" xmlns:flex="http://www.w3.org/1999/xhtml">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b>Home</b></h6>
+                    {% else %}
+                    <h6><b>الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Apply Job
+                    {% else %}
+                    التقدم لوظيفة
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+
+            <div class="row m-0">
+                <div class="col-12 backwhite pt-5 pb-5">
+                    <div class="row m-0 d-flex justify-content-center">
+
+                        {% if request.session.lang == "EN" %}
+                        <div class="col-lg-10 col-md-12 col-12 bg-primary p-2"
+                             style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"
+                                                                       style="padding-top: 10px;"><b>Apply for
+                            the job</b></h3></div>
+                        {% else %}
+                        <div class="col-lg-10 col-md-12 col-12 bg-primary p-3"
+                             style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b>طلب للحصول على
+                            وظيفة</b></h3></div>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card card_border py-2 mb-4">
+                <!--                <div class="cards__heading">-->
+                <!--                    <div class="row">-->
+                <!--                        <div class="col">-->
+                <!--                            <h3> Employees</h3>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                    <div class="row mt-3">-->
+                <!--                        <div class="col-6">-->
+                <!--                            <a href="/" class="btn btn-sm btn-outline-primary btn-style border-btn">Import</a>-->
+                <!--                            <a href="{% url 'createemployees' %}">-->
+                <!--                                <button type="submit" class="btn btn-primary btn-style ">Create</button>-->
+                <!--                            </a>-->
+                <!--                        </div>-->
+                <!--                        &lt;!&ndash;                        <div class="col-6">&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            <div style="float: right;">&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                <span>1-42/42</span>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                <a class="btn" style="border: 1px solid lightgray;" href="/">❮ </a>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                <a class="btn" style="border: 1px solid lightgray;" href="/"> ❯</a>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                <a class="btn" style="border: 1px solid lightgray;" href="/"> list </a>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                <a class="btn" style="border: 1px solid lightgray;" href="/"> grid</a>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                            </div>&ndash;&gt;-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <div class="card-body">
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-8  mx-auto col-12">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-12  ">
+                                        <div class="card"
+                                             style="box-shadow: 3px 3px 10px rgb(0 0 0 / 30%); border-radius: 30px;">
+                                            <div class="card-body p-3">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-12 col-12">
+                                                        <img src="/static/assets/images/jobb.jpg" alt="" class=""
+                                                             style="border-radius: 20px">
+                                                    </div>
+
+                                                    <div class="col-lg-6 col-md-12 col-12">
+
+                                                        <h4 class="newshead pt-4 text-capitalize text-primary font-weight-bold">
+                                                            <b>{{data.title}}</b>
+                                                        </h4>
+                                                        <a href="/place/{{data.company.id}}?lang=EN" class="para"
+                                                           style="font-size:15px;  line-height:25px;color:#000;text-align:left">
+                                                            <div class="profile"
+                                                                 style=" background-image: url('/media/{{data.company.logo}}'); display:inline-block">
+                                                            </div>
+                                                            <br/><h5><b class="text-success text-capitalize">{{data.company}}</b>
+                                                        </h5>
+                                                        </a>
+                                                        <div class="row mt-3">
+                                                            <div class="col-lg-12 col-12 mt-3">
+
+                                                                <div class="newspic">
+                                                                    <a href="#" class="cancor">
+                                                                        <span class="text-success font-weight-bold">{{data.user.first_name}} {{data.user.last_name}}</span>
+                                                                    </a>
+                                                                    <p class="litepara text-success">
+                                                                        {{data.user.email}}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 col-12 pt-3">
+                                                                <!--                                                    <p class="litepara" style="margin-bottom:5px">Apply Job</p>-->
+                                                                <div style="display:flex">
+                                                                    <button class="subscribe2 btn btn-success"
+                                                                            data-toggle="modal"
+                                                                            data-target="#apply">
+                                                                        {% if request.session.lang == "EN" %}
+                                                                        Apply Job
+                                                                        {% else %}
+                                                                        التقدم لعمل
+                                                                        {% endif %}
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            <!--                                                <div class="frame mt-4" style="width:100%; height:450px; background: url('/media/{{data.logo}}') no-repeat;background-size:cover">-->
+                                                            <!--                  </div>-->
+                                                            <div class="col-12 mt-4">
+                                                                <h6 class="text-success"><b>Description</b></h6>
+                                                                {{data.Description}}
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    {% if request.session.ishr %}
+                                    <div class="col-12 mt-4">
+                                        <div class="card mt-5">
+                                            <div class="card-body p-3 ">
+                                                <div class="row m-0">
+                                                    <div class="col-12 ">
+                                                        <h4>
+                                                            {% if request.session.lang == "EN" %}
+                                                            <i class="fa fa-file-text-o mr-2 text-success"></i><b
+                                                                class="text-success">Resumes</b>
+                                                            {% else %}
+                                                            <i class="fa fa-file-text-o ml-2 text-success"></i><b
+                                                                class="text-success">يستأنف</b>
+                                                            {% endif %}
+                                                        </h4>
+                                                    </div>
+                                                    <div class="col-12 pt-4">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover table-bordered">
+                                                                <thead class="text-center thead-dark">
+                                                                <tr>
+                                                                    <th>
+                                                                        {% if request.session.lang == "EN" %}
+                                                                        Job
+                                                                        {% else %}
+                                                                        وظيفة
+                                                                        {% endif %}
+                                                                    </th>
+                                                                    <th>
+                                                                        {% if request.session.lang == "EN" %}
+                                                                        Name
+                                                                        {% else %}
+                                                                        اسم
+                                                                        {% endif %}
+                                                                    </th>
+                                                                    <th>
+                                                                        {% if request.session.lang == "EN" %}
+                                                                        Email
+                                                                        {% else %}
+                                                                        بريد الالكتروني
+                                                                        {% endif %}
+                                                                    </th>
+                                                                    <th style="width:150px" colspan="2">
+                                                                        {% if request.session.lang == "EN" %}
+                                                                        Download Resume
+                                                                        {% else %}
+                                                                        تحميل السيرة الذاتية
+                                                                        {% endif %}
+                                                                    </th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody class="text-center font-weight-bold">
+                                                                {% for n in data1 %}
+                                                                <tr>
+
+
+                                                                    <td>{{n.job}}</td>
+                                                                    <td>{{n.user.first_name}}</td>
+                                                                    <td>{{n.user.email}}</td>
+                                                                    <td>
+                                                                        <div class="row m-0">
+                                                                            <div class="col-6 text-center"><a
+                                                                                    style="font-size:20px;color:#4755AB"
+                                                                                    href="/media/{{n.CV}}"
+                                                                                    target="_blank"><i
+                                                                                    class="fa fa-download m-edit text-success"></i></a>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                {% endfor %}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+<!-- Modal -->
+<div id="apply" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header d-inline">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                <div class="logintxt" id="place">
+                    Resume
+                </div>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body p-4">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{data.id}}" id="jobid" name="jobid"/>
+
+                    <div class="form-group">
+                        <label for="resume" class="formlabel">CV:</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="resume" name="resume"
+                                   accept="image/png, image/jpeg" required="">
+                            <label class="custom-file-label" for="resume">Choose File</label>
+                        </div>
+                    </div>
+
+                    <div style=" text-align: center; display: block; margin-top: 60px;">
+                        <button type="submit" class="btn loginbtn btn-primary">Apply</button>
+                    </div>
+
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock%}

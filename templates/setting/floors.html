@@ -1,0 +1,111 @@
+{% extends 'base.html'%}
+
+{% block content%}
+
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Floors</li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+
+            <div class="card card_border py-2 mb-4">
+                <div class="cards__heading">
+                    <div class="row">
+                        <div class="col-9">
+                            <h3><span>Floors</span></h3>
+                        </div>
+                        <div class="col-3 ">
+
+                            <a href="/Setting/createfloor" class="btn btn-primary btn-style"
+                            style= "margin-left: 175px"> Create</a>
+<!--                            <button type="submit" class="btn btn-lg btn-outline-primary btn-style border-btn">Import</button>-->
+                        </div>
+
+                    </div>
+<!--                    <div class="row">-->
+<!--                        <div class="col-8"></div>-->
+<!--                        <div class="col-4 mt-3" style="margin-left: 900px;">-->
+<!--                            <ul class="pagination ">-->
+<!--                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
+<!--                                <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+<!--                                <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--                                <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--                                <li class="page-item"><a class="page-link" href="#">Next</a></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+                <div class="card-body">
+
+                        <div class="container-fluid">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+<!--                                    <th>Floor</th>-->
+                                    <th>Title</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for d in data %}
+                                <tr>
+
+<!--                                    <td>{{d.floor}}</td>-->
+                                    <td>{{d.title}}</td>
+                                    <td><a href="/Setting/editfloor/{{d.id}}"><i
+                                            style="color: #4755AB;font-size: 25px;padding: 11px;"
+                                            class="fa fa-pencil-square-o"
+                                            aria-hidden="true"></i></a></td>
+                                    <td>
+                                        <form action="/Setting/delfloor/" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit"
+                                                    style="color: #4755AB;font-size: 25px;padding: 3px;margin-left: 8px; border:none;"
+                                                    value="{{d.id}}" name="floor_id"><i class="fa fa-trash-o"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+
+
+                                <!--                                <tr>-->
+                                <!--                                    <th><input type="checkbox"></th>-->
+                                <!--                                    <td></td>-->
+                                <!--                                    <td><a href="/approveannouncements">Harthal</a></td>-->
+                                <!--                                    <td>Waiting for Approval</td>-->
+                                <!--                                </tr>-->
+                                <!--                                <tr>-->
+                                <!--                                    <th><input type="checkbox"></th>-->
+                                <!--                                    <td>GA 002</td>-->
+                                <!--                                    <td><a href="/approveannouncements">Seminar</a></td>-->
+                                <!--                                    <td>Done</td>-->
+                                <!--                                </tr>-->
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+{% endblock%}

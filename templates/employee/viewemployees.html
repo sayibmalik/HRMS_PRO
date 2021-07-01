@@ -1,0 +1,397 @@
+{% extends 'base.html'%}
+
+{% block content%}
+
+<style>
+    .empnum,.newemp-title,.newemp-job
+    {
+      white-space: nowrap;
+      width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cov-empimg
+    {
+        height: 100px;
+        width: 100px;
+        overflow: hidden;
+        border: 1px solid #d6d6d6;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        border-radius: 15px 0 15px 0;
+        padding: 5px;
+    }
+
+    .cov-empimg img
+    {
+        height: 100%;
+        width: 100%;
+    }
+
+    .newemp-title,.newemp-job
+    {
+        width: 178px !important;
+    }
+
+    .newemp-job{
+        position: relative;
+    }
+
+    .new-emp-det
+    {
+        font-size: 14px;
+        min-height: 25px;
+        padding-top: 2px;
+    }
+
+    .dotted-btn
+    {
+        min-height: 34px;
+        font-size: 18px;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+     .dotted-btn
+     {
+        outline: none !important;
+        box-shadow: none !important;
+     }
+
+     .dropleft .dropdown-toggle::before
+     {
+      display: none;
+     }
+
+
+</style>
+<div class="main-content" xmlns:display="http://www.w3.org/1999/xhtml" xmlns:flex="http://www.w3.org/1999/xhtml">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs oldcode-->
+        <!--        <nav aria-label="breadcrumb" class="mb-4">-->
+        <!--            <ol class="breadcrumb my-breadcrumb">-->
+        <!--                <li class="breadcrumb-item"><a href="/">-->
+        <!--                {% if request.session.lang == "EN" %}-->
+        <!--                                         Home-->
+        <!--                                         {% else %}-->
+        <!--                                         الصفحة الرئيسية-->
+        <!--                                         {% endif %}-->
+        <!--                </a></li>-->
+        <!--                <li class="breadcrumb-item active" aria-current="page">-->
+        <!--                {% if request.session.lang == "EN" %}-->
+        <!--                                         Employees-->
+        <!--                                         {% else %}-->
+        <!--                                         الموظفين-->
+        <!--                                         {% endif %}-->
+        <!--                </li>-->
+        <!--            </ol>-->
+        <!--        </nav>-->
+        <!-- //breadcrumbs  oldcode ends-->
+
+
+        <!--*************New code****************-->
+        <!--new code start-->
+        <section>
+            <div class="row m-0 mb-4" style="">
+                <div class="col-lg-6 p-3  emp-lst "
+                     style="border-top-left-radius: 10px;border-bottom-left-radius: 10px;background: #fff;">
+                    <div class="row m-0">
+                        <div class="col-6 col-sm-8">
+                            {% if request.session.lang == "EN" %}
+                            <h4 class="text-primary pt-2"><strong>Employees List</strong></h4>
+                            {% else %}
+                            <h4 class="text-primary pt-2"><strong>قائمة الموظفين</strong></h4>
+                            {% endif %}
+
+                        </div>
+                        <div class="col-6 col-sm-4 pt-2">
+                            {% if request.session.lang == "EN" %}
+                            <a href="{% url 'ViewEmployees' %}"
+                               style="font-size: 24px;border: 1px solid #eee;padding:6px;border-top-left-radius: 10px;border-bottom-left-radius: 10px;"
+                               title="Tile View"><i class="fa fa-th fa-1x" aria-hidden="true"></i></a>
+                            <a href="#"
+                               style="font-size: 24px;border: 1px solid #eee;padding:6px;border-top-right-radius: 10px;border-bottom-right-radius: 10px;"
+                               title="List View"><i class="fa fa-list-ul" aria-hidden="true"></i></a>
+                            {% else %}
+                            <a href="#"
+                               style="font-size: 24px;border: 1px solid #eee;padding:6px;border-top-right-radius: 10px;border-bottom-right-radius: 10px;"
+                               title="List View"><i class="fa fa-list-ul" aria-hidden="true"></i></a>
+                            <a href="{% url 'ViewEmployees' %}"
+                               style="font-size: 24px;border: 1px solid #eee;padding:6px;border-top-left-radius: 10px;border-bottom-left-radius: 10px;"
+                               title="Tile View"><i class="fa fa-th fa-1x" aria-hidden="true"></i></a>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-6 p-3  d-flex justify-content-end"
+                     style="border-top-right-radius: 10px;border-bottom-right-radius: 10px;background: #fff;">
+                    <!--create employee-->
+                    {% if request.session.lang == "EN" %}
+                    <a href="{% url 'createemployees' %}" class="btn btn-primary text-white d-inline mr-3 mt-1"
+                       style="min-height: 34px;font-size: 14px;">
+                        <i class="fa fa-plus mr-2"></i>Add Employee</a>
+                    {% else %}
+                    <a href="{% url 'createemployees' %}" class="btn btn-primary text-white d-inline ml-3 mt-1"
+                       style="min-height: 34px;font-size: 14px;">
+                        <i class="fa fa-plus ml-2"></i>أضف موظف</a>
+                    {% endif %}
+                    <!--Import-->
+                    <div class="dropdown  d-inline  pt-1">
+                        {% if request.session.lang == "EN" %}
+
+                        <button type="button" class="btn btn-primary dropdown-toggle text-white" data-toggle="dropdown"
+                                style="min-height: 39px;font-size: 14px">
+                            <i class="fa fa-download mr-2" aria-hidden="true"></i> Import / Export
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">export to excel </a>
+                        </div>
+                        {% else %}
+                        <button type="button" class="btn btn-primary dropdown-toggle text-white" data-toggle="dropdown"
+                                style="min-height: 39px;font-size: 14px">
+                            <i class="fa fa-download ml-2" aria-hidden="true"></i> استيراد / تصدير
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">تصدير الى ملف اكسل</a>
+                        </div>
+
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--new code ends-->
+
+        <section class="empp-cards-new ">
+            <form action="">
+                <div class="row m-0">
+                    {% for d in data %}
+                    <div class="col-lg-3 mt-4 d-flex justify-content-center col-md-6 col-12 p-3">
+                        <div class="card"
+                             style="width: 18rem; border-radius: 20px;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
+                            <div class="card-body">
+                                <div class="row m-0">
+                                    <div class="col-6 p-2 " style="position: relative">
+                                        <h6 class="empnum" title="{{d.employeenumber}}"><strong>{{d.employeenumber}}</strong></h6>
+                                    </div>
+                                    <div class="col-6 p-2">
+                                        {% if request.session.lang == "EN" %}
+                                        <div class="dropdown dropleft" style="position: absolute;top: 0; right: 10px">
+                                            <button type="button" class="btn dropdown-toggle text-dark dotted-btn"
+                                                    data-toggle="dropdown"
+                                                    style="">
+                                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                            </button>
+
+
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="{% url 'employees' d.id %}"><i
+                                                        class="fa fa-info-circle mr-3 text-primary"></i>details</a>
+<!--                                                <a class="dropdown-item" href="#"><i-->
+<!--                                                        class="fa fa-envelope mr-3 text-primary"></i>send invitation</a>-->
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        <div class="dropdown dropleft" style="position: absolute;top: 0; left: 10px">
+                                            <button type="button" class="btn dropdown-toggle text-dark dotted-btn"
+                                                    data-toggle="dropdown"
+                                                    style="">
+                                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                            </button>
+
+
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item text-right" href="{% url 'employees' d.id %}"><i
+                                                        class="fa fa-info-circle ml-3 text-primary"></i>تفاصيل</a>
+<!--                                                <a class="dropdown-item text-right" href="#"><i-->
+<!--                                                        class="fa fa-envelope ml-3 text-primary"></i> ارسال دعوة</a>-->
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="row m-0">
+                                    <div class="col-12 p-3  d-flex justify-content-center align-items-center">
+                                        <div class="cov-empimg">
+                                            <img src="/static/assets/images/user.svg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="card-title newemp-title pt-2 text-center text-capitalize m-auto"
+                                    title="{{d.user.first_name}} {{d.user.last_name}}"><strong>{{d.user.first_name}} {{d.user.last_name}}</strong></h5>
+                                <h6 class="card-subtitle newemp-job pt-2 text-center text-capitalize m-auto"
+                                    title="{{d.Job_position}}">
+                                    {% if request.session.lang == "EN" %}
+                                    {{d.Job_position.jobtitleEn}}
+                                    {% else %}
+                                    {{d.Job_position.jobtitleAr}}
+                                    {% endif %}
+                                </h6>
+                                <div class="col-12">
+                                    <hr>
+                                </div>
+
+                                <div class="row m-0">
+                                    <div class="col-12 d-flex justify-content-center align-items-center">
+                                        <h6 class="newemp-job text-center">{{d.Department}}</h6>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </form>
+        </section>
+        <section class="d-none">
+            <div class="row m-0">
+                <div class="col-12 p-3 mt-5" style="background: #fff;">
+                    <nav aria-label="...">
+                        <ul class="pagination">
+                            <li class="page-item ">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!--*************New code ends here****************-->
+
+
+<!--        forms old code-->
+<!--        <section class="forms">-->
+
+<!--            <div class="card card_border py-2 mb-4">-->
+<!--                <div class="cards__heading">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col">-->
+<!--                            <h3>-->
+<!--                                {% if request.session.lang == "EN" %}-->
+<!--                                Employees-->
+<!--                                {% else %}-->
+<!--                                الموظفين-->
+<!--                                {% endif %}-->
+<!--                            </h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row mt-3">-->
+<!--                        <div class="col-6">-->
+<!--                            <a href="/" class="btn btn-sm btn-outline-primary btn-style border-btn">-->
+<!--                                {% if request.session.lang == "EN" %}-->
+<!--                                Import-->
+<!--                                {% else %}-->
+<!--                                استيراد-->
+<!--                                {% endif %}-->
+<!--                            </a>-->
+<!--                            <a href="{% url 'createemployees' %}">-->
+<!--                                <button type="submit" class="btn btn-primary btn-style ">-->
+<!--                                    {% if request.session.lang == "EN" %}-->
+<!--                                    Create-->
+<!--                                    {% else %}-->
+<!--                                    خلق-->
+<!--                                    {% endif %}-->
+<!--                                </button>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash;                        <div class="col-6">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            <div style="float: right;">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                <span>1-42/42</span>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                <a class="btn" style="border: 1px solid lightgray;" href="/">❮ </a>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                <a class="btn" style="border: 1px solid lightgray;" href="/"> ❯</a>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                <a class="btn" style="border: 1px solid lightgray;" href="/"> list </a>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                <a class="btn" style="border: 1px solid lightgray;" href="/"> grid</a>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="card-body">-->
+<!--                    <form action="" method="post">-->
+<!--                        <div class="container-fluid">-->
+<!--                            <div class="row">-->
+<!--                                {% for d in data %}-->
+<!--                                <div class="col-lg-6 col-md-10 col-12 mt-2">-->
+<!--                                    <div class="card emp-ccd ">-->
+<!--                                        <div class="card-body">-->
+<!--                                            <div class="row">-->
+<!--                                                <div class="col-4">-->
+<!--                                                    <div class="img-cover-ecard mt-4 m-auto" style="">-->
+<!--                                                        <img src="/static/assets/images/profileimg.jpg"-->
+<!--                                                             class="" style="">-->
+<!--                                                        <div class="col p-0">-->
+<!--                                                            <a href="{% url 'employees' d.id %}"-->
+<!--                                                               class="btn float-center btn-style2 mt-4 text-white">-->
+<!--                                                                {% if request.session.lang == "EN" %}-->
+<!--                                                                View-->
+<!--                                                                {% else %}-->
+<!--                                                                عرض-->
+<!--                                                                {% endif %}-->
+<!--                                                            </a>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                                <div class="col-8">-->
+<!--                                                    <div class="mt-2">-->
+<!--                                                        <div class="text-truncate section-emptl">-->
+<!--                                                            <h5 class="text-center text-truncate"><a-->
+<!--                                                                    href="{% url 'employees' d.id %}"-->
+<!--                                                                    class="text-uppercase emp-ctitle "-->
+<!--                                                                    title="{{d.user.first_name}} {{d.user.last_name}}"-->
+<!--                                                                    style="font-size:20px;"><b>{{d.user.first_name}}-->
+<!--                                                                {{d.user.last_name}}</b></a></h5>-->
+<!--                                                        </div>-->
+<!--                                                        <hr>-->
+<!--                                                        <p class="mt-4 emp-cdet"><i-->
+<!--                                                                class="fa fa-user mr-3 empl-icons"></i>{{d.Job_position}}-->
+<!--                                                        </p>-->
+<!--                                                        <p class="mt-2 emp-cdet"><i-->
+<!--                                                                class="fa fa-building-o mr-3 empl-icons"></i>{{d.Department}}-->
+<!--                                                        </p>-->
+<!--                                                        <p class="mt-2 emp-cdet" style="font-size: 13px;"><i-->
+<!--                                                                class="fa fa-envelope mr-3 empl-icons"></i>{{d.user}}-->
+<!--                                                        </p>-->
+<!--                                                        <p class="mt-2 emp-cdet"><i-->
+<!--                                                                class="fa fa-user-circle mr-3 empl-icons"></i>{{d.gender}}-->
+<!--                                                        </p>-->
+<!--                                                        <p class="mt-2 emp-cdet"><i-->
+<!--                                                                class="fa fa-id-card mr-3 empl-icons"></i>{{d.employeenumber}}-->
+<!--                                                        </p>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                {% endfor %}-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+
+
+<!--        </section>-->
+<!--        //forms oldcode ends-->
+
+    </div>
+    <!-- //content -->
+
+</div>
+<script src="/static/assets/js/ext.js"></script>
+{% endblock%}

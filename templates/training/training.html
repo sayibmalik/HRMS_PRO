@@ -1,0 +1,489 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+     .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+    .curve-around input , .curve-around select
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+<div class="main-content" xmlns:display="http://www.w3.org/1999/xhtml" xmlns:flex="http://www.w3.org/1999/xhtml">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Training Courses
+                    {% else %}
+                    الدورات التدريبية
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <div class="row m-0">
+                <div class="col-lg-12 backwhite">
+                    <h4 class="ml-2 text-primary pt-4">
+                        {% if request.session.lang == "EN" %}
+                        <i class="fa fa-graduation-cap mr-2"></i><b>Training</b>
+                        {% else %}
+                        <i class="fa fa-graduation-cap ml-2"></i><b>تمرين</b>
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="col-lg-12 p-2 backwhite">
+                    <a href="/app/dashboard" class="btn btn-danger btn-style ml-3"
+                       style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                        Discard
+                        {% else %}
+                        تجاهل
+                        {% endif %}
+                    </a>
+                    {% if request.session.ishr %}
+                    <a href="{% url 'Createraining' %}" class="btn btn-success btn-style ml-3"
+                       style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                        Create
+                        {% else %}
+                        خلق
+                        {% endif %}
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row m-0 backwhite">
+                {% for d in data %}
+                <div class="col-lg-4 col-md-6 col-12 backwhite d-flex justify-content-center">
+                    <div class="card text-center" style="width:430px; height:510px;">
+                        <div class="card-header">
+                            <i class="fa fa-graduation-cap mr-2"></i><b>
+                            {% if request.session.lang == "EN" %}
+                            {{d.EN_Title}}
+                            {% else %}
+                            {{d.AR_Title}}
+                            {% endif %}
+                        </b>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <h6 style="font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        Course Name
+                                        {% else %}
+                                        اسم الدورة
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        {{d.EN_Title}}
+                                        {% else %}
+                                        {{d.AR_Title}}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 style="    font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        Course Instructor
+                                        {% else %}
+                                        مقدم الدورة
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        {{d.EN_courceInstructions}}
+                                        {% else %}
+                                        {{d.AR_courceInstructions}}
+                                        {% endif %}
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <h6 style="    font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                        {% if request.session.lang == "EN" %}
+                                        Start Date
+                                        {% else %}
+                                        تاريخ البداية
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+                                         {% if request.session.lang == "EN" %}
+                                        {{d.startDate}}
+                                        {% else %}
+                                        {{d.startDate}}
+                                        {% endif %}
+
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 style="    font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+                                         {% if request.session.lang == "EN" %}
+                                         Course Days
+                                        {% else %}
+                                        مدة الدورة بالأيام
+                                        {% endif %}
+
+
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+
+                                     {% if request.session.lang == "EN" %}
+                                         {{d.courceDays}}
+                                        {% else %}
+                                         {{d.courceDays}}
+                                        {% endif %}
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <h6 style="    font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+
+                                     {% if request.session.lang == "EN" %}
+                                         Available Seats
+                                        {% else %}
+                                         المقاعد المتبقية
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+
+                                     {% if request.session.lang == "EN" %}
+                                         {{d.numberOfSeats}}
+                                        {% else %}
+                                         {{d.numberOfSeats}}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+
+                                </div>
+
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <h6 style="    font-size: 1rem;color: #a7abc3;padding-bottom: .5rem;font-weight: 500;display: block;font-weight:bold;">
+
+                                    {% if request.session.lang == "EN" %}
+                                         Address
+                                        {% else %}
+                                         العنوان
+                                        {% endif %}
+                                    </h6>
+                                    <p style="font-size: 1.4rem;font-weight: 600;color: #6c7293;display: block;font-weight:bold;">
+
+                                     {% if request.session.lang == "EN" %}
+                                       {{d.address}}
+                                        {% else %}
+                                         {{d.address}}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-footer text-muted">
+                            {% if request.session.ishr %}
+                            <a href="{% url 'editTraining' d.id %}" class="btn  btn-style ml-3"
+                               style="height: 35px;font-size: 14px;padding-top: 4px; border:1px solid black;">
+                                {% if request.session.lang == "EN" %}
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+                                {% else %}
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> يحرر
+                                {% endif %}
+                            </a>
+                            {% endif %}
+
+                            <a href="{% url 'trainingDetails' d.id %}" class="btn btn-success btn-style ml-3"
+                               style="height: 35px;font-size: 14px;padding-top: 4px;">
+                                {% if request.session.lang == "EN" %}
+                                <i class="fa fa-info-circle" aria-hidden="true"></i> Details
+                                {% else %}
+                                <i class="fa fa-info-circle" aria-hidden="true"></i> تفاصيل
+                                {% endif %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+
+            <!--*********OLD CODE*********-->
+            <!--            <div class="card card_border py-2 mb-4">-->
+            <!--                <div class="cards__heading">-->
+            <!--                    <div class="row">-->
+            <!--                        <div class="col">-->
+            <!--                            <h3>-->
+            <!--                                {% if request.session.lang == "EN" %}-->
+            <!--                                Jobs-->
+            <!--                                {% else %}-->
+            <!--                                وظائف-->
+            <!--                                {% endif %}-->
+            <!--                            </h3>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div class="row mt-3">-->
+            <!--                        {% if not request.session.superuser %}-->
+            <!--                        {% if request.session.ishr %}-->
+            <!--                        <div class="col-6">-->
+            <!--                            <a href="/" class="btn btn-sm btn-outline-primary btn-style border-btn">-->
+            <!--                                {% if request.session.lang == "EN" %}-->
+            <!--                                Cancel-->
+            <!--                                {% else %}-->
+            <!--                                إلغاء-->
+            <!--                                {% endif %}-->
+            <!--                            </a>-->
+            <!--                            <a data-toggle="modal"-->
+            <!--                               data-target="#exampleModal">-->
+            <!--                                <button class="btn btn-primary btn-style ">-->
+            <!--                                    {% if request.session.lang == "EN" %}-->
+            <!--                                    Create-->
+            <!--                                    {% else %}-->
+            <!--                                    إلغاء-->
+            <!--                                    {% endif %}-->
+            <!--                                </button>-->
+            <!--                            </a>-->
+            <!--                        </div>-->
+            <!--                        {% endif %}-->
+            <!--                        {% endif %}-->
+            <!--                        &lt;!&ndash;                        <div class="col-6">&ndash;&gt;-->
+            <!--                        &lt;!&ndash;                            <div style="float: right;">&ndash;&gt;-->
+            <!--                        &lt;!&ndash;                                <span>1-42/42</span>&ndash;&gt;-->
+            <!--                        &lt;!&ndash;                                <a class="btn" style="border: 1px solid lightgray;" href="/">❮ </a>&ndash;&gt;-->
+            <!--                        &lt;!&ndash;                                <a class="btn" style="border: 1px solid lightgray;" href="/"> ❯</a>&ndash;&gt;-->
+            <!--                        &lt;!&ndash;                                <a class="btn" style="border: 1px solid lightgray;" href="/"> list </a>&ndash;&gt;-->
+            <!--                        &lt;!&ndash;                                <a class="btn" style="border: 1px solid lightgray;" href="/"> grid</a>&ndash;&gt;-->
+            <!--                        &lt;!&ndash;                            </div>&ndash;&gt;-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                <div class="card-body">-->
+
+            <!--                    <div class="container-fluid">-->
+            <!--                        <div class="row">-->
+            <!--                            {% for d in data %}-->
+            <!--                            <div class="col-6">-->
+
+
+            <!--                                <div class="card mb-4 emp-ccd1" style="min-height: 245px !important;">-->
+            <!--                                    <div class="card-body p-0">-->
+            <!--                                        <div class="row">-->
+            <!--                                            <div class="col-5 d-flex justify-content-center" style="position:relative;">-->
+
+            <!--                                                <a href="">-->
+            <!--                                                    <div class="back-section col-" style="width:140px; height: 140px; ">-->
+            <!--                                                        <img src="/static/assets/images/profileimg.jpg" alt="" class=""-->
+            <!--                                                             style="width: 100%;height: 100%; border-radius: 50%;border: 3px solid gray;">-->
+            <!--                                                    </div>-->
+            <!--                                                </a>-->
+            <!--                                                &lt;!&ndash;                                                <a href="" class="poster h-100 w-100 d-block"&ndash;&gt;-->
+            <!--                                                &lt;!&ndash;                                                   style="background-image: url('');background-repeat:no-repeat;border-radius: 50%;">&ndash;&gt;-->
+            <!--                                                &lt;!&ndash;                                                </a>&ndash;&gt;-->
+            <!--                                                <div class="actions" style="position: absolute;bottom: -18px">-->
+            <!--                                                    <div class="float-left ">-->
+            <!--                                                        <form action="{% url 'deljob' %}" method="post">-->
+            <!--                                                            {% csrf_token %}-->
+            <!--                                                            <button type="submit"-->
+            <!--                                                                    style="color: #4755AB;font-size: 25px; border:none; background: transparent;"-->
+            <!--                                                                    value="{{d.id}}" name="id"><i-->
+            <!--                                                                    class="fa fa-trash-o"></i>-->
+            <!--                                                            </button>-->
+            <!--                                                        </form>-->
+            <!--                                                    </div>-->
+            <!--                                                    <div class="float-right">-->
+
+            <!--                                                        <a data-toggle="modal"-->
+            <!--                                                           data-target="#exampleModal"-->
+            <!--                                                           href="{% url 'editrecruitment' d.id %}">-->
+            <!--                                                            <i style="color: #4755AB;font-size: 25px;margin-top: 8px;margin-left: 30px;"-->
+            <!--                                                               class="fa fa-pencil-square-o"-->
+            <!--                                                               aria-hidden="true"></i></a>-->
+
+            <!--                                                    </div>-->
+            <!--                                                </div>-->
+            <!--                                            </div>-->
+            <!--                                            <div class="col-7">-->
+            <!--                                                <a class="pt-2 pr-2 pl-lg-0 pl-2 mt-3 d-block cancor"-->
+            <!--                                                   href="{% url 'Applyjob' d.id %}">-->
+            <!--                                                    <h3 class="thite">-->
+            <!--                                                        {{d.title|slice:":100"}}<br/>-->
+            <!--                                                        <button href="{% url 'Applyjob' d.id %}"-->
+            <!--                                                                class=" btn-success btn">-->
+            <!--                                                            {% if request.session.lang == "EN" %}-->
+            <!--                                                            Apply Job-->
+            <!--                                                            {% else %}-->
+            <!--                                                            التقدم لعمل-->
+            <!--                                                            {% endif %}-->
+            <!--                                                        </button>-->
+
+            <!--                                                    </h3>-->
+
+            <!--                                                </a>-->
+            <!--                                                <p class="para hite " style="color:black; text-align:left">-->
+            <!--                                                    {{d.Description|slice:":320"}}-->
+            <!--                                                </p>-->
+
+            <!--                                                <div class="row ">-->
+            <!--                                                    &lt;!&ndash;                                    <div class="col-2 mt-3">&ndash;&gt;-->
+            <!--                                                    &lt;!&ndash;                                        <div class="profile ml-lg-0 ml-2"&ndash;&gt;-->
+            <!--                                                    &lt;!&ndash;                                             style=" background-image: url(/static/assets/img/final-logoo.png)">&ndash;&gt;-->
+            <!--                                                    &lt;!&ndash;                                        </div>&ndash;&gt;-->
+            <!--                                                    &lt;!&ndash;                                    </div>&ndash;&gt;-->
+            <!--                                                    <div class="col-12 mt-3">-->
+            <!--                                                        <a href="#" class="cancor">-->
+            <!--                                                            <span> {{d.user.first_name}} {{d.user.last_name}}</span>-->
+            <!--                                                        </a>-->
+            <!--                                                        <p class="litepara">{{d.user.email}}</p>-->
+
+            <!--                                                    </div>-->
+
+
+            <!--                                                </div>-->
+            <!--                                            </div>-->
+            <!--                                        </div>-->
+            <!--                                    </div>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                            {% endfor %}-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+
+            <!--                </div>-->
+            <!--            </div>-->
+
+
+        </section>
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+</div>
+<div class="modal fade" id="jobCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header d-inline">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                <div class="logintxt" id="place">
+                    {% if request.session.lang == "EN" %}
+                    <h5 class="text-uppercase text-success"><i class="fa fa-briefcase mr-3 text-success"></i><b>Create
+                        Job</b></h5>
+                    {% else %}
+                    <h4><b>خلق وظيفة</b></h4>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body p-4">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-group curve-around">
+                        <label for="title" class="formlabel">
+                            {% if request.session.lang == "EN" %}
+                            <b class="pl-2">Job Title</b>
+                            {% else %}
+                            <b>مسمى وظيفي</b>
+                            {% endif %}</label>
+                        <input type="text" class="form-control logininput mt-2" placeholder="Title" name="title"
+                               id="title" required value="{{r.title}}">
+                    </div>
+                    <div class="form-group pt-4">
+                        <label for="Desc" class="formlabel">
+                            {% if request.session.lang == "EN" %}
+                            <b class="pl-2">Description</b>
+                            {% else %}
+                            <b>وصف</b>
+                            {% endif %} :</label>
+                        <textarea class="form-control logininput mt-2"
+                                  style="min-height: 120px;max-height: 120px; border: 2px solid #4755AB;" placeholder=""
+                                  name="desc"
+                                  id="Desc" value="{{r.desc}}" required>{{r.Description}}</textarea>
+                    </div>
+                    <!--                    <div class="form-group">-->
+                    <!--                        <label for="pwd" class="formlabel">Instagram:</label>-->
+                    <!--                        <input type="text" class="form-control logininput" placeholder="www.example.com"-->
+                    <!--                               name="instagram" id="instagram" required>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="form-group">-->
+                    <!--                        <label for="pwd" class="formlabel">Facebook:</label>-->
+                    <!--                        <input type="text" class="form-control logininput" placeholder="www.example.com" name="facebook"-->
+                    <!--                               id="facebook" required>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="form-group">-->
+                    <!--                        <label for="pwd" class="formlabel">Snap Chat:</label>-->
+                    <!--                        <input type="text" class="form-control logininput" placeholder="www.example.com" name="snapchat"-->
+                    <!--                               id="snapchat" required>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="form-group">-->
+                    <!--                        <label for="pwd" class="formlabel">Website:</label>-->
+                    <!--                        <input type="text" class="form-control logininput" placeholder="www.example.com" name="website"-->
+                    <!--                               id="web" required>-->
+                    <!--                    </div>-->
+
+                    <div style=" text-align: center; display: block; margin-top: 60px;">
+                        <button type="submit" class="btn loginbtn btn-success col-lg-4"
+                                style="height: 40px;font-size: 16px;padding-top: 8px;  border-radius: 20px;">
+                            {% if request.session.lang == "EN" %}
+                            <i class="fa fa-paper-plane mr-2"></i>Save
+                            {% else %}
+                            <i class="fa fa-paper-plane ml-2"></i>حفظ
+                            {% endif %}
+                        </button>
+                    </div>
+
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock%}

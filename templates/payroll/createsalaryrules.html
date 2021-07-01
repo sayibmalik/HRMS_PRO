@@ -1,0 +1,168 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-2">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Create Salary Rules</li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <section class="forms">
+            <form action="" method="post">
+                {%csrf_token%}
+                <div class="card card_border py-2 mb-4">
+                    <div class="cards__heading">
+                        <div class="row">
+
+                            <h3 class="ml-2"><span>New Salary Rules</span></h3>
+                        </div>
+                        <div class="row mt-3">
+                            <a href="/" class="btn btn-sm btn-outline-primary btn-style border-btn ml-1">Cancel</a>
+                            <button type="submit" class="btn btn-primary btn-style ml-1 ">Save</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-10">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <span>Name</span>
+                                            </div>
+                                            <div class="col-9" style="border-left: 1px solid gray;">
+                                                <input name="name" class="form-control" placeholder="Name"/>
+                                            </div>
+                                            <div class="col-3">
+                                                <span>Category</span>
+                                            </div>
+                                            <div class="col-9 mt-2 " style="border-left: 1px solid gray;">
+                                                <select name="category" id="category" class="form-control input-style">
+                                                    <option selected>Allowance</option>
+                                                    <option>Other</option>
+                                                </select>
+                                            </div>
+                                            <!--                                            <div class="col-3 mt-2">-->
+                                            <!--                                                <span>Code</span>-->
+                                            <!--                                            </div>-->
+                                            <!--                                            <div class="col-9 mt-2" style="border-left: 1px solid gray;">-->
+                                            <!--                                                <input class="form-control" placeholder=""/>-->
+                                            <!--                                            </div>-->
+                                            <div class="col-3 mt-2">
+                                                <span>Active</span>
+                                            </div>
+                                            <div class="col-9 mt-2" style="border-left: 1px solid gray;">
+                                                <input name="isactive" type="checkbox"/>
+                                            </div>
+                                            <!--                                            <div class="col-3 mt-2">-->
+                                            <!--                                                <span>Company</span>-->
+                                            <!--                                            </div>-->
+                                            <!--                                            <div class="col-9 mt-2" style="border-left: 1px solid gray;">-->
+                                            <!--                                                <input class="form-control" placeholder=""/>-->
+                                            <!--                                            </div>-->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 ">
+                                <div class="row">
+                                    <div class="col-10">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <span>Sequence</span>
+                                            </div>
+                                            <div class="col-9" style="border-left: 1px solid gray;">
+                                                <input type="number" name="sequence" class="form-control" placeholder=""/>
+                                            </div>
+                                            <div class="col-3">
+                                                <span>Appears on Payslip</span>
+                                            </div>
+                                            <div class="col-9 mt-2 " style="border-left: 1px solid gray;">
+                                                <input name="AppearsOnPayslip" type="checkbox">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="container-fluid mt-3">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#accessrights">General</a>
+                            </li>
+                        </ul>
+
+
+                        <div class="tab-content">
+                            <div id="accessrights" class="tab-pane fade in active show mt-3 mb-5">
+                                <h2 class="ml-4 mt-3 mb-3 text-primary"><b>Conditions</b></h2>
+                                <div class="row ml-3">
+                                    <div class="col">
+                                        <div class="row ">
+                                            <div class="col-3">
+                                                <h6>
+                                                    Condition Based on
+                                                </h6>
+                                            </div>
+                                            <div class="col-9" style="border-left: 1px solid gray;">
+                                                <select name="ConditionBasedOn" id="Conditions"
+                                                        class="form-control input-style">
+                                                    <option selected>Always True</option>
+                                                    <option>Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <h2 class=" mt-3 mb-3 text-primary"><b>Computation</b></h2>
+                                        <div class="row mt-1">
+                                            <div class="col-3">
+                                                <h6>
+                                                    Amount Type
+                                                </h6>
+                                            </div>
+                                            <div class="col-9" style="border-left: 1px solid gray;">
+                                                <select name="AmountType" id="appraisal"
+                                                        class="form-control input-style">
+                                                    <option selected>Fixed Amount</option>
+                                                    <option>Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-1">
+                                            <div class="col-3">
+                                                <h6>
+                                                    Quantity
+                                                </h6>
+                                            </div>
+                                            <div class="col-9" style="border-left: 1px solid gray;">
+                                                <input type="number" name="Quantity" class="form-control" placeholder=""/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+    <!-- //forms  -->
+
+</div>
+<!-- //content -->
+
+</div>
+{% endblock%}

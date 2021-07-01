@@ -1,0 +1,372 @@
+{% extends 'base.html'%}
+{% block content%}
+<style>
+    .backwhite
+    {
+      padding: 9px;
+      padding-left: 15px;
+      background: #fff !important;
+    }
+    .note-cov
+    {
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        border-radius: 20px;
+    }
+
+    .curve-around input , .curve-around select
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #4755AB;
+    }
+
+
+</style>
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-2 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Create new project
+                    {% else %}
+                    خلق مشروع جديد
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+        <form class="forms" method="post">
+            {% csrf_token%}
+            <input type="hidden">
+            <div class="row m-0">
+                <div class="col-lg-12 backwhite">
+                    <h4 class="ml-2 text-primary pt-4">
+                        {% if request.session.lang == "EN" %}
+                        <i class="fa fa-area-chart mr-2" aria-hidden="true"></i><b>New Project</b>
+                        {% else %}
+                        <i class="fa fa-area-chart ml-2" aria-hidden="true"></i><b>مشروع جديد</b>
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="col-lg-12 p-2 backwhite">
+                    <a href="{% url 'retrieveproject'%}" class="btn btn-danger btn-style ml-3"
+                       style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                        Discard
+                        {% else %}
+                        تجاهل
+                        {% endif %}
+                    </a>
+                    <button type="submit" class="btn btn-success btn-style ml-3"
+                            style="height: 35px;font-size: 14px;padding-top: 4px;">
+                        {% if request.session.lang == "EN" %}
+                        Save
+                        {% else %}
+                        حفظ
+                        {% endif %}
+                    </button>
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-12 backwhite pt-5">
+                    <div class="row m-0 d-flex justify-content-center">
+
+                        {% if request.session.lang == "EN" %}
+                        <div class="col-lg-10 col-md-12 col-12 bg-primary p-2"
+                             style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"
+                                                                       style="padding-top: 10px;"><b>Kindly fill
+                            in the following details</b></h3></div>
+                        {% else %}
+                        <div class="col-lg-10 col-md-12 col-12 bg-primary p-3"
+                             style="border-radius: 0 20px 0 20px;"><h3 class="text-white text-center"><b> يرجى ملء
+                            تفاصيل التالية</b></h3></div>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-lg-12 backwhite ">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-5 col-md-10 col-12 p-4 note-cov mt-5 mb-5" style="position:relative;">
+                            <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                {% if request.session.lang == "EN" %}
+                                <h6 class="pt-4"><b>Project Manager</b></h6>
+                                {% else %}
+                                <h6 class="pt-4 mr-3"><b> مدير المشروع</b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                <select id="emp" class="form-control input-style" name="emp" value="{{data1.Manager}}">
+                                    {% for d in data %}
+                                    <option value="{{d.id}}">{{d.user.first_name}} {{d.user.last_name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Project title</b></h6>
+                                {% else %}
+                                <h6 class="mr-3"><b>عنوان المشروع </b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                <input type="text" id="Project title" name="ptitle" class="form-control"
+                                       value="{{data1.Name}}">
+                            </div>
+
+                            <div class="col-lg-10 col-12 m-auto  p-2 pt-4">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Project priority</b></h6>
+                                {% else %}
+                                <h6 class="mr-3"><b>أولوية المشروع</b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                <select class="form-control input-style" id="priority" name="prior" required>
+                                    <option value="Low">
+                                        {% if request.session.lang == "EN" %}
+                                        Low
+                                        {% else %}
+                                        قليل
+                                        {% endif %}
+                                    </option>
+                                    <option value="Medium">
+                                        {% if request.session.lang == "EN" %}
+                                        Medium
+                                        {% else %}
+                                        واسطة
+                                        {% endif %}
+                                    </option>
+                                    <option value="High">
+                                        {% if request.session.lang == "EN" %}
+                                        High
+                                        {% else %}
+                                        مرتفع
+                                        {% endif %}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-lg-10 col-12 m-auto  p-2">
+                                {% if request.session.lang == "EN" %}
+                                <h6><b>Project Reference</b></h6>
+                                {% else %}
+                                <h6 class="mr-3"><b>مرجع المشروع</b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                <input type="text" id="Project Reference" name="ref" class="form-control"
+                                       value="{{data1.Reference}}">
+                            </div>
+
+                            <div class="col-lg-10 col-12 m-auto  p-2">
+                                {% if request.session.lang == "EN" %}
+                                <h6 class="pt-3"><b>Project Date</b></h6>
+                                {% else %}
+                                <h6 class="pt-3 mr-3 text-center"><b>تاريخ المشروع</b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-10 col-12 m-auto  p-2">
+                                <div class="row m-0">
+                                    <div class="col-lg-6  curve-around">
+                                        {% if request.session.lang == "EN" %}
+                                        <h6 class="text-center pb-2"><b>start date</b></h6>
+                                        {% else %}
+                                        <h6 class="text-center pb-2"><b>تاريخ البدء</b></h6>
+                                        {% endif %}
+
+                                        <input type="date" id="startdate" name="date1"
+                                               class="form-control" value='{{data1.StartDate|date:"Y-m-d"}}'>
+                                    </div>
+                                    <div class="col-lg-6 curve-around">
+                                        {% if request.session.lang == "EN" %}
+                                        <h6 class="text-center pb-2"><b>end date</b></h6>
+                                        {% else %}
+                                        <h6 class="text-center pb-2"><b>تاريخ الانتهاء </b></h6>
+                                        {% endif %}
+
+                                        <input type="date" id="enddate" name="date2" class="form-control"
+                                               value='{{data1.EndDate|date:"Y-m-d"}}'>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                {% if request.session.lang == "EN" %}
+                                <h6 class="pt-3"><b>Project Description</b></h6>
+                                {% else %}
+                                <h6 class="pt-3 pb-2 mr-3"><b>وصف المشروع</b></h6>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-10 col-12 m-auto curve-around p-2">
+                                 <textarea id="Project description" name="description" class="form-control input-style"
+                                           style="min-height: 120px;max-height: 120px; border: 2px solid #4755AB;"
+                                 >{{data1.Description}}</textarea>
+                            </div>
+
+
+                            <div class="col-lg-10 col-12 m-auto text-right  p-2">
+                                <button type="submit"
+                                        class="btn btn-sm btn-success  btn-style  col-lg-4 ml-1 text-white "
+                                        style="height: 40px;font-size: 16px;padding-top: 8px; margin-top: 30px; border-radius: 20px;">
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-paper-plane mr-2"></i>Save
+                                    {% else %}
+                                    <i class="fa fa-paper-plane ml-2"></i>يحفظ
+                                    {% endif %}
+                                </button>
+                            </div>
+
+                            <i class="fa fa-area-chart fa-3x text-success" aria-hidden="true"
+                               style="position: absolute; top: -17px;left:-12px;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--************oldcode-->
+
+
+            <!--            <div class="card card_border py-2 mb-4">-->
+            <!--                <div class="cards__heading">-->
+            <!--                    <div class="row">-->
+
+            <!--                        <h3 class="ml-2"><span>-->
+            <!--                            {% if request.session.lang == "EN" %}-->
+            <!--                                                       New Project-->
+            <!--                                                           {% else %}-->
+            <!--                                                        مشروع جديد-->
+            <!--                                                           {% endif %}-->
+            <!--                        </span></h3>-->
+            <!--                    </div>-->
+            <!--                    <div class="row mt-3">-->
+            <!--                        <a href="Project/retrieveproject" class="btn btn-sm btn-outline-primary btn-style border-btn ml-1">Discard</a>-->
+            <!--                        <button type="submit" class="btn btn-primary btn-style ml-1 ">-->
+            <!--                            {% if request.session.lang == "EN" %}-->
+            <!--                                                       Save-->
+            <!--                                                           {% else %}-->
+            <!--                                                        حفظ-->
+            <!--                                                           {% endif %}-->
+            <!--                        </button>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+
+
+            <!--                <div class="container-fluid">-->
+
+            <!--                    <div class="row">-->
+            <!--                        <div class="col-8">-->
+            <!--                            <div class="row">-->
+
+            <!--                                <div class="col"><label for="Project title">-->
+            <!--                                    {% if request.session.lang == "EN" %}-->
+            <!--                                                       Project title-->
+            <!--                                                           {% else %}-->
+            <!--                                                        عنوان المشروع-->
+            <!--                                                           {% endif %} :</label>-->
+            <!--                                    <input type="text" id="Project title" name="ptitle" class="form-control" value="{{data.Name}}"><br><br>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                            <div class="row">-->
+            <!--                                <div class="col-6"><label>{% if request.session.lang == "EN" %}-->
+            <!--                                                       Project priority-->
+            <!--                                                           {% else %}-->
+            <!--                                                       أولوية المشروع-->
+            <!--                                                           {% endif %}:</label>-->
+            <!--                                    <select class="form-control input-style" id="priority" name="prior" >-->
+            <!--                                        <option value="Low">-->
+            <!--                                        {% if request.session.lang == "EN" %}-->
+            <!--                                                       Low-->
+            <!--                                                           {% else %}-->
+            <!--                                                       قليل-->
+            <!--                                                           {% endif %}-->
+            <!--                                        </option>-->
+            <!--                                        <option value="Medium">-->
+            <!--                                        {% if request.session.lang == "EN" %}-->
+            <!--                                                       Medium-->
+            <!--                                                           {% else %}-->
+            <!--                                                       واسطة-->
+            <!--                                                           {% endif %}-->
+            <!--                                        </option>-->
+            <!--                                        <option value="High">-->
+            <!--                                        {% if request.session.lang == "EN" %}-->
+            <!--                                                       High-->
+            <!--                                                           {% else %}-->
+            <!--                                                       مرتفع-->
+            <!--                                                           {% endif %}-->
+            <!--                                        </option>-->
+            <!--                                    </select>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                            <div class="row">-->
+            <!--                                <div class="col-12"><label for="Project description"> {% if request.session.lang == "EN" %}-->
+            <!--                                                       Project Description-->
+            <!--                                                           {% else %}-->
+            <!--                                                        وصف المشروع-->
+            <!--                                                           {% endif %}:</label>-->
+            <!--                                    <textarea id="Project description" name="description" class="form-control" value="{{data.Description}}"></textarea>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-4">-->
+            <!--                            <label for="Project Reference">{% if request.session.lang == "EN" %}-->
+            <!--                                                       Project Reference-->
+            <!--                                                           {% else %}-->
+            <!--                                                        مرجع المشروع-->
+            <!--                                                           {% endif %}:</label>-->
+            <!--                            <input type="text" id="Project Reference" name="ref" class="form-control" value="{{data.Reference}}"><br><br>-->
+            <!--                            <div class="row">-->
+            <!--                                <div class="col-6">-->
+            <!--                                    <label for="startdate">{% if request.session.lang == "EN" %}-->
+            <!--                                                       Project Start Date-->
+            <!--                                                           {% else %}-->
+            <!--                                                        تاريخ بدء المشروع-->
+            <!--                                                           {% endif %}:</label>-->
+            <!--                                    <input type="date" id="startdate" name="date1"-->
+            <!--                                           class="form-control" value='{{data.StartDate|date:"Y-m-d"}}'><br><br>-->
+            <!--                                </div>-->
+            <!--                                <div class="col-6">-->
+            <!--                                    <label for="enddate">{% if request.session.lang == "EN" %}-->
+            <!--                                                       Project End Date-->
+            <!--                                                           {% else %}-->
+            <!--                                                        تاريخ انتهاء المشروع-->
+            <!--                                                           {% endif %}:</label>-->
+            <!--                                    <input type="date" id="enddate" name="date2" class="form-control" value='{{data.EndDate|date:"Y-m-d"}}'><br><br>-->
+            <!--                                </div>-->
+
+            <!--                            </div>-->
+
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
+        </form>
+    </div>
+    <!-- //forms  -->
+
+</div>
+<!-- //content -->
+
+</div>
+<script>
+    $('#priority').val('{{data.Priority}}')
+
+
+</script>
+
+{% endblock%}

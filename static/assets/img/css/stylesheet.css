@@ -1,0 +1,44 @@
+
+
+.img {
+    height: 100px;
+    float: left;
+}
+
+.prog {
+    border: 1px solid;
+    border-radius: 25px;
+    width: 35px;
+    color: blue;
+    height: 33px;
+    text-align: center;
+}
+
+.txt {
+    font-size: 16px;
+    padding: 0px;
+}
+
+.bor {
+    height: 40px;
+    font-size: 13px;
+}
+
+li {
+    list-style: none;
+    float: left;
+
+}
+
+
+.icon {
+    height: 35px;
+    width: 30px;
+    padding-top: 4px;
+
+}
+
+
+
+
+

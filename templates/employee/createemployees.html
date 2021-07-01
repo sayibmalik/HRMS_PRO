@@ -1,0 +1,1459 @@
+{% extends 'base.html'%}
+{% block content%}
+<style>
+      .backwhite
+    {
+        padding: 9px;
+    padding-left: 15px;
+    background: #fff;
+    }
+
+    .emp-cre
+    {
+        background-image: url(/static/assets/images/compp.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .new-tablink
+    {
+        background: #F4F6F9 !important;
+        border: 2px solid #F4F6F9 !important;
+        border-radius: 30px !important;
+        min-width: 182px !important;
+    }
+
+    .new-create
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #eee;
+    }
+
+
+
+</style>
+
+<link rel="stylesheet" href="/static/assets/css/sidenav.css">
+<form>
+    {% csrf_token %}
+    <input type="hidden" value="{{emp.user.id}}" id="empid">
+    <input type="hidden" value="{{contract.id}}" id="cid">
+    <input type="hidden" value="saudi" id="gosi">
+</form>
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Save Employee
+                    {% else %}
+                    حفظ الموظف
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <section class="forms">
+                    <!--            <form action="" method="post">-->
+                    <!--                {% csrf_token %}-->
+                    <div class="card card_border ">
+
+
+                        <!--======================================new disgn strat===================================-->
+                        <div class="card-body "
+                             style="box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;">
+
+                            <div class="row m-0  ">
+                                <div class="col-lg-6 col-md-12 col-12 backwhite">
+                                    <div class="row m-0">
+                                        <div class="col-lg-12">
+                                            <h4 class="ml-2 text-primary pt-2">
+                                                {% if request.session.lang == "EN" %}
+                                                <i class="fa fa-briefcase  fa-1x mr-3"></i><b> Create Employee</b>
+                                                {% else %}
+                                                <i class="fa fa-briefcase  fa-1x ml-3"></i><b>خلق الموظف</b>
+                                                {% endif %}
+                                            </h4>
+                                        </div>
+
+                                        <div class="col-lg-12 pt-3">
+                                            <a href="{% url 'ViewEmployees' %}" class="btn btn-danger btn-style ml-3"
+                                               style="height: 35px;font-size: 14px;padding-top: 4px;">
+                                                {% if request.session.lang == "EN" %}
+                                                Cancel
+                                                {% else %}
+                                                يلغي
+                                                {% endif %}
+                                            </a>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-12 p-2  backwhite emp-cre">
+
+                                </div>
+                            </div>
+
+
+                            <!--                            <div class="row">-->
+                            <!--                                <div class="col-9">-->
+                            <!--                                    <h3><span class="abt-det">-->
+                            <!--                                    {% if request.session.lang == "EN" %}-->
+                            <!--                                     Employee-->
+                            <!--                                     {% else %}-->
+                            <!--                                    الموظف-->
+                            <!--                                     {% endif %}-->
+                            <!--                                    </span></h3>-->
+                            <!--                                </div>-->
+                            <!--                                <div class="col-3">-->
+
+                            <!--                                    <a href="{% url 'ViewEmployees' %}"-->
+                            <!--                                       class="btn btn-lg btn-outline-primary btn-style border-btn">-->
+                            <!--                                    {% if request.session.lang == "EN" %}-->
+                            <!--                                     Cancel-->
+                            <!--                                     {% else %}-->
+                            <!--                                    يلغي-->
+                            <!--                                     {% endif %}-->
+                            <!--                                    </a>-->
+                            <!--                                    &lt;!&ndash;                                <button type="submit" class="btn btn-primary btn-style ">save</button>&ndash;&gt;-->
+
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+
+
+                            <!--                          <button type="button" class="btn btn-primary btn-style cont-btn" style="">Continue</button>-->
+                            <!--======================================new disgn end===================================-->
+
+
+                        </div>
+                    </div>
+
+                </section>
+                <div id="back-cover" class=" mb-5" style="margin-top: -15px !important;position:relative">
+                    <div class="row">
+                        <div class="col-12 side_nav mt-5 mb-5">
+
+                            <div class="tab p-3">
+                                <button class="tablinks new-tablink mt-3">
+                                    <div class="float-left btnn-icon" style=""><i
+                                            class="fa fa-user-circle-o mr-2"
+                                            aria-hidden="true"></i>
+
+                                    </div>
+                                    <div class="float-left btn-title ml-4 mt-2">
+                                        {% if request.session.lang == "EN" %}
+                                        Personal
+                                        {% else %}
+                                        الشخصية
+                                        {% endif %}
+                                    </div>
+                                </button>
+
+                                <button class="tablinks new-tablink mt-4">
+                                    <div class="float-left btnn-icon" style=""><i class="fa fa-briefcase mr-2"
+                                                                                  aria-hidden="true"></i></div>
+                                    <div class="float-left btn-title ml-4 mt-2">
+                                        {% if request.session.lang == "EN" %}
+                                        Job
+                                        {% else %}
+                                        وظيفة
+                                        {% endif %}
+                                    </div>
+                                </button>
+                                <button class="tablinks new-tablink mt-4">
+                                    <div class="float-left btnn-icon" style=""><i class="fa fa-handshake-o mr-2"
+                                                                                  aria-hidden="true"></i></div>
+                                    <div class="float-left btn-title ml-4 mt-2">
+                                        {% if request.session.lang == "EN" %}
+                                        Contract
+                                        {% else %}
+                                        اتفافية
+                                        {% endif %}
+                                    </div>
+                                </button>
+                                <!--                                        <button class="tablinks" onclick="Employees(event, 'vacation')">-->
+                                <!--                                            <div class="float-left btnn-icon" style=""><i class="fa fa-plane mr-2"-->
+                                <!--                                                                                          aria-hidden="true"></i></i>-->
+                                <!--                                            </div>-->
+                                <!--                                            <div class="float-left btn-title ml-2 mt-2">Vacation</div>-->
+                                <!--                                        </button>-->
+                                <button class="tablinks new-tablink mt-4">
+                                    <div class="float-left btnn-icon" style="">
+                                        <i class="fa fa-clock-o  mr-2" style="font-size:30px;margin-top:6px;"
+                                           aria-hidden="true"></i></div>
+                                    <div class="float-left btn-title ml-4 mt-2">
+                                        {% if request.session.lang == "EN" %}
+                                        Schedule
+                                        {% else %}
+                                        جدول
+                                        {% endif %}
+                                    </div>
+                                </button>
+
+                                <button class="tablinks new-tablink mt-4">
+                                    <div class="float-left btnn-icon" style=""><i class="fa fa-star-o mr-2"
+                                                                                  aria-hidden="true"></i></div>
+                                    <div class="float-left btn-title ml-4 mt-2">
+                                        {% if request.session.lang == "EN" %}
+                                        Benefits
+                                        {% else %}
+                                        الفوائد
+                                        {% endif %}
+                                    </div>
+                                </button>
+                                <button class="tablinks new-tablink mt-4">
+                                    <div class="float-left btnn-icon" style=""><i
+                                            class="fa fa-address-card mr-2"
+                                            aria-hidden="true"></i></div>
+                                    <div class="float-left btn-title ml-2 mt-2">
+                                        {% if request.session.lang == "EN" %}
+                                        Complete
+                                        {% else %}
+                                        اكتمال
+                                        {% endif %}
+                                    </div>
+                                </button>
+                            </div>
+
+                            <!--persaonal-->
+                            <div id="personal" class="tabcontent active" style="margin-top:26px;">
+                                <h4 class="p-3 text-primary"><strong>
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-user-circle mr-2"></i>Personal
+                                    {% else %}
+                                    <i class="fa fa-user-circle ml-2"></i>الشخصية
+                                    {% endif %}
+                                </strong>
+                                    <hr>
+                                </h4>
+                                <button type="button" class="btn btn-success btn-style cont-btn" style="">
+                                    {% if request.session.lang == "EN" %}
+                                    Continue <i class="fa fa-long-arrow-right ml-2"></i>
+                                    {% else %}
+                                    <i class="fa fa-long-arrow-right ml-2"></i>يكمل
+                                    {% endif %}
+                                </button>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <div class="row ">
+                                                <div class="col-lg-6 col-md-6 col-12 pt-3">
+                                                    <label for="firstname" class="abt-det pb-2 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        First Name
+                                                        {% else %}
+                                                        الاسم الاول
+                                                        {% endif %}
+                                                    </label>
+                                                    <input type="text" value="{{emp.user.first_name}}"
+                                                           class="form-control new-create" id="firstname"
+                                                           name="firstname"
+                                                           required>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-12 pt-3">
+                                                    <label for="lastname" class="abt-det pb-2 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Last Name
+                                                        {% else %}
+                                                        الاسم الاخير
+                                                        {% endif %}
+                                                    </label>
+                                                    <input type="text" class="form-control new-create" id="lastname"
+                                                           name="lastname" value="{{emp.user.last_name}}" required>
+                                                </div>
+                                                {% if emp == "" %}
+                                                <div class="col-lg-6 col-md-6 col-12 pt-3">
+                                                    <label for="workemail" class="abt-det pb-2   text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Email
+                                                        {% else %}
+                                                        بريد الالكتروني
+                                                        {% endif %}
+                                                    </label>
+                                                    <input type="email" class="form-control new-create" id="workemail"
+                                                           name="username" required>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-12 pt-3">
+                                                    <label for="pass" class="abt-det pb-2  text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Password
+                                                        {% else %}
+                                                        كلمة المرور
+                                                        {% endif %}
+                                                    </label>
+                                                    <input type="password" class="form-control new-create" id="pass"
+                                                           name="password" required>
+                                                </div>
+                                                {% endif %}
+                                                <div class="col-lg-6 col-md-6 col-12 pt-3">
+                                                    <label for="dob" class="abt-det pb-3  text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Birth Date
+                                                        {% else %}
+                                                        تاريخ الولادة
+                                                        {% endif %}
+                                                    </label>
+                                                    <input type="date" value='{{emp.birthdate|date:"Y-m-d"}}'
+                                                           class="form-control new-create" id="dob" name="dob" required>
+                                                </div>
+
+                                                <div class="col-lg-6 col-md-6 col-12 pt-3">
+                                                    <label for="dob" class="abt-det pb-3  text-primary text-capitalize">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Gender
+                                                        {% else %}
+                                                        جنس تذكير أو تأنيث
+                                                        {% endif %}
+                                                    </label><br/>
+                                                    <label class="radio-inline pt-2 tactive"><input
+                                                            type="radio" name="gender" checked value="Male"
+                                                            style="zoom: 1.6;">
+
+                                                        {% if request.session.lang == "EN" %}
+                                                        Male
+                                                        {% else %}
+                                                        الذكر
+                                                        {% endif %}
+                                                    </label>
+                                                    <label class="radio-inline pt-2 ml-3 tactive"><input
+                                                            type="radio" name="gender" value="Female"
+                                                            style="zoom: 1.6;">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Female
+                                                        {% else %}
+                                                        أنثى
+                                                        {% endif %}
+                                                    </label>
+                                                </div>
+
+                                                <div class="col-lg-6 col-md-6 col-12 pt-3">
+                                                    <div class="form-group nat-select">
+                                                        <label for="nationality"
+                                                               class="abt-det pb-2  text-primary">
+                                                            {% if request.session.lang == "EN" %}
+                                                            Nationality
+                                                            {% else %}
+                                                            جنسية
+                                                            {% endif %}
+                                                        </label>
+                                                        <select class="form-control new-create" id="nationality"
+                                                                name="nationality">
+                                                            <option>Saudi Arabia</option>
+                                                            <option>India</option>
+                                                            <option>India</option>
+                                                            <option>Africa</option>
+                                                            <option>Japan</option>
+                                                            <option>China</option>
+                                                            <option>UAE</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6 col-md-6 col-12 pt-3 ">
+                                                    <div class="form-group nat-select">
+                                                        <label for="idtype" class="abt-det pb-2  text-primary">
+                                                            {% if request.session.lang == "EN" %}
+                                                            ID Type
+                                                            {% else %}
+                                                            نوع الهوية
+                                                            {% endif %}
+                                                        </label>
+                                                        <select class="form-control new-create" id="idtype"
+                                                                name="idtype">
+                                                            <option>Iqamah</option>
+                                                            <option>National ID</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-lg-6 col-md-6 col-12 pt-3">
+                                                    <label for="idnumber" class="abt-det pb-2  text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        ID Number
+                                                        {% else %}
+                                                        رقم الهوية
+                                                        {% endif %}
+                                                    </label>
+                                                    <input type="text" value="{{emp.nationalid}}"
+                                                           class="form-control new-create" id="idnumber"
+                                                           name="idnumber" required>
+                                                </div>
+
+                                                <div class="col-lg-12 col-md-6 col-12 pt-5 mobile-ver d-none">
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--job-->
+                            <div id="job" class="tabcontent" style="margin-top:26px;">
+                                <h4 class="p-3 text-primary"><strong>
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-address-card-o mr-2" aria-hidden="true"></i>Job Info
+                                    {% else %}
+                                    <i class="fa fa-address-card-o ml-2" aria-hidden="true"></i>معلومات الوظيفة
+                                    {% endif %}
+                                </strong>
+                                    <hr>
+                                </h4>
+                                <button type="button" class="btn btn-success btn-style cont-btn" style="">
+                                    {% if request.session.lang == "EN" %}
+                                    Continue <i class="fa fa-long-arrow-right ml-2"></i>
+                                    {% else %}
+                                    <i class="fa fa-long-arrow-right ml-2"></i>يكمل
+                                    {% endif %}
+                                </button>
+                                <div class="row">
+                                    <div class="col-12">
+
+                                        <div class="form-group ">
+                                            <div class="row">
+                                                <div class="col-6 ">
+                                                    <label for="jtitle" class="abt-det pb-2 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Job Title
+                                                        {% else %}
+                                                        عنوان وظيفي
+                                                        {% endif %}
+                                                    </label>
+
+                                                    <select class="form-control new-create" id="jtitle" name="jtitle">
+                                                        {% for h in JobTitle %}
+                                                        {% if request.session.lang == "EN" %}
+                                                        <option hidden selected value="{{emp.Job_position.id}}">
+                                                            {{emp.Job_position.jobtitleEn}}
+                                                        </option>
+                                                        {% else %}
+                                                        <option hidden selected value="{{emp.Job_position.id}}">
+                                                            {{emp.Job_position.jobtitleAr}}
+                                                        </option>
+                                                        {% endif %}
+                                                        {% if request.session.lang == "EN" %}
+                                                        <option value="{{h.id}}">{{h.jobtitleEn}}</option>
+                                                        {% else %}
+                                                        <option value="{{h.id}}">{{h.jobtitleAr}}</option>
+                                                        {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-6 ">
+                                                    <label for="enum" class="abt-det pb-2 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Employee No
+                                                        {% else %}
+                                                        هوية الموظف
+                                                        {% endif %}
+                                                    </label>
+                                                    <input type="text" value="{{emp.employeenumber}}"
+                                                           class="form-control new-create" id="enum" name="enum">
+                                                </div>
+
+                                                <div class="col-6 mt-4">
+                                                    <label for="hdate" class="abt-det pb-2 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Hire Date
+                                                        {% else %}
+                                                        موعد التوظيف
+                                                        {% endif %}
+                                                    </label>
+                                                    <input type="date" value='{{emp.DOJ|date:"Y-m-d"}}'
+                                                           class="form-control new-create" id="hdate" name="hdate">
+                                                </div>
+
+                                                <div class="col-6 mt-4">
+                                                    <label for="location" class="abt-det pb-2 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Location
+                                                        {% else %}
+                                                        موقعك
+                                                        {% endif %}
+                                                    </label>
+                                                    <!--                                                    <input type="text" value="{{emp.Working_Address}}"-->
+                                                    <!--                                                           class="form-control new-create" id="location"-->
+                                                    <!--                                                           name="location">-->
+                                                    <select class="form-control new-create" id="location"
+                                                            name="location">
+                                                        {% for d in location %}
+                                                        {% if request.session.lang == "EN" %}
+                                                        <option hidden selected value="{{emp.Working_Address.id}}">
+                                                            {{emp.Working_Address.locationnameEN}}
+                                                        </option>
+                                                        {% else %}
+                                                        <option hidden selected value="{{emp.Working_Address.id}}">
+                                                            {{emp.Working_Address.locationnameAR}}
+                                                        </option>
+                                                        {% endif %}
+                                                        {% if request.session.lang == "EN" %}
+                                                        <option value="{{d.id}}">{{d.locationnameEN}}</option>
+                                                        {% else %}
+                                                        <option value="{{d.id}}">{{d.locationnameAR}}</option>
+                                                        {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+
+                                                 <div class="col-6 mt-4">
+                                                    <label for="costcenter" class="abt-det pb-2 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Cost Center
+                                                        {% else %}
+                                                        مركز التكلفة
+                                                        {% endif %}
+                                                    </label>
+                                                    <!--                                                    <input type="text" value="{{emp.Working_Address}}"-->
+                                                    <!--                                                           class="form-control new-create" id="location"-->
+                                                    <!--                                                           name="location">-->
+                                                    <select class="form-control new-create" id="costcenter"
+                                                            name="costcenter">
+                                                        {% for d in costcenter %}
+                                                        {% if request.session.lang == "EN" %}
+                                                        <option hidden selected value="{{emp.ccenter.id}}">
+                                                            {{emp.ccenter.nameEN}}
+                                                        </option>
+                                                        {% else %}
+                                                        <option hidden selected value="{{emp.ccenter.id}}">
+                                                            {{emp.ccenter.nameAR}}
+                                                        </option>
+                                                        {% endif %}
+                                                        {% if request.session.lang == "EN" %}
+                                                        <option value="{{d.id}}">{{d.nameEN}}</option>
+                                                        {% else %}
+                                                        <option value="{{d.id}}">{{d.nameAR}}</option>
+                                                        {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-6 mt-4">
+                                                    <label for="EmployeeGrade" class="abt-det pb-2 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Grade
+                                                        {% else %}
+                                                        رتبة
+                                                        {% endif %}
+                                                    </label>
+                                                    <select class="form-control new-create" id="EmployeeGrade"
+                                                            name="EmployeeGrade">
+                                                        {% for d in data1 %}
+                                                        {% if request.session.lang == "EN" %}
+                                                        <option hidden selected value="{{emp.grade.id}}">
+                                                            {{emp.grade.titleEn}}
+                                                        </option>
+                                                        {% else %}
+                                                        <option hidden selected value="{{emp.grade.id}}">
+                                                            {{emp.grade.titleAr}}
+                                                        </option>
+                                                        {% endif %}
+                                                        {% if request.session.lang == "EN" %}
+                                                        <option value="{{d.id}}">{{d.titleEn}}</option>
+                                                        {% else %}
+                                                        <option value="{{d.id}}">{{d.titleAr}}</option>
+                                                        {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-6 mt-4">
+                                                    <label for="EmployeeLevel" class="abt-det pb-2 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Level
+                                                        {% else %}
+                                                        مستوى
+                                                        {% endif %}
+                                                    </label>
+                                                    <select class="form-control new-create" id="EmployeeLevel"
+                                                            name="EmployeeLevel">
+                                                        {% for d in EmployeeLevel %}
+                                                        {% if request.session.lang == "EN" %}
+                                                        <option hidden selected value="{{emp.level.id}}">
+                                                            {{emp.level.titleEn}}
+                                                        </option>
+                                                        {% else %}
+                                                        <option hidden selected value="{{emp.level.id}}">
+                                                            {{emp.level.titleAr}}
+                                                        </option>
+                                                        {% endif %}
+                                                        {% if request.session.lang == "EN" %}
+                                                        <option value="{{d.id}}">{{d.titleEn}}</option>
+                                                        {% else %}
+                                                        <option value="{{d.id}}">{{d.titleAr}}</option>
+                                                        {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-6 mt-4">
+                                                    <div class="form-group nat-select">
+                                                        <label for="department"
+                                                               class="abt-det pb-2 text-primary">
+                                                            {% if request.session.lang == "EN" %}
+                                                            Department
+                                                            {% else %}
+                                                            قسم
+                                                            {% endif %}
+                                                        </label>
+                                                        <select class="form-control new-create" id="department"
+                                                                name="department">
+                                                            {% for h in department %}
+                                                            {% if request.session.lang == "EN" %}
+                                                            <option hidden selected value="{{emp.Department.id}}">
+                                                                {{emp.Department.title}}
+                                                            </option>
+                                                            {% else %}
+                                                            <option hidden selected value="{{emp.Department.id}}">
+                                                                {{emp.Department.titalAR}}
+                                                            </option>
+                                                            {% endif %}
+                                                            {% if request.session.lang == "EN" %}
+                                                            <option value="{{h.id}}">{{h.title}}</option>
+                                                            {% else %}
+                                                            <option value="{{h.id}}">{{h.titalAR}}</option>
+                                                             {% endif %}
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6 mt-4">
+                                                    <div class="form-group nat-select">
+                                                        <label for="team" class="abt-det pb-2 text-primary">
+                                                            {% if request.session.lang == "EN" %}
+                                                            Coach
+                                                            {% else %}
+                                                            مدرب
+                                                            {% endif %}
+                                                        </label>
+                                                        <select class="form-control new-create" id="team" name="coach">
+                                                            {% for h in data %}
+                                                            <option value="{{h.id}}">{{h.user.first_name}}
+                                                                {{h.user.last_name}}
+                                                            </option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6 mt-4">
+                                                    <div class="form-group nat-select">
+                                                        <label for="report" class="abt-det pb-2 text-primary">
+                                                            {% if request.session.lang == "EN" %}
+                                                            Report To
+                                                            {% else %}
+                                                            تقرير الى
+                                                            {% endif %}
+                                                        </label>
+                                                        <select class="form-control new-create" id="report"
+                                                                name="manager">
+                                                            {% for h in data %}
+                                                            <option value="{{h.id}}">{{h.user.first_name}}
+                                                                {{h.user.last_name}}
+                                                            </option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!--                                                <div class="col-6 mt-4">-->
+                                                <!--                                                    <label for="report" class="abt-det pb-2 text-primary">-->
+                                                <!--                                                    {% if request.session.lang == "EN" %}-->
+                                                <!--                                                  Access-->
+                                                <!--                                                  {% else %}-->
+                                                <!--                                                  الوصول-->
+                                                <!--                                                  {% endif %}-->
+                                                <!--                                                    </label>-->
+                                                <!--                                                    <div class="row mt-1">-->
+                                                <!--                                                        <div class="col">-->
+                                                <!--                                                            {% if request.session.lang == "EN" %}-->
+                                                <!--                                                            Is HR-->
+                                                <!--                                                            {% else %}-->
+                                                <!--                                                            هو الموارد البشرية-->
+                                                <!--                                                            {% endif %}-->
+                                                <!--                                                        </div>-->
+                                                <!--                                                        <div class="col  p-2" style="border-radius: 10px 0 10px 0; background: #F4F6F9">-->
+                                                <!--                                                            <input type="checkbox" class="form-control" name="ishr" style="height: 20px;"/>-->
+                                                <!--                                                        </div>-->
+                                                <!--                                                    </div>-->
+                                                <!--                                                    <div class="row mt-1">-->
+                                                <!--                                                        <div class="col">-->
+                                                <!--                                                            {% if request.session.lang == "EN" %}-->
+                                                <!--                                                            Is Manager-->
+                                                <!--                                                            {% else %}-->
+                                                <!--                                                            هو المدير-->
+                                                <!--                                                            {% endif %}-->
+                                                <!--                                                        </div>-->
+                                                <!--                                                        <div class="col-6  p-2 mt-1" style="border-radius: 10px 0 10px 0; background: #F4F6F9 ">-->
+                                                <!--                                                            <input type="checkbox" class="form-control" name="ismanager" style="height: 20px;"/>-->
+                                                <!--                                                        </div>-->
+                                                <!--                                                    </div>-->
+                                                <!--                                                </div>-->
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--   contract        -->
+                            <div id="contract" class="tabcontent" style="margin-top:26px;">
+                                <h3 class="p-3 p-head"><strong>
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-file-text mr-2" aria-hidden="true"></i>Contract
+                                    {% else %}
+                                    <i class="fa fa-file-text ml-2" aria-hidden="true"></i>اتفافية
+                                    {% endif %}
+                                </strong>
+                                    <hr>
+                                </h3>
+                                <button type="button" class="btn btn-success btn-style cont-btn" style="">
+                                    {% if request.session.lang == "EN" %}
+                                    Continue <i class="fa fa-long-arrow-right ml-2"></i>
+                                    {% else %}
+                                    <i class="fa fa-long-arrow-right ml-2"></i>يكمل
+                                    {% endif %}
+                                </button>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-6 ">
+                                                    <div class="form-group nat-select">
+                                                        <label for="emptype" class="abt-det pb-2 text-primary">
+                                                            {% if request.session.lang == "EN" %}
+                                                            Employment Type
+                                                            {% else %}
+                                                            نوع التوظيف
+                                                            {% endif %}
+                                                        </label>
+                                                        <select class="form-control pb-2 new-create" id="emptype">
+                                                            <option>Intern</option>
+                                                            <option>PartTime</option>
+                                                            <option>FullTime</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6 ">
+                                                    <div class="form-group nat-select">
+                                                        <label for="contPerid" class="abt-det pb-2 text-primary">
+                                                            {% if request.session.lang == "EN" %}
+                                                            Contract Period
+                                                            {% else %}
+                                                            فترة العقد
+                                                            {% endif %}
+                                                        </label>
+                                                        <select class="form-control new-create" id="contPerid">
+                                                            <option>Infinite</option>
+                                                            <option>Custom</option>
+                                                            <option>1 year</option>
+                                                            <option>2 Year</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6 mt-5">
+                                                    <label for="sdate" class="abt-det pb-2 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Start Date
+                                                        {% else %}
+                                                        تاريخ البدء
+                                                        {% endif %}
+                                                    </label>
+                                                    <input type="date" value='{{contract.Date_From|date:"Y-m-d"}}'
+                                                           class="form-control new-create" id="sdate" name="startdate">
+                                                </div>
+
+                                                <div class="col-6 mt-5">
+                                                    <label for="endDate" class="abt-det pb-2 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        End Date
+                                                        {% else %}
+                                                        تاريخ الانتهاء
+                                                        {% endif %}
+                                                    </label>
+                                                    <input type="date" value='{{contract.Date_To|date:"Y-m-d"}}'
+                                                           class="form-control new-create" id="endDate" name="enddate">
+                                                </div>
+
+
+                                                <div class="col-6 mt-5">
+                                                    <div class="form-group nat-select ">
+                                                        <label for="notPeriod" class="abt-det pb-2 text-primary">
+                                                            {% if request.session.lang == "EN" %}
+                                                            Notice Period
+                                                            {% else %}
+                                                            فترة إشعار
+                                                            {% endif %}
+                                                        </label>
+                                                        <select class="form-control new-create" id="notPeriod"
+                                                                name="notperiod">
+                                                            <option value="90">90 Days</option>
+                                                            <option value="60">60 Days</option>
+                                                            <option value="30">30 Days</option>
+                                                            <option value="20">20 Days</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-6 mt-5">
+                                                    <div class="form-group nat-select">
+                                                        <label for="probPeriod" class="abt-det pb-2 text-primary">
+                                                            {% if request.session.lang == "EN" %}
+                                                            Probation Period
+                                                            {% else %}
+                                                            فترة اختبار
+                                                            {% endif %}
+                                                        </label>
+                                                        <select class="form-control new-create" id="probPeriod">
+                                                            <option value="90">90 Days</option>
+                                                            <option value="60">60 Days</option>
+                                                            <option value="30">30 Days</option>
+                                                            <option value="20">20 Days</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12  mt-5 ">
+                                                    <div class="row">
+                                                        <div class="col-6 abt-det abt-2 pt-2"><i
+                                                                class="fa fa-money mr-2" aria-hidden="true"></i>
+                                                            <span>
+                                    {% if request.session.lang == "EN" %}
+                                                Basic Salary
+                                                  {% else %}
+                                                  راتب اساسي
+                                                  {% endif %} </span>
+                                                        </div>
+                                                        <div class="col-4 mb-2"><input type="number" id="bs"
+                                                                                       class="form-control new-create"
+                                                                                       min="0"
+                                                                                       value='{{contract.base_salary}}'/>
+                                                        </div>
+                                                        <div class="col-6 mt-2 abt-det abt-2 pt-2"><i
+                                                                class="fa fa-home mr-2" aria-hidden="true"></i><span>
+                                                        {% if request.session.lang == "EN" %}
+                                                Housing Allowance
+                                                  {% else %}
+                                                  بدل سكن
+                                                  {% endif %}
+                                                         </span>
+                                                        </div>
+                                                        <div class="col-4 mb-2"><input type="number" id="HA"
+                                                                                       class="form-control new-create"
+                                                                                       min="0"
+                                                                                       value='{{contract.Housing_Allowance}}'/>
+                                                        </div>
+                                                        <div class="col-6 mt-2 abt-det abt-2 pt-2"><i
+                                                                class="fa fa-bus mr-2" aria-hidden="true"></i><span>
+                                                        {% if request.session.lang == "EN" %}
+                                               Transport Allowance
+                                                  {% else %}
+                                                  بدل النقل
+                                                  {% endif %} </span>
+                                                        </div>
+                                                        <div class="col-4 mb-2"><input type="number" id="TA"
+                                                                                       class="form-control new-create"
+                                                                                       min="0"
+                                                                                       value='{{contract.Transport_Allowance}}'/>
+                                                        </div>
+                                                        <div class="col-6 mt-2 abt-det abt-2 pt-2"><i
+                                                                class="fa fa-exclamation-circle mr-2"
+                                                                aria-hidden="true"></i><span>
+                                                       {% if request.session.lang == "EN" %}
+                                               Other Allowance
+                                                  {% else %}
+                                                  بدلات أخرى
+                                                  {% endif %} </span>
+                                                        </div>
+                                                        <div class="col-4 mb-2"><input type="number" id="OA"
+                                                                                       class="form-control new-create"
+                                                                                       min="0"
+                                                                                       value='{{contract.otherallowance}}'/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!--Vacations-->
+                            <!--                                    <div id="vacation" class="tabcontent" style="margin-top:26px;">-->
+                            <!--                                        <h3 class="p-3 p-head"><strong>Vacation</strong>-->
+                            <!--                                            <hr>-->
+                            <!--                                        </h3>-->
+                            <!--                                             <button type="button" class="btn btn-primary btn-style cont-btn" style="">Continue</button>-->
+
+                            <!--                                        <div class="row">-->
+                            <!--                                            <div class="col-12">-->
+                            <!--                                                <form action="">-->
+                            <!--                                                    <div class="form-group">-->
+                            <!--                                                        <div class="row">-->
+                            <!--                                                            <div class="col-6 ">-->
+                            <!--                                                                <div class="col-12">-->
+                            <!--                                                                    <div class="form-group nat-select">-->
+                            <!--                                                                        <label for="policy"-->
+                            <!--                                                                               class="abt-det">Policy</label>-->
+                            <!--                                                                        <select class="form-control" id="policy">-->
+                            <!--                                                                            <option>Intern</option>-->
+                            <!--                                                                            <option>PartTime</option>-->
+                            <!--                                                                        </select>-->
+                            <!--                                                                    </div>-->
+                            <!--                                                                </div>-->
+
+                            <!--                                                                <div class="col-12">-->
+                            <!--                                                                    <label for="polDdate" class="abt-det">Set Policy-->
+                            <!--                                                                        Start-->
+                            <!--                                                                        Date</label>-->
+                            <!--                                                                    <input type="date" class="form-control"-->
+                            <!--                                                                           id="polDdate">-->
+                            <!--                                                                </div>-->
+
+                            <!--                                                                <div class="col-12 mt-4">-->
+                            <!--                                                                    <label for="numHoliday" class="abt-det">Number Of-->
+                            <!--                                                                        Days</label>-->
+                            <!--                                                                    <input type="text" class="form-control"-->
+                            <!--                                                                           id="numHoliday">-->
+                            <!--                                                                </div>-->
+
+                            <!--                                                                <div class="col-12 mt-4">-->
+                            <!--                                                                    <label for="effDdate" class="abt-det">Effective-->
+                            <!--                                                                        Date</label>-->
+                            <!--                                                                    <input type="date" class="form-control"-->
+                            <!--                                                                           id="effDdate">-->
+                            <!--                                                                </div>-->
+
+                            <!--                                                            </div>-->
+
+                            <!--                                                            <div class="col-6 " style="position:relative">-->
+                            <!--                                                                <div class="col-12 p-2 card-holidays d-flex justify-content-center">-->
+                            <!--                                                                    <div class="">-->
+                            <!--                                                                        <img src="/static/assets/images/source.gif"/>-->
+                            <!--                                                                    </div>-->
+                            <!--                                                                </div>-->
+
+                            <!--                                                                <div class="col-12">-->
+                            <!--                                                                    <h5 class="text-center mb-3">Vacation Details</h5>-->
+                            <!--                                                                    <div class="col-6 pt-2 float-left">-->
+                            <!--                                                                        <span class="">Days</span>-->
+                            <!--                                                                    </div>-->
+                            <!--                                                                    <div class="col-6 pt-2 float-left text-center">-->
+                            <!--                                                                        <span class="text-right">32</span>-->
+                            <!--                                                                        &lt;!&ndash;                                                                <span class="mt-4 mr-4">No of Days</span><span class="text-right">312</span>&ndash;&gt;-->
+                            <!--                                                                    </div>-->
+
+                            <!--                                                                    <div class="col-6 pt-2 float-left">-->
+                            <!--                                                                        <span class="">No of Days</span>-->
+                            <!--                                                                    </div>-->
+                            <!--                                                                    <div class="col-6 pt-2 float-left text-center">-->
+                            <!--                                                                        <span class="text-right">312</span>-->
+                            <!--                                                                    </div>-->
+                            <!--                                                                </div>-->
+                            <!--                                                            </div>-->
+
+                            <!--                                                        </div>-->
+                            <!--                                                    </div>-->
+
+                            <!--                                                </form>-->
+                            <!--                                            </div>-->
+                            <!--                                        </div>-->
+
+                            <!--                                    </div >-->
+
+                            <!--SChedule-->
+                            <div id="schedule" class="tabcontent" style="margin-top:26px;">
+                                <h4 class="p-3 p-head"><strong>
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-calendar-plus-o mr-2"></i>Work Schedule
+                                    {% else %}
+                                    <i class="fa fa-calendar-plus-o ml-2"></i>فوائدجدول العمل
+                                    {% endif %}
+                                </strong>
+                                    <hr>
+                                </h4>
+                                <button type="button" class="btn btn-success btn-style cont-btn" style="">
+                                    {% if request.session.lang == "EN" %}
+                                    Continue<i class="fa fa-long-arrow-right ml-2"></i>
+                                    {% else %}
+                                    <i class="fa fa-long-arrow-right ml-2"></i>يكمل
+                                    {% endif %}
+                                </button>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-6 ">
+                                                    <label for="shiftstart" class="abt-det pb-2 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Shift Start
+                                                        {% else %}
+                                                        بدء التحول
+                                                        {% endif %}</label>
+                                                    <input type="time" value='{{contract.shift_start|time:"H:i"}}'
+                                                           class="form-control new-create" id="shiftstart">
+                                                </div>
+
+                                                <div class="col-6 ">
+                                                    <label for="shiftend" class="abt-det pb-2 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Shift End
+                                                        {% else %}
+                                                        التحول النهاية
+                                                        {% endif %}
+                                                    </label>
+                                                    <input type="time" value='{{contract.shift_end|time:"H:i"}}'
+                                                           class="form-control new-create" id="shiftend">
+                                                </div>
+
+                                                <div class="col-6 mt-5">
+                                                    <label for="workhours" class="abt-det pb-2 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Work Hours
+                                                        {% else %}
+                                                        ساعات العمل
+                                                        {% endif %}
+                                                    </label>
+                                                    <input type="number" value="{{contract.workinghours}}" min="1"
+                                                           max="24" class="form-control new-create" id="workhours">
+                                                </div>
+
+                                                <div class="col-6 mt-5">
+                                                    <label for="break" class="abt-det pb-2 text-primary">
+                                                        {% if request.session.lang == "EN" %}
+                                                        Break
+                                                        {% else %}
+                                                        استراحة
+                                                        {% endif %}
+                                                    </label>
+                                                    <input type="number" value="{{contract.breakhours}}"
+                                                           class="form-control new-create" id="break">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!--benifits-->
+                            <div id="benifits" class="tabcontent" style="margin-top:26px;">
+                                <h4 class="p-3 p-head"><strong>
+                                    {% if request.session.lang == "EN" %}
+                                    <i class="fa fa-star-o mr-2"></i>Benefits
+                                    {% else %}
+                                    <i class="fa fa-star-o ml-2"></i>فوائد
+                                    {% endif %}
+                                </strong>
+                                    <hr>
+                                </h4>
+                                <button type="button" class="btn btn-success btn-style cont-btn" style="">
+                                    {% if request.session.lang == "EN" %}
+                                    Continue<i class="fa fa-long-arrow-right ml-2"></i>
+                                    {% else %}
+                                    <i class="fa fa-long-arrow-right ml-2"></i>يكمل
+                                    {% endif %}
+                                </button>
+                                <div class="row">
+                                    <div class="col-4 p-3  d-flex justify-content-center">
+                                        <div class="col-12 p-2  benifit-cards" style="position:relative;">
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-light benifit-card-btn"
+                                                    data-toggle="modal"
+                                                    data-target="#exampleModal" style="position: absolute;">
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                 role="dialog"
+                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                                {% if request.session.lang == "EN" %}
+                                                                Add Benefits
+                                                                {% else %}
+                                                                إضافة فوائد
+                                                                {% endif %}</h5>
+                                                            <button type="button" class="close"
+                                                                    data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-12 p-3 text-left">
+                                                                    <h6 class="tactive"><i
+                                                                            class="fa fa-globe mr-2"
+                                                                            aria-hidden="true"></i> <strong>
+                                                                        {% if request.session.lang == "EN" %}
+                                                                        Saudi Nationals
+                                                                        {% else %}
+                                                                        سعوديون
+                                                                        {% endif %}
+                                                                    </strong></h6>
+                                                                </div>
+                                                                <div class="col-12 p-3 bg-light text-left">
+                                                                    <h6 class="tactive">
+                                                                        <strong>
+                                                                            {% if request.session.lang == "EN" %}
+                                                                            Contributions
+                                                                            {% else %}
+                                                                            مساهمات
+                                                                            {% endif %}
+                                                                        </strong></h6>
+                                                                    <div class="row">
+                                                                        <div class="col-6 pt-2 tactive">
+                                                                            {% if request.session.lang == "EN" %}
+                                                                            Employee
+                                                                            {% else %}
+                                                                            الموظف
+                                                                            {% endif %}
+                                                                        </div>
+                                                                        <div class="col-6 pt-2 text-center tactive">
+                                                                            10%
+                                                                        </div>
+
+                                                                        <div class="col-6 pt-2 tactive">
+                                                                            {% if request.session.lang == "EN" %}
+                                                                            Company
+                                                                            {% else %}
+                                                                            شركة
+                                                                            {% endif %}
+                                                                        </div>
+                                                                        <div class="col-6 pt-2 text-center tactive">
+                                                                            12%
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <!--                                                                <div class="col-12 p-3 text-left">-->
+                                                                <!--                                                                    <div class="row">-->
+                                                                <!--                                                                        <div class="col-6 ">-->
+                                                                <!--                                                                            <label for="st-date"-->
+                                                                <!--                                                                                   class="abt-det">Start-->
+                                                                <!--                                                                                End</label>-->
+                                                                <!--                                                                            <input type="date"-->
+                                                                <!--                                                                                   class="form-control"-->
+                                                                <!--                                                                                   id="st-date">-->
+                                                                <!--                                                                        </div>-->
+
+                                                                <!--                                                                        <div class="col-6 ">-->
+                                                                <!--                                                                            <label for="ed-Date"-->
+                                                                <!--                                                                                   class="abt-det">End-->
+                                                                <!--                                                                                End</label>-->
+                                                                <!--                                                                            <input type="date"-->
+                                                                <!--                                                                                   class="form-control"-->
+                                                                <!--                                                                                   id="ed-Date">-->
+                                                                <!--                                                                        </div>-->
+                                                                <!--                                                                    </div>-->
+
+                                                                <!--                                                                </div>-->
+                                                                <!--                                                                <div class="col-12 p-3 text-left">-->
+                                                                <!--                                                                    <div class="form-group">-->
+                                                                <!--                                                                        <label for="exampleFormControlTextarea1">Note</label>-->
+                                                                <!--                                                                        <textarea class="form-control"-->
+                                                                <!--                                                                                  id="exampleFormControlTextarea1"-->
+                                                                <!--                                                                                  rows="3"></textarea>-->
+                                                                <!--                                                                    </div>-->
+
+                                                                <!--                                                                </div>-->
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <!--                                                    <button type="button" class="btn btn-secondary"-->
+                                                            <!--                                                            data-dismiss="modal">Close-->
+                                                            <!--                                                    </button>-->
+                                                            <button type="button" onclick="
+                                                            $('#gosi').val('saudi')
+$('.benifit-card-btn').eq(0).css({'background':'#4755AB'})
+$('.benifit-card-btn').eq(1).css({'background':'#f8f9fa'})
+                                                            "
+                                                                    class="btn btn-primary btnaddBenefit"
+                                                                    data-dismiss="modal">
+                                                                {% if request.session.lang == "EN" %}
+                                                                Add Benefits
+                                                                {% else %}
+                                                                إضافة فوائد
+                                                                {% endif %}
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="doc-icon-circle doc-icon-circle2 m-auto text-center">
+                                                <i class="fa fa-globe" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="small-text doct-title" style="padding-top:17px;">
+                                                <strong>
+                                                    {% if request.session.lang == "EN" %}
+                                                    Saudi Nationals
+                                                    {% else %}
+                                                    سعوديون
+                                                    {% endif %}
+                                                </strong> <br><small></small></div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-4 p-3  d-flex justify-content-center">
+                                        <div class="col-12 p-2  benifit-cards" style="position:relative;">
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-light benifit-card-btn"
+                                                    data-toggle="modal"
+                                                    data-target="#exampleModal1" style="position: absolute;">
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal1" tabindex="-1"
+                                                 role="dialog"
+                                                 aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel2">
+                                                                {% if request.session.lang == "EN" %}
+                                                                Add Benefits
+                                                                {% else %}
+                                                                إضافة فوائد
+                                                                {% endif %}
+                                                            </h5>
+                                                            <button type="button" class="close"
+                                                                    data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-12 p-3 text-left">
+                                                                    <h6 class="tactive"><i
+                                                                            class="fa fa-globe mr-2"
+                                                                            aria-hidden="true"></i>
+                                                                        <strong>
+                                                                            {% if request.session.lang == "EN" %}
+                                                                            Expatriates
+                                                                            {% else %}
+                                                                            المغتربين
+                                                                            {% endif %}
+                                                                        </strong>
+                                                                    </h6>
+                                                                </div>
+                                                                <div class="col-12 p-3 bg-light text-left">
+                                                                    <h6 class="tactive">
+                                                                        <strong>
+                                                                            {% if request.session.lang == "EN" %}
+                                                                            Contributions
+                                                                            {% else %}
+                                                                            مساهمات
+                                                                            {% endif %}
+                                                                        </strong></h6>
+                                                                    <div class="row">
+                                                                        <div class="col-6 pt-2 tactive">
+                                                                            {% if request.session.lang == "EN" %}
+                                                                            Employee
+                                                                            {% else %}
+                                                                            الموظف
+                                                                            {% endif %}
+                                                                        </div>
+                                                                        <div class="col-6 pt-2 text-center tactive">
+                                                                            10%
+                                                                        </div>
+
+                                                                        <div class="col-6 pt-2 tactive">
+                                                                            {% if request.session.lang == "EN" %}
+                                                                            Company
+                                                                            {% else %}
+                                                                            شركة
+                                                                            {% endif %}
+                                                                        </div>
+                                                                        <div class="col-6 pt-2 text-center tactive">
+                                                                            12%
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <!--                                                                <div class="col-12 p-3 text-left">-->
+                                                                <!--                                                                    <div class="row">-->
+                                                                <!--                                                                        <div class="col-6 ">-->
+                                                                <!--                                                                            <label for="exst-date"-->
+                                                                <!--                                                                                   class="abt-det">Start-->
+                                                                <!--                                                                                End</label>-->
+                                                                <!--                                                                            <input type="date"-->
+                                                                <!--                                                                                   class="form-control"-->
+                                                                <!--                                                                                   id="exst-date">-->
+                                                                <!--                                                                        </div>-->
+
+                                                                <!--                                                                        <div class="col-6 ">-->
+                                                                <!--                                                                            <label for="exed-Date"-->
+                                                                <!--                                                                                   class="abt-det">End-->
+                                                                <!--                                                                                End</label>-->
+                                                                <!--                                                                            <input type="date"-->
+                                                                <!--                                                                                   class="form-control"-->
+                                                                <!--                                                                                   id="exed-Date">-->
+                                                                <!--                                                                        </div>-->
+                                                                <!--                                                                    </div>-->
+
+                                                                <!--                                                                </div>-->
+                                                                <!--                                                                <div class="col-12 p-3 text-left">-->
+                                                                <!--                                                                    <div class="form-group">-->
+                                                                <!--                                                                        <label for="noted">Note</label>-->
+                                                                <!--                                                                        <textarea class="form-control"-->
+                                                                <!--                                                                                  id="noted"-->
+                                                                <!--                                                                                  rows="3"></textarea>-->
+                                                                <!--                                                                    </div>-->
+
+                                                                <!--                                                                </div>-->
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <!--                                                    <button type="button" class="btn btn-secondary"-->
+                                                            <!--                                                            data-dismiss="modal">Close-->
+                                                            <!--                                                    </button>-->
+                                                            <button type="button" onclick="
+                                                            $('#gosi').val('other')
+$('.benifit-card-btn').eq(1).css({'background':'#4755AB'})
+$('.benifit-card-btn').eq(0).css({'background':'#f8f9fa'})
+                                                            "
+                                                                    class="btn btn-primary btnaddBenefit"
+                                                                    data-dismiss="modal">
+                                                                {% if request.session.lang == "EN" %}
+                                                                Add Benefits
+                                                                {% else %}
+                                                                إضافة فوائد
+                                                                {% endif %}
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="doc-icon-circle doc-icon-circle2 m-auto text-center">
+                                                <i class="fa fa-globe" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="small-text doct-title" style="padding-top:17px;">
+                                                <strong>
+                                                    {% if request.session.lang == "EN" %}
+                                                    Expatriates
+                                                    {% else %}
+                                                    المغتربين
+                                                    {% endif %}
+                                                </strong> <br><small></small></div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!--Complete-->
+                            <div id="complete" class="tabcontent" style="margin-top:26px;">
+                                <h4 class="p-3 p-head"><strong>{% if request.session.lang == "EN" %}
+                                    <i class="fa fa-thumbs-up mr-2" aria-hidden="true"></i>Complete
+                                    {% else %}
+                                    <i class="fa fa-thumbs-up ml-2" aria-hidden="true"></i>اكتمال
+                                    {% endif %}</strong>
+                                    <hr>
+                                </h4>
+                                <button type="button" class="btn btn-success btn-style cont-btn" style="">
+                                    {% if request.session.lang == "EN" %}
+                                    Continue<i class="fa fa-thumbs-up ml-2"></i>
+                                    {% else %}
+                                    <i class="fa fa-thumbs-up ml-2"></i>يكمل
+                                    {% endif %}
+                                </button>
+                                <div class="row">
+                                    <div class="col-12 p-3 ">
+                                        <h4 class="p-head">
+                                            {% if request.session.lang == "EN" %}
+                                            Congratulations!
+                                            {% else %}
+                                            !تهانينا
+                                            {% endif %}
+                                            <strong id="empname"></strong>
+                                            {% if request.session.lang == "EN" %}
+                                            is ready to get started.
+                                            {% else %}
+                                            على استعداد للبدء.
+                                            {% endif %}
+                                        </h4>
+                                    </div>
+
+                                    <div class="col-12 p-4 d-flex justify-content-center">
+                                        <img src="/static/assets/images/celebrations.gif"/>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    $('#jobtitle').val({{data.Job_position.id}});
+
+
+
+
+
+</script>
+
+<script type="text/javascript" src="/static/assets/js/custom_sidenav.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<script type="text/javascript" src="/static/assets/js/leavechart.js"></script>
+<script>
+    $('#gosi').val('saudi')
+$('.benifit-card-btn').eq(0).css({'background':'#4755AB'})
+$('.benifit-card-btn').eq(1).css({'background':'#f8f9fa'})
+
+
+
+</script>
+{% endblock%}
