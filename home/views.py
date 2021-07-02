@@ -356,8 +356,8 @@ def chklogin(request):
 
 def Changelang(request):
     try:
-        if request.session["lang"]== "EN":
-            request.session["lang"]="EN"
+        if request.session["lang"] == "EN":
+            request.session["lang"] = "AR"
         else:
             request.session["lang"] = "EN"
     except:
