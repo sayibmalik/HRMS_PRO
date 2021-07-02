@@ -613,17 +613,17 @@
                             <div class="col-lg-6 info" data-aos="fade-up">
                                 <i class="bx bx-map shaky-icon"></i>
                                 <h4 class="shaky-text shaky-icon">Address</h4>
-                                <p class="font-weight-bold">Exit-14 Al-Rayan<br>Riyadh, Saudi Arabia</p>
+                                <p class="font-weight-bold">Bota Kadal<br>Lal Bazar 190006</p>
                             </div>
                             <div class="col-lg-6 info" data-aos="fade-up" data-aos-delay="100">
                                 <i class="bx bx-phone shaky-icon"></i>
                                 <h4 class="shaky-text shaky-icon">Call Us</h4>
-                                <p class="font-weight-bold">+966 563333302<br>+966 551439287</p>
+                                <p class="font-weight-bold">+91 9906714434<br></p>
                             </div>
                             <div class="col-lg-6 info" data-aos="fade-up" data-aos-delay="200">
                                 <i class="bx bx-envelope shaky-icon"></i>
                                 <h4 class="shaky-text shaky-icon">Email Us</h4>
-                                <p class="font-weight-bold">aalmutlaq83@yahoo.com<br>info@britx.com</p>
+                                <p class="font-weight-bold">oxford990@icloud.com<br></p>
                             </div>
                             <div class="col-lg-6 info" data-aos="fade-up" data-aos-delay="300">
                                 <i class="bx bx-time-five shaky-icon"></i>
@@ -634,8 +634,8 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form"
-                              data-aos="fade-up">
+                        <form action="" method="post" >
+                            {% csrf_token %}
                             <div class="form-group">
                                 <input placeholder="Your Name" type="text" name="name" class="form-control" id="name"
                                        data-rule="minlen:4" data-msg="Please enter at least 4 chars"/>
@@ -658,13 +658,9 @@
                                       data-rule="required" data-msg="Please write something for us"></textarea>
                                 <div class="validate"></div>
                             </div>
-                            <div class="mb-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-                            </div>
+
                             <div class="text-center">
-                                <button type="submit">Send Message</button>
+                                <button class="btn-success form-control" style="background:#012066;" type="submit">Send Message</button>
                             </div>
                         </form>
                     </div>
@@ -1240,83 +1236,83 @@
         </section><!-- End Frequently Asked Questions Section -->
 
         <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact">
-            <div class="container">
+<!--        <section id="contact" class="contact">-->
+<!--            <div class="container">-->
 
-                <div class="section-title">
-                    <h2 data-aos="zoom-in" class="text-center">اتصل</h2>
-                    <!--          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
-                </div>
+<!--                <div class="section-title">-->
+<!--                    <h2 data-aos="zoom-in" class="text-center">اتصل</h2>-->
+<!--                    &lt;!&ndash;          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>&ndash;&gt;-->
+<!--                </div>-->
 
-                <div class="row">
+<!--                <div class="row">-->
 
-                    <div class="col-lg-6">
-                        <div class="row">
-                            <div class="col-lg-6 info" data-aos="fade-up">
-<!--                                <i class="bx bx-map "></i>-->
-                                <i class="bx bx-map shaky-icon"></i>
-                                <h4 class="text-center"><b>عنوان</b></h4>
-                                <p class="text-center">مخرج 14 الريان الرياض <br>المملكة العربية السعودية</p>
-                            </div>
-                            <div class="col-lg-6 info " data-aos="fade-up" data-aos-delay="100">
-                                <i class="bx bx-phone shaky-icon"></i>
-                                <h4 class="text-center">اتصل بنا</h4>
-                                <p style="direction: ltr;" class="text-center">
-                                    <b>+۹٦٦ ٥٦۳۳۳۳۳۰۲<br>
-                                    +۹٦٦ ٥٥۱٤۳۹۲۸۷</b></p>
-<!--                                <p>+966 563333302<br>+966 551439287</p>-->
-                            </div>
-                            <div class="col-lg-6 info" data-aos="fade-up" data-aos-delay="200">
-                                <i class="bx bx-envelope shaky-icon"></i>
-                                <h4 class="text-center">ارسل لنا عبر البريد الإلكتروني</h4>
-                                <p class="text-center">aalmutlaq83@yahoo.com<br>info@britx.com</p>
-                            </div>
-                            <div class="col-lg-6 info" data-aos="fade-up" data-aos-delay="300">
-                                <i class="bx bx-time-five shaky-icon"></i>
-                                <h4 class="text-center">ساعات العمل</h4>
-                                <p class="text-center">الأحد - الأربعاء: 9 صباحًا حتى 5 مساءً <br> السبت: 9 صباحًا إلى 5 مساءً</p>
-                            </div>
-                        </div>
-                    </div>
+<!--                    <div class="col-lg-6">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-lg-6 info" data-aos="fade-up">-->
+<!--&lt;!&ndash;                                <i class="bx bx-map "></i>&ndash;&gt;-->
+<!--                                <i class="bx bx-map shaky-icon"></i>-->
+<!--                                <h4 class="text-center"><b>عنوان</b></h4>-->
+<!--                                <p class="text-center">مخرج 14 الريان الرياض <br>المملكة العربية السعودية</p>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-6 info " data-aos="fade-up" data-aos-delay="100">-->
+<!--                                <i class="bx bx-phone shaky-icon"></i>-->
+<!--                                <h4 class="text-center">اتصل بنا</h4>-->
+<!--                                <p style="direction: ltr;" class="text-center">-->
+<!--                                    <b>+۹٦٦ ٥٦۳۳۳۳۳۰۲<br>-->
+<!--                                    +۹٦٦ ٥٥۱٤۳۹۲۸۷</b></p>-->
+<!--&lt;!&ndash;                                <p>+966 563333302<br>+966 551439287</p>&ndash;&gt;-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-6 info" data-aos="fade-up" data-aos-delay="200">-->
+<!--                                <i class="bx bx-envelope shaky-icon"></i>-->
+<!--                                <h4 class="text-center">ارسل لنا عبر البريد الإلكتروني</h4>-->
+<!--                                <p class="text-center">oxford990@icloud.com<br></p>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-6 info" data-aos="fade-up" data-aos-delay="300">-->
+<!--                                <i class="bx bx-time-five shaky-icon"></i>-->
+<!--                                <h4 class="text-center">ساعات العمل</h4>-->
+<!--                                <p class="text-center">الأحد - الأربعاء: 9 صباحًا حتى 5 مساءً <br> السبت: 9 صباحًا إلى 5 مساءً</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div class="col-lg-6">
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form"
-                              data-aos="fade-up">
-                            <div class="form-group">
-                                <input placeholder="اسمك" type="text" name="name" class="form-control" id="name"
-                                       data-rule="minlen:4" data-msg="Please enter at least 4 chars"/>
-                                <div class="validate"></div>
-                            </div>
-                            <div class="form-group">
-                                <input placeholder="بريدك الالكتروني" type="email" class="form-control" name="email"
-                                       id="email" data-rule="email" data-msg="Please enter a valid email"/>
-                                <div class="validate"></div>
-                            </div>
-                            <div class="form-group">
-                                <input placeholder="موضوع" type="text" class="form-control" name="subject" id="subject"
-                                       data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject"/>
-                                <div class="validate"></div>
-                            </div>
-                            <div class="form-group">
-                                <textarea placeholder="رسالة" class="form-control" name="message" rows="5"
-                                          data-rule="required" data-msg="Please write something for us"></textarea>
-                                <div class="validate"></div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="loading">جار التحميل</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">تم ارسال رسالتك. شكرا لك!</div>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit">أرسل رسالة</button>
-                            </div>
-                        </form>
-                    </div>
+<!--&lt;!&ndash;                    <div class="col-lg-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <form action="forms/contact.php" method="post" role="form" class="php-email-form"&ndash;&gt;-->
+<!--&lt;!&ndash;                              data-aos="fade-up">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <input placeholder="اسمك" type="text" name="name" class="form-control" id="name"&ndash;&gt;-->
+<!--&lt;!&ndash;                                       data-rule="minlen:4" data-msg="Please enter at least 4 chars"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="validate"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <input placeholder="بريدك الالكتروني" type="email" class="form-control" name="email"&ndash;&gt;-->
+<!--&lt;!&ndash;                                       id="email" data-rule="email" data-msg="Please enter a valid email"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="validate"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <input placeholder="موضوع" type="text" class="form-control" name="subject" id="subject"&ndash;&gt;-->
+<!--&lt;!&ndash;                                       data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="validate"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <textarea placeholder="رسالة" class="form-control" name="message" rows="5"&ndash;&gt;-->
+<!--&lt;!&ndash;                                          data-rule="required" data-msg="Please write something for us"></textarea>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="validate"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="loading">جار التحميل</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="error-message"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="sent-message">تم ارسال رسالتك. شكرا لك!</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="text-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <button type="submit">أرسل رسالة</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </form>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
 
-                </div>
+<!--                </div>-->
 
-            </div>
-        </section><!-- End Contact Section -->
+<!--            </div>-->
+<!--        </section>&lt;!&ndash; End Contact Section &ndash;&gt;-->
 
     </main><!-- End #main -->
 

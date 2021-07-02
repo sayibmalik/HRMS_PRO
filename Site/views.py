@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from home.views import chklogin
-from .models import Billingaddress, Userdetails, Bills, Product,PayHistory,UserMembership,Subscription
+from .models import Billingaddress, Userdetails, Bills, Product, PayHistory, UserMembership, Subscription
 from home.models import Employees, Company
 import json
 import stripe
@@ -18,7 +18,6 @@ import requests
 import json
 from django.http import HttpResponseRedirect
 
-
 today = datetime.date.today()
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -27,13 +26,28 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 # Create your views here.
 
 def index(request):
-    l = Product.objects.all()
-    context = {"data": l}
-    try:
-        lang = request.GET["lang"]
-    except:
-        lang = 'AR'
-    return render(request, 'Site/' + lang + '/index.html', context)
+    if request.method   == "GET":
+        l = Product.objects.all()
+        context = {"data": l}
+        try:
+            lang = request.GET["lang"]
+        except:
+            lang = 'AR'
+            return render(request, 'Site/' + lang + '/index.html', context)
+    elif request.method == "POST":
+            name = request.POST["name"]
+            email_from = request.POST["email"]
+            subject = request.POST["subject"]
+            msg = name + " | " + email_from + " | "  + request.POST["message"]
+            et = [settings.EMAIL_HOST_USER, ]
+            send_mail(subject,
+                    msg,
+                    settings.EMAIL_HOST_USER,
+                    et,
+                    fail_silently=False)
+
+            return redirect('/')
+
 
 
 def billing(request):
@@ -152,7 +166,7 @@ def upgradeplan(request):
     if c:
         l = Product.objects.all()
 
-        context = {"Title": "Upgarde Plan ","data":l }
+        context = {"Title": "Upgarde Plan ", "data": l}
         return render(request, 'Site/EN/upgradeplan.html', context)
     else:
         return redirect('/app/login')
@@ -169,7 +183,7 @@ def mysubscription(request):
                 a = UserMembership.objects.get(user=uid)
             except:
                 return redirect('/app/dashboard/')
-            context = {"Title": "My Subscription", "data": u, "data1": c,"membership":a}
+            context = {"Title": "My Subscription", "data": u, "data1": c, "membership": a}
             return render(request, 'Site/EN/mysubscription.html', context)
     else:
         return redirect('/app/login')
@@ -237,6 +251,7 @@ class SuccessView(TemplateView):
 class CancelView(TemplateView):
     template_name = "Site/AR/cancel.html"
 
+
 def ProductLandingPageView(request):
     c = chklogin(request)
     if c:
@@ -245,22 +260,24 @@ def ProductLandingPageView(request):
         if fetch_membership == False:
             return redirect('subscribe')
         product = Product.objects.get(membership_type=plan)
-        context={
-                "product": product,
-                "STRIPE_PUBLIC_KEY": settings.STRIPE_PUBLIC_KEY
-            }
+        context = {
+            "product": product,
+            "STRIPE_PUBLIC_KEY": settings.STRIPE_PUBLIC_KEY
+        }
         try:
             uid = request.session["userid"]
             user = User.objects.get(id=uid)
             PayHistory.objects.create(amount=product.price, payment_for=product, user=user, paid="True")
-            u=UserMembership.objects.create(user=user, membership=product)
-            Subscription.objects.create(user_membership=u,expires_in=dt.now().date() + timedelta(days=u.membership.duration))
+            u = UserMembership.objects.create(user=user, membership=product)
+            Subscription.objects.create(user_membership=u,
+                                        expires_in=dt.now().date() + timedelta(days=u.membership.duration))
 
             return render(request, "Site/AR/landing.html", context)
         except:
             return redirect('mysubscription')
     else:
         return redirect('/app/login')
+
 
 def delMembership(request):
     c = chklogin(request)

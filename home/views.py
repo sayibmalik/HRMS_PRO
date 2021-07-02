@@ -356,16 +356,16 @@ def chklogin(request):
 
 def Changelang(request):
     try:
-        if request.session["lang"]== "AR":
+        if request.session["lang"]== "EN":
             request.session["lang"]="EN"
         else:
-            request.session["lang"] = "AR"
+            request.session["lang"] = "EN"
     except:
         request.session["lang"] = "EN"
     return redirect("/app/dashboard")
 
 def FreeSignUp(request):
-    context = {"Title":"Free Sign Up | Gareeb"}
+    context = {"Title":"Free Sign Up | Britx"}
     return render(request , "home/freeSignup.html", context)
 
 def forgetpasscode(request):
@@ -387,9 +387,9 @@ def reset_password(request):
     try:
         user = get_object_or_404(User,username=un)
         otp = random.randint(1000,9999)
-        msz = "Dear {} \nWe received a request to reset your Gareeb HRM account password.\nEnter the following password reset code {}\n \nThanks&Regards \nGareeb".format(user.first_name, otp)
+        msz = "Dear {} \nWe received a request to reset your Britx HRM account password.\nEnter the following password reset code {}\n \nThanks&Regards \nBritx".format(user.first_name, otp)
         try:
-            email = EmailMessage("{} is your Gareeb HRM account recovery code".format(otp),msz,to=[user.email])
+            email = EmailMessage("{} is your Britx HRM account recovery code".format(otp),msz,to=[user.email])
             email.send()
             return JsonResponse({"status":"sent","email":user.email,"rotp":otp})
         except:
