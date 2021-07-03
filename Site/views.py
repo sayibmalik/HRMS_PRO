@@ -27,6 +27,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def index(request):
     if request.method   == "GET":
+        request.session["lang"] = "EN"
         l = Product.objects.all()
         context = {"data": l}
         try:

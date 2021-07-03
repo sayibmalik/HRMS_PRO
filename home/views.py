@@ -355,13 +355,7 @@ def chklogin(request):
     return log
 
 def Changelang(request):
-    try:
-        if request.session["lang"] == "EN":
-            request.session["lang"] = "AR"
-        else:
-            request.session["lang"] = "EN"
-    except:
-        request.session["lang"] = "EN"
+    request.session["lang"] = "EN"
     return redirect("/app/dashboard")
 
 def FreeSignUp(request):
