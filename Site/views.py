@@ -51,6 +51,7 @@ def index(request):
 
 
 
+
 def billing(request):
     return render(request, 'Site/EN/billing.html')
 
