@@ -105,7 +105,7 @@ def salaryslip(request,pk):
         p=EmployeePayslip.objects.get(id=pk)
         e= Employees.objects.get(id=p.Employee.id)
         c=CreateContracts.objects.filter(Employee=e.id)
-        salarypackage = c[0].base_salary + c[0].Housing_Allowance + c[0].Transport_Allowance + c[0].otherallowance
+        salarypackage = c[0].Housing_Allowance
 
         context={"data":p, "employee":e,"contract":c[0],"salarypackage":salarypackage }
         return render(request, 'payroll/payslip.html',context)
@@ -215,7 +215,7 @@ def payrun(uid,batch):
     diff = queryset2.Period_To - queryset2.Period_From
     no_of_days = int(diff.days)+1
     print(no_of_days)
-    total_salary = queryset.base_salary + queryset.Housing_Allowance + queryset.Transport_Allowance + queryset.otherallowance
+    total_salary = queryset.base_salary + queryset.Housing_Allowance
     earning_by_min = total_salary / no_of_days / queryset.workinghours / 60
     print(earning_by_min)
     earnings = agregate_minutes * earning_by_min

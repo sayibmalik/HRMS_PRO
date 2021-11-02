@@ -515,7 +515,7 @@ background: linear-gradient(to right, #4755ab 0%, #a3aad5 100%);
 
         <nav aria-label="breadcrumb mb-4 backwhite" style="background: #fff !important;">
             <ol class="breadcrumb my-breadcrumb  p-3">
-                <li class="breadcrumb-item"><a href="index.html">
+                <li class="breadcrumb-item"><a href="{% url 'site' %}">
                     {% if request.session.lang == "EN" %}
                     <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
                     {% else %}

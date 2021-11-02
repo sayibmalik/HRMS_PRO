@@ -224,10 +224,11 @@ function savecontract(){
   endDate = $('#endDate').val();
   notPeriod = $('#notPeriod').val();
   probPeriod = $('#probPeriod').val();
-  bs = $('#bs').val();
-  HA = $('#HA').val();
-  TA = $('#TA').val();
-  OA = $('#OA').val();
+//  bs = $('#bs').val();
+//  HA = $('#HA').val();
+//  TA = $('#TA').val();
+//  OA = $('#OA').val();
+//  allowance = $('#allowance').val();
 
   shiftstart = $('#shiftstart').val();
   shiftend = $('#shiftend').val();
@@ -244,10 +245,15 @@ function savecontract(){
   data.append("endDate", endDate)
   data.append("notPeriod", notPeriod)
   data.append("probPeriod", probPeriod)
-  data.append("bs", bs)
-  data.append("HA", HA)
-  data.append("TA", TA)
-  data.append("OA", OA)
+//  data.append("bs", bs)
+//  data.append("HA", HA)
+//  data.append("TA", TA)
+//  data.append("OA", OA)
+//  data.append("allowance", allowance)
+//  if("#allowance").is(":checked")
+//        data.append("allowance", true)
+//  else
+//        data.append("allowance", false)
 
   data.append("shiftstart", shiftstart)
   data.append("shiftend", shiftend)

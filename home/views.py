@@ -20,27 +20,27 @@ from Site.models import UserMembership,Subscription
 def index(request):
     c= chklogin(request)
     if c:
-        try:
+        # try:
             uid = request.session["userid"]
             u = User.objects.get(id=uid)
-            user_membership = UserMembership.objects.get(user=uid)
-            subscriptions = Subscription.objects.filter(user_membership=user_membership).exists()
-            if subscriptions == False:
-                return redirect('/Site/upgradeplan')
-        except UserMembership.DoesNotExist:
-            return redirect('/upgradeplan')
-        if u.is_superuser == True:
-            emp=0
-            tu = User.objects.all()
-            com = Company.objects.all()
-            bill = Bills.objects.filter(paidStatus=True).aggregate(Sum('Amount'))
-            context = {"user": u, "tu": tu.count, "com": com.count, "bill": bill["Amount__sum"]}
-            return render(request, 'index.html', context)
-        else:
-            try:
-                e=Employees.objects.get(user=uid)
-            except:
-                return redirect('/app/signup/')
+        #     user_membership = UserMembership.objects.get(user=uid)
+        #     subscriptions = Subscription.objects.filter(user_membership=user_membership).exists()
+        #     if subscriptions == False:
+        #         return redirect('/Site/upgradeplan')
+        # except UserMembership.DoesNotExist:
+        #     return redirect('/upgradeplan')
+            if u.is_superuser == True:
+                emp=0
+                tu = User.objects.all()
+                com = Company.objects.all()
+                bill = Bills.objects.filter(paidStatus=True).aggregate(Sum('Amount'))
+                context = {"user": u, "tu": tu.count, "com": com.count, "bill": bill["Amount__sum"]}
+                return render(request, 'index.html', context)
+            else:
+                try:
+                    e=Employees.objects.get(user=uid)
+                except:
+                    return redirect('/app/signup/')
             emp=e
             users = Employees.objects.get(user=uid)
             q = Employees.objects.filter(company=users.company)
@@ -355,11 +355,17 @@ def chklogin(request):
     return log
 
 def Changelang(request):
-    request.session["lang"] = "EN"
+    try:
+        if request.session["lang"]== "AR":
+            request.session["lang"]="EN"
+        else:
+            request.session["lang"] = "AR"
+    except:
+        request.session["lang"] = "EN"
     return redirect("/app/dashboard")
 
 def FreeSignUp(request):
-    context = {"Title":"Free Sign Up | Britx"}
+    context = {"Title":"Free Sign Up | Gareeb"}
     return render(request , "home/freeSignup.html", context)
 
 def forgetpasscode(request):
@@ -381,9 +387,9 @@ def reset_password(request):
     try:
         user = get_object_or_404(User,username=un)
         otp = random.randint(1000,9999)
-        msz = "Dear {} \nWe received a request to reset your Britx HRM account password.\nEnter the following password reset code {}\n \nThanks&Regards \nBritx".format(user.first_name, otp)
+        msz = "Dear {} \nWe received a request to reset your Gareeb HRM account password.\nEnter the following password reset code {}\n \nThanks&Regards \nGareeb".format(user.first_name, otp)
         try:
-            email = EmailMessage("{} is your Britx HRM account recovery code".format(otp),msz,to=[user.email])
+            email = EmailMessage("{} is your Gareeb HRM account recovery code".format(otp),msz,to=[user.email])
             email.send()
             return JsonResponse({"status":"sent","email":user.email,"rotp":otp})
         except:

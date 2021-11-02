@@ -1,0 +1,315 @@
+{% extends 'base.html'%}
+{% block content%}
+<style>
+      .backwhite
+    {
+        padding: 9px;
+    padding-left: 15px;
+    background: #fff;
+    }
+
+    .emp-cre
+    {
+        background-image: url(/static/assets/images/compp.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .new-tablink
+    {
+        background: #F4F6F9 !important;
+        border: 2px solid #F4F6F9 !important;
+        border-radius: 30px !important;
+        min-width: 182px !important;
+    }
+
+    .new-create
+    {
+        border-radius: 30px;
+        height: 45px;
+        border: 2px solid #eee;
+    }
+
+    .bootstrap-select .dropdown-menu li{
+        position: relative;
+        width: 100% !important;
+    }
+
+    .bootstrap-select .dropdown-menu li a span.text{
+        font-size: 16px !important;
+        text-align: left !important;
+    }
+
+
+
+
+
+
+
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<div class="main-content">
+
+    <!-- content -->
+    <div class="container-fluid content-top-gap">
+
+        <!-- breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-4 backwhite">
+            <ol class="breadcrumb my-breadcrumb pt-3">
+                <li class="breadcrumb-item"><a href="/">
+                    {% if request.session.lang == "EN" %}
+                    <h6><b><i class="fa fa-home mr-2"></i>Home</b></h6>
+                    {% else %}
+                    <h6><b><i class="fa fa-home ml-2"></i> الصفحة الرئيسية</b></h6>
+                    {% endif %}
+                </a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% if request.session.lang == "EN" %}
+                    Save
+                    {% else %}
+                    يحفظ
+                    {% endif %}
+                </li>
+            </ol>
+        </nav>
+        <!-- //breadcrumbs -->
+        <!-- forms -->
+
+        <!-- //forms  -->
+
+    </div>
+    <!-- //content -->
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <section class="forms">
+                    <!--            <form action="" method="post">-->
+                    <!--                {% csrf_token %}-->
+                    <div class="card card_border ">
+
+
+                        <!--======================================new disgn strat===================================-->
+                        <div class="card-body "
+                             style="box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;">
+
+                            <div class="row m-0  ">
+                                <div class="col-lg-6 col-md-12 col-12 backwhite">
+                                    <div class="row m-0">
+                                        <div class="col-lg-12">
+                                            <h4 class="ml-2 text-primary pt-2">
+                                                {% if request.session.lang == "EN" %}
+                                                <i class="fa fa-money  fa-1x mr-3"></i><b> Create Salary Structure</b>
+                                                {% else %}
+                                                <i class="fa fa-money  fa-1x ml-3"></i><b>إنشاء هيكل الرواتب</b>
+                                                {% endif %}
+                                            </h4>
+                                        </div>
+
+                                        <div class="col-lg-12 pt-3">
+                                            <a href="{% url 'ViewEmployees' %}" class="btn btn-danger btn-style ml-3"
+                                               style="height: 35px;font-size: 14px;padding-top: 4px;">
+                                                {% if request.session.lang == "EN" %}
+                                                Cancel
+                                                {% else %}
+                                                يلغي
+                                                {% endif %}
+                                            </a>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-12 p-2  backwhite emp-cre">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+                <div id="back-cover" class=" mb-5" style="margin-top: -15px !important;position:relative">
+                    <div class="row">
+                        <div class=" backwhite col-12 side_nav mt-5 mb-5">
+
+                            <form method="post" action="">
+                                {% csrf_token %}
+
+
+                                <!--persaonal-->
+                                <div id="personal" class="tabcontent active" style="margin-top:26px;">
+                                    <h4 class="p-3 text-primary"><strong>
+                                        {% if request.session.lang == "EN" %}
+                                        <i class="fa fa-money mr-2"></i>Salary Structure
+                                        {% else %}
+                                        <i class="fa fa-money ml-2"></i>هيكلية الرواتب
+                                        {% endif %}
+                                    </strong>
+                                        <hr>
+                                    </h4>
+                                </div>
+
+                                <!--job-->
+
+
+                                <!--   contract        -->
+                                <div id="contract" class="tabcontent" style="margin-top:26px;">
+                                    <div class="row">
+                                        <div class="col-12 ">
+                                            <h5 class="p-3 text-primary text-center"><strong>
+                                                {% if request.session.lang == "EN" %}
+                                                <i class=" mr-2"></i> Employee Name
+                                                {% else %}
+                                                <i class=" ml-2"></i>ملازم کا نام
+                                                {% endif %}
+                                            </strong>
+                                            </h5>
+                                            <h5 class="text-center"><strong>{{contract.Employee.user.first_name}} {{contract.Employee.user.last_name}}</strong></h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-lg-6 mt-5">
+                                                        <div class="form-group nat-select ">
+                                                            <div class="row">
+                                                                <div class="col-6 abt-det abt-2 pt-2"><i
+                                                                        class="fa fa-money mr-2" aria-hidden="true"></i>
+                                                                    <span>
+                                                                {% if request.session.lang == "EN" %}
+                                                                            Basic Salary
+                                                                              {% else %}
+                                                                              راتب اساسي
+                                                                              {% endif %}
+                                                            </span>
+                                                                </div>
+                                                                <div class="col-6 mb-2"><input type="number" id="bs"
+                                                                                               class="form-control new-create"
+                                                                                               min="0"
+                                                                                               value='{{contract.base_salary}}'
+                                                                                               name="bs"
+                                                                                               oninput="bss()"/>
+                                                                </div>
+                                                                <div class="col-6 abt-det abt-2 pt-2"><i
+                                                                        class="fa fa-money mr-2" aria-hidden="true"></i>
+                                                                    <span>
+                                                                {% if request.session.lang == "EN" %}
+                                                                            Total Salary
+                                                                              {% else %}
+                                                                              مجموع الراتب
+                                                                              {% endif %}
+                                                            </span>
+                                                                </div>
+                                                                <div class="col-6  mb-2"><input readonly type="number"
+                                                                                                id="amount" name="allow"
+                                                                                                class="form-control new-create"
+                                                                                                min="0"
+                                                                                                value='{{contract.Housing_Allowance}}'/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 mt-5">
+                                                        <div class="form-group nat-select ">
+                                                            <label for="allowance" class="abt-det pb-2 text-primary">
+                                                                {% if request.session.lang == "EN" %}
+                                                                Allowance
+                                                                {% else %}
+                                                                مخصص
+                                                                {% endif %}
+                                                            </label>
+                                                            <!--                                                        <select class="form-control new-create selectpicker" multiple data-actions-box="true" id="allowance"-->
+                                                            <!--                                                                name="allowance">-->
+                                                            <!--                                                            {% for d in allowance %}-->
+                                                            <!--                                                            <option value="{{d.id}}">{{d.enName}}</option>-->
+                                                            <!--                                                            {% endfor %}-->
+                                                            <!--                                                        </select>-->
+
+                                                            <!--                                                        <select class="form-control new-create selectpicker"-->
+                                                            <!--                                                                name="allowance" multiple data-actions-box="true"-->
+                                                            <!--                                                                id="allowance">-->
+                                                            <!--                                                            {% for d in allowance %}-->
+                                                            <!--                                                            <option value="{{d.id}}">{{d.enName}}</option>-->
+                                                            <!--                                                            {% endfor %}-->
+                                                            <!--                                                        </select>-->
+                                                            <br>
+                                                            {% for d in allowance %}
+
+                                                            <input value="{{d.id}}" type="checkbox" class=" "
+                                                                   name="{{d.enName}}" id="{{d.id}}"
+                                                                   style=" zoom: 1.5;"
+                                                                   onclick="total('{{d.value}}','{{d.id}}')">
+                                                            {{d.enName}}<br>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-success btn-style cont-btn" style="">
+                                        {% if request.session.lang == "EN" %}
+                                        Continue <i class="fa fa-long-arrow-right ml-2"></i>
+                                        {% else %}
+                                        <i class="fa fa-long-arrow-right ml-2"></i>يكمل
+                                        {% endif %}
+                                    </button>
+                                </div>
+
+                            </form>
+                            <!--benifits-->
+                            <!--Complete-->
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+
+</script>
+<script>
+let x =0;
+ let tot = 0;
+function bss() {
+   x = document.getElementById("bs").value;
+     tot = x ;
+}
+
+    function total(price, id) {
+
+
+
+        let check=document.getElementById(id).checked;
+
+        if(check) {
+            tot = +tot + (+x * +price)/100;
+        } else {
+            tot = +tot - (+x * +price)/100;
+        }
+         console.log(tot)
+        document.getElementById("amount").value = tot;
+    }
+
+
+
+</script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<script type="text/javascript" src="/static/assets/js/leavechart.js"></script>
+
+{% endblock%}

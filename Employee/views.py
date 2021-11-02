@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from home.views import chklogin
-from home.models import Employees, JobPosition, Department, CreateContracts, JobTitle, EmployementGrades,EmployementLevel,location,costcenter
+from home.models import Employees, JobPosition, Department, CreateContracts, JobTitle, EmployementGrades,EmployementLevel,location,costcenter,allowances
 from HR.models import Assets, notes
 from django.contrib.auth.models import User
 
@@ -20,8 +20,8 @@ def employees(request, pk):
             if (e.company == a.company):
                 contract = CreateContracts.objects.filter(Employee=a.id)
                 if contract.exists():
-                    salarypackage = contract[0].base_salary + contract[0].Housing_Allowance + contract[
-                        0].Transport_Allowance + contract[0].otherallowance
+                    salarypackage = contract[0].base_salary + contract[0].Housing_Allowance \
+                                    # + contract[0].Transport_Allowance + contract[0].otherallowance
                     con = contract[0]
                 else:
                     salarypackage = ""
@@ -48,7 +48,9 @@ def createemployees(request):
             el = EmployementLevel.objects.filter(company=e.company)
             loca = location.objects.filter(company=e.company)
             cc = costcenter.objects.filter(company=e.company)
-            context = {"Title": "Gareeb | Create Employees", "data": q, "department": d, "JobTitle": j, "data1": em,"EmployeeLevel":el, "location":loca,"costcenter":cc,
+            allow = allowances.objects.filter(company=e.company)
+            context = {"Title": "Gareeb | Create Employees", "data": q, "department": d, "JobTitle": j, "data1": em,"EmployeeLevel":el,
+                       "location":loca,"costcenter":cc,"allowance":allow,
                        "emp": "", "contract": ""}
             return render(request, 'employee/createemployees.html', context)
 
@@ -89,12 +91,13 @@ def EditEmployee(request, pk):
                 loca = location.objects.filter(company=e.company)
                 cc = costcenter.objects.filter(company=e.company)
                 contract = CreateContracts.objects.filter(Employee=a.id)
+                allow = allowances.objects.filter(company=e.company)
                 if contract.exists():
                     c = contract[0]
                 else:
                     c = ""
                 context = {"Title": "Gareeb | Edit Employees", "data": q, "department": d, "JobTitle": j, "data1": em,"EmployeeLevel":el,"location":loca,"costcenter":cc,
-                           "emp": a, "contract": c}
+                           "emp": a,"allowance":allow, "contract": c}
                 return render(request, "employee/createemployees.html", context)
             else:
                 return redirect('/app/dashboard')
@@ -224,10 +227,13 @@ def savecontract(request):
         endDate = request.POST['endDate']
         notPeriod = request.POST['notPeriod']
         probPeriod = request.POST['probPeriod']
-        bs = request.POST['bs']
-        HA = request.POST['HA']
-        TA = request.POST['TA']
-        OA = request.POST['OA']
+        # bs = request.POST['bs']
+        # HA = request.POST['HA']
+        # TA = request.POST['TA']
+        # OA = request.POST['OA']
+        # allowance = request.POST['allowance']
+        # allo = allowances.objects.get(id=allowance)
+
 
         shiftstart = request.POST['shiftstart']
         shiftend = request.POST['shiftend']
@@ -250,16 +256,15 @@ def savecontract(request):
             if cid == "":
                 CreateContracts.objects.create(ContractsReference="Contract For " + u.first_name + " " + u.last_name,
                                                Employee=e, Department=d, Contract_Type=emptype,
-                                               Date_From=sdate, Date_To=endDate, Stage=1, base_salary=bs,
-                                               Housing_Allowance=HA,
-                                               Transport_Allowance=TA, GOSI=g, shift_start=shiftstart,
+                                               Date_From=sdate, Date_To=endDate, Stage=1, GOSI=g, shift_start=shiftstart,
                                                shift_end=shiftend,
                                                workinghours=workhours, breakhours=lunch, employment_type=emptype,
                                                contract_period=contPerid, notice_period=notPeriod,
                                                probation_period=probPeriod,
-                                               otherallowance=OA)
+                                               )
                 res = {"status": "success"}
                 return JsonResponse(res)
+
             else:
                 contract = CreateContracts.objects.get(id=cid)
                 contract.Department = d
@@ -267,9 +272,9 @@ def savecontract(request):
                 contract.Date_From = sdate
                 contract.Date_To = endDate
                 contract.Stage = 1
-                contract.base_salary = bs
-                contract.Housing_Allowance = HA
-                contract.Transport_Allowance = TA
+                # contract.base_salary = bs
+                # contract.Housing_Allowance = HA
+                # contract.Transport_Allowance = TA
                 contract.GOSI = g
                 contract.shift_start = shiftstart
                 contract.shift_end = shiftend
@@ -279,7 +284,8 @@ def savecontract(request):
                 contract.contract_period = contPerid
                 contract.notice_period = notPeriod
                 contract.probation_period = probPeriod
-                contract.otherallowance = OA
+                # contract.otherallowance = OA
+                # contract.allowance.set(allo)
                 contract.save()
                 res = {"status": "success"}
                 return JsonResponse(res)
@@ -340,3 +346,53 @@ def manageAccess(request, pk):
             return response
     else:
         return redirect('/app/login')
+
+def allow(request, pk):
+    c = chklogin(request)
+    if c:
+        if request.method == 'GET':
+            uid = request.session["userid"]
+            e = Employees.objects.get(user=uid)
+            contract = CreateContracts.objects.get(id=pk)
+            allow = allowances.objects.filter(company=e.company)
+            context = {"Title": "Gareeb | Create salary", "allowance": allow,
+                       "contract": contract}
+            return render(request, 'employee/allowance.html', context)
+        elif request.method == 'POST':
+            uid = request.session["userid"]
+            e = Employees.objects.get(user=uid)
+            bs = request.POST['bs']
+            allo = request.POST['allow']
+            allowance = [x.enName for x in allowances.objects.filter(company=e.company)]
+            allowance_id = []
+            for x in allowance:
+                allowance_id.append(int(request.POST.get(x))) if request.POST.get(x) else print("Error")
+            contract = CreateContracts.objects.get(id=pk)
+            contract.base_salary = bs
+            contract.Housing_Allowance = allo
+            for x in allowance_id:
+                contract.allowance.add(allowances.objects.get(id=x))
+            contract.save()
+            return redirect("/Employee/salarystr")
+    else:
+        return redirect('/app/login')
+
+
+def salarystr(request):
+    c = chklogin(request)
+    if c:
+        uid = request.session["userid"]
+        u = User.objects.get(id=uid)
+        if u.is_superuser == True:
+            return redirect('/app/dashboard')
+        else:
+            e = Employees.objects.get(user=uid)
+            hr = request.session["ishr"]
+            if hr:
+                con= CreateContracts.objects.filter(Employee__company=e.company)
+            else:
+                con = CreateContracts.objects.filter(Employee=e)
+            context = {"Title": "HRMS | Contracts", "data": con}
+            return render(request, 'employee/salarystructure.html', context)
+    else:
+     return redirect('/app/login')

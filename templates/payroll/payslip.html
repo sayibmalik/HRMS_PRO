@@ -80,14 +80,14 @@
                         تجاهل
                         {% endif %}
                     </a>
-                    <a class="btn btn-success btn-style ml-3 text-white"
+                    <button type="submit"  onclick="imprimir()"  class="btn btn-success btn-style ml-3 text-white"
                        style="height: 35px;font-size: 14px;padding-top: 4px;">
                         {% if request.session.lang == "EN" %}
                         Print
                         {% else %}
                         طباعة
                         {% endif %}
-                    </a>
+                    </button>
                 </div>
             </div>
 
@@ -128,7 +128,7 @@
 <!--            </div>-->
 
             <!--new code-->
-            <div class="container mt-5 pb-5">
+            <div class="container mt-5 pb-5" id="ConsutaBPM">
                 <div id="cover-slip p-3" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
                     <div class="row m-0">
                         <div class="col-lg-12 p-4 backwhite">
@@ -235,7 +235,7 @@
                             <div class="row m-0">
                                 <div class="col-lg-12  mt-4 p-3">
                                     <div class="table-responsive">
-                                        <table class="table table-hover table-bordered">
+                                        <table class="table table-hover table-bordered" border='1' cellpadding='1' id='Tablbpm1' style="width:100%; " >
                                             <thead class="text-center thead-dark">
                                             <tr>
                                                 <th scope="col">
@@ -277,39 +277,39 @@
                                             <tr>
                                                 <td>
                                                     {% if request.session.lang == "EN" %}
-                                                    Housing Allowance
+                                                    Salary including Allowances
                                                     {% else %}
-                                                    بدل سكن
+                                                    الراتب بما في ذلك البدلات
                                                     {% endif %}
                                                 </td>
                                                 <td></td>
 
                                                 <td>{{contract.Housing_Allowance}}</td>
                                             </tr>
+<!--                                            <tr>-->
+<!--                                                <td>-->
+<!--                                                    {% if request.session.lang == "EN" %}-->
+<!--                                                    Travel Allowance-->
+<!--                                                    {% else %}-->
+<!--                                                    بدل السفر-->
+<!--                                                    {% endif %}-->
+<!--                                                </td>-->
+<!--                                                <td></td>-->
+
+<!--                                                <td>{{contract.Transport_Allowance}}</td>-->
+<!--                                            </tr>-->
                                             <tr>
-                                                <td>
-                                                    {% if request.session.lang == "EN" %}
-                                                    Travel Allowance
-                                                    {% else %}
-                                                    بدل السفر
-                                                    {% endif %}
-                                                </td>
+<!--                                                <td>-->
+
+<!--                                                    {% if request.session.lang == "EN" %}-->
+<!--                                                    Other Allowance-->
+<!--                                                    {% else %}-->
+<!--                                                    بدلات أخرى-->
+<!--                                                    {% endif %}-->
+<!--                                                </td>-->
                                                 <td></td>
 
-                                                <td>{{contract.Transport_Allowance}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-
-                                                    {% if request.session.lang == "EN" %}
-                                                    Other Allowance
-                                                    {% else %}
-                                                    بدلات أخرى
-                                                    {% endif %}
-                                                </td>
-                                                <td></td>
-
-                                                <td>{{contract.otherallowance}}</td>
+<!--                                                <td>{{contract.otherallowance}}</td>-->
                                             </tr>
                                             <tr style="background-color: #eee">
 
@@ -325,7 +325,7 @@
                                             </tr>
                                             </tbody>
                                         </table>
-                                        <table class="table table-hover table-bordered mt-5">
+                                        <table class="table table-hover table-bordered mt-5" border='1' cellpadding='1' id='Tablbpm1' style="width:100%; " >
                                             <thead class="text-center thead-light">
                                             <tr>
                                                 <th scope="col">
@@ -402,7 +402,7 @@
 
 
                                         </table>
-                                        <table class="table table-hover table-bordered mt-5">
+                                        <table class="table table-hover table-bordered mt-5" border='1' cellpadding='1' id='Tablbpm1' style="width:100%; ">
                                             <thead class="text-center thead-light">
                                             <tr>
                                                 <th scope="col">
@@ -892,5 +892,13 @@
 
 </div>
 
-
+<script type="text/javascript">
+    function imprimir() {
+        var divToPrint = document.getElementById("ConsutaBPM");
+        newWin = window.open("");
+        newWin.document.write(divToPrint.outerHTML);
+        newWin.print();
+        newWin.close();
+    }
+</script>
 {% endblock%}

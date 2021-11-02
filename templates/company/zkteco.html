@@ -31,9 +31,12 @@
   }
 
 
-<!--    .new-li {-->
-<!--        font-weight: 600 !important;-->
-<!--    }-->
+
+
+    .new-li {
+    font-weight: 700;
+    padding-bottom: 5px;
+    }
 
 <!--switch toggle-->
 /* The switch - the box around the slider */
@@ -285,26 +288,27 @@ input:checked + .slider:before {
 
                                 {% if request.session.lang == "EN" %}
                                 <div class="col-lg-10 col-12 m-auto  p-2">
-                                    <h6 class="mb-3"><b>Step One: BioTime FTP settings</b></h6>
+                                    <h6 class="mb-3 p-3 bg-light"><b>Step One: BioTime FTP settings</b></h6>
                                     <ol class="newordered">
                                         <li class="new-li">In BioTime, go to System → Configuration → FTP Setting</li>
                                         <li class="new-li">Click Add</li>
                                         <li class="new-li">
                                             Enter the following info
                                             <ul style="list-style-type: circle !important;">
-                                                <li>Host Address: 13.69.49.78</li>
-                                                <li>Port Number: 21</li>
-                                                <li>Authentic Method: Password</li>
-                                                <li>Username: gareeb.com</li>
-                                                <li>Password: admin</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i>Host Address: 13.69.49.78</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i>Port Number: 21</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i>Authentic Method: Password</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i>Username: gareeb.com</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i>Password: admin</li>
                                             </ul>
                                         </li>
                                         <li class="new-li">Click Confirm</li>
                                     </ol>
                                 </div>
+
                                 <div class="col-lg-10 col-12 m-auto p-2">
                                     <h6 class="mb-3">
-                                        <b class="pt-3">Step Two: BioTime Auto Export settings</b>
+                                        <b class="p-3 bg-light">Step Two: BioTime Auto Export settings</b>
                                     </h6>
                                     <ol class="newordered">
                                         <li class="new-li">In BioTime, go to System → Integration → Auto Export</li>
@@ -312,36 +316,36 @@ input:checked + .slider:before {
                                         <li class="new-li">
                                             Enter the following info
                                             <ul style="list-style-type: circle !important;">
-                                                <li>Code: Malachite</li>
-                                                <li>Name: Malachite</li>
-                                                <li>File Name: Malachite</li>
-                                                <li>File Name Date Format: yyyy-MM-DD</li>
-                                                <li>File Name Hour Format: HHmmss</li>
-                                                <li>Data Template: <br>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i>Code: Malachite</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i>Name: Malachite</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i>File Name: Malachite</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i>File Name Date Format: yyyy-MM-DD</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i>File Name Hour Format: HHmmss</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i>Data Template: <br>
                                                     <span class="p-3 " style="width:100%;word-wrap:break-word;display:block;border: 1px solid #eee;">
                                                         <a href="">{emp_code}\t{first_name}\t{last_name}\t{dept_code}\t{dept_name}\t{date}\t{time}\t{verify_type}\t{punch_state}\t{work_code}\t{card_number}\t{area_name}\t{terminal_alias}\t{terminal_sn}\r\n</a>
                                                     </span>
                                                 </li>
-                                                <li> Short Date Format: yyyy-MM-DD</li>
-                                                <li> Short Time Format: HH:mm:ss</li>
-                                                <li> ID Digits: 0</li>
-                                                <li> File Format: Csv</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i> Short Date Format: yyyy-MM-DD</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i> Short Time Format: HH:mm:ss</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i> ID Digits: 0</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i> File Format: Csv</li>
                                             </ul>
                                         </li>
                                         <li class="new-li">
                                             Go to 'Export Time Settings' Tab
                                             <ul style="list-style-type: circle !important;">
-                                                <li>Interval: 5</li>
-                                                <li>Frequency: Daily</li>
-                                                <li>Day: 1</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i>Interval: 5</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i>Frequency: Daily</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i>Day: 1</li>
                                             </ul>
                                         </li>
 
                                         <li class="new-li">
                                             Go to 'Export Path Setting' Tab
                                             <ul style="list-style-type: circle !important;">
-                                                <li>Export Path: AutoExport</li>
-                                                <li>FTP Server:host(13.69.49.78</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i>Export Path: AutoExport</li>
+                                                <li><i class="fa fa-circle-o mr-2" style="font-size: 10px;"></i>FTP Server:host(13.69.49.78</li>
                                             </ul>
                                         </li>
                                         <li class="new-li">Click Confirm</li>
@@ -380,11 +384,6 @@ input:checked + .slider:before {
                                         <li class="new-li">
                                             أدخل المعلومات التالية
                                             <ul style="list-style-type: circle !important;">
-
-
-
-
-                                                : HHmmss
                                                 <li> الرمز: Malachite</li>
                                                 <li>الإسم: Malachite</li>
                                                 <li>اسم الملف: Malachite</li>

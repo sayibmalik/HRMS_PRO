@@ -147,7 +147,10 @@ def editleave(request,pk):
         elif request.method == 'POST':
             Desc = request.POST['desc']
             leavetype = request.POST['leavetype']
-            t = LeaveType.objects.get(id=leavetype)
+            try:
+                t = LeaveType.objects.get(id=leavetype)
+            except LeaveType.DoesNotExist:
+                t =None
             frm = request.POST['leavefrom']
             to = request.POST['leaveto']
             durationdays = request.POST['durationdays']

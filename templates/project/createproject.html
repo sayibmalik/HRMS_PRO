@@ -138,6 +138,7 @@
                             </div>
                             <div class="col-lg-10 col-12 m-auto curve-around p-2">
                                 <select class="form-control input-style" id="priority" name="prior" required>
+                                    <option value="{{data1.Priority}}" selected hidden>{{data1.Priority}}</option>
                                     <option value="Low">
                                         {% if request.session.lang == "EN" %}
                                         Low

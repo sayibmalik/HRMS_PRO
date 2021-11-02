@@ -23,7 +23,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-9">
-                            <a href="#" class="btn btn-sm btn-outline-primary btn-style border-btn ml-1">Print</a>
+                            <button type="submit"  onclick="imprimir()" class="btn btn-sm btn-outline-primary btn-style border-btn ml-1">Print</button>
                         </div>
 <!--                        <div class="col-3">-->
 <!--                            <div class="ml-3" style="float: right;">-->
@@ -34,7 +34,7 @@
 <!--                        </div>-->
                     </div>
                 </div>
-                <div class="card-body" style="margin-top: -45px;">
+                <div class="card-body" id="ConsutaBPM" style="margin-top: -45px;">
                     <div class="container p-5">
                         <div class="row">
                             <div class="col-lg-12 p-3 ">
@@ -211,35 +211,35 @@
 
                                             </tr>
                                             <tr>
-                                                <td>Housing allowance</td>
+                                                <td>Total Salaray with allowance</td>
                                                 <td>{{contract.Housing_Allowance}}</td>
 
                                             </tr>
-                                            <tr>
+<!--                                            <tr>-->
 
-                                                <td>Hardship allowance</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
+<!--                                                <td>Hardship allowance</td>-->
+<!--                                                <td></td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
 
-                                                <td>Home trip allowance</td>
-                                                <td></td>
-                                            </tr>
+<!--                                                <td>Home trip allowance</td>-->
+<!--                                                <td></td>-->
+<!--                                            </tr>-->
 
-                                            <tr>
+<!--                                            <tr>-->
 
-                                                <td>Children tuition allowance</td>
-                                                <td></td>
-                                            </tr>
+<!--                                                <td>Children tuition allowance</td>-->
+<!--                                                <td></td>-->
+<!--                                            </tr>-->
 
-                                            <tr>
-                                                <td>Transport allowance</td>
-                                                <td>{{contract.Transport_Allowance}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Other allowance</td>
-                                                <td>{{contract.otherallowance}}</td>
-                                            </tr>
+<!--                                            <tr>-->
+<!--                                                <td>Transport allowance</td>-->
+<!--                                                <td>{{contract.Transport_Allowance}}</td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td>Other allowance</td>-->
+<!--                                                <td>{{contract.otherallowance}}</td>-->
+<!--                                            </tr>-->
                                             </tbody>
                                         </table>
 
@@ -264,34 +264,34 @@
                                             </tr>
                                             <tr>
                                                 <td></td>
-                                                <td>بدل السكن</td>
+                                                <td>مجموع مرتب مع البدل</td>
 
 
                                             </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>بدل طبيعة عمل</td>
+<!--                                            <tr>-->
+<!--                                                <td></td>-->
+<!--                                                <td>بدل طبيعة عمل</td>-->
 
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>بدل تذكرة لبلد الأصل</td>
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td></td>-->
+<!--                                                <td>بدل تذكرة لبلد الأصل</td>-->
 
-                                            </tr>
+<!--                                            </tr>-->
 
-                                            <tr>
-                                                <td></td>
-                                                <td>بدل تعليم الأطفال</td>
+<!--                                            <tr>-->
+<!--                                                <td></td>-->
+<!--                                                <td>بدل تعليم الأطفال</td>-->
 
-                                            </tr>
+<!--                                            </tr>-->
 
-                                            <tr>
-                                                <td></td>
-                                                <td>بدل المواصلات</td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>بدلات أخرى</td>
+<!--                                            <tr>-->
+<!--                                                <td></td>-->
+<!--                                                <td>بدل المواصلات</td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td></td>-->
+<!--                                                <td>بدلات أخرى</td>-->
                                             </tr>
                                             </tbody>
                                         </table>
@@ -1326,4 +1326,13 @@ This Contract is executed in two original counterparts duly signed by the partie
     <!-- //content -->
 
 </div>
+<script type="text/javascript">
+    function imprimir() {
+        var divToPrint = document.getElementById("ConsutaBPM");
+        newWin = window.open("");
+        newWin.document.write(divToPrint.outerHTML);
+        newWin.print();
+        newWin.close();
+    }
+</script>
 {% endblock %}

@@ -30,6 +30,18 @@
         border: 2px solid #eee;
     }
 
+    .bootstrap-select .dropdown-menu li{
+        position: relative;
+        width: 100% !important;
+    }
+
+    .bootstrap-select .dropdown-menu li a span.text{
+        font-size: 16px !important;
+        text-align: left !important;
+    }
+
+
+
 
 
 </style>
@@ -524,7 +536,7 @@
                                                     </select>
                                                 </div>
 
-                                                 <div class="col-6 mt-4">
+                                                <div class="col-6 mt-4">
                                                     <label for="costcenter" class="abt-det pb-2 text-primary">
                                                         {% if request.session.lang == "EN" %}
                                                         Cost Center
@@ -640,7 +652,7 @@
                                                             <option value="{{h.id}}">{{h.title}}</option>
                                                             {% else %}
                                                             <option value="{{h.id}}">{{h.titalAR}}</option>
-                                                             {% endif %}
+                                                            {% endif %}
                                                             {% endfor %}
                                                         </select>
                                                     </div>
@@ -746,7 +758,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-6 ">
+                                                <div class="col-lg-6 ">
                                                     <div class="form-group nat-select">
                                                         <label for="emptype" class="abt-det pb-2 text-primary">
                                                             {% if request.session.lang == "EN" %}
@@ -763,7 +775,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-6 ">
+                                                <div class="col-lg-6 ">
                                                     <div class="form-group nat-select">
                                                         <label for="contPerid" class="abt-det pb-2 text-primary">
                                                             {% if request.session.lang == "EN" %}
@@ -781,7 +793,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-6 mt-5">
+                                                <div class="col-lg-6 mt-5">
                                                     <label for="sdate" class="abt-det pb-2 text-primary">
                                                         {% if request.session.lang == "EN" %}
                                                         Start Date
@@ -793,7 +805,7 @@
                                                            class="form-control new-create" id="sdate" name="startdate">
                                                 </div>
 
-                                                <div class="col-6 mt-5">
+                                                <div class="col-lg-6 mt-5">
                                                     <label for="endDate" class="abt-det pb-2 text-primary">
                                                         {% if request.session.lang == "EN" %}
                                                         End Date
@@ -806,7 +818,7 @@
                                                 </div>
 
 
-                                                <div class="col-6 mt-5">
+                                                <div class="col-lg-6 mt-5">
                                                     <div class="form-group nat-select ">
                                                         <label for="notPeriod" class="abt-det pb-2 text-primary">
                                                             {% if request.session.lang == "EN" %}
@@ -826,7 +838,39 @@
                                                 </div>
 
 
-                                                <div class="col-6 mt-5">
+                                                <!--                                                <div class="col-lg-6 mt-5">-->
+                                                <!--                                                    <div class="form-group nat-select ">-->
+                                                <!--                                                        <label for="notPeriod" class="abt-det pb-2 text-primary">-->
+                                                <!--                                                            {% if request.session.lang == "EN" %}-->
+                                                <!--                                                            Allowance-->
+                                                <!--                                                            {% else %}-->
+                                                <!--                                                            مخصص-->
+                                                <!--                                                            {% endif %}-->
+                                                <!--                                                        </label>-->
+                                                <!--                                                        <select class="form-control new-create selectpicker" multiple data-actions-box="true" id="allowance"-->
+                                                <!--                                                                name="allowance">-->
+                                                <!--                                                            {% for d in allowance %}-->
+                                                <!--                                                            <option value="{{d.id}}">{{d.enName}}</option>-->
+                                                <!--                                                            {% endfor %}-->
+                                                <!--                                                        </select>-->
+
+                                                <!--                                                        <select class="form-control new-create selectpicker"-->
+                                                <!--                                                                name="allowance" multiple data-actions-box="true"-->
+                                                <!--                                                                id="allowance">-->
+                                                <!--                                                            {% for d in allowance %}-->
+                                                <!--                                                            <option value="{{d.id}}">{{d.enName}}</option>-->
+                                                <!--                                                            {% endfor %}-->
+                                                <!--                                                        </select>-->
+                                                <!--                                                        <br>-->
+                                                <!--                                                        {% for d in allowance %}-->
+
+                                                <!--                                                        <input value="{{d.id}}" type="checkbox"  class=" " name="{{allowance.enName}}"  id="allowance" style=" zoom: 1.5;">  {{d.enName}}<br>-->
+                                                <!--                                                        {% endfor %}-->
+                                                <!--                                                    </div>-->
+                                                <!--                                                </div>-->
+
+
+                                                <div class="col-lg-6 mt-5">
                                                     <div class="form-group nat-select">
                                                         <label for="probPeriod" class="abt-det pb-2 text-primary">
                                                             {% if request.session.lang == "EN" %}
@@ -843,65 +887,66 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-12  mt-5 ">
-                                                    <div class="row">
-                                                        <div class="col-6 abt-det abt-2 pt-2"><i
-                                                                class="fa fa-money mr-2" aria-hidden="true"></i>
-                                                            <span>
-                                    {% if request.session.lang == "EN" %}
-                                                Basic Salary
-                                                  {% else %}
-                                                  راتب اساسي
-                                                  {% endif %} </span>
-                                                        </div>
-                                                        <div class="col-4 mb-2"><input type="number" id="bs"
-                                                                                       class="form-control new-create"
-                                                                                       min="0"
-                                                                                       value='{{contract.base_salary}}'/>
-                                                        </div>
-                                                        <div class="col-6 mt-2 abt-det abt-2 pt-2"><i
-                                                                class="fa fa-home mr-2" aria-hidden="true"></i><span>
-                                                        {% if request.session.lang == "EN" %}
-                                                Housing Allowance
-                                                  {% else %}
-                                                  بدل سكن
-                                                  {% endif %}
-                                                         </span>
-                                                        </div>
-                                                        <div class="col-4 mb-2"><input type="number" id="HA"
-                                                                                       class="form-control new-create"
-                                                                                       min="0"
-                                                                                       value='{{contract.Housing_Allowance}}'/>
-                                                        </div>
-                                                        <div class="col-6 mt-2 abt-det abt-2 pt-2"><i
-                                                                class="fa fa-bus mr-2" aria-hidden="true"></i><span>
-                                                        {% if request.session.lang == "EN" %}
-                                               Transport Allowance
-                                                  {% else %}
-                                                  بدل النقل
-                                                  {% endif %} </span>
-                                                        </div>
-                                                        <div class="col-4 mb-2"><input type="number" id="TA"
-                                                                                       class="form-control new-create"
-                                                                                       min="0"
-                                                                                       value='{{contract.Transport_Allowance}}'/>
-                                                        </div>
-                                                        <div class="col-6 mt-2 abt-det abt-2 pt-2"><i
-                                                                class="fa fa-exclamation-circle mr-2"
-                                                                aria-hidden="true"></i><span>
-                                                       {% if request.session.lang == "EN" %}
-                                               Other Allowance
-                                                  {% else %}
-                                                  بدلات أخرى
-                                                  {% endif %} </span>
-                                                        </div>
-                                                        <div class="col-4 mb-2"><input type="number" id="OA"
-                                                                                       class="form-control new-create"
-                                                                                       min="0"
-                                                                                       value='{{contract.otherallowance}}'/>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <!--                                                <div class="col-12  mt-5 ">-->
+                                                <!--                                                    <div class="row">-->
+                                                <!--                                                        <div class="col-6 abt-det abt-2 pt-2"><i-->
+                                                <!--                                                                class="fa fa-money mr-2" aria-hidden="true"></i>-->
+                                                <!--                                                            <span>-->
+                                                <!--                                                                {% if request.session.lang == "EN" %}-->
+                                                <!--                                                                            Basic Salary-->
+                                                <!--                                                                              {% else %}-->
+                                                <!--                                                                              راتب اساسي-->
+                                                <!--                                                                              {% endif %}-->
+                                                <!--                                                            </span>-->
+                                                <!--                                                        </div>-->
+                                                <!--                                                        <div class="col-4 mb-2"><input type="number" id="bs"-->
+                                                <!--                                                                                       class="form-control new-create"-->
+                                                <!--                                                                                       min="0"-->
+                                                <!--                                                                                       value='{{contract.base_salary}}'/>-->
+                                                <!--                                                        </div>-->
+                                                <!--                                                        <div class="col-6 mt-2 abt-det abt-2 pt-2"><i-->
+                                                <!--                                                                class="fa fa-home mr-2" aria-hidden="true"></i><span>-->
+                                                <!--                                                        {% if request.session.lang == "EN" %}-->
+                                                <!--                                                Housing Allowance-->
+                                                <!--                                                  {% else %}-->
+                                                <!--                                                  بدل سكن-->
+                                                <!--                                                  {% endif %}-->
+                                                <!--                                                         </span>-->
+                                                <!--                                                        </div>-->
+                                                <!--                                                        <div class="col-4 mb-2"><input type="number" id="HA"-->
+                                                <!--                                                                                       class="form-control new-create"-->
+                                                <!--                                                                                       min="0"-->
+                                                <!--                                                                                       value='{{contract.Housing_Allowance}}'/>-->
+                                                <!--                                                        </div>-->
+                                                <!--                                                        <div class="col-6 mt-2 abt-det abt-2 pt-2"><i-->
+                                                <!--                                                                class="fa fa-bus mr-2" aria-hidden="true"></i><span>-->
+                                                <!--                                                        {% if request.session.lang == "EN" %}-->
+                                                <!--                                               Transport Allowance-->
+                                                <!--                                                  {% else %}-->
+                                                <!--                                                  بدل النقل-->
+                                                <!--                                                  {% endif %} </span>-->
+                                                <!--                                                        </div>-->
+                                                <!--                                                        <div class="col-4 mb-2"><input type="number" id="TA"-->
+                                                <!--                                                                                       class="form-control new-create"-->
+                                                <!--                                                                                       min="0"-->
+                                                <!--                                                                                       value='{{contract.Transport_Allowance}}'/>-->
+                                                <!--                                                        </div>-->
+                                                <!--                                                        <div class="col-6 mt-2 abt-det abt-2 pt-2"><i-->
+                                                <!--                                                                class="fa fa-exclamation-circle mr-2"-->
+                                                <!--                                                                aria-hidden="true"></i><span>-->
+                                                <!--                                                       {% if request.session.lang == "EN" %}-->
+                                                <!--                                               Other Allowance-->
+                                                <!--                                                  {% else %}-->
+                                                <!--                                                  بدلات أخرى-->
+                                                <!--                                                  {% endif %} </span>-->
+                                                <!--                                                        </div>-->
+                                                <!--                                                        <div class="col-4 mb-2"><input type="number" id="OA"-->
+                                                <!--                                                                                       class="form-control new-create"-->
+                                                <!--                                                                                       min="0"-->
+                                                <!--                                                                                       value='{{contract.otherallowance}}'/>-->
+                                                <!--                                                        </div>-->
+                                                <!--                                                    </div>-->
+                                                <!--                                                </div>-->
                                             </div>
                                         </div>
 
@@ -1080,7 +1125,8 @@
                                 </strong>
                                     <hr>
                                 </h4>
-                                <button type="button" class="btn btn-success btn-style cont-btn" style="">
+                                <button type="button" onclick="myFunction()" class="btn btn-success btn-style cont-btn"
+                                        style="">
                                     {% if request.session.lang == "EN" %}
                                     Continue<i class="fa fa-long-arrow-right ml-2"></i>
                                     {% else %}
@@ -1393,13 +1439,18 @@ $('.benifit-card-btn').eq(0).css({'background':'#f8f9fa'})
                                     {% endif %}</strong>
                                     <hr>
                                 </h4>
-                                <button type="button" class="btn btn-success btn-style cont-btn" style="">
-                                    {% if request.session.lang == "EN" %}
-                                    Continue<i class="fa fa-thumbs-up ml-2"></i>
-                                    {% else %}
-                                    <i class="fa fa-thumbs-up ml-2"></i>يكمل
-                                    {% endif %}
-                                </button>
+
+                                <a href="{% url 'salarystr' %}">
+                                    <button type="button" class="btn btn-success btn-style cont-btn" style="">
+                                        {% if request.session.lang == "EN" %}
+                                        Continue<i class="fa fa-thumbs-up ml-2"></i>
+                                        {% else %}
+                                        <i class="fa fa-thumbs-up ml-2"></i>يكمل
+                                        {% endif %}
+                                    </button>
+                                </a>
+
+
                                 <div class="row">
                                     <div class="col-12 p-3 ">
                                         <h4 class="p-head">
@@ -1436,11 +1487,7 @@ $('.benifit-card-btn').eq(0).css({'background':'#f8f9fa'})
     $('#jobtitle').val({{data.Job_position.id}});
 
 
-
-
-
 </script>
-
 <script type="text/javascript" src="/static/assets/js/custom_sidenav.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -1450,10 +1497,20 @@ $('.benifit-card-btn').eq(0).css({'background':'#f8f9fa'})
 <script type="text/javascript" src="/static/assets/js/leavechart.js"></script>
 <script>
     $('#gosi').val('saudi')
-$('.benifit-card-btn').eq(0).css({'background':'#4755AB'})
-$('.benifit-card-btn').eq(1).css({'background':'#f8f9fa'})
+    $('.benifit-card-btn').eq(0).css({'background':'#4755AB'})
+    $('.benifit-card-btn').eq(1).css({'background':'#f8f9fa'})
 
 
 
 </script>
+<!--<script>-->
+<!--    $(function() {-->
+<!--    let coll= $('.collector');-->
+<!--    $('#all-det').change(function(e) {-->
+<!--    var selected = $(e.target).val();-->
+<!--    coll.val(selected)-->
+<!--&lt;!&ndash;    alert(selected);&ndash;&gt;-->
+<!--    });-->
+<!--    });-->
+<!--</script>-->
 {% endblock%}

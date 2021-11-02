@@ -369,9 +369,9 @@ class CreateContracts(models.Model):
     Date_From = models.DateField(default=timezone.now)
     Date_To = models.DateField(default=timezone.now)
     Stage = models.CharField(max_length=250, choices=Stage_CHOICE)
-    base_salary = models.IntegerField(default=0)
-    Housing_Allowance = models.IntegerField(default=0)
-    Transport_Allowance = models.IntegerField(default=0)
+    base_salary = models.IntegerField(default=0,blank=True,null=True)
+    Housing_Allowance = models.IntegerField(default=0,blank=True,null=True)
+    Transport_Allowance = models.IntegerField(default=0,blank=True,null=True)
     GOSI = models.IntegerField(default=0)
     shift_start = models.TimeField()
     shift_end = models.TimeField()
@@ -381,7 +381,8 @@ class CreateContracts(models.Model):
     contract_period = models.CharField(max_length=250)
     notice_period = models.CharField(max_length=250)
     probation_period = models.CharField(max_length=250)
-    otherallowance = models.IntegerField(max_length=250)
+    otherallowance = models.IntegerField(max_length=250,blank=True,null=True)
+    allowance = models.ManyToManyField(allowances)
 
     def __str__(self):
         return "{}".format(self.ContractsReference)

@@ -112,7 +112,6 @@
                         {% endif %}
                         <input type="radio" name="status" id="Rejected" value="Rejected">
                         {% endif %}
-
                     </div>
 
                     <hr>
@@ -151,7 +150,7 @@
                                     <select name="leavetype" id="leavetype"
                                             class="form-control input-style">
                                         {% for d in data1 %}
-                                        <option disabled selected hidden>{{data.Leave_Type}}</option>
+                                        <option  selected hidden value="{{data.id}}">{{data.Leave_Type}}</option>
                                         <option value="{{d.id}}">{{d.Title}}</option>
                                         {% endfor %}
                                     </select>
