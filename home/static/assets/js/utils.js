@@ -2,7 +2,7 @@
 
 window.chartColors = {
 	navy: '#4755AB',
-	green: '#03c895',
+	green: '#3b4e9c',
 	danger: '#ff4f81',
 	blue: '#4A496E',
 	purple: '#B162AC',

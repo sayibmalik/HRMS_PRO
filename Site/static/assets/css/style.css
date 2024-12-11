@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50px;
   right: 15px;
   bottom: 15px;
-  background: #012066;
+  background: #4755AB;
   color: #fff;
   transition: display 0.5s ease-in-out;
   z-index: 99999;
@@ -136,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu .get-started a {
-  background: #012066;
+  background: #4755AB;
   color: #fff;
   border-radius: 50px;
   margin: 0 15px;
@@ -475,7 +475,7 @@ section {
   font-weight: 400;
   margin-bottom: 20px;
   padding-bottom: 0;
-  color: #012066;
+  color: #4755AB;
   font-family: "Poppins", sans-serif;
 }
 
@@ -1178,10 +1178,10 @@ font-family: 'Carter One', cursive !important;
 
     .section-title h2{
         color: #fff;
-        background: #012066;
+        background: #4755AB;
         line-height: 73px;
         text-transform: uppercase;
-        border-radius: 40px  0px 40px 0px;
+        border-radius: 7px;
         font-family: 'Philosopher', sans-serif;
         letter-spacing: .86px;
         font-size: 30px;
