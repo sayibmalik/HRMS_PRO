@@ -82,23 +82,50 @@ WSGI_APPLICATION = 'ZHR.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'sampledb.sqlite3'),
-    }
-}
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'ZHRdb',
-#         'USER': 'rafiq',
-#         'PASSWORD': 'arif4730',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
+
+if DEBUG:
+    print("Development")
+    # DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'sampledb.sqlite3'),
+    #     }
+    # }
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'hrms_dev',
+            'USER': 'hrms_devuser',
+            'PASSWORD': 'Zainab321#',
+            'HOST': '89.116.20.12',
+            'PORT': '5432',
+        }
+    }
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #         'NAME': 'proerp',
+    #         'USER': 'proerpuser',
+    #         'PASSWORD': 'Kashmir@2021',
+    #         'HOST': '159.89.206.182',
+    #         'PORT': '5432',
+    #     }
+    # }
+    
+else:
+    print("Production")
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['proerp_database'],
+            'USER': os.environ['proerp_username'],
+            'PASSWORD': os.environ['proerp_password'],
+            'HOST': os.environ['proerp_host'],
+            'PORT': os.environ['proerp_port'],
+        }
+    }
+
 
 
 # Password validation
